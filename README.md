@@ -45,11 +45,11 @@ sufficient CSS styling:
 **Objective:** Backend + Frontend Authentication, initial tables started
 (users, posts). CSS styling.
 
-### Phase 2: Newsfeed (3 days)
+### Phase 2: Newsfeed (2 days)
 
-**Objective:** Begin working on newsfeed. This includes backend (posts, comments) and implementing the newsfeed. CSS styling.
+**Objective:** Begin working on newsfeed. This includes backend (posts) and implementing the newsfeed. CSS styling.
 
-### Phase 3: Friendships/Comments (2 days)
+### Phase 3: Friendships/Comments (3 days)
 
 **Objective:** Friendship implementation between users. Fix newsfeed to allow only friend items to be viewed by user. Friend requests / approval (accept) and deletion (reject). Allow commentings on posts. CSS styling.
 
