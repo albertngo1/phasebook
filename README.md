@@ -43,22 +43,20 @@ sufficient CSS styling:
 ### Phase 1: Backend and Front End User Authentication (1 days)
 
 **Objective:** Backend + Frontend Authentication, initial tables started
-(users, posts)
+(users, posts). CSS styling.
 
 ### Phase 2: Newsfeed (3 days)
 
-**Objective:** Working on newsfeed implementation including viewing of posts
-of friends
+**Objective:** Begin working on newsfeed. This includes backend (posts, comments) and implementing the newsfeed. CSS styling.
 
-### Phase 3: Profile show page (2 days)
+### Phase 3: Friendships/Comments (2 days)
 
-**Objective:** Profile show page to include features listed from component
-hierarchy
+**Objective:** Friendship implementation between users. Fix newsfeed to allow only friend items to be viewed by user. Friend requests / approval (accept) and deletion (reject). Allow commentings on posts. CSS styling.
 
-### Phase 4: CSS (1 day)
+### Phase 4: User show page (2 day)
 
-**Objective:** Styling
+**Objective:** User profile page design. Includes multiple indices for many attributes of users (friends, pictures, posts) as well as other external attributes made by friends/user (likes, comments). CSS styling
 
-### Phase 5: Comments on comments (1 day)
+### Phase 5: Likes (1 day)
 
-**Objective:** Allow people to comment on comments
+**Objective:** Allow liking on posts, comments, pictures. CSS styling.

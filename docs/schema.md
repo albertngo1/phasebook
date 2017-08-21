@@ -5,16 +5,16 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
-first name      | string    | not null
-last name       | string    | not null
+first_name      | string    | not null
+last_name       | string    | not null
 email           | string    | not null, unique
-phone number    | string    | not null
+phone_number    | string    | not null
 gender             | string    | not null
 birthday        | date      | not null
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 education       | string    |
-current city    | string    |
+current_city    | string    |
 hometown        | string    |
 relationship    | string    |
 joined_facebook | string    |

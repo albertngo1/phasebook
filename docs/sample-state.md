@@ -12,7 +12,21 @@
 
   entities: {
     users: {
-
+      1: {
+        username: "albertngo1",
+        first_name: "albert",
+        last_name: "ngo",
+        email: "random@random.com",
+        phone_number: "555-5555",
+        gender: "M",
+        birthday: "2000-08-04",
+        education: "somewhere",
+        post_ids: [1, 2, 3],
+        likes_ids: [1, 2, 3],
+        comments_ids: [1, 2, 3],
+        friendship_ids: [2, 3, 4]
+        picture_ids: [1, 2, 3]
+      }
     },
 
     posts: {
@@ -43,8 +57,7 @@
     likes: {
       1: {
         liker_id: 1,
-        post_id: 1,
-        comment_id: null
+        like_item_id: 3
       }
     },
 
