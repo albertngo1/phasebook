@@ -40,10 +40,10 @@ sufficient CSS styling:
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (1 days)
+### Phase 1: Backend and Front End User Authentication (1 days)
 
-**Objective:** Backend and frontend authentication. Tables, models, controllers,
-views. Users, posts, comments, likes, friendships, pictures(?)
+**Objective:** Backend + Frontend Authentication, initial tables started
+(users, posts)
 
 ### Phase 2: Newsfeed (3 days)
 
