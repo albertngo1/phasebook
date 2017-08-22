@@ -32,4 +32,26 @@
       "js",
       "jsx"
     ]
-  }
+  },
+  "description": "[Heroku link][heroku] **Note:** This should be a link to your production site",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertngo1/phasebook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertngo1/phasebook/issues"
+  },
+  "homepage": "https://github.com/albertngo1/phasebook#readme"
+}

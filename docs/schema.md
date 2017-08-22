@@ -17,7 +17,6 @@ education       | string    |
 current_city    | string    |
 hometown        | string    |
 relationship    | string    |
-joined_facebook | string    |
 introduction    | text      |
 - has_many posts, likes, comments, friendships, pictures
 
