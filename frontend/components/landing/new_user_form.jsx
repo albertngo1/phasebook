@@ -133,13 +133,14 @@ class NewUserForm extends React.Component {
           <h1 className="splash-signup">Sign Up</h1>
           <h4 className="splash-comment-form-one">It’s free and always will be.</h4>
           <form className="splash-form" onSubmit={this.handleSubmit}>
-            <input className="splash-form-field-1" type="text" onChange={this.update('first_name')} value={this.state.first_name} placeholder="First name"/>
+            <div className="splash-form-name-field">
+              <input className="splash-form-field-1 splash-form-placeholder" type="text" onChange={this.update('first_name')} value={this.state.first_name} placeholder="First name"/>
 
-            <input className="splash-form-field-1" type="text" onChange={this.update('last_name')} value={this.state.last_name} placeholder="Last name"/>
+              <input className="splash-form-field-1 splash-form-placeholder" type="text" onChange={this.update('last_name')} value={this.state.last_name} placeholder="Last name"/>
+            </div>
+            <input className="splash-form-field-2 splash-form-placeholder" type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email"/>
 
-            <input className="splash-form-field-2" type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email"/>
-
-            <input className="splash-form-field-2" type="password" onChange={this.update('password')} value={this.state.password} placeholder="New password"/>
+            <input className="splash-form-field-2 splash-form-placeholder" type="password" onChange={this.update('password')} value={this.state.password} placeholder="New password"/>
 
             <div className='new-user-birthdate'>
               <div>Birthday</div>

@@ -37,14 +37,31 @@ h1, h4 {
 
 .splash-form-field-1 {
   height: 35px;
+  width: 140px;
+  text-indent: 12px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  background: white;
+  border-radius: 5px;
+  border: 1px #bdd2ff solid;
 }
 
 .splash-form-field-2 {
   height: 35px;
-  width: 400px;
-  font-size: 23px;
+  width: 380px;
+  text-indent: 12px;
+  font-size: 20px;
+  background: white;
+  border-radius: 5px;
+  border: 1px #bdd2ff solid;
+  margin-bottom: 10px;
 }
 
-.splash-form-field-2::placeholder {
-  color: blue;
+.splash-form-placeholder::placeholder {
+  color: #a1a1a1;
+  font-size: 20px;
+  letter-spacing: normal;
+  vertical-align: middle;
+  background-color: transparent;
+  position: relative;
 }
