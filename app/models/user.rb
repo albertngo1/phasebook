@@ -22,7 +22,7 @@
 
 class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, :phone_number, :gender,
-  :birthday, :password_digest, :session_token, presence: true
+  :birth_day, :birth_month, :birth_year, :password_digest, :session_token, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   attr_reader :password

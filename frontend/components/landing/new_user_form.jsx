@@ -1,6 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-
+import {withRouter} from 'react-router-dom';
 
 class NewUserForm extends React.Component {
 
@@ -39,36 +38,47 @@ class NewUserForm extends React.Component {
 
   errors() {
     if (this.props.errors) {
-      return(
+      return (
         <ul>
-          {this.props.errors.map( (err, idx) => (
-              <li key={`error-${idx}`}>
-                {err}
-              </li>
-            ))}
+          {this.props.errors.map((err, idx) => (
+            <li key={`error-${idx}`}>
+              {err}
+            </li>
+          ))}
         </ul>
       )
     }
   }
 
   selectMonth() {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-   'Sep', 'Oct', 'Nov', 'Dec']
-   let monthSelect = [];
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ]
+    let monthSelect = [];
 
-   monthSelect.push(
-     <option key="month" >Month</option>
-   );
+    monthSelect.push(
+      <option key="month">Month</option>
+    );
 
-    months.forEach( (month, idx) => {
+    months.forEach((month, idx) => {
       monthSelect.push(
-        <option key={`month-${idx}`}
-          value={idx + 1}>{`${month}`}
+        <option key={`month-${idx}`} value={idx + 1}>{`${month}`}
         </option>
       );
     });
 
-    return(
+    return (
       <select onChange={this.handleSelectChange('birth_month')}>
         {monthSelect}
       </select>
@@ -88,7 +98,7 @@ class NewUserForm extends React.Component {
       );
     }
 
-    return(
+    return (
       <select onChange={this.handleSelectChange('birth_day')}>
         {daySelect}
       </select>
@@ -108,7 +118,7 @@ class NewUserForm extends React.Component {
       );
     }
 
-    return(
+    return (
       <select onChange={this.handleSelectChange('birth_year')}>
         {yearSelect}
       </select>
@@ -116,59 +126,45 @@ class NewUserForm extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-        <h4>
-          {this.errors()}
-        </h4>
-        <form onSubmit={this.handleSubmit}>
+        <div>{this.errors()}</div>
+        <div className="splash-right-side">
+          <h1 className="splash-signup">Sign Up</h1>
+          <h4 className="splash-comment-form-one">It’s free and always will be.</h4>
+          <form className="splash-form" onSubmit={this.handleSubmit}>
+            <input className="splash-form-field-1" type="text" onChange={this.update('first_name')} value={this.state.first_name} placeholder="First name"/>
 
-          <input type="text"
-            onChange={this.update('first_name')}
-            value={this.state.first_name}
-            placeholder="First name"/>
+            <input className="splash-form-field-1" type="text" onChange={this.update('last_name')} value={this.state.last_name} placeholder="Last name"/>
 
-          <input type="text"
-            onChange={this.update('last_name')}
-            value={this.state.last_name}
-            placeholder="Last name"/>
+            <input className="splash-form-field-2" type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email"/>
 
-          <input type="text"
-            onChange={this.update('email')}
-            value={this.state.email}
-            placeholder="Email"/>
+            <input className="splash-form-field-2" type="password" onChange={this.update('password')} value={this.state.password} placeholder="New password"/>
 
-          <input type="password"
-            onChange={this.update('password')}
-            value={this.state.password}
-            placeholder="New password"/>
-
-          <div className='new-user-birthdate'>
-            <div>
-              {this.selectMonth()}
+            <div className='new-user-birthdate'>
+              <div>Birthday</div>
+              <div>
+                <div>
+                  {this.selectMonth()}
+                </div>
+                <div>
+                  {this.selectDay()}
+                </div>
+                <div>
+                  {this.selectYear()}
+                </div>
+              </div>
             </div>
-            <div>
-              {this.selectDay()}
-            </div>
-            <div>
-              {this.selectYear()}
-            </div>
-          </div>
 
-          <label>
-            <input
-              name="gender"
-              type="radio"
-              value="male"/>{' '}Male</label>
+            <label>
+              <input name="gender" type="radio" value="male"/>{' '}Male</label>
 
-          <label>
-            <input
-              name="gender"
-              type="radio"
-              value="female"/>{' '}Female</label>
+            <label>
+              <input name="gender" type="radio" value="female"/>{' '}Female</label>
 
-          <input type='submit' value="Create Account" />
-        </form>
+            <input type='submit' value="Create Account"/>
+          </form>
+        </div>
       </div>
     )
   }

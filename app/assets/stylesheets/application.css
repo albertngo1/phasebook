@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  min-height: 100%;
+}
+
+.splash-background {
+  margin: 0;
+  display: flex
+  flex-direction: row;
+  height: 550px;
+}

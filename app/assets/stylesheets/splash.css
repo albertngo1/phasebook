@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+h1, h4 {
+  margin: 0;
+}
+
+.splash-right-side {
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.splash-signup {
+  font-family: "Lato";
+  font-size: 40px;
+  color: #454545;
+}
+
+.splash-comment-form-one {
+  font-family: "Quicksand";
+  font-weight: normal !important;
+  letter-spacing: normal;
+  text-rendering: optimizelegibility;
+  color: #454545;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.splash-form {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.splash-form-field-1 {
+  height: 35px;
+}
+
+.splash-form-field-2 {
+  height: 35px;
+  width: 400px;
+  font-size: 23px;
+}

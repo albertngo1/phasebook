@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.landing-header {
+  height: 80px;
+  background-color: #3b5998;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.landing-logo {
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 35px;
+  font-family: "Open Sans";
+  margin-right: 100px;
+}
+
+.landing-logo-link {
+  text-decoration: none;
+}
+
+.landing-session {
+  width: 390px;
+
+}
+
+.session-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.session-email {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-label {
+  color: #ffffff;
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-family: "Montserrat";
+  font-weight: 100;
+}
+
+.session-textbox {
+  height: 19px;
+  width: 150px;
+  border: 1px solid black;
+}
+
+.session-login-btn {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  color: #ffffff;
+  font-size: 12px;
+  background: #3b5998;
+  padding: 3px 5px 3px 5px;
+  border: solid #2b3d47 1px;
+  text-decoration: none;
+  font-family: "Montserrat";
+}
+
+.session-login-btn:hover {
+  background: #2b499e;
+  text-decoration: none;
+}
+
+.splash-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #e9edf4;
+}

@@ -8,6 +8,6 @@
 
 User.destroy_all
 
-user = {first_name: "Albert", last_name: "Ngo", email: "albertngo1@gmail.com",
- phone_number: "5122994399", birthday: "1989/09/30", password: "password",
-gender: "male"}
+user = User.create(first_name: "Albert", last_name: "Ngo", email: "albertngo1@gmail.com",
+ phone_number: "5122994399", birth_day: 30, birth_month: 9, birth_year: 1989, password: "password",
+gender: "male")
