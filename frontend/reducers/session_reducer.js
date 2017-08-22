@@ -1,8 +1,8 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session/session_actions';
 
 const _nullUser = {
-  currentUser = null,
-  errors = [],
+  currentUser: null,
+  errors: [],
 }
 
 const sessionReducer = (state = _nullUser, action) => {

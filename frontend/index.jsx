@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as APISessionUtil from './util/session_api_util';
+import Root from './components/root';
+import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  window.login = APISessionUtil.login;
-  window.logout = APISessionUtil.logout;
-  ReactDOM.render(<h1>phasebook</h1>, root);
+  const store = configureStore();
+
+
+  ReactDOM.render(<Root store={store} />, root);
 });
