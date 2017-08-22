@@ -29,7 +29,7 @@ h1, h4 {
 }
 
 .splash-form {
-  width: 500px;
+  width: 450px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -43,4 +43,8 @@ h1, h4 {
   height: 35px;
   width: 400px;
   font-size: 23px;
+}
+
+.splash-form-field-2::placeholder {
+  color: blue;
 }
