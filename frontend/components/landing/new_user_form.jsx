@@ -12,13 +12,14 @@ class NewUserForm extends React.Component {
       password: "",
       first_name: "",
       last_name: "",
-      birthday: "",
+      birth_day: null,
+      birth_month: null,
+      birth_year: null,
       gender: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.errors = this.errors.bind(this);
-
-    this.handleLogout = this.handleLogout.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -26,6 +27,14 @@ class NewUserForm extends React.Component {
     const user = Object.assign({}, this.state)
     this.props.signup(user);
     this.state.password = "";
+  }
+
+  handleSelectChange(field) {
+    return e => this.setState({[field]: e.target.value})
+  }
+
+  update(field) {
+    return e => this.setState({[field]: e.currentTarget.value})
   }
 
   errors() {
@@ -42,13 +51,68 @@ class NewUserForm extends React.Component {
     }
   }
 
-  update(field) {
-    return e => this.setState({[field]: e.currentTarget.value})
+  selectMonth() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
+   'Sep', 'Oct', 'Nov', 'Dec']
+   let monthSelect = [];
+
+   monthSelect.push(
+     <option key="month" >Month</option>
+   );
+
+    months.forEach( (month, idx) => {
+      monthSelect.push(
+        <option key={`month-${idx}`}
+          value={idx + 1}>{`${month}`}
+        </option>
+      );
+    });
+
+    return(
+      <select onChange={this.handleSelectChange('birth_month')}>
+        {monthSelect}
+      </select>
+    );
   }
 
-  handleLogout(e) {
-    e.preventDefault();
-    this.props.logout();
+  selectDay() {
+    let daySelect = [];
+
+    daySelect.push(
+      <option key={`day`}>Day</option>
+    );
+
+    for (let i = 1; i <= 31; i++) {
+      daySelect.push(
+        <option key={`day-${i}`} value={i}>{`${i}`}</option>
+      );
+    }
+
+    return(
+      <select onChange={this.handleSelectChange('birth_day')}>
+        {daySelect}
+      </select>
+    )
+  }
+
+  selectYear() {
+    let yearSelect = [];
+
+    yearSelect.push(
+      <option key={`year`}>Year</option>
+    );
+
+    for (let i = 2017; i >= 1905; i--) {
+      yearSelect.push(
+        <option key={`year-${i}`} value={i}>{`${i}`}</option>
+      );
+    }
+
+    return(
+      <select onChange={this.handleSelectChange('birth_year')}>
+        {yearSelect}
+      </select>
+    )
   }
 
   render() {
@@ -78,6 +142,18 @@ class NewUserForm extends React.Component {
             onChange={this.update('password')}
             value={this.state.password}
             placeholder="New password"/>
+
+          <div className='new-user-birthdate'>
+            <div>
+              {this.selectMonth()}
+            </div>
+            <div>
+              {this.selectDay()}
+            </div>
+            <div>
+              {this.selectYear()}
+            </div>
+          </div>
 
           <label>
             <input

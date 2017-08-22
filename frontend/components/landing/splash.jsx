@@ -1,17 +1,18 @@
 import React from 'react';
-import NewUserForm from './new_users/new_user_form';
-import SessionForm from './sessions/session_form';
+import NewUserForm from './new_user_form';
+import SessionForm from './session_form';
 
 const Splash = ({ loggedIn, errors, login, signup }) => {
 
 
   return(
     <div>
-      <div>
+      <header>
+        <h2>phasebook</h2>
         <SessionForm loggedIn={ loggedIn }
           errors={errors}
           login={login}/>
-      </div>
+      </header>
 
       <div>
         <NewUserForm loggedIn={ loggedIn }
