@@ -12,15 +12,15 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
-    "webpack": "^2.4.1"
+    "webpack": "^2.4.1",
+    "babel-core": "^6.2.0",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*"
   },
   "devDependencies": {
-    "babel-core": "^6.2.0",
     "babel-jest": "^15.0.0",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.13.0",
-    "babel-preset-es2015": "*",
-    "babel-preset-react": "*",
     "enzyme": "^2.5.1",
     "jest": "^15.1.1",
     "jest-cli": "^15.1.1",
