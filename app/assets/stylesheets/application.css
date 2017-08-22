@@ -20,7 +20,7 @@ html {
 
 .splash-background {
   margin: 0;
-  display: flex
+  display: flex;
   flex-direction: row;
   height: 550px;
 }
