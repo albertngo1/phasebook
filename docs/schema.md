@@ -52,7 +52,6 @@ column name | data type | details
 id          | integer   | not null, primary key
 liker_id    | integer   | not null, foreign key (references users), indexed
 like_item_id     | integer   | foreign key (references posts and comments via polymorphic association), indexed
-comment_id  | integer   | foreign key (references comments), indexed
 - belongs_to user, [post, comment]: like_item (polymorphic)
 
 ---
