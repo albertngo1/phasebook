@@ -21,7 +21,7 @@
 }
 
 .landing-session {
-  width: 390px;
+  width: 433px;
 
 }
 
@@ -74,6 +74,28 @@
 .session-login-btn:hover {
   background: #2b499e;
   text-decoration: none;
+}
+
+.session-demo-btn:hover {
+  background: rgb(35, 156, 69);
+  text-decoration: none;
+}
+
+.session-demo-btn {
+  font-family: "Montserrat";
+  cursor: pointer;
+  padding: 3px 5px 3px 5px;
+  font-size: 12px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  color: #ffffff;
+  padding: 3px 5px 3px 5px;
+  border: solid #2b3d47 1px;
+  background: linear-gradient(#67ae55, #578843);
+  background-color: #69a74e;
+  box-shadow: inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
 }
 
 .splash-background {
