@@ -1,35 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PostForm from './post_form';
+import NavBar from './navbar';
 
 class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPosts();
   }
-
-
-  handleClick(e) {
-    this.props.logout();
-  }
-
-
   render() {
         const { posts, currentUser, createPost } = this.props
         return(
-          <div>
+          <div className="main-page-container">
             <header>
-              <div>{currentUser.first_name} {currentUser.last_name}</div>
-              <button onClick={this.handleClick}>Log Out</button>
+              <NavBar />
             </header>
-
-            <br/>
 
             <div>
               <h1>All Posts</h1>
@@ -39,11 +27,11 @@ class MainPage extends React.Component {
                   authorId={currentUser.id} />
               </div>
               <ul>
-                { posts.map( post => {
+                { posts.reverse().map( post => {
                   return (
                     <li key={post.id}>
+                      <p>{post.author}</p>
                       <h1>{post.body}</h1>
-                        <p>{post.author}</p>
                     </li>
                   )
                 })}

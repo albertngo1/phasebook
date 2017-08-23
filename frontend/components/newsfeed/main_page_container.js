@@ -14,7 +14,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout()),
     createPost: post => dispatch(createPost(post)),
     fetchPosts: () => dispatch(fetchPosts()),
   };

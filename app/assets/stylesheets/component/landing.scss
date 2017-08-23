@@ -57,6 +57,7 @@
   height: 19px;
   width: 150px;
   border: 1px solid black;
+  text-indent: 2px;
 }
 
 .session-login-btn {
@@ -98,13 +99,6 @@
   background-color: #69a74e;
   box-shadow: inset 0 1px 1px #a4e388;
   border-color: #3b6e22 #3b6e22 #2c5115;
-}
-
-.splash-background {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: #e9edf4;
 }
 
 .session-error {

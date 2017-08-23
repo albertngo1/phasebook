@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class PostForm extends React.Component {
 
@@ -17,9 +17,10 @@ class PostForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const post = Object.assign({}, this.state);
-    this.props.createPost({post}).then(
+    this.props.createPost(post).then(
       () => this.setState( {body: ""})
     );
+
   }
 
   update(property) {
@@ -51,4 +52,4 @@ class PostForm extends React.Component {
 
 
 
-export default PostForm;
+export default withRouter(PostForm);

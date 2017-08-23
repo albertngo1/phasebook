@@ -9,6 +9,6 @@ export const createPost = (post) => {
   return $.ajax({
     url: '/api/posts',
     method: 'POST',
-    data: { post }
+    data: {post} ,
   });
 };

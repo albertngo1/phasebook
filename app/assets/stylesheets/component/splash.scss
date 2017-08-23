@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: row;
   height: 550px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #e9edf4;
 }
 
 .splash-right-side {
@@ -156,7 +160,6 @@ select {
 .splash-static {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   margin-bottom: 120px;
   text-align: center;
   letter-spacing: normal;
@@ -168,6 +171,11 @@ select {
 
 .splash-static-img {
   background-image: image-url("splash_page.png");
+  width: 100%;
+  height: 100%;
+  background-size: 300px 300px;
+  background-repeat: no-repeat;
+  margin-left: 200px;
 }
 
 .splash-static-cmt-1 {
