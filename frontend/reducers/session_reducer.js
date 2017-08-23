@@ -6,13 +6,13 @@ const _nullUser = {
 }
 
 const sessionReducer = (state = _nullUser, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
 
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, {currentUser: action.currentUser});
     case RECEIVE_ERRORS:
-      return Object.assign({}, state, {errors: action.errors})
+      return Object.assign({}, state, {errors: action.errors});
     default:
       return state;
   }

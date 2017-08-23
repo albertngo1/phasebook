@@ -22,9 +22,6 @@
   - obtains all friends of user
 - `GET /api/users/:id/posts`
   - obtains all posts of user
-- `GET /api/users/:id/photos`
-  - obtains all pictures of user
-
 
 ### Session
 
@@ -45,28 +42,18 @@
   - update post
 - `DELETE /api/posts/:id`
   - delete post
-- `GET /api/posts/:id/comments`
-  - all comments belonging to post
-- `GET /api/posts/:id/likes`
-  - all likes belonging to post
 
 ### Comments
 
-- `GET /api/comments`
-  - comments index/search
 - `POST /api/comments`
   - create new comment
 - `PATCH /api/comments/:id`
   - update comment
 - `DELETE /api/comments/:id`
   - delete comment
-- `GET /api/comments/:id/likes`
-  - all likes belonging to comment
 
 ### Pictures
 
-- `GET /api/pictures`
-  - pictures index/search
 - `POST /api/pictures`
   - create new picture
 - `GET /api/pictures/:id`
@@ -74,16 +61,9 @@
 - `PATCH /api/pictures/:id`
   - update picture
 - `DELETE /api/pictures/:id`
-  - delete picture
-- `GET /api/pictures/:id/comments`
-  - all comments belonging to picture
-- `GET /api/pictures/:id/likes`
-  - all likes belonging to picture
 
 ### Likes
 
-- `GET /api/likes`
-  - likes index/search
 - `POST /api/likes`
   - create like ("liking")
 - `DELETE /api/likes/:id`

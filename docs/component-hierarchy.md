@@ -78,8 +78,7 @@
 
 |Path                  | Component           |
 |----------------------|---------------------|
-| "/sign-up"           | "NewUserContainer"  |
-| "/sign-in"           | "SessionContainer"  |
-| "/newsfeed"          | "NewsFeedContainer" |
+| "/"           | "NewUserContainer"  |
+| "/"           | "SessionContainer"  |
+| "/"          | "NewsFeedContainer" |
 | "/profile/:id"       | "ProfileContainer"  |
-| "/search"            | "Search"            |
