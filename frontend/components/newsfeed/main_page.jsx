@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PostForm from './post_form';
 
 class MainPage extends React.Component {
 
@@ -20,11 +21,11 @@ class MainPage extends React.Component {
 
 
   render() {
-        const { posts } = this.props
+        const { posts, currentUser, createPost } = this.props
         return(
           <div>
             <header>
-              <div>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</div>
+              <div>{currentUser.first_name} {currentUser.last_name}</div>
               <button onClick={this.handleClick}>Log Out</button>
             </header>
 
@@ -32,6 +33,11 @@ class MainPage extends React.Component {
 
             <div>
               <h1>All Posts</h1>
+              <div>
+                <PostForm currentUser={currentUser}
+                  createPost={createPost}
+                  authorId={currentUser.id} />
+              </div>
               <ul>
                 { posts.map( post => {
                   return (
