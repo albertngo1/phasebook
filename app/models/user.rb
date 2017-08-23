@@ -8,7 +8,6 @@
 #  email           :string           not null
 #  phone_number    :string           not null
 #  gender          :string           not null
-#  birthday        :date             not null
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  education       :string
@@ -18,10 +17,13 @@
 #  introduction    :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  birth_day       :integer
+#  birth_month     :integer
+#  birth_year      :integer
 #
 
 class User < ActiveRecord::Base
-  validates :first_name, :last_name, :email, :phone_number, :gender,
+  validates :first_name, :last_name, :email, :gender,
   :birth_day, :birth_month, :birth_year, :password_digest, :session_token, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }

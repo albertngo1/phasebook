@@ -18,8 +18,13 @@ const Splash = ({ loggedIn, errors, login, signup }) => {
       </header>
 
       <div className="splash-background">
-        <h3>Welcome to Phasebook!
-          We're glad you're here.</h3>
+        <div>
+          <h3>Welcome to Phasebook!
+            We're glad you're here.</h3>
+          <h4>
+            We believe friends are important — we hope you'll connect with yours on Phasebook.
+          </h4>
+        </div>
 
         <NewUserForm loggedIn={ loggedIn }
           errors={errors}

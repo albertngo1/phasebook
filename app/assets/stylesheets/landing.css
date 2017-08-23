@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .landing-header {
   height: 80px;
-  background-color: #3b5998;
+  background-color: #405D9A;
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
@@ -14,7 +12,7 @@
   color: #ffffff;
   font-weight: bolder;
   font-size: 35px;
-  font-family: "Open Sans";
+  font-family: "Klavika";
   margin-right: 100px;
 }
 
@@ -65,11 +63,12 @@
   border-radius: 0px;
   color: #ffffff;
   font-size: 12px;
-  background: #3b5998;
+  background: #405D9A;
   padding: 3px 5px 3px 5px;
   border: solid #2b3d47 1px;
   text-decoration: none;
   font-family: "Montserrat";
+  cursor: pointer;
 }
 
 .session-login-btn:hover {

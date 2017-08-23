@@ -143,8 +143,8 @@ class NewUserForm extends React.Component {
             <input className="splash-form-field-2 splash-form-placeholder" type="password" onChange={this.update('password')} value={this.state.password} placeholder="New password"/>
 
             <div className='new-user-birthdate'>
-              <div>Birthday</div>
-              <div>
+              <div className='birthdate-lbl'>Birthday</div>
+              <div className='birthdate-sel'>
                 <div>
                   {this.selectMonth()}
                 </div>
@@ -154,16 +154,28 @@ class NewUserForm extends React.Component {
                 <div>
                   {this.selectYear()}
                 </div>
+                <div className="disclaimer">
+                  We won't share this information with anyone.
+                </div>
               </div>
             </div>
-
-            <label>
-              <input name="gender" type="radio" value="male"/>{' '}Male</label>
-
-            <label>
-              <input name="gender" type="radio" value="female"/>{' '}Female</label>
-
-            <input type='submit' value="Create Account"/>
+            <div className="new-user-gender">
+              <label className="new-user-gender-txt">
+                <input name="gender"
+                  type="radio"
+                  value="female"
+                  onClick={this.handleSelectChange('gender')}
+                  />{' '}Female</label>
+                <label className="new-user-gender-txt">
+                  <input name="gender"
+                    type="radio"
+                    value="male"
+                    onClick={this.handleSelectChange('gender')}
+                    />{' '}Male</label>
+            </div>
+            <div className="new-user-submit-container">
+              <input className="new-user-submit-btn" type='submit' value="Create Account"/>
+            </div>
           </form>
         </div>
       </div>
