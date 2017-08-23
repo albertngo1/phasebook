@@ -3,6 +3,62 @@
   flex-direction: row;
   height: 42px;
   background-color:#405D9A;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.navbar-logo {
+  background-image: image-url('parking-sign.svg');
+  z-index: 901;
+}
+
+.navbar-search-ctn {
+  display: flex;
+  vertical-align: middle;
+}
+
+.navbar-searchbar {
+  background-color: white;
+  text-indent: 2px;
+  font-size: 14px;
+  width: 401px;
+  cursor: text;
+  height: 23px;
+  box-sizing: border-box;
+  outline: 1px solid rgba(0, 0, 0, 0);
+  overflow: hidden;
+  padding: 0;
+  line-height: 18px;
+  padding: 3px 0 0;
+  text-shadow: none;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  margin-left: 80px;
+  text-indent: 6px;
+}
+
+.navbar-searchbar::placeholder {
+  background-color: white;
+  text-indent: 2px;
+  font-size: 14px;
+  text-indent: 6px;
+  vertical-align: middle;
+  font-family: 'Helvetica Neue';
+  color: #b8b8b8;
+  text-rendering: optimizelegibility;
+  font-weight: 200;
+}
+
+.navbar-search-btn {
+  background-color: #f6f6f6;
+  padding-top: 2px;
+  text-align: center;
+  width: 45px;
+  cursor: pointer;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.navbar-search-btn:hover {
+  background-color: #ebebeb;
 }

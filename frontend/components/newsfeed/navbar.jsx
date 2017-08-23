@@ -19,13 +19,11 @@ class NavBar extends React.Component {
       const { currentUser } = this.props
       return(
          <div className="navbar-container">
-            <div>
-               Logo
-            </div>
-            <div>
-               <input type="text"
-                  placeholder="Search"></input>
-               <FA name="search"></FA>
+            <div className="navbar-logo" />
+            <div className="navbar-search-ctn">
+               <input className="navbar-searchbar" type="text"
+                  placeholder="Search" />
+               <FA name="search" className="navbar-search-btn" />
             </div>
             <button>
                <div>{currentUser.first_name}</div>
