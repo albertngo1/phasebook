@@ -161,18 +161,13 @@ class NewUserForm extends React.Component {
             </div>
             <div className="new-user-gender">
               <label className="new-user-gender-txt">
-                <input name="gender"
-                  type="radio"
-                  value="female"
-                  onClick={this.handleSelectChange('gender')}
-                  />{' '}Female</label>
-                <label className="new-user-gender-txt">
-                  <input name="gender"
-                    type="radio"
-                    value="male"
-                    onClick={this.handleSelectChange('gender')}
-                    />{' '}Male</label>
+                <input name="gender" type="radio" value="female" onClick={this.handleSelectChange('gender')}/>{' '}Female</label>
+              <label className="new-user-gender-txt">
+                <input name="gender" type="radio" value="male" onClick={this.handleSelectChange('gender')}/>{' '}Male</label>
             </div>
+            <p className="new-user-disclaimer">
+              By clicking Create Account, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.
+            </p>
             <div className="new-user-submit-container">
               <input className="new-user-submit-btn" type='submit' value="Create Account"/>
             </div>

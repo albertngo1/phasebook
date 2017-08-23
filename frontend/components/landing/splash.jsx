@@ -18,10 +18,10 @@ const Splash = ({ loggedIn, errors, login, signup }) => {
       </header>
 
       <div className="splash-background">
-        <div>
-          <h3>Welcome to Phasebook!
+        <div className="splash-static">
+          <h3 className="splash-static-cmt-1">Welcome to Phasebook!
             We're glad you're here.</h3>
-          <h4>
+          <h4 className="splash-static-cmt-2">
             We believe friends are important — we hope you'll connect with yours on Phasebook.
           </h4>
         </div>
