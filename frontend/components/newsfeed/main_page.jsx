@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Landing extends React.Component {
+class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -9,30 +9,43 @@ class Landing extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
 
 
   handleClick(e) {
-    e.preventDefault();
     this.props.logout();
   }
 
 
   render() {
-    if (this.props.currentUser) {
-      return(
-        <div>
-          <h3>Welcome to town, {this.props.currentUser.first_name} {this.props.currentUser.last_name}</h3>
-          <button onClick={this.handleClick}>Log Out</button>
-        </div>
-      );
-    } else {
-      return(
-        <div>
-        </div>
-      );
+        const { posts } = this.props
+        return(
+          <div>
+            <header>
+              <div>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</div>
+              <button onClick={this.handleClick}>Log Out</button>
+            </header>
+
+            <br/>
+
+            <div>
+              <h1>All Posts</h1>
+              <ul>
+                { posts.map( post => {
+                  return (
+                    <li key={post.id}>
+                      <h1>{post.body}</h1>
+                        <p>{post.author}</p>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </div>
+        );
     }
-  }
 }
 
-export default Landing;
+export default MainPage;

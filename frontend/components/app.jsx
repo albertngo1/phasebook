@@ -6,9 +6,6 @@ import { AuthRoute } from '../util/route_util';
 
 const App = () => (
   <div className="splash">
-    <header>
-      <MainPageContainer />
-    </header>
 
     <AuthRoute exact path="/" component={SplashContainer} componentLoggedIn={MainPageContainer} />
 

@@ -7,7 +7,7 @@ const Auth = ({componentLoggedIn: LoggedInComponent, component: Component,  path
     !loggedIn ? (
       <Component {...props} />
     ) : (
-      <componentLoggedIn />
+      <LoggedInComponent />
     )
   )}/>
 );

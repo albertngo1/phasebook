@@ -6,7 +6,6 @@
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  email           :string           not null
-#  phone_number    :string           not null
 #  gender          :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -17,9 +16,9 @@
 #  introduction    :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  birth_day       :integer
-#  birth_month     :integer
-#  birth_year      :integer
+#  birth_day       :integer          not null
+#  birth_month     :integer          not null
+#  birth_year      :integer          not null
 #
 
 class User < ActiveRecord::Base
@@ -35,6 +34,10 @@ class User < ActiveRecord::Base
   class_name: :Post
 
   after_initialize :ensure_session_token
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
