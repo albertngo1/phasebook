@@ -30,7 +30,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .session-email {
@@ -52,6 +52,7 @@
 }
 
 .session-textbox {
+  background-color: #ffffff;
   height: 19px;
   width: 150px;
   border: 1px solid black;
@@ -103,4 +104,11 @@
   flex-direction: row;
   justify-content: space-around;
   background-color: #e9edf4;
+}
+
+.session-error {
+  color: #eb1515;
+  font-size: 12px;
+  text-indent: 6px;
+  font-family: "Open Sans";
 }

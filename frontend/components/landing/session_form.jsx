@@ -25,6 +25,11 @@ class SessionForm extends React.Component {
 
   demoLogin(e) {
     this.props.login(({email: "albertngo1@gmail.com", password: "password"}));
+    this.setState({email: "albertngo1@gmail.com", password: "password"});
+  }
+
+  componentWillMount() {
+    this.setState({ errors: [] })
   }
 
   errors() {
@@ -32,10 +37,10 @@ class SessionForm extends React.Component {
       return(
         <ul>
           {this.props.errors.map( (err, idx) => (
-              <li key={`error-${idx}`}>
-                {err}
-              </li>
-            ))}
+            <li key={`error-${idx}`} className="session-error">
+              {err}
+            </li>
+          ))}
         </ul>
       )
     }
@@ -48,9 +53,6 @@ class SessionForm extends React.Component {
   render() {
     return(
       <div className="landing-session">
-        <h4>
-          {this.errors()}
-        </h4>
         <form className="session-form" onSubmit={this.handleSubmit}>
 
           <div className="session-email">
@@ -77,6 +79,7 @@ class SessionForm extends React.Component {
               value="Demo" />
           </div>
         </form>
+        <div>{this.errors()}</div>
       </div>
     )
   }

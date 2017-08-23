@@ -1,6 +1,8 @@
-
-h1, h4 {
+.splash-background {
   margin: 0;
+  display: flex;
+  flex-direction: row;
+  height: 550px;
 }
 
 .splash-right-side {

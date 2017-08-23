@@ -14,10 +14,10 @@ class NewUserForm extends React.Component {
       birth_day: null,
       birth_month: null,
       birth_year: null,
-      gender: ""
+      gender: "",
+      errors: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.errors = this.errors.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
@@ -34,20 +34,6 @@ class NewUserForm extends React.Component {
 
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value})
-  }
-
-  errors() {
-    if (this.props.errors) {
-      return (
-        <ul>
-          {this.props.errors.map((err, idx) => (
-            <li key={`error-${idx}`}>
-              {err}
-            </li>
-          ))}
-        </ul>
-      )
-    }
   }
 
   selectMonth() {
@@ -128,7 +114,6 @@ class NewUserForm extends React.Component {
   render() {
     return (
       <div>
-        <div>{this.errors()}</div>
         <div className="splash-right-side">
           <h1 className="splash-signup">Sign Up</h1>
           <h4 className="splash-comment-form-one">It’s free and always will be.</h4>
