@@ -12,7 +12,7 @@ class MainPage extends React.Component {
     this.props.fetchPosts();
   }
   render() {
-    const {posts, currentUser, createPost} = this.props
+    const {posts, currentUser, createPost, togglePostModal} = this.props
     return (
       <div className="main-page-container">
       <header>
@@ -24,6 +24,9 @@ class MainPage extends React.Component {
 
         <div className="main-page-newsfeed">
           <h1>All Posts</h1>
+          <div>
+            <button onClick={togglePostModal}>Toggle</button>
+          </div>
           <div>
             <PostForm currentUser={currentUser} createPost={createPost} authorId={currentUser.id}/>
           </div>
