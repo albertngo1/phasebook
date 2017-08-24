@@ -13,7 +13,6 @@ export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
   errors,
 });
-
 export const userLogout = () => ({
   type: USER_LOGOUT,
 })

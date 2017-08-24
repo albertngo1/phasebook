@@ -23,3 +23,8 @@ export const createPost = post => dispatch => {
   return APIPostUtil.createPost(post)
     .then( post => dispatch(receiveOnePost(post)))
 };
+
+export const updatePost = id => dispatch => {
+  return APIPostUtil.updatePost(id)
+    .then(post => dispatch(receiveOnePost(post)))
+}

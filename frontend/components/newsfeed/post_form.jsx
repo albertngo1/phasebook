@@ -21,8 +21,8 @@ class PostForm extends React.Component {
 
               <textarea onClick={togglePostModal}
                 className='mp-nf-post-text'
-                placeholder={`What's on your mind, ${currentUser.first_name}?`}>
-              </textarea>
+                placeholder={`What's on your mind, ${currentUser.first_name}?`
+              }></textarea>
             </div>
           </form>
         )

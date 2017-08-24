@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
 
 const App = () => (
-  <div className="splash">
+  <div className="app-page">
 
     <AuthRoute exact path="/" component={SplashContainer} componentLoggedIn={MainPageContainer} />
 

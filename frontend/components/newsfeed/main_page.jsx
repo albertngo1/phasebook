@@ -4,16 +4,37 @@ import NavBar from './navbar';
 import PostModal from '../modals/post_modal';
 import { NavLink, Link } from 'react-router-dom';
 import FA from 'react-fontawesome';
+import messagesDropdown from '../dropdown/messages_dropdown';
 
 class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.handleDropDown = this.handleDropDown.bind(this);
+    this.handleEditForm = this.handleEditForm.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPosts();
   }
+
+
+  handleDropDown(e) {
+    e.preventDefault();
+    const nextState = !this.state.open;
+    this.setState({open: nextState});
+  }
+
+  handleEditForm(post) {
+    return(
+      <EditForm post={post} />
+    )
+  }
+
+
+
+
   render() {
     const {posts, currentUser, togglePostModal} = this.props
     return (
@@ -55,7 +76,12 @@ class MainPage extends React.Component {
               return (
                 <li className="mp-newsfeed-post-item" key={post.id}>
                   <p>{post.author}</p>
-                  <h1>{post.body}</h1>
+                  <p>{post.body}</p>
+                  <div>
+                    
+                    <button onClick={(post) => this.handleEditForm(post)}>Edit</button>
+                    <button>Delete</button>
+                  </div>
                 </li>
               )
             })}

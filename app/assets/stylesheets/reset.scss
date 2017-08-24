@@ -15,7 +15,12 @@ span, article, footer, time, small {
   box-sizing: inherit;
   background: transparent;
 }
-
+.app-page {
+  height: 100%;
+}
+html {
+  height: 100%;
+}
 ul {
   list-style: none;
 }

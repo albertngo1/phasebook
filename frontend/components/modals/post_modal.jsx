@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { togglePostModal, toggleCloseModal } from '../../actions/ui_actions';
+import { togglePostModal } from '../../actions/ui_actions';
 import { createPost } from '../../actions/post_actions';
 import { Link, withRouter } from 'react-router-dom';
 import FA from 'react-fontawesome';
@@ -25,15 +25,18 @@ class PostModal extends React.Component {
     this.props.createPost(post).then(
       () => this.setState( {body: ""})
     ).then(this.props.toggleCloseModal());
+    document.body.classList.remove('modal-fixed');
   }
   handleChange() {
     return e => this.setState({ body: e.target.value });
   }
 
+
   handleToggleModal(e) {
     if (e.currentTarget === e.target) {
       e.stopPropagation();
       this.props.toggleCloseModal();
+      document.body.classList.remove('modal-fixed');
     }
   }
 
@@ -44,9 +47,9 @@ class PostModal extends React.Component {
   render() {
     const { currentUser } = this.props
     if (this.props.postModal) {
+      document.body.classList.toggle('modal-fixed');
       return (
-        <div onClick={ this.handleToggleModal }
-          className="mp-nf-post-form-modal-wrapper">
+        <div onClick={ this.handleToggleModal } className="mp-nf-post-form-modal-wrapper">
           <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }>
             <div className="mp-nf-create-post-wrap">
               <FA className="mp-nf-pencil" name='pencil' />
@@ -62,8 +65,7 @@ class PostModal extends React.Component {
                 className='form-items'
                 placeholder={`What's on your mind, ${currentUser.first_name}?`}
                 autoFocus='autofocus'
-                className='mp-nf-post-text'>
-              </textarea>
+                className='mp-nf-post-modal-txt'></textarea>
             </div>
             <button className="mp-nf-post-modal-btn">Post</button>
           </form>

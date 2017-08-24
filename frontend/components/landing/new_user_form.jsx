@@ -24,7 +24,7 @@ class NewUserForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state)
-    this.props.signup(user);
+    this.props.signup(user)
     this.state.password = "";
   }
 
