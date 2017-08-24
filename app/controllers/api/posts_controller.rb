@@ -1,6 +1,11 @@
 class Api::PostsController < ApplicationController
 
   def index
+    posts = Post.all
+    @feed_posts = []
+    posts.each do |post|
+      @feed_posts << post if post.receiver_id == current_user.id
+    end
   end
 
 
@@ -43,7 +48,7 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :author_id)
+    params.require(:post).permit(:body, :author_id, :receiver_id)
   end
 
 

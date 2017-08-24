@@ -26,9 +26,15 @@ class NavBar extends React.Component {
                <FA name="search" className="navbar-search-btn" />
             </div>
             <button>
-               <div>{currentUser.first_name}</div>
+               <div className="navbar-user">{currentUser.first_name}</div>
             </button>
-            <button onClick={this.handleClick}>Log Out</button>
+            <Link to='/' className="navbar-user navbar-home">Home</Link>
+
+            <FA name="users" className="navbar-notif"/>
+            <FA name="commenting" className="navbar-notif"/>
+            <FA name="globe" className="navbar-notif"/>
+            <FA name="question-circle" className="navbar-help"/>
+            <FA name="sort-desc" className="navbar-logout" onClick={this.handleClick} />
          </div>
       )
    }

@@ -28,9 +28,14 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   attr_reader :password
 
-  has_many :posts,
+  has_many :posts, dependent: :destroy,
   primary_key: :id,
   foreign_key: :author_id,
+  class_name: :Post
+
+  has_many :received_posts, dependent: :destroy,
+  primary_key: :id,
+  foreign_key: :receiver_id,
   class_name: :Post
 
   after_initialize :ensure_session_token

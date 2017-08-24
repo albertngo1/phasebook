@@ -9,6 +9,7 @@ class PostForm extends React.Component {
     this.state = {
       body: "",
       author_id: this.props.authorId,
+      receiver_id: this.props.authorId
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +29,7 @@ class PostForm extends React.Component {
   }
 
   render() {
-    const { currentUser, authorId } = this.props
+    const { currentUser } = this.props
     return(
       <form className="form" onSubmit={ this.handleSubmit }>
         <div>Create a Post</div>

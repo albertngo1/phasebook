@@ -8,8 +8,6 @@
 }
 
 .navbar-logo {
-  background-image: image-url('parking-sign.svg');
-  z-index: 901;
 }
 
 .navbar-search-ctn {
@@ -57,8 +55,33 @@
   cursor: pointer;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
+  margin-right: 235px;
 }
 
 .navbar-search-btn:hover {
   background-color: #ebebeb;
+}
+
+.navbar-user {
+  color: #ffffff;
+  font-size: 11px;
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+.navbar-home {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.navbar-notif {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.navbar-help {
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.navbar-logout {
+  margin-bottom: 9px;
+  cursor: pointer;
 }
