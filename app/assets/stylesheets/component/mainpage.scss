@@ -1,8 +1,80 @@
 .main-page-container {
-  background-color: #e9edf4
-}
-
-.main-page-newsfeed {
   height: 100%;
   width: 100%;
+  background-color: #e9edf4;
+}
+
+.main-page-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.main-page-left-nav {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mp-left-nav-name {
+  font-family: "Montserrat";
+  font-size: 11px;
+  letter-spacing: -0.12px;
+  text-rendering: optimizelegibility;
+  width: 150px;
+  height: 15px;
+  padding: 5px;
+  margin: 20px auto;
+  margin-bottom: 10px;
+}
+
+.mp-left-nav-name:hover {
+  background-color: #fbfcff;
+  border: 1px solid #dadbdd;
+  padding: 4px;
+}
+
+.mp-left-nav-name-title {
+  padding-left: 20px;
+}
+
+.mp-left-nav-newsfeed {
+  font-family: "Montserrat";
+  font-size: 11px;
+  text-rendering: optimizelegibility;
+  width: 150px;
+  height: 15px;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #fbfcff;
+  border: 1px solid #dadbdd;
+}
+
+.mp-left-nav-newsfeed-item-1 {
+  padding-right: 4px;
+}
+
+
+.main-page-newsfeed {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 100%;
+}
+
+.mp-newsfeed-post-form {
+  margin-top: 20px;
+  width: auto;
+  height: 150px;
+  background-color: #fbfcff;
+  border: 1px solid #dadbdd;
+}
+
+.mp-newsfeed-post-item {
+  height: auto;
+  overflow-wrap: break-word;
+  background-color: #fbfcff;
+  border: 1px solid #dadbdd;
+  padding: 13px;
+  margin: 10px 0;
 }

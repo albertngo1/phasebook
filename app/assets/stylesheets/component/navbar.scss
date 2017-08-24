@@ -62,7 +62,13 @@
   background-color: #ebebeb;
 }
 
+.navbar-user-home-hover:hover {
+  background: #2b499e;
+  text-decoration: none;
+}
+
 .navbar-user {
+  padding: 5px;
   color: #ffffff;
   font-size: 11px;
   font-family: "Montserrat";
@@ -77,10 +83,17 @@
   cursor: pointer;
 }
 .navbar-help {
-  margin-left: 20px;
+  margin-left: 15px;
   margin-right: 20px;
   cursor: pointer;
 }
+
+.navbar-help:before {
+  border-left: 1px #464646 solid;
+  height: 17px;
+  padding-left: 15px;
+}
+
 .navbar-logout {
   margin-bottom: 9px;
   cursor: pointer;

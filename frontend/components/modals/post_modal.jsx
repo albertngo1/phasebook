@@ -1,15 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { togglePost } from '../../actions/ui_actions';
+import { togglePostModal, toggleCloseModal } from '../../actions/ui_actions';
 import { createPost } from '../../actions/post_actions';
+import { Link, withRouter } from 'react-router-dom';
 
 class PostModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       body: "",
-      author_id: this.props.authorId,
-      receiver_id: this.props.authorId
+      author_id: this.props.currentUser.id,
+      receiver_id: this.props.currentUser.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +23,7 @@ class PostModal extends React.Component {
     const post = Object.assign({}, this.state);
     this.props.createPost(post).then(
       () => this.setState( {body: ""})
-    );
+    ).then(this.props.toggleCloseModal());
   }
   handleChange() {
     return e => this.setState({ body: e.target.value });
@@ -31,32 +32,37 @@ class PostModal extends React.Component {
   handleToggleModal(e) {
     if (e.currentTarget === e.target) {
       e.stopPropagation();
-      this.props.toggleModal();
+      this.props.toggleCloseModal();
     }
   }
 
+  update(property) {
+    return e => this.setState({[property]: e.currentTarget.value});
+  }
+
   render() {
-    debugger
+    const { currentUser } = this.props
     if (this.props.postModal) {
       return (
-        <form className="form" onSubmit={ this.handleSubmit }>
-          <div>Create a Post</div>
+        <div onClick={ this.handleToggleModal }>
+          <form className="form" onSubmit={ this.handleSubmit }>
+            <div>Create a Post</div>
 
-          <div className="textbox">
-            <Link to='/' className="profile-page" />
+            <div className="textbox">
+              <Link to='/' className="profile-page" />
 
-            <textarea onChange={ this.update('body') }
-              value={ this.state.body }
-              className='form-items'
-              placeholder={`What's on your mind, ${currentUser.first_name}`}>
-            </textarea>
-          </div>
-           <button className="create-form-submit">Post</button>
-        </form>
-      )
-    } else {
-      return(<div></div>)
-    }
+              <textarea onChange={ this.update('body') }
+                value={ this.state.body }
+                className='form-items'
+                placeholder={`What's on your mind, ${currentUser.first_name} MODAL`}>
+              </textarea>
+            </div>
+            <button className="create-form-submit">Post</button>
+          </form>
+        </div>
+      )} else {
+        return(<div></div>)
+      }
   }
 }
 
@@ -69,7 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: () => dispatch(togglePostModal),
+    toggleCloseModal: () => dispatch(togglePostModal),
     createPost: (post) => dispatch(createPost(post)),
   };
 };
@@ -77,5 +83,5 @@ const mapDispatchToProps = dispatch => {
 
 
 
-export default connect(mapStateToProps,
-   mapDispatchToProps)(PostModal)
+export default withRouter(connect(mapStateToProps,
+   mapDispatchToProps)(PostModal));
