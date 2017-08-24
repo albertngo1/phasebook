@@ -46,7 +46,7 @@ class MainPage extends React.Component {
         </div>
 
         <div className="main-page-newsfeed">
-          <div className="mp-newsfeed-post-form">
+          <div>
             <PostModal />
             <PostForm />
           </div>

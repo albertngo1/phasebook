@@ -2,25 +2,33 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { togglePostModal } from '../../actions/ui_actions';
+import FA from 'react-fontawesome';
 
 class PostForm extends React.Component {
 
   render() {
-    const { currentUser, togglePostModal } = this.props
-    return(
-      <form className="form">
-        <div>Create a Post</div>
+    const { currentUser, togglePostModal, postModal } = this.props
+      if (!postModal) {
+        return(
+          <form className="mp-nf-post-form">
+            <div className="mp-nf-create-post-wrap"
+              onClick={togglePostModal}>
+              <FA className="mp-nf-pencil" name='pencil' />
+              <span className="mp-nf-create-post">Create a Post</span>
+            </div>
+            <div className="mp-nf-post-text-wrap">
+              <Link to='/' className="profile-page" />
 
-        <div className="textbox">
-          <Link to='/' className="profile-page" />
-
-          <textarea onClick={togglePostModal}
-            className='form-items'
-            placeholder={`What's on your mind, ${currentUser.first_name}`}>
-          </textarea>
-        </div>
-      </form>
-    )
+              <textarea onClick={togglePostModal}
+                className='mp-nf-post-text'
+                placeholder={`What's on your mind, ${currentUser.first_name}?`}>
+              </textarea>
+            </div>
+          </form>
+        )
+      } else {
+        return(<div></div>)
+      }
   }
 
 }
@@ -28,6 +36,7 @@ class PostForm extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.session.currentUser || {},
+    postModal: state.ui.togglePostModal,
   }
 };
 

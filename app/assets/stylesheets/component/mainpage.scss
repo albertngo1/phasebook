@@ -62,12 +62,55 @@
   height: 100%;
 }
 
-.mp-newsfeed-post-form {
+.mp-nf-post-form {
   margin-top: 20px;
   width: auto;
   height: 150px;
   background-color: #fbfcff;
   border: 1px solid #dadbdd;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.mp-nf-create-post-wrap {
+  border-bottom: 1px solid #d1d1d1;
+  padding-bottom: 4px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.mp-nf-pencil {
+  margin-left: 8px;
+  margin-top: 8px;
+  padding-right: 4px;
+}
+.mp-nf-create-post {
+  font-family: "Montserrat";
+  font-size: 13px;
+  text-rendering: optimizelegibility;
+  font-weight: bolder;
+}
+
+.mp-nf-post-text-wrap {
+  margin: auto;
+  height: 73px;
+}
+
+.mp-nf-post-text {
+  padding-left: 50px;
+  width: 430px;
+  height: 70px;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.mp-nf-post-text::placeholder {
+  width: inherit;
+  height: inherit;
+  padding-top: 10px;
+  vertical-align: middle;
+  font-family: "Montserrat";
+  color: #949494;
+  font-size: 13px;
+  overflow-wrap: normal;
 }
 
 .mp-newsfeed-post-item {
@@ -77,4 +120,5 @@
   border: 1px solid #dadbdd;
   padding: 13px;
   margin: 10px 0;
+  border-radius: 3px;
 }

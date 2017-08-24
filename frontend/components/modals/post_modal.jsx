@@ -54,7 +54,8 @@ class PostModal extends React.Component {
               <textarea onChange={ this.update('body') }
                 value={ this.state.body }
                 className='form-items'
-                placeholder={`What's on your mind, ${currentUser.first_name} MODAL`}>
+                placeholder={`What's on your mind, ${currentUser.first_name} MODAL`}
+                autoFocus='autofocus'>
               </textarea>
             </div>
             <button className="create-form-submit">Post</button>
