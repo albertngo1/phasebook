@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { togglePostModal, toggleCloseModal } from '../../actions/ui_actions';
 import { createPost } from '../../actions/post_actions';
 import { Link, withRouter } from 'react-router-dom';
+import FA from 'react-fontawesome';
 
 class PostModal extends React.Component {
   constructor(props) {
@@ -44,21 +45,27 @@ class PostModal extends React.Component {
     const { currentUser } = this.props
     if (this.props.postModal) {
       return (
-        <div onClick={ this.handleToggleModal }>
-          <form className="form" onSubmit={ this.handleSubmit }>
-            <div>Create a Post</div>
+        <div onClick={ this.handleToggleModal }
+          className="mp-nf-post-form-modal-wrapper">
+          <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }>
+            <div className="mp-nf-create-post-wrap">
+              <FA className="mp-nf-pencil" name='pencil' />
+              <span className="mp-nf-create-post">Create a Post</span>
 
-            <div className="textbox">
-              <Link to='/' className="profile-page" />
+            </div>
+
+            <div className="mp-nf-post-text-wrap">
+              <Link to='/' />
 
               <textarea onChange={ this.update('body') }
                 value={ this.state.body }
                 className='form-items'
-                placeholder={`What's on your mind, ${currentUser.first_name} MODAL`}
-                autoFocus='autofocus'>
+                placeholder={`What's on your mind, ${currentUser.first_name}?`}
+                autoFocus='autofocus'
+                className='mp-nf-post-text'>
               </textarea>
             </div>
-            <button className="create-form-submit">Post</button>
+            <button className="mp-nf-post-modal-btn">Post</button>
           </form>
         </div>
       )} else {

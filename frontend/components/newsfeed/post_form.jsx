@@ -8,7 +8,7 @@ class PostForm extends React.Component {
 
   render() {
     const { currentUser, togglePostModal, postModal } = this.props
-      if (!postModal) {
+
         return(
           <form className="mp-nf-post-form">
             <div className="mp-nf-create-post-wrap"
@@ -17,7 +17,7 @@ class PostForm extends React.Component {
               <span className="mp-nf-create-post">Create a Post</span>
             </div>
             <div className="mp-nf-post-text-wrap">
-              <Link to='/' className="profile-page" />
+              <Link to='/'/>
 
               <textarea onClick={togglePostModal}
                 className='mp-nf-post-text'
@@ -26,9 +26,6 @@ class PostForm extends React.Component {
             </div>
           </form>
         )
-      } else {
-        return(<div></div>)
-      }
   }
 
 }
