@@ -2,9 +2,9 @@ import React from 'react';
 import PostForm from './post_form';
 import NavBar from './navbar';
 import PostModal from '../modals/post_modal';
+import EditPost from './edit_form';
 import { NavLink, Link } from 'react-router-dom';
 import FA from 'react-fontawesome';
-import messagesDropdown from '../dropdown/messages_dropdown';
 
 class MainPage extends React.Component {
 
@@ -12,7 +12,6 @@ class MainPage extends React.Component {
     super(props);
 
     this.handleDropDown = this.handleDropDown.bind(this);
-    this.handleEditForm = this.handleEditForm.bind(this);
   }
 
   componentDidMount() {
@@ -26,17 +25,8 @@ class MainPage extends React.Component {
     this.setState({open: nextState});
   }
 
-  handleEditForm(post) {
-    return(
-      <EditForm post={post} />
-    )
-  }
-
-
-
-
   render() {
-    const {posts, currentUser, togglePostModal} = this.props
+    const {posts, currentUser, togglePostModal, toggleEditPostModal} = this.props
     return (
       <div className="main-page-container">
       <header>
@@ -78,8 +68,8 @@ class MainPage extends React.Component {
                   <p>{post.author}</p>
                   <p>{post.body}</p>
                   <div>
-                    
-                    <button onClick={(post) => this.handleEditForm(post)}>Edit</button>
+                    <EditPost post={post} />
+                    <button onClick={toggleEditPostModal}>Edit</button>
                     <button>Delete</button>
                   </div>
                 </li>

@@ -15,7 +15,6 @@ class PostModal extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
   }
 
@@ -26,9 +25,6 @@ class PostModal extends React.Component {
       () => this.setState( {body: ""})
     ).then(this.props.toggleCloseModal());
     document.body.classList.remove('modal-fixed');
-  }
-  handleChange() {
-    return e => this.setState({ body: e.target.value });
   }
 
 
@@ -62,7 +58,6 @@ class PostModal extends React.Component {
 
               <textarea onChange={ this.update('body') }
                 value={ this.state.body }
-                className='form-items'
                 placeholder={`What's on your mind, ${currentUser.first_name}?`}
                 autoFocus='autofocus'
                 className='mp-nf-post-modal-txt'></textarea>
