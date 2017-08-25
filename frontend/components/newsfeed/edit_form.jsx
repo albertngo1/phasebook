@@ -24,6 +24,7 @@ class EditPost extends React.Component {
     e.preventDefault();
     const post = Object.assign({}, this.state);
     this.props.updatePost(post).then(() => this.props.toggleEditPostModal(0));
+    document.body.classList.remove('modal-fixed');
   }
 
   update(property) {
@@ -33,24 +34,25 @@ class EditPost extends React.Component {
   handleToggleModal(e) {
     if (e.currentTarget === e.target) {
       e.stopPropagation();
-      this.props.toggleCloseModal();
+      this.props.toggleEditPostModal(0);
+      document.body.classList.remove('modal-fixed');
     }
   }
 
   render() {
     if (this.props.postModal === this.props.post.id) {
-
+      document.body.classList.add('modal-fixed');
       return (
-        <div onClick={this.handleToggleModal}>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <span>Edit Post</span>
+        <div onClick={this.handleToggleModal} className="mp-nf-edit-form-modal-wrapper">
+          <form className="mp-nf-edit-modal" onSubmit={this.handleSubmit}>
+            <div className="mp-nf-edit-post-wrap">
+              <span className="mp-nf-edit-post">Edit Post</span>
             </div>
 
-            <div>
-              <textarea onChange={this.update('body')} value={this.state.body} autoFocus='autofocus'></textarea>
+            <div className="mp-nf-edit-post-text-wrap">
+              <textarea className='mp-nf-edit-post-modal-txt' onChange={this.update('body')} value={this.state.body} autoFocus='autofocus'></textarea>
             </div>
-            <input type="submit" value="Save"/>
+            <input className="mp-nf-edit-post-modal-btn" type="submit" value="Save"/>
           </form>
         </div>
       )

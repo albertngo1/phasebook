@@ -43,7 +43,7 @@ class PostModal extends React.Component {
   render() {
     const { currentUser } = this.props
     if (this.props.postModal) {
-      document.body.classList.toggle('modal-fixed');
+      document.body.classList.add('modal-fixed');
       return (
         <div onClick={ this.handleToggleModal } className="mp-nf-post-form-modal-wrapper">
           <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }>

@@ -121,6 +121,7 @@
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
 }
 
 .modal-fixed {
@@ -274,7 +275,7 @@
   min-width: 40px;
   height: inherit;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 998;
   margin-left: 360px;
   font-size: 13px;
   border-radius: 3px;
@@ -294,5 +295,76 @@
 .mp-nf-pi-dropdown-btn {
   cursor: pointer;
   margin-left: 360px;
+  color: #d4d4d4;
+}
+
+.mp-nf-edit-form-modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.mp-nf-edit-modal {
+  background-color: #f5f5f5;
+  border: 1px solid #dadbdd;
+  width: 600px;
+  height: 150px;
+  margin-left: 280px;
+  margin-top: 280px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mp-nf-edit-post-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.mp-nf-edit-post {
+  font-size: 13px;
+  font-weight: bold;
+  color: #151616;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+.mp-nf-edit-post-text-wrap {
+  background-color: #fbfcff;
+  width: 100%;
+  margin: 7px 0;
+  border-top: 1px solid #dadbdd;
+  border-bottom: 1px solid #dadbdd;
+
+}
+
+.mp-nf-edit-post-modal-txt {
+  padding: 20px;
+  width: 500px;
+  margin: 7px 0;
+  font-size: 13px;
+}
+
+.mp-nf-edit-post-modal-btn {
+  color: #ffffff;
+  font-size: 12px;
+  background: rgb(66, 103, 178);
+  padding: 3px 5px;
+  border: solid #2b3d47 1px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-left: 550px;
+  padding-bottom: 5px;
+  margin-bottom: 3px;
+  text-align: center;
+  width: 30px;
+}
+.mp-nf-edit-post-modal-btn:hover {
+  background: #2b499e;
+  text-decoration: none;
 }
 //

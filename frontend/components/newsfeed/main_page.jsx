@@ -19,8 +19,8 @@ class MainPage extends React.Component {
     this.props.fetchPosts();
   }
 
-  handleDelete(post) {
-    this.props.deletePost(post);
+  handleDelete(postId) {
+    this.props.deletePost(postId);
   }
 
   handleToggleEditModal(postId) {

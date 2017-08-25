@@ -37,7 +37,12 @@ class NavBar extends React.Component {
             <FA size='lg' name="globe" className="navbar-notif"/>
             <div className="navbar-bracket" />
             <FA size='lg' name="question-circle" className="navbar-help"/>
-            <FA size='lg' name="sort-desc" className="navbar-logout" onClick={this.handleClick} />
+            <div className="navbar-logout-dropdown">
+               <FA size='lg' name="sort-desc" className="navbar-logout" onClick={this.handleClick} />
+               <div className="navbar-logout-dropdown-content">
+                  <p>Logout!</p>
+               </div>
+            </div>
          </div>
       )
    }
