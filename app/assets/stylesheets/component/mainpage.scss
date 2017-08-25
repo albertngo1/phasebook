@@ -7,6 +7,7 @@
 .main-page-content {
   display: flex;
   flex-direction: row;
+  padding-top: 42px;
   justify-content: flex-start;
   height: inherit;
 }
@@ -15,18 +16,17 @@
   width: 220px;
   display: flex;
   flex-direction: column;
+  position: fixed;
 }
 
 .mp-left-nav-name {
-  font-family: "Montserrat";
   font-size: 11px;
   letter-spacing: -0.12px;
   text-rendering: optimizelegibility;
   width: 150px;
   height: 15px;
   padding: 5px;
-  margin: 20px auto;
-  margin-bottom: 10px;
+  margin: 20px auto 10px;
 }
 
 .mp-left-nav-name:hover {
@@ -40,7 +40,6 @@
 }
 
 .mp-left-nav-newsfeed {
-  font-family: "Montserrat";
   font-size: 11px;
   text-rendering: optimizelegibility;
   width: 150px;
@@ -55,12 +54,12 @@
   padding-right: 4px;
 }
 
-
 .main-page-newsfeed {
   display: flex;
   flex-direction: column;
   width: 500px;
   height: 100%;
+  padding-left: 220px;
 }
 
 .mp-nf-post-form {
@@ -73,19 +72,21 @@
   display: flex;
   flex-direction: column;
 }
+
 .mp-nf-create-post-wrap {
   border-bottom: 1px solid #d1d1d1;
   padding-bottom: 4px;
   background-color: #f5f5f5;
   cursor: pointer;
 }
+
 .mp-nf-pencil {
   margin-left: 8px;
   margin-top: 8px;
   padding-right: 4px;
 }
+
 .mp-nf-create-post {
-  font-family: "Montserrat";
   font-size: 13px;
   text-rendering: optimizelegibility;
   font-weight: bolder;
@@ -107,7 +108,6 @@
 .mp-nf-post-text::placeholder {
   width: inherit;
   height: inherit;
-  font-family: "Montserrat";
   color: #949494;
   font-size: 13px;
   overflow-wrap: normal;
@@ -145,14 +145,12 @@
   width: 430px;
   height: 70px;
   border-bottom: 1px solid #d1d1d1;
-
 }
 
 .mp-nf-post-modal-txt::placeholder {
   width: inherit;
   height: inherit;
   padding: 0;
-  font-family: "Montserrat";
   color: #949494;
   font-size: 13px;
 }
@@ -163,19 +161,19 @@
   margin-bottom: 6px;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 0px;
+  border-radius: 0;
   color: #ffffff;
   font-size: 12px;
   background: rgb(66, 103, 178);
-  padding: 3px 5px 3px 5px;
+  padding: 3px 5px;
   border: solid #2b3d47 1px;
   text-decoration: none;
-  font-family: "Montserrat";
   cursor: pointer;
   border-radius: 3px;
   margin-left: 450px;
   text-align: center;
 }
+
 .mp-nf-post-modal-btn:hover {
   background: #2b499e;
   text-decoration: none;
@@ -190,3 +188,111 @@
   margin: 10px 0;
   border-radius: 3px;
 }
+
+.mp-nf-pi-wrapper {
+  padding: 10px;
+  margin-bottom:20px;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.mp-nf-pi-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.mp-nf-pi-name {
+  color: rgb(66, 103, 178);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 16.56px;
+  font-weight: bold;
+}
+.mp-nf-pi-name-header {
+  display: flex;
+}
+
+.mp-nf-pi-name:hover {
+  text-decoration: underline;
+}
+
+.mp-nf-pi-header-misc {
+  display: flex;
+}
+
+.mp-nf-pi-date {
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 16.56px;
+  font-weight: normal;
+  color: rgb(144, 148, 156);
+}
+
+.mp-nf-pi-separator {
+  margin: 0 2px;
+  color: rgb(144, 148, 156);
+}
+
+.mp-nf-pi-globe {
+  color: rgb(144, 148, 156);
+}
+
+.mp-nf-pi-body {
+  padding-top: 15px;
+}
+
+.mp-nf-pi-footer {
+  color: #4b4f56;
+  font-size: 12px;
+  display: flex;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.mp-nf-pi-footer-icon {
+  margin-right: 3px;
+  text-decoration: none;
+}
+
+.mp-nf-pi-footer-item:hover {
+  text-decoration: underline;
+}
+
+.mp-nf-pi-footer-item {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.mp-nf-pi-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.mp-nf-pi-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 40px;
+  height: inherit;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: 360px;
+  font-size: 13px;
+  border-radius: 3px;
+}
+.mp-nf-pi-dropdown-content button {
+  display: block;
+  padding: 5px;
+}
+.mp-nf-pi-dropdown-content button:hover {
+  display: block;
+  background-color: #d9d9d9;
+}
+.mp-nf-pi-dropdown:hover .mp-nf-pi-dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+.mp-nf-pi-dropdown-btn {
+  cursor: pointer;
+  margin-left: 360px;
+}
+//

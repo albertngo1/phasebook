@@ -17,3 +17,7 @@
  @import url('https://fonts.googleapis.com/css?family=Montserrat');
  @import url('https://fonts.googleapis.com/css?family=Lato');
  @import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+#root {
+  font-family: "San Francisco", -apple-system, BlinkMacSystemFont, '.SFNSTet-Regular', sans-serif;
+}
