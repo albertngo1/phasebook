@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MainPage from './main_page';
-import { fetchPosts } from '../../actions/post_actions';
+import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { togglePostModal, toggleEditPostModal } from '../../actions/ui_actions';
 import { selectAllPosts } from '../../util/selectors';
 
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchPosts: () => dispatch(fetchPosts()),
     togglePostModal: () => dispatch(togglePostModal),
     toggleEditPostModal: () => dispatch(toggleEditPostModal),
+    deletePost: (id) => dispatch(deletePost(id)),
   };
 };
 

@@ -37,7 +37,7 @@ class Api::PostsController < ApplicationController
       render json: ["Cannot delete other people's posts"], status: 401
     else
       @post.destroy
-      render json: {}
+      render json: @post.id
     end
   end
 

@@ -22,5 +22,17 @@ class Post < ActiveRecord::Base
   foreign_key: :receiver_id,
   class_name: :User
 
+  def posted_date
+    if self.hour - Time.now.hour < 11
+      "#{}"
+    else
+      if Time.now.min - self.min < 59
+        "#{Time.now.min - self.min} mins"
+      else
+        "#{Time.now.hour - self.hour} hrs"
+      end
+    end
+  end
+
 
 end

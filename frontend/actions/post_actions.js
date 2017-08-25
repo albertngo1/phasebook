@@ -2,6 +2,7 @@ import * as APIPostUtil from '../util/post_api_util';
 
 export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
 export const RECEIVE_ONE_POST = "RECEIVE_ONE_POST";
+export const DELETE_POST = "DELETE_POST";
 
 export const receiveAllPosts = posts => ({
   type: RECEIVE_ALL_POSTS,
@@ -11,7 +12,12 @@ export const receiveAllPosts = posts => ({
 export const receiveOnePost = post => ({
   type: RECEIVE_ONE_POST,
   post,
-})
+});
+
+export const removePost = postId => ({
+  type: DELETE_POST,
+  postId,
+});
 
 
 export const fetchPosts = () => dispatch => {
@@ -27,4 +33,9 @@ export const createPost = post => dispatch => {
 export const updatePost = id => dispatch => {
   return APIPostUtil.updatePost(id)
     .then(post => dispatch(receiveOnePost(post)))
+}
+
+export const deletePost = id => dispatch => {
+  return APIPostUtil.deletePost(id)
+    .then((id) => dispatch(removePost(id)))
 }

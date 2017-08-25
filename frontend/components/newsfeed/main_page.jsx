@@ -12,6 +12,8 @@ class MainPage extends React.Component {
     super(props);
 
     this.handleDropDown = this.handleDropDown.bind(this);
+    this.handleToggleEditModal = this.handleToggleEditModal.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +27,20 @@ class MainPage extends React.Component {
     this.setState({open: nextState});
   }
 
+  handleDelete(post) {
+    this.props.deletePost(post)
+  }
+
+  handleToggleEditModal(e) {
+    // check e.currentTarget --> get unique identifier
+    //
+    // then trigger toggleEditPostModal()
+
+  }
+
   render() {
-    const {posts, currentUser, togglePostModal, toggleEditPostModal} = this.props
+    const {posts, currentUser, togglePostModal,
+      toggleEditPostModal} = this.props;
     return (
       <div className="main-page-container">
       <header>
@@ -64,13 +78,15 @@ class MainPage extends React.Component {
           <ul>
             {posts.reverse().map(post => {
               return (
-                <li className="mp-newsfeed-post-item" key={post.id}>
+                <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                   <p>{post.author}</p>
                   <p>{post.body}</p>
                   <div>
+
                     <EditPost post={post} />
                     <button onClick={toggleEditPostModal}>Edit</button>
-                    <button>Delete</button>
+
+                    <button onClick={() => this.handleDelete(post.id)}>Delete</button>
                   </div>
                 </li>
               )

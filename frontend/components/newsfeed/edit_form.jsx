@@ -7,12 +7,7 @@ class EditPost extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      body: this.props.post.body,
-      author_id: this.props.currentUser.id,
-      receiver_id: this.props.currentUser.id,
-      id: this.props.post.id
-    };
+
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
@@ -21,7 +16,7 @@ class EditPost extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const post = Object.assign({}, this.state);
-    this.props.updatePost(post).then(this.props.toggleCloseModal());
+    this.props.updatePost(post).then(this.props.toggleEditPostModal());
   }
 
   update(property) {
@@ -36,8 +31,13 @@ class EditPost extends React.Component {
   }
 
   render() {
-    const {currentUser, post} = this.props
     if (this.props.postModal) {
+      this.state = {
+        body: this.props.post.body,
+        author_id: this.props.currentUser.id,
+        receiver_id: this.props.currentUser.id,
+        id: this.props.post.id
+      };
       return (
         <div onClick={this.handleToggleModal}>
           <form onSubmit={this.handleSubmit}>
@@ -66,7 +66,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleCloseModal: () => dispatch(toggleEditPostModal),
+  toggleEditPostModal: () => dispatch(toggleEditPostModal),
   updatePost: (post) => dispatch(updatePost(post))
 });
 
