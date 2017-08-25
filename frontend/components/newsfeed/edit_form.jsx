@@ -8,15 +8,22 @@ class EditPost extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      body: this.props.post.body,
+      author_id: this.props.currentUser.id,
+      receiver_id: this.props.currentUser.id,
+      id: this.props.post.id
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.update = this.update.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const post = Object.assign({}, this.state);
-    this.props.updatePost(post).then(this.props.toggleEditPostModal());
+    this.props.updatePost(post).then(() => this.props.toggleEditPostModal(0));
   }
 
   update(property) {
@@ -31,13 +38,8 @@ class EditPost extends React.Component {
   }
 
   render() {
-    if (this.props.postModal) {
-      this.state = {
-        body: this.props.post.body,
-        author_id: this.props.currentUser.id,
-        receiver_id: this.props.currentUser.id,
-        id: this.props.post.id
-      };
+    if (this.props.postModal === this.props.post.id) {
+
       return (
         <div onClick={this.handleToggleModal}>
           <form onSubmit={this.handleSubmit}>
@@ -48,7 +50,7 @@ class EditPost extends React.Component {
             <div>
               <textarea onChange={this.update('body')} value={this.state.body} autoFocus='autofocus'></textarea>
             </div>
-            <button>Save</button>
+            <input type="submit" value="Save"/>
           </form>
         </div>
       )
@@ -66,7 +68,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleEditPostModal: () => dispatch(toggleEditPostModal),
+  toggleEditPostModal: (postId) => dispatch(toggleEditPostModal(postId)),
   updatePost: (post) => dispatch(updatePost(post))
 });
 

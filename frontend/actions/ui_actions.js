@@ -6,6 +6,7 @@ export const togglePostModal = {
   type: TOGGLE_POST_MODAL,
 }
 
-export const toggleEditPostModal = {
+export const toggleEditPostModal = postId => ({
   type: TOGGLE_EDIT_POST_MODAL,
-}
+  postId
+});

@@ -8,8 +8,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Post < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+  
   validates :body, :author, :receiver, presence: true
 
   belongs_to :author,
@@ -23,15 +24,7 @@ class Post < ActiveRecord::Base
   class_name: :User
 
   def posted_date
-    if self.hour - Time.now.hour < 11
-      "#{}"
-    else
-      if Time.now.min - self.min < 59
-        "#{Time.now.min - self.min} mins"
-      else
-        "#{Time.now.hour - self.hour} hrs"
-      end
-    end
+    time_ago_in_words(self.created_at)
   end
 
 

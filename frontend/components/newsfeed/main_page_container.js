@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
     togglePostModal: () => dispatch(togglePostModal),
-    toggleEditPostModal: () => dispatch(toggleEditPostModal),
+    toggleEditPostModal: (postId) => dispatch(toggleEditPostModal(postId)),
     deletePost: (id) => dispatch(deletePost(id)),
   };
 };

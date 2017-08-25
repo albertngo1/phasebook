@@ -28,14 +28,11 @@ class MainPage extends React.Component {
   }
 
   handleDelete(post) {
-    this.props.deletePost(post)
+    this.props.deletePost(post);
   }
 
-  handleToggleEditModal(e) {
-    // check e.currentTarget --> get unique identifier
-    //
-    // then trigger toggleEditPostModal()
-
+  handleToggleEditModal(postId) {
+    this.props.toggleEditPostModal(postId);
   }
 
   render() {
@@ -79,12 +76,13 @@ class MainPage extends React.Component {
             {posts.reverse().map(post => {
               return (
                 <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
-                  <p>{post.author}</p>
-                  <p>{post.body}</p>
+                  <div>{post.author}</div>
+                  <div>{post.posted_date}</div>
+                  <div>{post.body}</div>
                   <div>
 
                     <EditPost post={post} />
-                    <button onClick={toggleEditPostModal}>Edit</button>
+                    <button onClick={() => this.handleToggleEditModal(post.id)}>Edit</button>
 
                     <button onClick={() => this.handleDelete(post.id)}>Delete</button>
                   </div>

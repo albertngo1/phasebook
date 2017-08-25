@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 const initialState = {
   togglePostModal: false,
-  toggleEditPostModal: false,
+  toggleEditPostModal: 0,
 }
 
 const uiReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const uiReducer = (state = initialState, action) => {
     case TOGGLE_POST_MODAL:
       return Object.assign({}, state, {togglePostModal: !state.togglePostModal});
     case TOGGLE_EDIT_POST_MODAL:
-      return Object.assign({}, state, {toggleEditPostModal: !state.toggleEditPostModal});
+      return Object.assign({}, state, {toggleEditPostModal: action.postId});
     default:
       return state;
   }

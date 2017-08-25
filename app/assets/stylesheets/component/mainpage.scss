@@ -114,16 +114,6 @@
   vertical-align: middle;
 }
 
-.mp-newsfeed-post-item {
-  height: auto;
-  overflow-wrap: break-word;
-  background-color: #fbfcff;
-  border: 1px solid #dadbdd;
-  padding: 13px;
-  margin: 10px 0;
-  border-radius: 3px;
-}
-
 .mp-nf-post-form-modal-wrapper {
   position: absolute;
   top: 0;
@@ -189,4 +179,14 @@
 .mp-nf-post-modal-btn:hover {
   background: #2b499e;
   text-decoration: none;
+}
+
+.mp-newsfeed-post-item {
+  height: auto;
+  overflow-wrap: break-word;
+  background-color: #fbfcff;
+  border: 1px solid #dadbdd;
+  padding: 13px;
+  margin: 10px 0;
+  border-radius: 3px;
 }
