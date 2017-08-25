@@ -28,6 +28,7 @@ class MainPage extends React.Component {
   }
 
   render() {
+    document.body.classList.remove('modal-fixed');
     const {posts, currentUser, togglePostModal, toggleEditPostModal} = this.props;
     return (
       <div className="main-page-container">
