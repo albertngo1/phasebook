@@ -38,6 +38,20 @@ class User < ActiveRecord::Base
   foreign_key: :receiver_id,
   class_name: :Post
 
+  has_many :friendships,
+  primary_key: :id,
+  foreign_key: :user1_id,
+  class_name: :Friendship
+
+  has_many :friends,
+  through: :friendships,
+  source: :friendee
+
+  has_many :comments,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Comment
+
   after_initialize :ensure_session_token
 
   def full_name
@@ -70,4 +84,11 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
+
+
+
+
+
+
+
 end

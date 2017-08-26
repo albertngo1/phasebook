@@ -99,7 +99,9 @@
 }
 
 .session-error {
-  position: fixed;
+  margin: 0;
+  padding: 0;
+  position: sticky;
   color: #eb1515;
   font-size: 12px;
   text-indent: 6px;

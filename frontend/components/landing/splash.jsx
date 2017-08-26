@@ -3,7 +3,7 @@ import NewUserForm from './new_user_form';
 import SessionForm from './session_form';
 import { Link } from 'react-router-dom';
 
-const Splash = ({ loggedIn, errors, login, signup, clearErrors }) => {
+const Splash = ({ loggedIn, errors, login, signup}) => {
 
 
   return(
@@ -29,7 +29,6 @@ const Splash = ({ loggedIn, errors, login, signup, clearErrors }) => {
 
         <NewUserForm loggedIn={ loggedIn }
           errors={errors}
-          login={login}
           signup={signup}/>
       </div>
     </div>

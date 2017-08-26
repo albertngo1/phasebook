@@ -13,6 +13,7 @@ class MainPage extends React.Component {
 
     this.handleToggleEditModal = this.handleToggleEditModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.viewOptions = this.viewOptions.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +26,10 @@ class MainPage extends React.Component {
 
   handleToggleEditModal(postId) {
     this.props.toggleEditPostModal(postId);
+  }
+
+  viewOptions(post) {
+    return post.author_id === this.props.currentUser.id;
   }
 
   render() {
@@ -104,7 +109,9 @@ class MainPage extends React.Component {
                         Share
                       </div>
                     </div>
-                    <EditPost post={post}/>
+                    <div>
+                      {this.viewOptions(post) && <EditPost post={post}/>}
+                    </div>
                   </li>
                 )
               })}
