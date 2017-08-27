@@ -1,8 +1,7 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.where("receiver_id = ?", current_user.id)
-    .order("created_at DESC").includes(:author)
+    @posts = Post.all.includes(:author)
   end
 
 

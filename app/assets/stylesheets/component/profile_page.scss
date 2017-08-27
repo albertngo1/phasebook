@@ -1,0 +1,20 @@
+.pp-main-container {
+  height: 100%;
+  width: 100%;
+  background-color: #e9edf4;
+}
+
+.pp-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 42px;
+  padding-left: 64px;
+  padding-right: 400px;
+  justify-content: flex-start;
+  height: inherit;
+}
+
+.pp-header {
+  display: flex;
+  flex-direction: column;
+}

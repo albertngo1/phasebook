@@ -17,7 +17,7 @@ class PostForm extends React.Component {
               <span className="mp-nf-create-post">Create a Post</span>
             </div>
             <div className="mp-nf-post-text-wrap">
-              <Link to='/'/>
+              <Link to={`/users/#{currentUser.id}`}/>
 
               <textarea onClick={togglePostModal}
                 className='mp-nf-post-text'

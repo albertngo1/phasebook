@@ -2,23 +2,27 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  first_name      :string           not null
-#  last_name       :string           not null
-#  email           :string           not null
-#  gender          :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  education       :string
-#  current_city    :string
-#  hometown        :string
-#  relationship    :string
-#  introduction    :text
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  birth_day       :integer          not null
-#  birth_month     :integer          not null
-#  birth_year      :integer          not null
+#  id                       :integer          not null, primary key
+#  first_name               :string           not null
+#  last_name                :string           not null
+#  email                    :string           not null
+#  gender                   :string           not null
+#  password_digest          :string           not null
+#  session_token            :string           not null
+#  education                :string
+#  current_city             :string
+#  hometown                 :string
+#  relationship             :string
+#  introduction             :text
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  birth_day                :integer          not null
+#  birth_month              :integer          not null
+#  birth_year               :integer          not null
+#  profile_pic_file_name    :string
+#  profile_pic_content_type :string
+#  profile_pic_file_size    :integer
+#  profile_pic_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
@@ -27,6 +31,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   attr_reader :password
+
+  has_attached_file :profile_pic, default_url: "splash_page.png"
+  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   has_many :posts, dependent: :destroy,
   primary_key: :id,
@@ -53,6 +60,35 @@ class User < ActiveRecord::Base
   class_name: :Comment
 
   after_initialize :ensure_session_token
+
+  def active_friends
+    active_friends = Friendship
+      .where("user1_id = ? OR user2_id = ?", self.id, self.id)
+      .where("status = ?", 'active')
+      .pluck(:user1_id, :user2_id)
+      .flatten
+
+    User.where(id: active_friends)
+  end
+
+  def requesting_pending_friends
+    requesting_pending_friends = Friendship
+      .where("user1_id = ?", self.id)
+      .where("status = ?", 'pending')
+      .pluck(:user2_id)
+
+  end
+
+  def requested_pending_friends
+    requested_pending_friends = Friendship
+      .where("user2_id = ?", self.id)
+      .where("status = ?", 'pending')
+      .pluck(:user1_id)
+  end
+
+
+
+
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -84,8 +120,6 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
-
-
 
 
 

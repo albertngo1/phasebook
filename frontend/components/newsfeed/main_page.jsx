@@ -3,6 +3,8 @@ import PostForm from './post_form';
 import NavBar from './navbar';
 import PostModal from '../modals/post_modal';
 import EditPost from './edit_form';
+import CommentForm from './comment_form';
+import CommentIndex from './comment_index';
 import {NavLink, Link} from 'react-router-dom';
 import FA from 'react-fontawesome';
 
@@ -14,18 +16,39 @@ class MainPage extends React.Component {
     this.handleToggleEditModal = this.handleToggleEditModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.viewOptions = this.viewOptions.bind(this);
+    this.filterPosts = this.filterPosts.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPosts();
   }
 
-  handleDelete(postId) {
-    this.props.deletePost(postId);
+  componentWillReceiveProps(nextProps) {
+     if (this.props.match.params.userId !== nextProps.match.params.userId){
+        this.props.requestSingleUser(nextProps.match.params.userId);
+     }
   }
 
-  handleToggleEditModal(postId) {
-    this.props.toggleEditPostModal(postId);
+  handleDelete(post) {
+    if (post.author_id === this.props.currentUser.id) {
+      this.props.deletePost(post.id);
+    }
+  }
+
+  handleToggleEditModal(post) {
+    if (post.author_id === this.props.currentUser.id) {
+      this.props.toggleEditPostModal(post.id);
+    }
+  }
+
+  filterPosts(posts) {
+     let filteredPosts = [];
+     posts.forEach( post => {
+       if (post.receiver_id === this.props.currentUser.id) {
+         filteredPosts.push(post);
+       }
+     })
+     return filteredPosts;
   }
 
   viewOptions(post) {
@@ -35,16 +58,16 @@ class MainPage extends React.Component {
   render() {
     document.body.classList.remove('modal-fixed');
     const {posts, currentUser, togglePostModal, toggleEditPostModal} = this.props;
+    const filteredPosts = this.filterPosts(posts);
     return (
       <div className="main-page-container">
         <header>
           <NavBar/>
         </header>
         <div className="main-page-content">
-
           <div className="main-page-left-nav">
             <div className="mp-left-nav-name">
-              <Link to='/'>
+              <Link to={`/users/${filteredPosts.author_id}`}>
                 <div className="mp-left-nav-name-pic"></div>
                 <div className="mp-left-nav-name-title">
                   {`${currentUser.first_name} ${currentUser.last_name}`}
@@ -67,22 +90,22 @@ class MainPage extends React.Component {
               <PostForm/>
             </div>
             <ul>
-              {posts.reverse().map(post => {
+              {filteredPosts.reverse().map(post => {
                 return (
                   <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                     <div className="mp-nf-pi-wrapper">
                       <div className="mp-nf-pi-header">
                         <div className="mp-nf-pi-name-header">
                           <div className="mp-nf-pi-name">
-                            <Link to='/'>
+                            <Link to={`/users/${currentUser.id}`}>
                               {post.author}
                             </Link>
                           </div>
                           <div className="mp-nf-pi-dropdown">
                             <FA name='sort-down' className="mp-nf-pi-dropdown-btn" />
                             <div className="mp-nf-pi-dropdown-content">
-                              <button onClick={() => this.handleToggleEditModal(post.id)}>Edit</button>
-                              <button onClick={() => this.handleDelete(post.id)}>Delete</button>
+                              <button onClick={() => this.handleToggleEditModal(post)}>Edit</button>
+                              <button onClick={() => this.handleDelete(post)}>Delete</button>
                             </div>
                           </div>
                         </div>
@@ -105,9 +128,13 @@ class MainPage extends React.Component {
                         Comment
                       </div>
                       <div className="mp-nf-pi-footer-item">
-                        <FA name='mail-forward' />
+                        <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
                         Share
                       </div>
+                    </div>
+                    <div >
+                      <CommentIndex post={post} />
+                      <CommentForm post={post}/>
                     </div>
                     <div>
                       {this.viewOptions(post) && <EditPost post={post}/>}

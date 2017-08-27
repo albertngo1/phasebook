@@ -210,6 +210,7 @@
 }
 .mp-nf-pi-name-header {
   display: flex;
+  justify-content: space-between;
 }
 
 .mp-nf-pi-name:hover {
@@ -276,7 +277,6 @@
   height: inherit;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 998;
-  margin-left: 360px;
   font-size: 13px;
   border-radius: 3px;
 }
@@ -294,7 +294,6 @@
 }
 .mp-nf-pi-dropdown-btn {
   cursor: pointer;
-  margin-left: 360px;
   color: #d4d4d4;
 }
 

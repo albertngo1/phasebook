@@ -1,5 +1,5 @@
 @friendships.each do |friendship|
-  json.set! friendship.id do
+  json.set! friendship.user1 do
     json.partial!('/api/friendships/friendship', friendship: friendship)
   end
 end
