@@ -86,13 +86,14 @@ class UserShow extends React.Component {
                      <FA size='lg' name="globe" className="pp-left-globe"/>
                     </div>
                     <div className="pp-left-intro">Intro</div>
+                    <div className="pp-left-intro-edit-wrap">
+                       {this.viewOptions() && <FA name="pencil-square"
+                          className="pp-left-intro-edit"
+                          onClick={this.props.toggleEditIntroModal} />
+                        }
+                    </div>
                  </div>
-                 <div className="pp-left-intro-edit-wrap">
-                    {this.viewOptions() && <FA name="pencil-square"
-                       className="pp-left-intro-edit"
-                       onClick={this.props.toggleEditIntroModal} />
-                     }
-                 </div>
+
                  <UserInfo />
                  <UserEditInfo />
                  <div className="pp-left-friends">

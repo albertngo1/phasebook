@@ -75,6 +75,7 @@
   display: flex;
   border-bottom: 1px solid #dadbdd;
   padding-bottom: 7px;
+  width: inherit;
 }
 
 .pp-page-feed {
@@ -87,6 +88,7 @@
 .pp-left-intro {
   margin-top: 5px;
   margin-left: 10px;
+  margin-right: 210px;
 }
 
 .pp-left-intro-edit-wrap {
@@ -98,8 +100,123 @@
 .pp-left-intro-edit {
   cursor: pointer;
 }
+.pp-left-intro-edit:hover {
+  filter: invert(50%);
+}
 
 .pp-header {
   margin-left: 64px;
   width: 500px;
+}
+
+.pp-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pp-user-info-li-intro {
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+  word-wrap: break-word;
+}
+.pp-user-info-li {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(29, 33, 41);
+  word-wrap: break-word;
+  margin: 5px;
+}
+
+.pp-user-info-li-wraps {
+  display: flex;
+}
+.pp-user-info-li-icon {
+  margin-top: 2px;
+  color:#adadad
+}
+
+.pp-edit-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dadbdd;
+  padding: 6px;
+  background-color: #e7e7e7;
+}
+.pp-edit-header h1 {
+  margin-left: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.pp-edit-header-x {
+  cursor: pointer;
+  filter: invert(70%);
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.pp-edit-header-x:hover {
+  filter: invert(20%);
+}
+
+.pp-edit-intro-form {
+  background-color: #fbfcff;
+  position: relative;
+  width: 500px;
+  height: auto;
+  margin-top: 65px;
+  margin-left: 400px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pp-edit-image-wrap {
+  height: 130px;
+  width: auto;
+  background-color: rgb(75, 79, 86);
+  background-clip: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.pp-edit-image-wrap p {
+  color: white;
+  font-size: 14px;
+  height: auto;
+  width: 340px;
+}
+
+.pp-edit-image {
+  width: 100px;
+  height: 100px;
+  background-image: image-url("owl.png");
+}
+
+.pp-edit-input-wrap {
+  background-color: rgb(246, 247, 249);
+}
+
+.pp-edit-input-second-wrap {
+  border-bottom: 1px solid #9f9f9f;
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 8px;
+}
+.pp-edit-input-second-wrap label {
+  font-size: 12px;
+}
+
+.pp-edit-input-second-wrap textarea {
+  padding-top: 17px;
+  text-indent: 20px;
+  width:400px;
+  word-wrap: break-word;
+  font-size: 12px;
+}
+.edit-intro-btn {
+  margin-top: 5px;
 }

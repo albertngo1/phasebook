@@ -48,35 +48,43 @@ class UserEditInfo extends React.Component {
       document.body.classList.add('modal-fixed');
       return (
         <div onClick={ this.handleToggleModal } className="mp-nf-post-form-modal-wrapper">
-          <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }>
-            <h1>Customize your intro</h1>
-            <div>
+          <form className="pp-edit-intro-form" onSubmit={ this.handleSubmit }>
+            <div className="pp-edit-header">
+              <h1>Customize your intro</h1>
+              <FA className="pp-edit-header-x" onClick={this.handleToggleModal} name="window-close" />
+            </div>
+            <div className="pp-edit-image-wrap">
+              <div className="pp-edit-image" />
+              <p>Details you select will be <b>Public</b> and won't post to News Feed.</p>
+            </div>
+            <div className="pp-edit-input-wrap">
+            <div className="pp-edit-input-second-wrap">
               <label>Introduction:</label>
               <textarea onChange={this.update('introduction')}
                 value={this.state.introduction}></textarea>
             </div>
-            <div>
+            <div className="pp-edit-input-second-wrap">
               <label>Education:</label>
               <textarea onChange={this.update('education')}
                 value={this.state.education}></textarea>
             </div>
-            <div>
+            <div className="pp-edit-input-second-wrap">
               <label>Current City:</label>
               <textarea onChange={this.update('current_city')}
                 value={this.state.current_city}></textarea>
             </div>
-            <div>
+            <div className="pp-edit-input-second-wrap">
               <label>Hometown:</label>
               <textarea onChange={this.update('hometown')}
                 value={this.state.hometown}></textarea>
             </div>
-            <div>
+            <div className="pp-edit-input-second-wrap">
               <label>Relationship:</label>
               <textarea onChange={this.update('relationship')}
                 value={this.state.relationship}></textarea>
             </div>
-
-            <button className="mp-nf-post-modal-btn">Save</button>
+            </div>
+            <button className="mp-nf-post-modal-btn edit-intro-btn">Save</button>
           </form>
         </div>
       )} else {
