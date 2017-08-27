@@ -24,6 +24,7 @@ class Api::FriendshipsController < ApplicationController
       render 'api/friendships/show'
     else
       render json: @friendship.errors.full_messages, status: 422
+    end
   end
 
   def destroy
