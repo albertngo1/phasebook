@@ -13,9 +13,20 @@ class PostModal extends React.Component {
       author_id: this.props.currentUser.id,
       receiver_id: this.props.currentUser.id
     };
-
+    this.handleEnterSubmit = this.handleEnterSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
+  }
+
+  handleEnterSubmit(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const post = Object.assign({}, this.state);
+      this.props.createPost(post).then(
+        () => this.setState( {body: ""})
+      ).then(this.props.toggleCloseModal());
+      document.body.classList.remove('modal-fixed');
+    }
   }
 
   handleSubmit(e) {
@@ -46,7 +57,8 @@ class PostModal extends React.Component {
       document.body.classList.add('modal-fixed');
       return (
         <div onClick={ this.handleToggleModal } className="mp-nf-post-form-modal-wrapper">
-          <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }>
+          <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }
+            onKeyPress={this.handleEnterSubmit}>
             <div className="mp-nf-create-post-wrap">
               <FA className="mp-nf-pencil" name='pencil' />
               <span className="mp-nf-create-post">Create a Post</span>

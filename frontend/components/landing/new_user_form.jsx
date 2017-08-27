@@ -14,11 +14,12 @@ class NewUserForm extends React.Component {
       birth_day: null,
       birth_month: null,
       birth_year: null,
-      gender: "",
-      errors: {}
+      gender: ""
+
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.closeError = this.closeError.bind(this);
   }
 
   handleSubmit(e) {
@@ -111,6 +112,28 @@ class NewUserForm extends React.Component {
     )
   }
 
+  closeError(errorField) {
+    document.getElementsByClassName(`signup-error-${errorField}`)[0].classList.add("sign-up-error-hidden");
+  }
+
+  renderErrorBorders() {
+    Object.keys(this.props.errors).forEach( errorField => {
+      document.getElementById(`error-${errorField}`).classList.add("signup-error-border")
+    });
+  }
+
+  displayError(errorField, errorStatus) {
+    if (this.props.errors[errorField]) {
+      return (
+        <div onClick={() => this.closeError(errorField)} className={`signup-error-${errorField} signup-style`}>{`${errorStatus}`}</div>
+      )
+    } else {
+      return (
+        <div className="signup-hidden"></div>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -118,10 +141,19 @@ class NewUserForm extends React.Component {
           <h1 className="splash-signup">Sign Up</h1>
           <h4 className="splash-comment-form-one">It’s free and always will be.</h4>
           <form className="splash-form" onSubmit={this.handleSubmit}>
+            {this.displayError('first_name', "What is your name?")}
+            {this.displayError('last_name', "What is your name?")}
+            {this.displayError('gender', "Please choose a gender.")}
+            {this.displayError('birth_day', "Select your birth day.")}
+            {this.displayError('birth_month', "Select your birth month.")}
+            {this.displayError('birth_year', "Select your birth year.")}
+            {this.displayError('password', "Enter a combination of at least six numbers, letters and puncutation marks (like ! and &)")}
+            {this.displayError('email', "You'll use this when you log in and if you ever need to reset your password.")}
             <div className="splash-form-name-field">
               <input className="splash-form-field-1 splash-form-placeholder" type="text" onChange={this.update('first_name')} value={this.state.first_name} placeholder="First name"/>
 
               <input className="splash-form-field-1 splash-form-placeholder" type="text" onChange={this.update('last_name')} value={this.state.last_name} placeholder="Last name"/>
+
             </div>
             <input className="splash-form-field-2 splash-form-placeholder" type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email"/>
 

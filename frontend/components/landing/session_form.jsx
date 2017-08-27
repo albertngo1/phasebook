@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
 
   errors() {
     const { errors } = this.props
-    if (errors) {
+    if (errors[0] === "Invalid credentials, please try again") {
       return(
         <ul>
           {errors.map( (err, idx) => {
