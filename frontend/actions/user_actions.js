@@ -8,6 +8,11 @@ export const requestSingleUser = userId => dispatch => {
     .then( user => dispatch(receiveSingleUser(user)));
 };
 
+export const updateUser = user => dispatch => {
+  return APIUserUtil.updateUser(user)
+    .then( user => dispatch(receiveSingleUser(user)));
+}
+
 export const receiveSingleUser = user => ({
   type: RECEIVE_SINGLE_USER,
   user,

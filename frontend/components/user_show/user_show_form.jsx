@@ -47,7 +47,7 @@ class PostShowForm extends React.Component {
                 className='mp-nf-post-text'
                 placeholder={`What's on your mind?`}></textarea>
 
-              <button>Post</button>
+              <button className='pp-post-form-btn'>Post</button>
             </div>
           </form>
         )

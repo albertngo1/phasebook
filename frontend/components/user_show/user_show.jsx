@@ -5,11 +5,14 @@ import { requestSingleUser } from '../../actions/user_actions';
 import NavBar from '../newsfeed/navbar';
 import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { selectAllPosts } from '../../util/selectors';
+import { toggleEditIntroModal } from '../../actions/ui_actions';
 import PostModal from '../modals/post_modal';
 import EditPost from '../newsfeed/edit_form';
 import CommentForm from '../newsfeed/comment_form';
 import CommentIndex from '../newsfeed/comment_index';
 import PostShowForm from './user_show_form';
+import UserEditInfo from './user_edit_info_form';
+import UserInfo from './user_edit_info';
 import { Link } from 'react-router-dom';
 import FA from 'react-fontawesome';
 
@@ -48,6 +51,10 @@ class UserShow extends React.Component {
       }
    }
 
+   viewOptions() {
+      return this.props.match.params.userId == this.props.currentUser.id;
+   }
+
 
    render() {
       const {user, posts, currentUser} = this.props
@@ -64,26 +71,37 @@ class UserShow extends React.Component {
                  <div className="pp-header-name">{user.first_name} {user.last_name}</div>
                  <div className="pp-cover-page">
 
-                 </div>
                  <div className="pp-header-items">
                     <div className="pp-header-timeline">Timeline</div>
                     <div className="pp-header-about">About</div>
                     <div className="pp-header-friends">Friends</div>
                  </div>
               </div>
+           </div>
 
+           <div className="pp-lower-ctn">
               <div className="pp-left-container">
                  <div className="pp-left-intro-ctn">
-                 <FA size='lg' name="globe" className="navbar-notif"/>
-                 <div>Intro</div>
-                 </div>
-                    <div className="pp-left-friends">
-
+                    <div className="pp-left-globe-wrapper">
+                     <FA size='lg' name="globe" className="pp-left-globe"/>
                     </div>
+                    <div className="pp-left-intro">Intro</div>
+                 </div>
+                 <div className="pp-left-intro-edit-wrap">
+                    {this.viewOptions() && <FA name="pencil-square"
+                       className="pp-left-intro-edit"
+                       onClick={this.props.toggleEditIntroModal} />
+                     }
+                 </div>
+                 <UserInfo />
+                 <UserEditInfo />
+                 <div className="pp-left-friends">
+
+                 </div>
               </div>
 
 
-               <div className="main-page-newsfeed">
+               <div className="pp-page-feed">
             <div>
               <PostModal/>
               <PostShowForm/>
@@ -103,7 +121,6 @@ class UserShow extends React.Component {
                           <div className="mp-nf-pi-dropdown">
                             <FA name='sort-down' className="mp-nf-pi-dropdown-btn" />
                             <div className="mp-nf-pi-dropdown-content">
-                              <button onClick={() => this.handleToggleEditModal(post.id)}>Edit</button>
                               <button onClick={() => this.handleDelete(post)}>Delete</button>
                             </div>
                           </div>
@@ -145,7 +162,7 @@ class UserShow extends React.Component {
           </div>
 
             </div>
-
+            </div>
          </div>
       )
    }
@@ -163,6 +180,7 @@ const mapDispatchToProps = dispatch => ({
    requestSingleUser: (userId) => dispatch(requestSingleUser(userId)),
    fetchPosts: () => dispatch(fetchPosts()),
    deletePost: (id) => dispatch(deletePost(id)),
+   toggleEditIntroModal: () => dispatch(toggleEditIntroModal),
 })
 
 

@@ -16,9 +16,18 @@ class Api::UsersController < ApplicationController
     render '/api/users/show'
   end
 
-  def user_information
+  def update
+
     @user = User.find(params[:id])
-    render '/api/users/information'
+    if @user.id != current_user.id
+      render json: ["Cannot edit other people's information"], status: 401
+    else
+      if @user.update_attributes(intro_params)
+        render 'api/users/show'
+      else
+        render json: @user.errors.full_messages, status: 422
+      end
+    end
   end
 
 
@@ -27,5 +36,9 @@ class Api::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :first_name,
     :last_name, :email, :gender, :birth_day, :birth_month, :birth_year)
+  end
+
+  def intro_params
+    params.require(:user).permit(:education, :current_city, :hometown, :relationship, :introduction)
   end
 end

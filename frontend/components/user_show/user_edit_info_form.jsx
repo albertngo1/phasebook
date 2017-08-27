@@ -1,0 +1,107 @@
+import React from 'react'
+import { connect } from 'react-redux';
+import { toggleEditIntroModal } from '../../actions/ui_actions';
+import { updateUser } from '../../actions/user_actions';
+import { Link, withRouter } from 'react-router-dom';
+import FA from 'react-fontawesome';
+
+class UserEditInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: this.props.currentUser.id,
+      education: this.props.user.education,
+      current_city: this.props.user.current_city,
+      hometown: this.props.user.hometown,
+      relationship: this.props.user.relationship,
+      introduction: this.props.user.introduction
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
+    this.handleToggleModal = this.handleToggleModal.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = Object.assign({}, this.state);
+    this.props.updateUser(user).then(this.props.toggleEditIntroModal());
+    document.body.classList.remove('modal-fixed');
+  }
+
+
+  handleToggleModal(e) {
+    if (e.currentTarget === e.target) {
+      e.stopPropagation();
+      this.props.toggleEditIntroModal();
+      document.body.classList.remove('modal-fixed');
+    }
+  }
+
+  update(property) {
+    return e => this.setState({[property]: e.target.value});
+  }
+
+  render() {
+    const { currentUser } = this.props
+    if (this.props.introModal) {
+      document.body.classList.add('modal-fixed');
+      return (
+        <div onClick={ this.handleToggleModal } className="mp-nf-post-form-modal-wrapper">
+          <form className="mp-nf-post-modal" onSubmit={ this.handleSubmit }>
+            <h1>Customize your intro</h1>
+            <div>
+              <label>Introduction:</label>
+              <textarea onChange={this.update('introduction')}
+                value={this.state.introduction}></textarea>
+            </div>
+            <div>
+              <label>Education:</label>
+              <textarea onChange={this.update('education')}
+                value={this.state.education}></textarea>
+            </div>
+            <div>
+              <label>Current City:</label>
+              <textarea onChange={this.update('current_city')}
+                value={this.state.current_city}></textarea>
+            </div>
+            <div>
+              <label>Hometown:</label>
+              <textarea onChange={this.update('hometown')}
+                value={this.state.hometown}></textarea>
+            </div>
+            <div>
+              <label>Relationship:</label>
+              <textarea onChange={this.update('relationship')}
+                value={this.state.relationship}></textarea>
+            </div>
+
+            <button className="mp-nf-post-modal-btn">Save</button>
+          </form>
+        </div>
+      )} else {
+        return(<div></div>)
+      }
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    introModal: state.ui.toggleEditIntroModal,
+    user: state.entities.user || {},
+    currentUser: state.session.currentUser || {},
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleEditIntroModal: () => dispatch(toggleEditIntroModal),
+    updateUser: (user) => dispatch(updateUser(user)),
+  };
+};
+
+
+
+
+export default withRouter(connect(mapStateToProps,
+   mapDispatchToProps)(UserEditInfo));
