@@ -1,14 +1,9 @@
 
 routes user update
 
-
-erros for create user
-
 aws
 
 add ads
-
-search
 
 static images not showing up
 
@@ -19,3 +14,6 @@ typing in path manually doesnt render
 how come i lose my currentUser so easily?
 sometimes going between pages then logging out sends an
 error in the delete session request
+
+logging out causes issues when on show page
+still cycles through different actions on logout

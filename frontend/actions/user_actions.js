@@ -1,7 +1,19 @@
 import * as APIUserUtil from '../util/user_api_util';
 
 
+export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
 export const RECEIVE_SINGLE_USER = "RECEIVE_SINGLE_USER";
+
+export const receiveAllUsers = users => ({
+  type: RECEIVE_ALL_USERS,
+  users,
+
+});
+
+export const receiveSingleUser = user => ({
+  type: RECEIVE_SINGLE_USER,
+  user,
+});
 
 export const requestSingleUser = userId => dispatch => {
   return APIUserUtil.fetchSingleUser(userId)
@@ -13,7 +25,8 @@ export const updateUser = user => dispatch => {
     .then( user => dispatch(receiveSingleUser(user)));
 }
 
-export const receiveSingleUser = user => ({
-  type: RECEIVE_SINGLE_USER,
-  user,
-});
+
+export const fetchAllUsers = () => dispatch => {
+  return APIUserUtil.fetchAllUsers()
+    .then( users => dispatch(receiveAllUsers(users)))
+}

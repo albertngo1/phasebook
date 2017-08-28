@@ -151,3 +151,39 @@
 .navbar-logout-dropdown:hover .navbar-help-dropdown-content {
   display: block;
 }
+
+.navbar-search-dropdown {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 400px;
+  margin-left: 31px;
+  margin-top: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 998;
+  top: 35px;
+  font-size: 13px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.navbar-search-dropdown p {
+  height: 25px;
+  width: inherit;
+  background-color: #f6f7f9;
+  color: #90949c;
+  border: 1px solid #e9e9e9;
+  padding-top: 10px;
+  text-indent: 10px;
+}
+.navbar-search-dropdown div:hover {
+  background-color: #e9edff;
+}
+.navbar-search-el {
+  height: 25px;
+  width: inherit;
+  text-indent: 20px;
+  padding-top: 10px;
+}
+.navbar-search-hidden {
+  display: none;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
+import { fetchAllUsers } from '../../actions/user_actions';
+import Search from './navbar_search';
 import FA from 'react-fontawesome';
 import { updateFriendship, deleteFriendship, fetchFriendRequests } from '../../actions/friendship_actions';
 
@@ -12,15 +14,15 @@ class NavBar extends React.Component {
       this.handleClick = this.handleClick.bind(this);
       this.handleAcceptFriend = this.handleAcceptFriend.bind(this);
       this.handleDenyFriend = this.handleDenyFriend.bind(this);
-      this.friendNotifs = this.friendNotifs.bind(this);
    }
 
    componentDidMount() {
-      this.props.fetchFriendRequests(this.props.currentUser.id);
+      if (this.props.currentUser) {
+         this.props.fetchFriendRequests(this.props.currentUser.id);
+      }
    }
 
-   handleClick(e) {
-      e.preventDefault();
+   handleClick() {
      this.props.logout();
    }
 
@@ -32,37 +34,11 @@ class NavBar extends React.Component {
    handleDenyFriend(request) {
       this.props.deleteFriendship(request.id);
    }
-
-   friendNotifs() {
-      return(
-         <ul>
-            {this.props.pendingRequests.map(request =>{
-               return(
-                  <div className="navbar-fr-wrap" key={`friendRequest-${request.id}`}>
-                     <label>{request.first_name} {request.last_name}</label>
-                     <button onClick={() => this.handleAcceptFriend(request)}>Confirm</button>
-                     <button onClick={this.handleDenyFriend}>Delete Request</button>
-                  </div>
-               )
-            })}
-         </ul>
-      )
-   }
-
    render() {
       const { currentUser } = this.props
       return(
          <div className="navbar-container">
-            <div className="navbar-search-ctn">
-               <Link to='/'>
-                  <div className="navbar-logo" >
-                     <FA name="facebook-official" size='2x' />
-                  </div>
-               </Link>
-               <input className="navbar-searchbar" type="text"
-                  placeholder="Search" />
-               <FA name="search" className="navbar-search-btn" />
-            </div>
+            <Search />
             <Link to={`/users/${currentUser.id}`}>
             <button className="navbar-user-home-hover">
                <div className="navbar-user">{currentUser.first_name}</div>
@@ -75,7 +51,6 @@ class NavBar extends React.Component {
                <FA size='lg' name="users" className="navbar-fr"/>
                <div className="navbar-fr-dropdown-content">
                   <p>Friend Requests</p>
-                  {this.friendNotifs()}
                </div>
             </div>
 
@@ -109,7 +84,7 @@ class NavBar extends React.Component {
 const mapStateToProps = state => {
    return {
       currentUser: state.session.currentUser || {},
-      pendingRequests: state.session.currentUser.pending_requests || {},
+      users: state.entities.user.search,
       friendships: state.session.friendships || {},
    }
 }
