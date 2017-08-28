@@ -43,13 +43,23 @@ class MainPage extends React.Component {
   }
 
   filterPosts(posts) {
-     let filteredPosts = [];
-     posts.forEach( post => {
-       if (post.receiver_id === this.props.currentUser.id) {
-         filteredPosts.push(post);
-       }
-     })
-     return filteredPosts;
+    if (this.props.currentUser && this.props.currentUser.active_friends) {
+      let filteredPosts = [];
+      const friends = this.props.currentUser.active_friends
+      posts.forEach( post => {
+        if (post.receiver_id === this.props.currentUser.id) {
+          filteredPosts.push(post);
+        }
+
+        for (let i = 0; i < friends.length; i++) {
+          if (post.author_id === friends[i].id && !filteredPosts.includes(post)) {
+            filteredPosts.push(post);
+          }
+        }
+
+      });
+      return filteredPosts;
+    }
   }
 
   viewOptions(post) {
@@ -144,20 +154,6 @@ class MainPage extends React.Component {
                       </div>
                       <div className="mp-nf-pi-body">{post.body}</div>
 
-                    </div>
-                    <div className="mp-nf-pi-footer">
-                      <div className="mp-nf-pi-footer-item">
-                        <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
-                        Like
-                      </div>
-                      <div className="mp-nf-pi-footer-item">
-                        <FA name='comment' className='mp-nf-pi-footer-icon' />
-                        Comment
-                      </div>
-                      <div className="mp-nf-pi-footer-item">
-                        <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
-                        Share
-                      </div>
                     </div>
                     <div >
                       <CommentIndex post={post} />

@@ -23,6 +23,12 @@ class NavBar extends React.Component {
        this.props.fetchAllUsers();
     }
 
+    componentWillReceiveProps(nextProps) {
+      if (this.props.match.params.userId !== nextProps.match.params.userId){
+          this.props.renderFriendRequests();
+      }
+    }
+
 
    handleClick() {
      this.props.logout().then(() => this.props.history.push('/'));
@@ -87,7 +93,7 @@ class NavBar extends React.Component {
                <div className="navbar-logout-dropdown" >
                   <FA size='lg' name="question-circle" className="navbar-help"/>
                   <div className="navbar-help-dropdown-content">
-                     <p>How can we help? Contact me for inquiries!</p>
+                     <p>How can I help? Contact me for inquiries!</p>
                   </div>
                </div>
 
@@ -110,7 +116,7 @@ const mapStateToProps = state => {
    return {
       currentUser: state.session.currentUser || {},
       users: state.entities.user.search,
-      friendRequests: state.session.currentUser.received_friend_requests,
+      friendRequests: state.session.currentUser.received_friend_requests || {},
       friendships: state.session.friendships || {},
    }
 }

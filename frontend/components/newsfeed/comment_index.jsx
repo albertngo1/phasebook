@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {selectPostComments} from '../../util/selectors';
 import {fetchPostComments} from '../../actions/comment_actions';
 import { Link } from 'react-router-dom';
+import FA from 'react-fontawesome';
 
 class CommentIndex extends React.Component {
 
@@ -35,7 +36,23 @@ class CommentIndex extends React.Component {
     const filteredComments = this.filteredComments(comments);
 
     return(
+      <div>
+        <div className="mp-nf-pi-footer">
+          <div className="mp-nf-pi-footer-item">
+            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
+            Like
+          </div>
+          <div className="mp-nf-pi-footer-item">
+            <FA name='comment' className='mp-nf-pi-footer-icon' />
+            Comment
+          </div>
+          <div className="mp-nf-pi-footer-item">
+            <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
+            Share
+          </div>
+        </div>
       <ul className="comment-wrapper-ul">
+
         {filteredComments.map(comment => {
           return(
             <li key={`post-${post.id} comment-${comment.id}`}>
@@ -56,6 +73,7 @@ class CommentIndex extends React.Component {
           )
         })}
       </ul>
+      </div>
     )
   }
 }
