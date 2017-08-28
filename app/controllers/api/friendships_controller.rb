@@ -19,9 +19,9 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(receiver_id: params[:id])
-
-    if @friendship.update(friendship_params)
+    @friendship = Friendship.find_by(user1_id: params[:id])
+    @friendship[:status] = "active"
+    if @friendship.save
       render json: @friendship
     else
       render json: @friendship.errors.full_messages, status: 422
@@ -29,9 +29,9 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.find(params[:id])
+    friendship = Friendship.find_by(user1_id: params[:id])
     friendship.destroy
-    render json: friendship
+    render json: friendship.user1_id
   end
 
   private

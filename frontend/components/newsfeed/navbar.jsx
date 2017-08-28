@@ -4,6 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 import Search from './navbar_search';
 import FA from 'react-fontawesome';
+import { fetchAllUsers } from '../../actions/user_actions';
 import { updateFriendship, deleteFriendship, fetchFriendRequests } from '../../actions/friendship_actions';
 
 class NavBar extends React.Component {
@@ -13,25 +14,51 @@ class NavBar extends React.Component {
       this.handleClick = this.handleClick.bind(this);
       this.handleAcceptFriend = this.handleAcceptFriend.bind(this);
       this.handleDenyFriend = this.handleDenyFriend.bind(this);
+      this.renderFriendRequests = this.renderFriendRequests.bind(this);
    }
 
-   componentDidMount() {
-      if (this.props.currentUser) {
-         this.props.fetchFriendRequests(this.props.currentUser.id);
-      }
-   }
+
+
+    componentDidMount() {
+       this.props.fetchAllUsers();
+    }
+
 
    handleClick() {
      this.props.logout().then(() => this.props.history.push('/'));
    }
 
-   handleAcceptFriend(request) {
-      const friend = {user1_id: request.id, user2_id: this.props.currentUser.id, status: "active"}
-      this.props.updateFriendship(friend);
+   handleAcceptFriend(id) {
+      this.props.updateFriendship(id);
    }
 
-   handleDenyFriend(request) {
-      this.props.deleteFriendship(request.id);
+   handleDenyFriend(id) {
+      this.props.deleteFriendship(id);
+   }
+
+   renderFriendRequests() {
+      if (this.props.users && this.props.friendRequests) {
+         const friendReqMap = this.props.friendRequests.map( id => {
+            return(
+               <div className="navbar-fr-wrap" key={`friendReq-${id}`}>
+                  <div className="navbar-fr-name">
+                     <Link to={`/users/${this.props.users[id].id}`}>
+                        <div>
+                           {this.props.users[id].first_name} {this.props.users[id].last_name}
+                        </div>
+                     </Link>
+                  </div>
+                  <div className="navbar-fr-btn-wrap">
+                     <button className="navbar-fr-confirm" onClick={() => this.handleAcceptFriend(id)}>Confirm</button>
+                     <button className="navbar-fr-deny" onClick={() => this.handleDenyFriend(id)}>Delete Request</button>
+                  </div>
+               </div>
+            )
+         })
+         return friendReqMap;
+      } else {
+         return(<div></div>)
+      }
    }
    render() {
       const { currentUser } = this.props
@@ -46,13 +73,14 @@ class NavBar extends React.Component {
             <div className="navbar-user-home-hover:hover">
                <Link to='/' className="navbar-user navbar-home">Home</Link>
             </div>
+
             <div className="navbar-logout-dropdown">
                <FA size='lg' name="users" className="navbar-fr"/>
                <div className="navbar-fr-dropdown-content">
-                  <p>Friend Requests</p>
+                  <p className="navbar-fr-text">Friend Requests</p>
+                  {this.renderFriendRequests()}
                </div>
             </div>
-
             <FA size='lg' name="commenting" className="navbar-notif"/>
             <FA size='lg' name="globe" className="navbar-notif"/>
 
@@ -82,6 +110,7 @@ const mapStateToProps = state => {
    return {
       currentUser: state.session.currentUser || {},
       users: state.entities.user.search,
+      friendRequests: state.session.currentUser.received_friend_requests,
       friendships: state.session.friendships || {},
    }
 }
@@ -90,8 +119,9 @@ const mapDispatchToProps = dispatch => {
    return {
       logout: () => dispatch(logout()),
       fetchFriendRequests: (id) => dispatch(fetchFriendRequests(id)),
-      updateFriendship: friendship => dispatch(updateFriendship(friendship)),
-      deleteFriendship: (friendshipId) => dispatch(deleteFriendship(friendshipId)),
+      updateFriendship: friendshipId => dispatch(updateFriendship(friendshipId)),
+      deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
+      fetchAllUsers: () => dispatch(fetchAllUsers()),
    }
 }
 

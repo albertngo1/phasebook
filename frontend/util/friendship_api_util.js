@@ -7,11 +7,10 @@ export const createFriendship = (friendship) => {
   });
 };
 
-export const updateFriendship = (friendship) => {
+export const updateFriendship = (id) => {
   return $.ajax({
-    url: `/api/friendships/${friendship.id}`,
+    url: `/api/friendships/${id}`,
     method: 'PATCH',
-    data: {friendship},
   });
 };
 
@@ -21,10 +20,3 @@ export const deleteFriendship = friendshipId => {
     method: 'DELETE',
   });
 };
-
-export const fetchFriendRequests = userId => {
-  return $.ajax({
-    url: `/api/users/${userId}/friendships`,
-    method: 'GET',
-  })
-}

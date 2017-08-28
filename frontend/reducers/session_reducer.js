@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
+import { DELETE_FRIENDSHIP, RECEIVE_FRIENDSHIP } from '../actions/friendship_actions';
 
 const nullUser = {
   currentUser: null,
@@ -14,6 +15,11 @@ const sessionReducer = (state = nullUser, action) => {
       return Object.assign({}, state, {errors: action.errors});
     case CLEAR_ERRORS:
       return Object.assign({}, state, {errors: []});
+    case DELETE_FRIENDSHIP:
+        let nextState = Object.assign({}, state);
+        let requests = nextState.currentUser.received_friend_requests;
+        delete requests[requests.indexOf(action.friendshipId)];
+        return nextState;
     default:
       return state;
   }
