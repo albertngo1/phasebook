@@ -76,9 +76,6 @@ class User < ActiveRecord::Base
       .where("user1_id = ?", self.id)
       .where("status = ?", 'pending')
       .pluck(:user2_id)
-
-    User.where(id: requested_friends)
-
   end
 
   def received_friend_requests
@@ -86,7 +83,6 @@ class User < ActiveRecord::Base
       .where("user2_id = ?", self.id)
       .where("status = ?", 'pending')
       .pluck(:user1_id)
-    User.where(id: received_friends)
   end
 
 

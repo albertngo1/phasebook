@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
-import { fetchAllUsers } from '../../actions/user_actions';
 import Search from './navbar_search';
 import FA from 'react-fontawesome';
 import { updateFriendship, deleteFriendship, fetchFriendRequests } from '../../actions/friendship_actions';
@@ -23,7 +22,7 @@ class NavBar extends React.Component {
    }
 
    handleClick() {
-     this.props.logout();
+     this.props.logout().then(() => this.props.history.push('/'));
    }
 
    handleAcceptFriend(request) {
@@ -38,7 +37,7 @@ class NavBar extends React.Component {
       const { currentUser } = this.props
       return(
          <div className="navbar-container">
-            <Search />
+            { !!currentUser && <Search />}
             <Link to={`/users/${currentUser.id}`}>
             <button className="navbar-user-home-hover">
                <div className="navbar-user">{currentUser.first_name}</div>
@@ -64,14 +63,12 @@ class NavBar extends React.Component {
                   </div>
                </div>
 
-               <Link to="/">
                <div className="navbar-logout-dropdown" onClick={this.handleClick}>
                   <FA size='lg' name="sort-desc" className="navbar-logout" />
                      <div onClick={this.handleClick} className="navbar-logout-dropdown-content">
                         <p>Logout</p>
                      </div>
                </div>
-               </Link>
 
 
          </div>

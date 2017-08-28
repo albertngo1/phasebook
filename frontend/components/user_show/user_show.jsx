@@ -42,8 +42,8 @@ class UserShow extends React.Component {
    }
 
    componentDidMount() {
-      this.props.requestSingleUser(this.props.match.params.userId);
-      this.props.fetchPosts();
+     this.props.requestSingleUser(this.props.match.params.userId);
+     this.props.fetchPosts();
    }
 
    componentWillReceiveProps(nextProps) {

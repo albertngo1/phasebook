@@ -26,7 +26,7 @@ class Api::UsersController < ApplicationController
     if @user.id != current_user.id
       render json: ["Cannot edit other people's information"], status: 401
     else
-      if @user.update_attributes(intro_params)
+      if @user.update(intro_params)
         render 'api/users/show'
       else
         render json: @user.errors.full_messages, status: 422

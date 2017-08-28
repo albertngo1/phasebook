@@ -21,7 +21,7 @@ class Api::PostsController < ApplicationController
     if @post.author_id != current_user.id
       render json: ["Cannot edit other people's posts"], status: 401
     else
-      if @post.update_attributes(post_params)
+      if @post.update(post_params)
         render 'api/posts/show'
       else
         render json: @post.errors.full_messages, status: 422
