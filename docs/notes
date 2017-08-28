@@ -13,3 +13,9 @@ search
 static images not showing up
 
 on click comment focuses to comment bar
+
+typing in path manually doesnt render
+
+how come i lose my currentUser so easily?
+sometimes going between pages then logging out sends an
+error in the delete session request

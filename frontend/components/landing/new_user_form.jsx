@@ -20,6 +20,7 @@ class NewUserForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.closeError = this.closeError.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   handleSubmit(e) {
@@ -133,6 +134,24 @@ class NewUserForm extends React.Component {
       )
     }
   }
+  renderErrors(){
+    if (this.props.errors) {
+      return(
+        <div>
+          {this.displayError('first_name', "What is your name?")}
+          {this.displayError('last_name', "What is your name?")}
+          {this.displayError('gender', "Please choose a gender.")}
+          {this.displayError('birth_day', "Select your birth day.")}
+          {this.displayError('birth_month', "Select your birth month.")}
+          {this.displayError('birth_year', "Select your birth year.")}
+          {this.displayError('password', "Enter a combination of at least six numbers, letters and puncutation marks (like ! and &)")}
+          {this.displayError('email', "You'll use this when you log in and if you ever need to reset your password.")}
+        </div>
+      )
+    } else {
+      return(<div></div>)
+    }
+  }
 
   render() {
     return (
@@ -141,14 +160,7 @@ class NewUserForm extends React.Component {
           <h1 className="splash-signup">Sign Up</h1>
           <h4 className="splash-comment-form-one">It’s free and always will be.</h4>
           <form className="splash-form" onSubmit={this.handleSubmit}>
-            {this.displayError('first_name', "What is your name?")}
-            {this.displayError('last_name', "What is your name?")}
-            {this.displayError('gender', "Please choose a gender.")}
-            {this.displayError('birth_day', "Select your birth day.")}
-            {this.displayError('birth_month', "Select your birth month.")}
-            {this.displayError('birth_year', "Select your birth year.")}
-            {this.displayError('password', "Enter a combination of at least six numbers, letters and puncutation marks (like ! and &)")}
-            {this.displayError('email', "You'll use this when you log in and if you ever need to reset your password.")}
+            {this.renderErrors()}
             <div className="splash-form-name-field">
               <input className="splash-form-field-1 splash-form-placeholder" type="text" onChange={this.update('first_name')} value={this.state.first_name} placeholder="First name"/>
 

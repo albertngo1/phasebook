@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import MainPage from './main_page';
 import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { togglePostModal, toggleEditPostModal } from '../../actions/ui_actions';
+import { updateFriendship, deleteFriendship } from '../../actions/friendship_actions';
 import { selectAllPosts } from '../../util/selectors';
 import { withRouter } from 'react-router-dom';
+
 
 const mapStateToProps = (state) => {
   return {

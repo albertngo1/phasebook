@@ -9,9 +9,7 @@ class PostShowForm extends React.Component {
     super(props);
 
     this.state = {
-      body: "",
-      author_id: this.props.currentUser.id,
-      receiver_id: this.props.match.params.userId
+      body: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +18,8 @@ class PostShowForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const post = Object.assign({}, this.state);
+    const post = Object.assign({}, this.state, {receiver_id: this.props.user.id,
+          author_id: this.props.currentUser.id});
     this.props.createPost(post).then(
       () => this.setState( {body: ""})
     );
@@ -39,7 +38,7 @@ class PostShowForm extends React.Component {
               <span className="mp-nf-create-post">Status</span>
             </div>
             <div className="mp-nf-post-text-wrap">
-              <Link to={`/users/#{currentUser.id}`}/>
+              <Link to={`/users/${currentUser.id}`}/>
 
               <textarea
                 value={this.state.body}

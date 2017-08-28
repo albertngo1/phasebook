@@ -67,23 +67,26 @@ class User < ActiveRecord::Base
       .where("status = ?", 'active')
       .pluck(:user1_id, :user2_id)
       .flatten
-
+      .uniq
     User.where(id: active_friends)
   end
 
-  def requesting_pending_friends
-    requesting_pending_friends = Friendship
+  def sent_friend_requests
+    requested_friends = Friendship
       .where("user1_id = ?", self.id)
       .where("status = ?", 'pending')
       .pluck(:user2_id)
 
+    User.where(id: requested_friends)
+
   end
 
-  def requested_pending_friends
-    requested_pending_friends = Friendship
+  def received_friend_requests
+    received_friends = Friendship
       .where("user2_id = ?", self.id)
       .where("status = ?", 'pending')
       .pluck(:user1_id)
+    User.where(id: received_friends)
   end
 
 

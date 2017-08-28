@@ -22,6 +22,7 @@ class UserShow extends React.Component {
       super(props);
       this.filterPosts = this.filterPosts.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
+      this.sentPost = this.sentPost.bind(this);
    }
 
    filterPosts(posts) {
@@ -45,6 +46,10 @@ class UserShow extends React.Component {
       this.props.fetchPosts();
    }
 
+   componentWillMount() {
+     this.props.requestSingleUser(this.props.match.params.userId);
+   }
+
    componentWillReceiveProps(nextProps) {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
          this.props.requestSingleUser(nextProps.match.params.userId);
@@ -53,6 +58,36 @@ class UserShow extends React.Component {
 
    viewOptions() {
       return this.props.match.params.userId == this.props.currentUser.id;
+   }
+
+   sentPost(post) {
+     if (post.author_id === post.receiver_id) {
+      return(
+         <div className="mp-nf-pi-name">
+          <Link to={`/users/${post.author_id}`}>
+             {post.author}
+          </Link>
+         </div>
+      )
+     } else {
+     return(
+      <div className="mp-nf-pi-name">
+         <div className="mp-nf-pi-name-wrap">
+            <Link to={`/users/${post.author_id}`}>
+               <label>
+                  {post.author}
+               </label>
+            </Link>
+            <FA className="caret" name="caret-right" />
+            <Link to={`/users/${post.receiver_id}`}>
+               <label>
+                  {post.receiver}
+               </label>
+            </Link>
+         </div>
+      </div>
+     )
+     }
    }
 
 
@@ -104,8 +139,7 @@ class UserShow extends React.Component {
 
                <div className="pp-page-feed">
             <div>
-              <PostModal/>
-              <PostShowForm/>
+              <PostShowForm user={user}/>
             </div>
             <ul>
               {filteredPosts.reverse().map(post => {
@@ -114,11 +148,7 @@ class UserShow extends React.Component {
                     <div className="mp-nf-pi-wrapper">
                       <div className="mp-nf-pi-header">
                         <div className="mp-nf-pi-name-header">
-                          <div className="mp-nf-pi-name">
-                            <Link to={`/users/${post.author_id}`}>
-                              {post.author}
-                            </Link>
-                          </div>
+                          {this.sentPost(post)}
                           <div className="mp-nf-pi-dropdown">
                             <FA name='sort-down' className="mp-nf-pi-dropdown-btn" />
                             <div className="mp-nf-pi-dropdown-content">

@@ -201,9 +201,19 @@
   flex-direction: column;
 }
 
+.mp-nf-pi-name-wrap {
+  width: 175px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.caret {
+  color: rgb(157, 157, 157);
+  margin-top: 2px;
+}
+
 .mp-nf-pi-name {
   color: rgb(66, 103, 178);
-  cursor: pointer;
   font-size: 14px;
   line-height: 16.56px;
   font-weight: bold;
@@ -213,8 +223,9 @@
   justify-content: space-between;
 }
 
-.mp-nf-pi-name:hover {
+.mp-nf-pi-name label:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .mp-nf-pi-header-misc {

@@ -1,10 +1,10 @@
 class Api::FriendshipsController < ApplicationController
 
-  # friendship statuses => pending, active, rejected
+  # friendship statuses => pending, active
 
   def index
-    @friendships = Friendship.all
-    render 'api/friendship/index'
+    @friendships = Friendship.where("status = 'pending' AND user2_id = ?", current_user.id).includes(:friender).includes(:friendee)
+    render 'api/friendships/index'
   end
 
   def create
@@ -21,7 +21,7 @@ class Api::FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
 
     if @friendship.update_attributes(friendship_params)
-      render 'api/friendships/show'
+      render json: @friendship
     else
       render json: @friendship.errors.full_messages, status: 422
     end
@@ -30,7 +30,7 @@ class Api::FriendshipsController < ApplicationController
   def destroy
     friendship = Friendship.find(params[:id])
     friendship.destroy
-    render json: friendship.id
+    render json: friendship
   end
 
   private
