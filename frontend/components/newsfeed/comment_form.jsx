@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
+import FA from 'react-fontawesome';
 
 class CommentForm extends React.Component {
 
@@ -15,6 +16,7 @@ class CommentForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.focusCommentBody = this.focusCommentBody.bind(this);
   }
 
   handleSubmit(e) {
@@ -25,19 +27,40 @@ class CommentForm extends React.Component {
     }
   }
 
+  focusCommentBody(post) {
+    document.getElementById(`comment-${post.id}`).focus();
+  }
+
   update(property) {
     return e => this.setState({[property]: e.currentTarget.value});
   }
 
   render() {
     return(
-      <form className="comment-form" onKeyPress={this.handleSubmit}>
-        <textarea
-          className="comment-textbox"
-          onChange={ this.update('body')}
-          value={ this.state.body }
-          placeholder="Write a comment..."></textarea>
-      </form>
+      <div>
+        <div className="mp-nf-pi-footer">
+          <div className="mp-nf-pi-footer-item">
+            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
+            Like
+          </div>
+          <div className="mp-nf-pi-footer-item" onClick={() => this.focusCommentBody(this.props.post)}>
+            <FA name='comment' className='mp-nf-pi-footer-icon' />
+            Comment
+          </div>
+          <div className="mp-nf-pi-footer-item">
+            <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
+            Share
+          </div>
+        </div>
+        <form className="comment-form" onKeyPress={this.handleSubmit}>
+          <textarea
+            id={`comment-${this.props.post.id}`}
+            className="comment-textbox"
+            onChange={ this.update('body')}
+            value={ this.state.body }
+            placeholder="Write a comment..."></textarea>
+        </form>
+      </div>
     )
 
   }

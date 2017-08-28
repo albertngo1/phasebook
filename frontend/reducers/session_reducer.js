@@ -8,6 +8,9 @@ const nullUser = {
 
 const sessionReducer = (state = nullUser, action) => {
   Object.freeze(state);
+  let nextState;
+  let nextUser;
+  let requests;
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, {currentUser: action.currentUser});
@@ -16,10 +19,24 @@ const sessionReducer = (state = nullUser, action) => {
     case CLEAR_ERRORS:
       return Object.assign({}, state, {errors: []});
     case DELETE_FRIENDSHIP:
-        let nextState = Object.assign({}, state);
-        let requests = nextState.currentUser.received_friend_requests;
-        delete requests[requests.indexOf(action.friendshipId)];
-        return nextState;
+      nextState = Object.assign({}, state);
+      nextUser = Object.assign({}, nextState.currentUser);
+      nextState.currentUser = nextUser;
+      requests = nextState.currentUser.received_friend_requests;
+      nextState.currentUser.received_friend_requests = requests.filter( el => {
+        return el !== action.friendshipId;
+      } );
+      return nextState;
+    case RECEIVE_FRIENDSHIP:
+      debugger
+      nextState = Object.assign({}, state);
+      nextUser = Object.assign({}, nextState.currentUser);
+      nextState.currentUser = nextUser;
+      requests = nextState.currentUser.received_friend_requests;
+      nextState.currentUser.received_friend_requests = requests.filter( el => {
+        return el !== action.friendship.user1_id;
+      } );
+      return nextState;
     default:
       return state;
   }

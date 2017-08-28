@@ -31,7 +31,7 @@ class NavBar extends React.Component {
 
 
    handleClick() {
-     this.props.logout().then(() => this.props.history.push('/'));
+     this.props.logout()
    }
 
    handleAcceptFriend(id) {
@@ -113,10 +113,11 @@ class NavBar extends React.Component {
 
 
 const mapStateToProps = state => {
+   const  currentUser = state.session.currentUser || {};
    return {
-      currentUser: state.session.currentUser || {},
+      currentUser: currentUser,
       users: state.entities.user.search,
-      friendRequests: state.session.currentUser.received_friend_requests || {},
+      friendRequests: currentUser.received_friend_requests,
       friendships: state.session.friendships || {},
    }
 }

@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.all.includes(:author).includes(:receiver)
+    @posts = Post.all.includes(:author).includes(:receiver).includes(:comments)
   end
 
 

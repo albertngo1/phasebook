@@ -36,21 +36,6 @@ class CommentIndex extends React.Component {
     const filteredComments = this.filteredComments(comments);
 
     return(
-      <div>
-        <div className="mp-nf-pi-footer">
-          <div className="mp-nf-pi-footer-item">
-            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
-            Like
-          </div>
-          <div className="mp-nf-pi-footer-item">
-            <FA name='comment' className='mp-nf-pi-footer-icon' />
-            Comment
-          </div>
-          <div className="mp-nf-pi-footer-item">
-            <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
-            Share
-          </div>
-        </div>
       <ul className="comment-wrapper-ul">
 
         {filteredComments.map(comment => {
@@ -73,7 +58,6 @@ class CommentIndex extends React.Component {
           )
         })}
       </ul>
-      </div>
     )
   }
 }

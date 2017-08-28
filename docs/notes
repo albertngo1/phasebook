@@ -17,3 +17,6 @@ error in the delete session request
 
 logging out causes issues when on show page
 still cycles through different actions on logout
+
+
+in jbuilder for post, add comments of posts at same level, edit actions and reducers as necessary

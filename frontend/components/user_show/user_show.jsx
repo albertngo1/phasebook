@@ -161,20 +161,6 @@ class UserShow extends React.Component {
                       <div className="mp-nf-pi-body">{post.body}</div>
 
                     </div>
-                    <div className="mp-nf-pi-footer">
-                      <div className="mp-nf-pi-footer-item">
-                        <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
-                        Like
-                      </div>
-                      <div className="mp-nf-pi-footer-item">
-                        <FA name='comment' className='mp-nf-pi-footer-icon' />
-                        Comment
-                      </div>
-                      <div className="mp-nf-pi-footer-item">
-                        <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
-                        Share
-                      </div>
-                    </div>
                     <div >
                       <CommentIndex post={post} />
                       <CommentForm post={post}/>
