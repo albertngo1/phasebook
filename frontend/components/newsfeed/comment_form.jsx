@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
 import FA from 'react-fontawesome';
+import CommentIndex from './comment_index';
 
 class CommentForm extends React.Component {
 
@@ -52,6 +53,7 @@ class CommentForm extends React.Component {
             Share
           </div>
         </div>
+        <CommentIndex post={this.props.post} />
         <form className="comment-form" onKeyPress={this.handleSubmit}>
           <textarea
             id={`comment-${this.props.post.id}`}

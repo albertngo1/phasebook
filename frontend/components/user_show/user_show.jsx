@@ -9,7 +9,6 @@ import { toggleEditIntroModal } from '../../actions/ui_actions';
 import PostModal from '../modals/post_modal';
 import EditPost from '../newsfeed/edit_form';
 import CommentForm from '../newsfeed/comment_form';
-import CommentIndex from '../newsfeed/comment_index';
 import PostShowForm from './user_show_form';
 import UserEditInfo from './user_edit_info_form';
 import UserInfo from './user_edit_info';
@@ -162,7 +161,6 @@ class UserShow extends React.Component {
 
                     </div>
                     <div >
-                      <CommentIndex post={post} />
                       <CommentForm post={post}/>
                     </div>
                     <div>

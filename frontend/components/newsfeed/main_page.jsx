@@ -4,7 +4,6 @@ import NavBar from './navbar';
 import PostModal from '../modals/post_modal';
 import EditPost from './edit_form';
 import CommentForm from './comment_form';
-import CommentIndex from './comment_index';
 import {NavLink, Link} from 'react-router-dom';
 import FA from 'react-fontawesome';
 
@@ -156,7 +155,6 @@ class MainPage extends React.Component {
 
                     </div>
                     <div >
-                      <CommentIndex post={post} />
                       <CommentForm post={post}/>
                     </div>
                     <div>
