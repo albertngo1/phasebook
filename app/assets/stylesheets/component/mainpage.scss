@@ -19,6 +19,17 @@
   position: fixed;
 }
 
+.mp-left-nav-name-wrap {
+  display: flex;
+}
+
+.mp-left-nav-pp {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
 .mp-left-nav-name {
   font-size: 11px;
   letter-spacing: -0.12px;
@@ -26,6 +37,7 @@
   width: 150px;
   height: 15px;
   padding: 5px;
+
   margin: 20px auto 10px;
 }
 
@@ -95,11 +107,19 @@
 .mp-nf-post-text-wrap {
   margin: auto;
   height: 73px;
+  display: flex;
+}
+.mp-nf-post-text-img {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: -14px;
+  right: 10px;
 }
 
 .mp-nf-post-text {
-  padding-left: 50px;
-  width: 430px;
+  padding-left: 30px;
+  width: 360px;
   height: 70px;
   border-bottom: 1px solid #d1d1d1;
   vertical-align: middle;
@@ -112,6 +132,13 @@
   font-size: 13px;
   overflow-wrap: normal;
   vertical-align: middle;
+}
+
+.mp-nf-post-modal-img {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 120px;
 }
 
 .mp-nf-post-form-modal-wrapper {
@@ -205,6 +232,10 @@
   justify-content: space-between;
 }
 
+.mp-nf-pi-name-pic {
+  display: flex;
+}
+
 .caret {
   color: rgb(157, 157, 157);
   margin-top: 2px;
@@ -216,9 +247,23 @@
   line-height: 16.56px;
   font-weight: bold;
 }
+
+.mp-nf-pi-img {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  right: 6px;
+}
+.mp-nf-pi-img-wrap {
+  margin-right: 5px;
+}
 .mp-nf-pi-name-header {
   display: flex;
   justify-content: space-between;
+}
+
+.mp-nf-pi-after-img-wrap {
+  margin-left: 8px;
 }
 
 .mp-nf-pi-name label:hover {
@@ -279,6 +324,13 @@
 .mp-nf-pi-dropdown {
   position: relative;
   display: inline-block;
+
+}
+.mp-nf-pi-dropdown-wrap1 {
+  margin-left: 300px;
+}
+.mp-nf-pi-dropdown-wrap2 {
+  margin-left: 205px;
 }
 
 .mp-nf-pi-dropdown-content {

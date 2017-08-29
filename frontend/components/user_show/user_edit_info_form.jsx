@@ -54,7 +54,7 @@ class UserEditInfo extends React.Component {
               <FA className="pp-edit-header-x" onClick={this.handleToggleModal} name="window-close" />
             </div>
             <div className="pp-edit-image-wrap">
-              <div className="pp-edit-image" />
+              <img src={"./assets/owl.png"} className="pp-edit-image" ></img>
               <p>Details you select will be <b>Public</b> and won't post to News Feed.</p>
             </div>
             <div className="pp-edit-input-wrap">

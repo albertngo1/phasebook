@@ -34,25 +34,28 @@ class CommentIndex extends React.Component {
   render() {
     const {post, currentUser, comments} = this.props
     const filteredComments = this.filteredComments(comments);
-
     return(
       <ul className="comment-wrapper-ul">
-
         {filteredComments.map(comment => {
           return(
             <li key={`post-${post.id} comment-${comment.id}`}>
-              <div className="comment-sep-abd">
-                <div className="comment-author">
-                  <Link to={`/users/${comment.author_id}`}>
-                    <spav>{comment.author}</spav>
-                  </Link>
+              <div className="comment-abd-wrap">
+                <Link to={`/users/${comment.author_id}`}>
+                <img className="comment-index-img" src={comment.profile_pic} alt="profile-pic" />
+                </Link>
+                <div>
+                  <div className="comment-sep-abd">
+                    <div className="comment-body">
+                      <Link to={`/users/${comment.author_id}`}>
+                        <span className="comment-author">{comment.author}</span>
+                      </Link>
+                      <span>{comment.body}</span>
+                    </div>
+                  </div>
+                  <div className="comment-date">
+                    {comment.posted_date}
+                  </div>
                 </div>
-                <div className="comment-body">
-                  <span>{comment.body}</span>
-                </div>
-              </div>
-              <div className="comment-date">
-                {comment.posted_date}
               </div>
             </li>
           )

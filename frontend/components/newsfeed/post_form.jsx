@@ -17,8 +17,9 @@ class PostForm extends React.Component {
               <span className="mp-nf-create-post">Create a Post</span>
             </div>
             <div className="mp-nf-post-text-wrap">
-              <Link to={`/users/#{currentUser.id}`}/>
-
+              <Link to={`/users/${currentUser.id}`}>
+              <img className="mp-nf-post-text-img" src={currentUser.profile_pic} alt="profile-pic" />
+              </Link>
               <textarea onClick={togglePostModal}
                 className='mp-nf-post-text'
                 placeholder={`What's on your mind, ${currentUser.first_name}?`

@@ -2,12 +2,15 @@
   height: 100%;
   width: 100%;
   margin-top: 15px;
+  margin-left: 4px;
   border-top: 1px solid #dadbdd;
+  margin-bottom: 10px;
   background-color: #f6f7f9;
 }
 
 .comment-wrapper-ul > li {
-  margin: 7px 0;
+  margin: 12px 0;
+  margin-left: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -15,6 +18,7 @@
 .comment-sep-abd {
   display: flex;
   flex-direction: row;
+  margin-left: 8px;
 }
 
 .comment-author {
@@ -25,6 +29,7 @@
   font-weight: bold;
   word-wrap: break-word;
   white-space: nowrap;
+  margin-right: 4px;
 }
 .comment-author:hover{
   text-decoration: underline;
@@ -33,10 +38,10 @@
 .comment-body {
   color: rgb(29, 33, 41);
   font-size: 12px;
-  margin-left: 2px;
+  margin-left: 4px;
   margin-bottom: 5px;
-  width: 82%;
-  height: 100%;
+  width: 400px;
+  height: auto;
   word-wrap: break-word;
 }
 
@@ -44,23 +49,52 @@
   color: #90949c;
   font-size: 12px;
   font-weight:normal;
-  margin-left: 15px;
+  margin-left: 12px;
 }
 .comment-form {
   border: 1px solid #dadbdd;
-  height: 25px;
+  height: inherit;
+  background-color: white;
 }
 .comment-textbox {
   background-color: white;
-  width: 100%;
+  width: 420px;
   height: inherit;
   vertical-align: middle;
   text-indent: 6px;
   font-size: 12px;
   padding-top: 0px;
+  margin-top: 6px;
+  margin-right: 3px;
 }
 .comment-textbox::placeholder {
   text-indent: 6px;
   font-size: 12px;
   color: #bbbbbb;
+}
+.comment-img {
+  width: 38px;
+  height: 38px;
+  margin-right: 5px;
+}
+.comment-index-img {
+  width: 38px;
+  height: 38px;
+  margin-right: 5px;
+  position: relative;
+  right: 4px;
+}
+
+.comment-form-wrap {
+  display: flex;
+  width: 438px;
+  height: inherit;
+  margin-left: 19px;
+  background-color: rgb(246, 247, 249);
+  justify-content: space-around;
+}
+
+.comment-abd-wrap {
+  display: flex;
+  cursor: default;
 }

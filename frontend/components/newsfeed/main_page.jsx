@@ -24,9 +24,9 @@ class MainPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-     if (this.props.match.params.userId !== nextProps.match.params.userId){
-        this.props.requestSingleUser(nextProps.match.params.userId);
-     }
+    if (this.props.match.params.userId !== nextProps.match.params.userId) {
+      this.props.requestSingleUser(nextProps.match.params.userId);
+    }
   }
 
   handleDelete(post) {
@@ -45,7 +45,7 @@ class MainPage extends React.Component {
     if (this.props.currentUser && this.props.currentUser.active_friends) {
       let filteredPosts = [];
       const friends = this.props.currentUser.active_friends
-      posts.forEach( post => {
+      posts.forEach(post => {
         if (post.receiver_id === this.props.currentUser.id) {
           filteredPosts.push(post);
         }
@@ -58,6 +58,8 @@ class MainPage extends React.Component {
 
       });
       return filteredPosts;
+    } else {
+      return {};
     }
   }
 
@@ -67,31 +69,86 @@ class MainPage extends React.Component {
 
   sentPost(post) {
     if (post.author_id === post.receiver_id) {
-      return(
-        <div className="mp-nf-pi-name">
-          <Link to={`/users/${post.author_id}`}>
-            {post.author}
-          </Link>
+      return (
+        <div>
+          <div className="mp-nf-pi-name-pic">
+            <div className="mp-nf-pi-img-wrap">
+              <Link to={`/users/${post.author_id}`}>
+                <img className="mp-nf-pi-img" src={post.profile_pic} alt="profile-pic"/>
+              </Link>
+            </div>
+            <div className="mp-nf-pi-after-img">
+              <div className="mp-nf-pi-name-header">
+                <div className="mp-nf-pi-name">
+                  <Link to={`/users/${post.author_id}`}>
+                    {post.author}
+                  </Link>
+                </div>
+                <div className="mp-nf-pi-dropdown-wrap1">
+                <div className="mp-nf-pi-dropdown">
+                  <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
+                  <div className="mp-nf-pi-dropdown-content">
+                    <button onClick={() => this.handleToggleEditModal(post)}>Edit</button>
+                    <button onClick={() => this.handleDelete(post)}>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div className="mp-nf-pi-header-misc">
+                <div className="mp-nf-pi-date">{post.posted_date}</div>
+                <div className="mp-nf-pi-separator">·</div>
+                <FA name="globe" className="mp-nf-pi-globe"/>
+              </div>
+            </div>
+          </div>
         </div>
       )
     } else {
-    return(
-      <div className="mp-nf-pi-name">
-        <div className="mp-nf-pi-name-wrap">
-              <Link to={`/users/${post.author_id}`}>
-                 <label>
-                    {post.author}
-                 </label>
-              </Link>
-              <FA className="caret" name="caret-right" />
-              <Link to={`/users/${post.receiver_id}`}>
-                 <label>
-                    {post.receiver}
-                 </label>
-              </Link>
-           </div>
-      </div>
-    )
+      return (
+        <div>
+          <div className="mp-nf-pi-name-pic">
+            <div className="mp-nf-pi-img-wrap">
+            <Link to={`/users/${post.author_id}`}>
+              <img className="mp-nf-pi-img" src={post.profile_pic} alt="profile-pic"/>
+            </Link>
+            </div>
+            <div className="mp-nf-pi-after-img">
+              <div className="mp-nf-pi-name-header">
+                <div className="mp-nf-pi-name">
+                  <div className="mp-nf-pi-name-wrap">
+                    <Link to={`/users/${post.author_id}`}>
+                      <label>
+                        {post.author}
+                      </label>
+                    </Link>
+                    <FA className="caret" name="caret-right"/>
+                    <Link to={`/users/${post.receiver_id}`}>
+                      <label>
+                        {post.receiver}
+                      </label>
+                    </Link>
+                  </div>
+                </div>
+                <div className="mp-nf-pi-dropdown-wrap2">
+                  <div className="mp-nf-pi-dropdown">
+                    <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
+                    <div className="mp-nf-pi-dropdown-content">
+                      <button onClick={() => this.handleToggleEditModal(post)}>Edit</button>
+                      <button onClick={() => this.handleDelete(post)}>Delete</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div className="mp-nf-pi-header-misc">
+                <div className="mp-nf-pi-date">{post.posted_date}</div>
+                <div className="mp-nf-pi-separator">·</div>
+                <FA name="globe" className="mp-nf-pi-globe"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     }
   }
 
@@ -107,10 +164,13 @@ class MainPage extends React.Component {
         <div className="main-page-content">
           <div className="main-page-left-nav">
             <div className="mp-left-nav-name">
-              <Link to={`/users/${filteredPosts.author_id}`}>
-                <div className="mp-left-nav-name-pic"></div>
-                <div className="mp-left-nav-name-title">
-                  {`${currentUser.first_name} ${currentUser.last_name}`}
+              <Link to={`/users/${currentUser.id}`}>
+                <div className="mp-left-nav-name-wrap">
+                  <img className="mp-left-nav-pp" src={currentUser.profile_pic} alt="profile-pic"/>
+
+                  <div className="mp-left-nav-name-title">
+                    {`${currentUser.first_name} ${currentUser.last_name}`}
+                  </div>
                 </div>
               </Link>
             </div>
@@ -135,21 +195,8 @@ class MainPage extends React.Component {
                   <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                     <div className="mp-nf-pi-wrapper">
                       <div className="mp-nf-pi-header">
-                        <div className="mp-nf-pi-name-header">
-                          {this.sentPost(post)}
-                          <div className="mp-nf-pi-dropdown">
-                            <FA name='sort-down' className="mp-nf-pi-dropdown-btn" />
-                            <div className="mp-nf-pi-dropdown-content">
-                              <button onClick={() => this.handleToggleEditModal(post)}>Edit</button>
-                              <button onClick={() => this.handleDelete(post)}>Delete</button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mp-nf-pi-header-misc">
-                          <div className="mp-nf-pi-date">{post.posted_date}</div>
-                          <div className="mp-nf-pi-separator">·</div>
-                          <FA name="globe" className="mp-nf-pi-globe"/>
-                        </div>
+                        {this.sentPost(post)}
+
                       </div>
                       <div className="mp-nf-pi-body">{post.body}</div>
 
@@ -165,7 +212,28 @@ class MainPage extends React.Component {
               })}
             </ul>
           </div>
-          <div className="main-page-ad"></div>
+          <div className="main-page-ad">
+            <div className="ad-space-1-wrap">
+              <div className="ad-space-1a">
+                <div className="ad-sponsored">SPONSORED</div>
+                <label>Need places to stay? Visit <b>Airbase</b>!</label>
+                <a><img src="./assets/airbase.jpg" /></a>
+              </div>
+              <div className="ad-space-1b">
+
+              </div>
+            </div>
+            <div className="ad-space-2-wrap">
+              <div className="ad-space-2">
+                App Academy - Phasebook - July 2017
+              </div>
+            </div>
+            <div className="ad-space-3-wrap">
+              <div className="ad-space-3">
+                React · Redux · Ruby · Rails · Javascript · AWS · CSS · HTML
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

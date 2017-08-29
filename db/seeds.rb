@@ -7,22 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Post.destroy_all
+Friendship.destroy_all
+Comment.destroy_all
 
-user1 = User.create(first_name: "Albert",
+albert_user = User.create(first_name: "Albert",
 last_name: "Ngo", email: "albertngo1@gmail.com", birth_day: 30,
 birth_month: 9, birth_year: 1989, password: "password",
-gender: "male")
-user2 = User.create(first_name: "test",
- last_name: "test", email: "test@gmail.com",
+gender: "male", education: "University of Hard Knocks", current_city: "New York, NY", hometown: "Austin, TX", introduction: "Welcome to my page!")
+
+kenneth_user = User.create(first_name: "Kenneth",
+ last_name: "Ng", email: "kennethng@gmail.com",
   birth_day: 30, birth_month: 9, birth_year: 1989,
-   password: "password",
-gender: "male")
+   password: "password", education: "SUNY", current_city: "New York, NY", hometown: "Flushing, NY",
+gender: "male", introduction: "It's lit")
 
-Post.destroy_all
+albert_post1 = Post.create(body: "My first post", author_id: albert_user.id, receiver_id: albert_user.id)
+albert_post2 = Post.create(body: "My second post", author_id: albert_user.id, receiver_id: albert_user.id)
+kenneth_post1 = Post.create(body: "My third post", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
+kenneth_post2 = Post.create(body: "My fourth post", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
 
-post1 = Post.create(body: "My first post", author_id: user1.id, receiver_id: user1.id)
-post2 = Post.create(body: "My second post", author_id: user1.id, receiver_id: user1.id)
-post3 = Post.create(body: "My third post", author_id: user2.id, receiver_id: user2.id)
-post4 = Post.create(body: "My fourth post", author_id: user2.id, receiver_id: user2.id)
-
-Friendship.destroy_all
+albert_kenneth_friend = Friendship.create(user1_id: albert_user.id, user2_id: kenneth_user.id, status: "active")

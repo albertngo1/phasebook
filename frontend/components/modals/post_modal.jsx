@@ -66,8 +66,9 @@ class PostModal extends React.Component {
             </div>
 
             <div className="mp-nf-post-text-wrap">
-              <Link to='/' />
-
+              <Link to={`/users/${currentUser.id}`}>
+              <img className="mp-nf-post-modal-img" src={currentUser.profile_pic} alt="profile-pic" />
+              </Link>
               <textarea onChange={ this.update('body') }
                 value={ this.state.body }
                 placeholder={`What's on your mind, ${currentUser.first_name}?`}

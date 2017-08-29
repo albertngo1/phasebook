@@ -20,3 +20,11 @@ still cycles through different actions on logout
 
 
 in jbuilder for post, add comments of posts at same level, edit actions and reducers as necessary
+
+this.props.renderFriendRequests is not a function
+
+fix media query right container main page
+
+add edit to show pages for valid users
+
+fix the hover on the help notification

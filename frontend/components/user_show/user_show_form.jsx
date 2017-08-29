@@ -14,6 +14,18 @@ class PostShowForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.handleEnterSubmit = this.handleEnterSubmit.bind(this);
+  }
+
+  handleEnterSubmit(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const post = Object.assign({}, this.state, {receiver_id: this.props.user.id,
+      author_id: this.props.currentUser.id});
+      this.props.createPost(post).then(
+        () => this.setState( {body: ""})
+      )
+    }
   }
 
   handleSubmit(e) {
@@ -32,7 +44,7 @@ class PostShowForm extends React.Component {
   render() {
     const { currentUser } = this.props
         return(
-          <form onSubmit={this.handleSubmit} className="mp-nf-post-form">
+          <form onSubmit={this.handleSubmit} onKeyPress={this.handleEnterSubmit} className="pp-post-form">
             <div className="mp-nf-create-post-wrap">
               <FA className="mp-nf-pencil" name='pencil' />
               <span className="mp-nf-create-post">Status</span>
@@ -43,7 +55,7 @@ class PostShowForm extends React.Component {
               <textarea
                 value={this.state.body}
                 onChange={this.update('body')}
-                className='mp-nf-post-text'
+                className='pp-post-text'
                 placeholder={`What's on your mind?`}></textarea>
 
               <button className='pp-post-form-btn'>Post</button>

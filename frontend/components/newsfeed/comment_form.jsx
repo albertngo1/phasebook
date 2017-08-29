@@ -54,14 +54,18 @@ class CommentForm extends React.Component {
           </div>
         </div>
         <CommentIndex post={this.props.post} />
-        <form className="comment-form" onKeyPress={this.handleSubmit}>
-          <textarea
-            id={`comment-${this.props.post.id}`}
-            className="comment-textbox"
-            onChange={ this.update('body')}
-            value={ this.state.body }
-            placeholder="Write a comment..."></textarea>
-        </form>
+          <div className="comment-form-wrap">
+            <img className="comment-img" src={this.props.currentUser.profile_pic} alt="profile-pic" />
+            <form className="comment-form" onKeyPress={this.handleSubmit}>
+              <textarea
+                id={`comment-${this.props.post.id}`}
+                className="comment-textbox"
+                onChange={ this.update('body')}
+                value={ this.state.body }
+                placeholder="Write a comment..."></textarea>
+            </form>
+
+          </div>
       </div>
     )
 

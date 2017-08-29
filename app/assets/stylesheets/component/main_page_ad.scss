@@ -1,0 +1,67 @@
+.main-page-ad {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: fixed;
+  width:400px;
+  right: 5px;
+  height: 600px;
+  margin-left: 10px;
+}
+
+@media all and (max-width: 1150px) {
+  .main-page-ad {
+    // position: relative;
+    display: none;
+  }
+}
+
+
+.ad-space-3 {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.ad-space-3-wrap {
+  background-color: white;
+  width: 300px;
+  height: 40px;
+  font-size: 12px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  border: 1px solid #dadbdd;
+}
+
+.ad-space-2-wrap {
+  background-color: white;
+  width: 300px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  border: 1px solid #dadbdd;
+}
+
+.ad-space-2 {
+  text-align: center;
+  text-indent: 30px;
+}
+
+.ad-space-1-wrap {
+  background-color: white;
+  width: 300px;
+  height: 445px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  justify-content: space-around;
+  border: 1px solid #dadbdd;
+}
+.ad-space-1a label {
+  font-size: 12px;
+  text-align: center;
+}

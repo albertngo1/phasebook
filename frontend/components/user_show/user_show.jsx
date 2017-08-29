@@ -22,6 +22,8 @@ class UserShow extends React.Component {
       this.filterPosts = this.filterPosts.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
       this.sentPost = this.sentPost.bind(this);
+      this.friendRequest = this.friendRequest.bind(this);
+      this.friendList = this.friendList.bind(this);
    }
 
    filterPosts(posts) {
@@ -51,39 +53,103 @@ class UserShow extends React.Component {
       }
    }
 
+   friendRequest() {
+      const user = this.props.currentUser
+
+
+   }
+
+   friendList() {
+
+   }
+
    viewOptions() {
       return this.props.match.params.userId == this.props.currentUser.id;
    }
 
    sentPost(post) {
-     if (post.author_id === post.receiver_id) {
-      return(
-         <div className="mp-nf-pi-name">
-          <Link to={`/users/${post.author_id}`}>
-             {post.author}
-          </Link>
-         </div>
+    if (post.author_id === post.receiver_id) {
+      return (
+        <div>
+          <div className="mp-nf-pi-name-pic">
+            <div className="mp-nf-pi-img-wrap">
+              <Link to={`/users/${post.author_id}`}>
+                <img className="mp-nf-pi-img" src={post.profile_pic} alt="profile-pic"/>
+              </Link>
+            </div>
+            <div className="mp-nf-pi-after-img">
+              <div className="mp-nf-pi-name-header">
+                <div className="mp-nf-pi-name">
+                  <Link to={`/users/${post.author_id}`}>
+                    {post.author}
+                  </Link>
+                </div>
+                <div className="mp-nf-pi-dropdown-wrap1">
+                <div className="mp-nf-pi-dropdown">
+                  <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
+                  <div className="mp-nf-pi-dropdown-content">
+                    <button onClick={() => this.handleDelete(post)}>Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div className="mp-nf-pi-header-misc">
+                <div className="mp-nf-pi-date">{post.posted_date}</div>
+                <div className="mp-nf-pi-separator">·</div>
+                <FA name="globe" className="mp-nf-pi-globe"/>
+              </div>
+            </div>
+          </div>
+        </div>
       )
-     } else {
-     return(
-      <div className="mp-nf-pi-name">
-         <div className="mp-nf-pi-name-wrap">
+    } else {
+      return (
+        <div>
+          <div className="mp-nf-pi-name-pic">
+            <div className="mp-nf-pi-img-wrap">
             <Link to={`/users/${post.author_id}`}>
-               <label>
-                  {post.author}
-               </label>
+              <img className="mp-nf-pi-img" src={post.profile_pic} alt="profile-pic"/>
             </Link>
-            <FA className="caret" name="caret-right" />
-            <Link to={`/users/${post.receiver_id}`}>
-               <label>
-                  {post.receiver}
-               </label>
-            </Link>
-         </div>
-      </div>
-     )
-     }
-   }
+            </div>
+            <div className="mp-nf-pi-after-img">
+              <div className="mp-nf-pi-name-header">
+                <div className="mp-nf-pi-name">
+                  <div className="mp-nf-pi-name-wrap">
+                    <Link to={`/users/${post.author_id}`}>
+                      <label>
+                        {post.author}
+                      </label>
+                    </Link>
+                    <FA className="caret" name="caret-right"/>
+                    <Link to={`/users/${post.receiver_id}`}>
+                      <label>
+                        {post.receiver}
+                      </label>
+                    </Link>
+                  </div>
+                </div>
+                <div className="mp-nf-pi-dropdown-wrap2">
+                  <div className="mp-nf-pi-dropdown">
+                    <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
+                    <div className="mp-nf-pi-dropdown-content">
+                      <button onClick={() => this.handleDelete(post)}>Delete</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div className="mp-nf-pi-header-misc">
+                <div className="mp-nf-pi-date">{post.posted_date}</div>
+                <div className="mp-nf-pi-separator">·</div>
+                <FA name="globe" className="mp-nf-pi-globe"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+
 
 
    render() {
@@ -95,18 +161,27 @@ class UserShow extends React.Component {
                <NavBar />
             </header>
             <div className="pp-container">
-
               <div className="pp-header">
-                 <div className="pp-profile-pic"></div>
-                 <div className="pp-header-name">{user.first_name} {user.last_name}</div>
-                 <div className="pp-cover-page">
-
-                 <div className="pp-header-items">
-                    <div className="pp-header-timeline">Timeline</div>
-                    <div className="pp-header-about">About</div>
-                    <div className="pp-header-friends">Friends</div>
+                 <img className="pp-cover-page" src={user.cover_page} />
+                 <div className="pp-header-reposition">
+                    <div className="pp-header-cover-page-wrap">
+                       <img className="pp-profile-pic" src={user.profile_pic} />
+                       <Link to={`/users/${user.id}`}>
+                          <div className="pp-header-name">{user.first_name} {user.last_name}</div>
+                       </Link>
+                    </div>
+                    <div className="pp-header-items-wrap">
+                       <div className="pp-header-items">
+                          <div className="pp-header-timeline">Timeline</div>
+                          <div className="pp-header-about">About</div>
+                          <div className="pp-header-friends">Friends</div>
+                       </div>
+                       <div>
+                          FRIEND REQUEST HERE
+                          {this.friendRequest()}
+                       </div>
+                    </div>
                  </div>
-              </div>
            </div>
 
            <div className="pp-lower-ctn">
@@ -144,17 +219,6 @@ class UserShow extends React.Component {
                       <div className="mp-nf-pi-header">
                         <div className="mp-nf-pi-name-header">
                           {this.sentPost(post)}
-                          <div className="mp-nf-pi-dropdown">
-                            <FA name='sort-down' className="mp-nf-pi-dropdown-btn" />
-                            <div className="mp-nf-pi-dropdown-content">
-                              <button onClick={() => this.handleDelete(post)}>Delete</button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mp-nf-pi-header-misc">
-                          <div className="mp-nf-pi-date">{post.posted_date}</div>
-                          <div className="mp-nf-pi-separator">·</div>
-                          <FA name="globe" className="mp-nf-pi-globe"/>
                         </div>
                       </div>
                       <div className="mp-nf-pi-body">{post.body}</div>

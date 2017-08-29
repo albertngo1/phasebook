@@ -23,11 +23,7 @@ class NavBar extends React.Component {
        this.props.fetchAllUsers();
     }
 
-    componentWillReceiveProps(nextProps) {
-      if (this.props.match.params.userId !== nextProps.match.params.userId){
-          this.props.renderFriendRequests();
-      }
-    }
+
 
 
    handleClick() {
@@ -72,9 +68,13 @@ class NavBar extends React.Component {
          <div className="navbar-container">
             { !!currentUser && <Search />}
             <Link to={`/users/${currentUser.id}`}>
-            <button className="navbar-user-home-hover">
-               <div className="navbar-user">{currentUser.first_name}</div>
-            </button>
+            <div className="navbar-user-wrap">
+               <img className="navbar-user-pp" src={currentUser.profile_pic} alt="profile-pic" />
+               <button className="navbar-user-home-hover">
+                  <div className="navbar-user">
+                     {currentUser.first_name}</div>
+               </button>
+            </div>
             </Link>
             <div className="navbar-user-home-hover:hover">
                <Link to='/' className="navbar-user navbar-home">Home</Link>
