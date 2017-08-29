@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import FA from 'react-fontawesome';
 import { fetchAllUsers } from '../../actions/user_actions';
 
@@ -16,17 +16,18 @@ class Search extends React.Component {
    }
 
    componentDidMount() {
-      this.props.fetchAllUsers();
+      this.props.fetchAllUsers()
    }
 
-   componentDidUpdate(prevProps, prevState) {
-      if (prevState.input !== this.state.input) {
-         this.props.fetchAllUsers();
+   componentWillReceiveProps(nextProps) {
+      if (this.props.match.params.userId !== nextProps.match.params.userId){
+        this.setState({input: ""});
       }
    }
 
+
    handleInput(e) {
-      this.setState({input: e.currentTarget.value})
+      this.setState({input: e.currentTarget.value});
    }
 
    searchResults(users) {
@@ -55,7 +56,7 @@ class Search extends React.Component {
       }
       return results.map( el => {
          return (
-            <Link to={`/users/${el.id}`} key={`search-${el.id}`}>
+            <Link onClick={this.handleClick} to={`/users/${el.id}`} key={`search-${el.id}`}>
             <div className="navbar-search-el">
 
                   {el.first_name} {el.last_name}
@@ -102,4 +103,4 @@ const mapDispatchToProps = dispatch => {
    }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search))

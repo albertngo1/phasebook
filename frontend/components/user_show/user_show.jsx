@@ -14,6 +14,7 @@ import UserEditInfo from './user_edit_info_form';
 import UserInfo from './user_edit_info';
 import { Link } from 'react-router-dom';
 import FriendRequest from './friend_request';
+import FriendList from './friend_list';
 import FA from 'react-fontawesome';
 
 class UserShow extends React.Component {
@@ -184,7 +185,9 @@ class UserShow extends React.Component {
            </div>
 
            <div className="pp-lower-ctn">
+             <div className="pp-left-ctn-wrapper">
               <div className="pp-left-container">
+                 <div className="pp-left-intro-ctn-wrap">
                  <div className="pp-left-intro-ctn">
                     <div className="pp-left-globe-wrapper">
                      <FA size='lg' name="globe" className="pp-left-globe"/>
@@ -200,12 +203,13 @@ class UserShow extends React.Component {
 
                  <UserInfo />
                  <UserEditInfo />
-                 <div className="pp-left-friends">
-
                  </div>
               </div>
 
-
+              <div className="pp-left-friends">
+                 <FriendList user={user} currentUser={currentUser}/>
+              </div>
+              </div>
                <div className="pp-page-feed">
             <div>
               <PostShowForm user={user}/>

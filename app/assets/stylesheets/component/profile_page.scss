@@ -92,6 +92,11 @@
   display: flex;
 }
 
+.pp-left-ctn-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .pp-post-form-btn {
   color: #ffffff;
@@ -166,7 +171,7 @@
   flex-direction: column;
   margin-top: 20px;
   width: 304px;
-  height: 100%;
+  height: auto;
   padding: 10px;
   background-color: white;
   border: 1px solid #dadbdd;

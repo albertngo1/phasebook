@@ -156,15 +156,17 @@ select {
   color: #333;
   font-size: 21px;
   line-height: 27px;
+  height: 300px;
+  width: 500px;
 }
 
 .splash-static-img {
-  background-image: image-url("splash_page.png");
+  // background-image: image-url("splash_page.png");
   width: 100%;
   height: 100%;
-  background-size: 300px 300px;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
-  margin-left: 200px;
+  margin-left: 0px;
 }
 
 .splash-static-cmt-1 {

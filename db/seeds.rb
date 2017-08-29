@@ -42,8 +42,9 @@ gender: "male", introduction: "I play DOTA. SingSing is the best.")
 
 albert_post1 = Post.create(body: "My first post", author_id: albert_user.id, receiver_id: albert_user.id)
 albert_post2 = Post.create(body: "My second post", author_id: albert_user.id, receiver_id: albert_user.id)
-kenneth_post1 = Post.create(body: "My third post", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
-kenneth_post2 = Post.create(body: "My fourth post", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
+kenneth_post1 = Post.create(body: "SZECHUAN TERIYAKI SAUCE", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
+kenneth_post2 = Post.create(body: "Just a reminder that OKC had three budding MVPs at one point.", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
+kenneth_post3 = Post.create(body: "ORACLE ARENA IS GONNA BE LITTTT 🏀🏀🏀🔥🔥🔥", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
 andy_post1 = Post.create(body: "anyone know where to buy handball gloves besides online??", author_id: andy_user.id, receiver_id: andy_user.id)
 andy_post2 = Post.create(body: "please, a moment of silence for the pen I just lost", author_id: andy_user.id, receiver_id: andy_user.id)
 andy_post2 = Post.create(body: "1,000,000 / 4,000 = 256
@@ -51,4 +52,5 @@ i did it on a calculator trust me", author_id: andy_user.id, receiver_id: andy_u
 
 albert_kenneth_friend = Friendship.create(user1_id: albert_user.id, user2_id: kenneth_user.id, status: "active")
 andy_albert_friend = Friendship.create(user1_id: andy_user.id, user2_id: albert_user.id, status: "pending")
+nate_albert_friend = Friendship.create(user1_id: nate_user.id, user2_id: albert_user.id, status: "pending")
 albert_jonathan_friend = Friendship.create(user1_id: albert_user.id, user2_id: jonathan_user.id, status: "pending")

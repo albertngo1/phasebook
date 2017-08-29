@@ -22,11 +22,14 @@ class FriendRequest extends React.Component {
    }
 
    handleFriendAccept(id) {
-      this.props.acceptFriend(id);
+      this.props.acceptFriend(id)
+         .then(() => this.forceUpdate());
+
    }
 
    handleFriendDelete(id) {
-      this.props.removeFriend(id);
+      this.props.removeFriend(id)
+         .then(() => this.forceUpdate());
    }
 
    handleCancelAddFriend(id) {

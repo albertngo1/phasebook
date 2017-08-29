@@ -23,7 +23,11 @@ class NavBar extends React.Component {
        this.props.fetchAllUsers();
     }
 
-
+    componentWillReceiveProps(nextProps) {
+       if (this.props.match.params.userId !== nextProps.match.params.userId){
+          this.props.fetchAllUsers();
+       }
+    }
 
 
    handleClick() {
