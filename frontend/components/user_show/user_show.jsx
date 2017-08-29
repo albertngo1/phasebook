@@ -13,6 +13,7 @@ import PostShowForm from './user_show_form';
 import UserEditInfo from './user_edit_info_form';
 import UserInfo from './user_edit_info';
 import { Link } from 'react-router-dom';
+import FriendRequest from './friend_request';
 import FA from 'react-fontawesome';
 
 class UserShow extends React.Component {
@@ -22,7 +23,6 @@ class UserShow extends React.Component {
       this.filterPosts = this.filterPosts.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
       this.sentPost = this.sentPost.bind(this);
-      this.friendRequest = this.friendRequest.bind(this);
       this.friendList = this.friendList.bind(this);
    }
 
@@ -51,12 +51,6 @@ class UserShow extends React.Component {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
          this.props.requestSingleUser(nextProps.match.params.userId);
       }
-   }
-
-   friendRequest() {
-      const user = this.props.currentUser
-
-
    }
 
    friendList() {
@@ -155,6 +149,7 @@ class UserShow extends React.Component {
    render() {
       const {user, posts, currentUser} = this.props
       const filteredPosts = this.filterPosts(posts);
+
       return(
          <div className="pp-main-container">
             <header>
@@ -166,9 +161,16 @@ class UserShow extends React.Component {
                  <div className="pp-header-reposition">
                     <div className="pp-header-cover-page-wrap">
                        <img className="pp-profile-pic" src={user.profile_pic} />
-                       <Link to={`/users/${user.id}`}>
-                          <div className="pp-header-name">{user.first_name} {user.last_name}</div>
-                       </Link>
+
+                          <div className="pp-header-name">
+                             <Link to={`/users/${user.id}`}>
+                            <span className="pp-header-name-txt">
+                               {user.first_name} {user.last_name}
+
+                            </span>
+                            </Link>
+                          </div>
+
                     </div>
                     <div className="pp-header-items-wrap">
                        <div className="pp-header-items">
@@ -176,10 +178,7 @@ class UserShow extends React.Component {
                           <div className="pp-header-about">About</div>
                           <div className="pp-header-friends">Friends</div>
                        </div>
-                       <div>
-                          FRIEND REQUEST HERE
-                          {this.friendRequest()}
-                       </div>
+                     <FriendRequest />
                     </div>
                  </div>
            </div>
@@ -211,7 +210,7 @@ class UserShow extends React.Component {
             <div>
               <PostShowForm user={user}/>
             </div>
-            <ul>
+            <ul className="pp-posts-wrapper">
               {filteredPosts.reverse().map(post => {
                 return (
                   <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>

@@ -57,7 +57,11 @@ class NavBar extends React.Component {
                </div>
             )
          })
-         return friendReqMap;
+         if (friendReqMap.length > 0) {
+            return friendReqMap;
+         }  else {
+            return <div className="navbar-fr-no-friends">No pending requests.</div>
+         }
       } else {
          return(<div></div>)
       }

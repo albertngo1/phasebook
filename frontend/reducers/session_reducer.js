@@ -1,5 +1,6 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
-import { DELETE_FRIENDSHIP, RECEIVE_FRIENDSHIP } from '../actions/friendship_actions';
+import { DELETE_FRIENDSHIP, RECEIVE_FRIENDSHIP, ADD_FRIENDSHIP,
+CANCEL_FRIENDSHIP } from '../actions/friendship_actions';
 
 const nullUser = {
   currentUser: null,
@@ -28,13 +29,27 @@ const sessionReducer = (state = nullUser, action) => {
       } );
       return nextState;
     case RECEIVE_FRIENDSHIP:
-      debugger
       nextState = Object.assign({}, state);
       nextUser = Object.assign({}, nextState.currentUser);
       nextState.currentUser = nextUser;
       requests = nextState.currentUser.received_friend_requests;
       nextState.currentUser.received_friend_requests = requests.filter( el => {
         return el !== action.friendship.user1_id;
+      } );
+      return nextState;
+    case ADD_FRIENDSHIP:
+      nextState = Object.assign({}, state);
+      nextUser = Object.assign({}, nextState.currentUser);
+      nextState.currentUser = nextUser;
+      nextState.currentUser.sent_friend_requests.push(action.friendship.friendship.user2_id);
+      return nextState;
+    case CANCEL_FRIENDSHIP:
+      nextState = Object.assign({}, state);
+      nextUser = Object.assign({}, nextState.currentUser);
+      nextState.currentUser = nextUser;
+      requests = nextState.currentUser.sent_friend_requests;
+      nextState.currentUser.sent_friend_requests = requests.filter( el => {
+        return el !== action.friendshipId;
       } );
       return nextState;
     default:

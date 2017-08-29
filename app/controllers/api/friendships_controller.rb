@@ -19,7 +19,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(user1_id: params[:id])
+    @friendship = Friendship.find_by(user1_id: params[:id]) || Friendship.find_by(user2_id: params[:id])
     @friendship[:status] = "active"
     if @friendship.save
       render json: @friendship
@@ -29,7 +29,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.find_by(user1_id: params[:id])
+    friendship = Friendship.find_by(user1_id: params[:id]) || Friendship.find_by(user2_id: params[:id])
     friendship.destroy
     render json: friendship.user1_id
   end

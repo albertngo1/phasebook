@@ -43,7 +43,6 @@
 
 .pp-header-name {
   color: white;
-  cursor: pointer;
   font-size: 24px;
   letter-spacing:-0.12px;
   line-height:30px;
@@ -52,6 +51,10 @@
   position: relative;
   top: -20px;
   right: -200px;
+}
+
+.pp-header-name-txt {
+  cursor: pointer;
 }
 
 .pp-header-items-wrap {
@@ -327,4 +330,8 @@
 }
 .edit-intro-btn {
   margin-top: 5px;
+}
+
+.pp-posts-wrapper {
+  margin-top: 10px;
 }

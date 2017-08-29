@@ -43,25 +43,37 @@ class PostShowForm extends React.Component {
 
   render() {
     const { currentUser } = this.props
-        return(
-          <form onSubmit={this.handleSubmit} onKeyPress={this.handleEnterSubmit} className="pp-post-form">
-            <div className="mp-nf-create-post-wrap">
-              <FA className="mp-nf-pencil" name='pencil' />
-              <span className="mp-nf-create-post">Status</span>
-            </div>
-            <div className="mp-nf-post-text-wrap">
-              <Link to={`/users/${currentUser.id}`}/>
+    let form;
+      currentUser.active_friends.forEach( el => {
+        if (el.id == this.props.match.params.userId) {
+          form = (
+              <form onSubmit={this.handleSubmit} onKeyPress={this.handleEnterSubmit} className="pp-post-form">
+                <div className="mp-nf-create-post-wrap">
+                  <FA className="mp-nf-pencil" name='pencil' />
+                  <span className="mp-nf-create-post">Status</span>
+                </div>
+                <div className="mp-nf-post-text-wrap">
+                  <Link to={`/users/${currentUser.id}`}/>
 
-              <textarea
-                value={this.state.body}
-                onChange={this.update('body')}
-                className='pp-post-text'
-                placeholder={`What's on your mind?`}></textarea>
+                  <textarea
+                    value={this.state.body}
+                    onChange={this.update('body')}
+                    className='pp-post-text'
+                    placeholder={`What's on your mind?`}></textarea>
 
-              <button className='pp-post-form-btn'>Post</button>
-            </div>
-          </form>
-        )
+                  <button className='pp-post-form-btn'>Post</button>
+                </div>
+              </form>
+          )
+
+        }
+      })
+      if (form) {
+        return form;
+      } else {
+        return(<div></div>)    
+      }
+
   }
 
 }
