@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import FA from 'react-fontawesome';
-import { fetchAllUsers } from '../../actions/user_actions';
 
 class Search extends React.Component {
    constructor(props) {
@@ -13,10 +12,6 @@ class Search extends React.Component {
       }
       this.handleInput = this.handleInput.bind(this);
       this.searchResults = this.searchResults.bind(this);
-   }
-
-   componentDidMount() {
-      this.props.fetchAllUsers()
    }
 
    componentWillReceiveProps(nextProps) {
@@ -97,10 +92,4 @@ const mapStateToProps = state => {
    }
 }
 
-const mapDispatchToProps = dispatch => {
-   return {
-      fetchAllUsers: () => dispatch(fetchAllUsers()),
-   }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search))
+export default withRouter(connect(mapStateToProps, null)(Search))

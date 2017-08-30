@@ -14,19 +14,34 @@
   justify-content: flex-start;
   align-items: center;
   height: 45px;
-  padding-left: 10px;
+  padding-left: 4px;
 }
 .pp-fl-friends-lbl{
   color: rgb(29, 33, 41);
   font-size: 16px;
   letter-spacing: -0.12px;
   line-height: 20px;
+  margin-left: 11px;
 }
 .pp-fl-friends-dot {
+  margin: 0 5px;
   color: rgb(144, 148, 156);
 }
 .pp-fl-friends-ct {
   color: rgb(144, 148, 156);
+}
+
+.pp-fl-friend-icon-wrapper {
+  background-color: rgb(250, 90, 229);
+  border-radius: 50%;
+  width: 29px;
+  height: 30px;
+}
+.pp-fl-friend-icon {
+  text-align: center;
+  margin-left: 4px;
+  margin-top: 8px;
+  filter: invert(100%);
 }
 
 
@@ -46,10 +61,10 @@
 .pp-fl-name {
   font-size: 12px;
   line-height: 16px;
-  // color: #fff;
-  color: black;
+  color: #fff;
   position: relative;
-  top: -15px;
+  top: -25px;
+  right: -5px;
   z-index: 2;
 }
 .pp-fl-img {
@@ -61,4 +76,26 @@
 
 .pp-fl-img-wrap {
   margin: 0 0px;
+}
+
+
+.pp-friend-request-button {
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  color: rgb(75, 79, 86);
+  font-size: 12px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background: rgb(246, 247, 249);
+  border: solid rgb(206, 208, 212) 1px;
+  text-decoration: none;
+  position: relative;
+  top: -25px;
+  right: -60px;
+}
+
+.pp-friend-request-button:hover {
+  background: #e4e4e4;
+  text-decoration: none;
 }

@@ -57,26 +57,26 @@ class FriendRequest extends React.Component {
       const sent_friend_requests = currentUser.sent_friend_requests || []
       if (currentUser.id == user.id) {
          return (
-            <button onClick={this.props.toggleEditIntroModal}>
+            <button className="pp-friend-request-button" onClick={this.props.toggleEditIntroModal}>
                Edit Profile
             </button>
          );
       } else {
          if (received_friend_requests.includes(user.id)) {
             return(
-               <button onClick={() => this.handleFriendAccept(user.id)}>Accept Friend Request</button>
+               <button className="pp-friend-request-button" onClick={() => this.handleFriendAccept(user.id)}>Accept Friend Request</button>
             )
          } else if (sent_friend_requests.includes(user.id)) {
             return(
-               <button onClick={() => this.handleCancelAddFriend(user.id)}>Sent Friend Request</button>
+               <button className="pp-friend-request-button" onClick={() => this.handleCancelAddFriend(user.id)}>Sent Friend Request</button>
             )
          } else if (this.isFriend()) {
             return(
-               <button onClick={() => this.handleFriendDelete(user.id)}>Friends</button>
+               <button className="pp-friend-request-button" onClick={() => this.handleFriendDelete(user.id)}>Friends</button>
             )
          } else {
             return(
-               <button onClick={() => this.handleFriendAdd(user.id)}>Add Friend</button>
+               <button className="pp-friend-request-button" onClick={() => this.handleFriendAdd(user.id)}>Add Friend</button>
             )
          }
       }

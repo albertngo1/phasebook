@@ -3,6 +3,7 @@ import {Link, withRouter } from 'react-router-dom';
 import * as shuffle from 'shuffle-array';
 import { connect } from 'react-redux';
 import { fetchUserFriends } from '../../actions/friendship_actions';
+import FA from 'react-fontawesome';
 
 class FriendList extends React.Component {
 
@@ -39,7 +40,7 @@ class FriendList extends React.Component {
         </li>
       )
     })
-    return friendList;
+    return friendList.slice(0, 9);
   }
 
 
@@ -49,16 +50,16 @@ class FriendList extends React.Component {
     return(
       <div className="pp-fl-ctn">
         <div className="pp-fl-header">
-          <div>
-
+          <div className="pp-fl-friend-icon-wrapper">
+           <FA size='lg' name="user-circle" className="pp-fl-friend-icon"/>
           </div>
           <span className="pp-fl-friends-lbl">
             Friends
           </span>
-          <span>
+          <span className="pp-fl-friends-dot">
             ·
           </span>
-          <span>
+          <span className="pp-fl-friends-ct">
             {Object.keys(friends).length}
           </span>
         </div>
