@@ -97,7 +97,6 @@ class NavBar extends React.Component {
             </div>
             <FA size='lg' name="commenting" className="navbar-notif"/>
             <FA size='lg' name="globe" className="navbar-notif"/>
-
                <div className="navbar-logout-dropdown" >
                   <FA size='lg' name="question-circle" className="navbar-help"/>
                   <div className="navbar-help-dropdown-content">
