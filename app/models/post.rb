@@ -30,6 +30,8 @@ class Post < ActiveRecord::Base
   foreign_key: :post_id,
   class_name: :Comment
 
+  has_many :likes, :as => :like_item
+
   def posted_date
     time_ago_in_words(self.created_at)
   end

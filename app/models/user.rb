@@ -23,6 +23,10 @@
 #  profile_pic_content_type :string
 #  profile_pic_file_size    :integer
 #  profile_pic_updated_at   :datetime
+#  cover_page_file_name     :string
+#  cover_page_content_type  :string
+#  cover_page_file_size     :integer
+#  cover_page_updated_at    :datetime
 #
 
 class User < ActiveRecord::Base

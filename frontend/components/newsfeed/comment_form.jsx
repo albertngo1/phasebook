@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
 import FA from 'react-fontawesome';
 import CommentIndex from './comment_index';
+import { createLike, removeLike } from '../../actions/like_actions';
 
 class CommentForm extends React.Component {
 
@@ -18,6 +19,24 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.focusCommentBody = this.focusCommentBody.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleUnlike = this.handleUnlike.bind(this);
+  }
+
+  handleLike(post) {
+    const like = {like_item_id: post.id, like_item_type: "Post"}
+    this.props.createLike(like);
+
+  }
+
+  handleUnlike(post) {
+    let likeId;
+    post.likes.forEach( like => {
+      if (like.liker_id == this.props.currentUser.id) {
+        likeId = like.id;
+      }
+    });
+    this.props.deleteLike(likeId);
   }
 
   handleSubmit(e) {
@@ -36,24 +55,48 @@ class CommentForm extends React.Component {
     return e => this.setState({[property]: e.currentTarget.value});
   }
 
+  renderLikeButton(post) {
+    const postLikes = post.likes.map( el => el.liker_id)
+      if (postLikes.includes(this.props.currentUser.id)) {
+        return(
+          <div onClick={() => this.handleUnlike(this.props.post)} className="mp-nf-pi-footer-item">
+            <FA name='thumbs-up' className='unlike' />
+            Unlike
+          </div>
+        )
+      } else {
+        return(
+          <div onClick={() => this.handleLike(this.props.post)} className="mp-nf-pi-footer-item">
+            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
+            Like
+          </div>
+        )
+      }
+    }
+
   render() {
     return(
       <div>
         <div className="mp-nf-pi-footer">
-          <div className="mp-nf-pi-footer-item">
-            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
-            Like
-          </div>
+
+          { !!this.props.post && this.renderLikeButton(this.props.post)}
           <div className="mp-nf-pi-footer-item" onClick={() => this.focusCommentBody(this.props.post)}>
             <FA name='comment' className='mp-nf-pi-footer-icon' />
             Comment
           </div>
-          <div className="mp-nf-pi-footer-item">
-            <FA name='mail-forward' className='mp-nf-pi-footer-icon' />
-            Share
-          </div>
         </div>
+        {this.props.post.likes.length === 0 ?
+          <div></div> :
+            <div className="like-post-wrap">
+              <div className="like-length-text">
+                {this.props.post.likes.length}
+              </div>
+              <FA name="thumbs-o-up" />
+            </div>
+          }
         <CommentIndex post={this.props.post} />
+
+
           <div className="comment-form-wrap">
             <img className="comment-img" src={this.props.currentUser.profile_pic} alt="profile-pic" />
             <form className="comment-form" onKeyPress={this.handleSubmit}>
@@ -81,6 +124,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createComment: comment => dispatch(createComment(comment)),
+  createLike: like => dispatch(createLike(like)),
+  deleteLike: likeId => dispatch(removeLike(likeId))
 });
 
 

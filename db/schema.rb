@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830162229) do
+ActiveRecord::Schema.define(version: 20170830201812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 20170830162229) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "liker_id"
-    t.string "like_item_type"
-    t.bigint "like_item_id"
+    t.integer "liker_id", null: false
+    t.string "like_item_type", null: false
+    t.bigint "like_item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["like_item_type", "like_item_id"], name: "index_likes_on_like_item_type_and_like_item_id"
+    t.index ["liker_id", "like_item_type", "like_item_id"], name: "index_likes_on_liker_id_and_like_item_type_and_like_item_id", unique: true
     t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
