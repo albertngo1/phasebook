@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   has_attached_file :profile_pic, default_url: "fbpic.jpg"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :cover_page, default_url: "default_cover_page.jpeg"
+  has_attached_file :cover_page, default_url: "airbase.jpg"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   has_many :posts, dependent: :destroy,
