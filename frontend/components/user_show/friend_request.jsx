@@ -23,13 +23,11 @@ class FriendRequest extends React.Component {
 
    handleFriendAccept(id) {
       this.props.acceptFriend(id)
-         .then(() => this.forceUpdate());
 
    }
 
    handleFriendDelete(id) {
       this.props.removeFriend(id)
-         .then(() => this.forceUpdate());
    }
 
    handleCancelAddFriend(id) {
@@ -38,8 +36,9 @@ class FriendRequest extends React.Component {
 
    isFriend() {
       const { currentUser } = this.props
+      const active_friends = currentUser.active_friends || [];
       let friendStatus;
-      currentUser.active_friends.forEach( el => {
+      active_friends.forEach( el => {
         if (el.id == this.props.match.params.userId) {
           friendStatus = true;
         }
@@ -54,6 +53,8 @@ class FriendRequest extends React.Component {
    friendRequest() {
       const currentUser = this.props.currentUser
       const user = this.props.user
+      const received_friend_requests = currentUser.received_friend_requests || []
+      const sent_friend_requests = currentUser.sent_friend_requests || []
       if (currentUser.id == user.id) {
          return (
             <button onClick={this.props.toggleEditIntroModal}>
@@ -61,11 +62,11 @@ class FriendRequest extends React.Component {
             </button>
          );
       } else {
-         if (currentUser.received_friend_requests.includes(user.id)) {
+         if (received_friend_requests.includes(user.id)) {
             return(
                <button onClick={() => this.handleFriendAccept(user.id)}>Accept Friend Request</button>
             )
-         } else if (currentUser.sent_friend_requests.includes(user.id)) {
+         } else if (sent_friend_requests.includes(user.id)) {
             return(
                <button onClick={() => this.handleCancelAddFriend(user.id)}>Sent Friend Request</button>
             )
@@ -101,6 +102,7 @@ class FriendRequest extends React.Component {
 
 
 const mapStateToProps = (state) => {
+   const  currentUser = state.session.currentUser || {};
    return {
       user: state.entities.user || {},
       currentUser: state.session.currentUser || {},

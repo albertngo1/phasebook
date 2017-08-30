@@ -43,8 +43,9 @@ class PostShowForm extends React.Component {
 
   render() {
     const { currentUser } = this.props
+    const active_friends = currentUser.active_friends || [];
     let form;
-      currentUser.active_friends.forEach( el => {
+      active_friends.forEach( el => {
         if (el.id == this.props.match.params.userId) {
           form = (
               <form onSubmit={this.handleSubmit} onKeyPress={this.handleEnterSubmit} className="pp-post-form">
@@ -71,7 +72,7 @@ class PostShowForm extends React.Component {
       if (form) {
         return form;
       } else {
-        return(<div></div>)    
+        return(<div></div>)
       }
 
   }

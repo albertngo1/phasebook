@@ -3,7 +3,7 @@ class Api::FriendshipsController < ApplicationController
   # friendship statuses => pending, active
 
   def index
-    @friendships = Friendship.where("status = 'pending' AND user2_id = ?", current_user.id).includes(:friender).includes(:friendee)
+    @friendships = User.find(params[:user_id]).active_friends
     render 'api/friendships/index'
   end
 

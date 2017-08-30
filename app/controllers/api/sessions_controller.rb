@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
     else
       render json: ["Invalid credentials, please try again"], status: 422
     end
-  end
+  end   
 
   def destroy
     if !current_user

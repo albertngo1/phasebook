@@ -44,7 +44,7 @@ class MainPage extends React.Component {
   filterPosts(posts) {
     if (this.props.currentUser && this.props.currentUser.active_friends) {
       let filteredPosts = [];
-      const friends = this.props.currentUser.active_friends
+      const friends = this.props.currentUser.active_friends || []
       posts.forEach(post => {
         if (post.receiver_id === this.props.currentUser.id) {
           filteredPosts.push(post);
@@ -59,7 +59,7 @@ class MainPage extends React.Component {
       });
       return filteredPosts;
     } else {
-      return {};
+      return [];
     }
   }
 

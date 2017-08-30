@@ -24,7 +24,6 @@ class UserShow extends React.Component {
       this.filterPosts = this.filterPosts.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
       this.sentPost = this.sentPost.bind(this);
-      this.friendList = this.friendList.bind(this);
    }
 
    filterPosts(posts) {
@@ -52,10 +51,6 @@ class UserShow extends React.Component {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
          this.props.requestSingleUser(nextProps.match.params.userId);
       }
-   }
-
-   friendList() {
-
    }
 
    viewOptions() {

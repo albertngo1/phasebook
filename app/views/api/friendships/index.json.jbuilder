@@ -1,5 +1,9 @@
-@friendships.each do |friendship|
-  json.set! friendship.id do
-    json.partial! 'api/friendships/friendship', friendship: friendship
+json.active_friends do
+  @friendships.each do |friend|
+    json.set!(friend.id) do
+      json.extract!(friend, :first_name, :last_name)
+      json.set! :profile_pic, asset_path(friend.profile_pic.url)
+      json.set! :cover_page, asset_path(friend.cover_page.url)
+    end
   end
 end
