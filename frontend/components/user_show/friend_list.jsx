@@ -2,82 +2,83 @@ import React from 'react';
 import {Link, withRouter } from 'react-router-dom';
 import * as shuffle from 'shuffle-array';
 import { connect } from 'react-redux';
-import { fetchAllUsers } from '../../actions/user_actions';
-import { selectAllUsers } from '../../util/selectors';
+import { fetchUserFriends } from '../../actions/friendship_actions';
 
 class FriendList extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.grabFriends = this.grabFriends.bind(this);
+    this.renderFriendList = this.renderFriendList.bind(this);
   }
-  grabFriends() {
-    let shuffledFriends;
-    const user = this.props.user;
-    if (Array.isArray(user.active_friends)) {
-      shuffledFriends = shuffle.default(user.active_friends);
-      shuffledFriends.map( friend => {
-        return(
-          <li key={`friend-${friend.id}`}>
-            <div>
-              {friend.profile_pic}
-              <div>
-                {friend.name}
-              </div>
-            </div>
-          </li>
-        )
-      });
+
+  componentDidMount() {
+    this.props.receiveUserFriends(this.props.match.params.userId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.userId !== nextProps.match.params.userId){
+       this.props.receiveUserFriends(nextProps.match.params.userId);
     }
-    return shuffledFriends;
   }
 
-
-
-
+  renderFriendList(friends) {
+    let friendList;
+    let users = friends
+    friendList = Object.keys(friends).map( id => {
+      return(
+        <li key={`friend-${id}`}>
+          <div className="pp-fl-img-wrap">
+            <Link to={`/users/${id}`}>
+              <figure className="pp-fl-img-fig">
+                <img className="pp-fl-img" src={users[id].profile_pic} />
+                <figcaption className="pp-fl-name">{users[id].first_name} {users[id].last_name}</figcaption>
+              </figure>
+            </Link>
+          </div>
+        </li>
+      )
+    })
+    return friendList;
+  }
 
 
 
   render() {
-      const { user } = this.props;
-      let friendCount;
-      let friendList;
-      if (Array.isArray(user.active_friends)) {
-        friendCount = user.active_friends.length;
-        friendList = user.active_friends;
-      } else {
-        friendCount = 0;
-        friendList = [];
-      }
-      return(
-        <div>
-          <div>Friends · {friendCount}</div>
-          <ul>
-            {friendList.map( friend => {
-                    return(
-                      <li key={`friend-${friend.id}`}>
-                        <div>
-                          <img src={this.props.users[friend.id]} />
-                          <div>
-                            {friend.first_name} {friend.last_name}
-                          </div>
-                        </div>
-                      </li>
-                    )
-                  })}
-          </ul>
+    const { friends } = this.props
+    return(
+      <div className="pp-fl-ctn">
+        <div className="pp-fl-header">
+          <div>
+
+          </div>
+          <span className="pp-fl-friends-lbl">
+            Friends
+          </span>
+          <span>
+            ·
+          </span>
+          <span>
+            {Object.keys(friends).length}
+          </span>
         </div>
-      )
-    }
+        <ul className="pp-fl-imgs-ctn">
+          {this.renderFriendList(friends)}
+        </ul>
+
+      </div>
+    )
+  }
 
 }
 
 const mapStateToProps = state => ({
-  users: selectAllUsers(state),
+  friends: state.entities.friendships.friends || {},
+  currentUser: state.session.currentUser,
 });
 
 const mapDispatchToProps = dispatch => ({
-})
+  receiveUserFriends: userId => dispatch(fetchUserFriends(userId)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendList)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendList))

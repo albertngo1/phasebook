@@ -1,1 +1,64 @@
-  
+.pp-fl-ctn {
+  margin-top: 15px;
+  height: 100%;
+  width: inherit;
+  background-color: #fff;
+  border: 1px solid rgb(218, 219, 221);
+  padding: 5px;
+}
+
+.pp-fl-header {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 45px;
+  padding-left: 10px;
+}
+.pp-fl-friends-lbl{
+  color: rgb(29, 33, 41);
+  font-size: 16px;
+  letter-spacing: -0.12px;
+  line-height: 20px;
+}
+.pp-fl-friends-dot {
+  color: rgb(144, 148, 156);
+}
+.pp-fl-friends-ct {
+  color: rgb(144, 148, 156);
+}
+
+
+.pp-fl-imgs-ctn {
+  display: flex;
+  flex-wrap: wrap;
+  width: 312px;
+}
+
+.pp-fl-img-fig {
+  position: relative;
+  width: 103px;
+  height: 103px;
+  padding-top: 2px;
+}
+
+.pp-fl-name {
+  font-size: 12px;
+  line-height: 16px;
+  // color: #fff;
+  color: black;
+  position: relative;
+  top: -15px;
+  z-index: 2;
+}
+.pp-fl-img {
+  cursor: pointer;
+  width: 101px;
+  height: 101px;
+  z-index: 1;
+}
+
+.pp-fl-img-wrap {
+  margin: 0 0px;
+}

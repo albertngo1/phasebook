@@ -4,6 +4,7 @@ class Api::FriendshipsController < ApplicationController
 
   def index
     @friendships = User.find(params[:user_id]).active_friends
+    @user = User.find(params[:user_id])
     render 'api/friendships/index'
   end
 
@@ -19,7 +20,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(user1_id: params[:id]) || Friendship.find_by(user2_id: params[:id])
+    @friendship = Friendship.find_by(user1_id: params[:id], user2_id: current_user.id) || Friendship.find_by(user1_id: current_user.id, user2_id: params[:id])
     @friendship[:status] = "active"
     if @friendship.save
       render json: @friendship

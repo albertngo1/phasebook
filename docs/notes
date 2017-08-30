@@ -32,3 +32,7 @@ fix the hover on the help notification
 change pages scrolls to bottom of page/ doesnt reset to top of page
 
 i can post on peoples walls if they arent my friend
+
+accept friend request changes to add friend instead of friend -> friend on refresh
+
+delete from "friends" to not friend doesnt change presentation -> add friend on refresh

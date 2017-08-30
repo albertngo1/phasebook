@@ -20,3 +20,10 @@ export const deleteFriendship = friendshipId => {
     method: 'DELETE',
   });
 };
+
+export const fetchUserFriends = userId => {
+  return $.ajax({
+    url: `api/users/${userId}/friendships`,
+    method: 'GET',
+  });
+};

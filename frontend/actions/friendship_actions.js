@@ -4,6 +4,7 @@ export const DELETE_FRIENDSHIP = "DELETE_FRIENDSHIP";
 export const RECEIVE_FRIENDSHIP = "RECEIVE_FRIENDSHIP";
 export const ADD_FRIENDSHIP = "ADD_FRIENDSHIP";
 export const CANCEL_FRIENDSHIP = "CANCEL_FRIENDSHIP";
+export const RECEIVE_USER_FRIENDS = "RECEIVE_USER_FRIENDS";
 
 export const removeFriendship = friendshipId => ({
   type: DELETE_FRIENDSHIP,
@@ -24,6 +25,16 @@ export const cancelFriendship = friendshipId => ({
   type: CANCEL_FRIENDSHIP,
   friendshipId
 })
+
+export const receiveUserFriends = (friends) => ({
+  type: RECEIVE_USER_FRIENDS,
+  friends,
+})
+
+export const fetchUserFriends = (userId) => dispatch => {
+  return APIFriendshipUtil.fetchUserFriends(userId)
+    .then(friends => dispatch(receiveUserFriends(friends)))
+}
 
 export const cancelRemoveFriendship = friendshipId => dispatch => {
   return APIFriendshipUtil.deleteFriendship(friendshipId)
