@@ -16,12 +16,6 @@ class NavBar extends React.Component {
       this.renderFriendRequests = this.renderFriendRequests.bind(this);
    }
 
-    componentWillReceiveProps(nextProps) {
-       if (this.props.match.params.userId !== nextProps.match.params.userId){
-          this.props.fetchAllUsers();
-       }
-    }
-
 
    handleClick() {
      this.props.logout()
@@ -88,8 +82,6 @@ class NavBar extends React.Component {
                   {this.renderFriendRequests()}
                </div>
             </div>
-            <FA size='lg' name="commenting" className="navbar-notif"/>
-            <FA size='lg' name="globe" className="navbar-notif"/>
                <div className="navbar-logout-dropdown" >
                   <FA size='lg' name="question-circle" className="navbar-help"/>
                   <div className="navbar-help-dropdown-content">
@@ -97,12 +89,8 @@ class NavBar extends React.Component {
                   </div>
                </div>
 
-               <div className="navbar-logout-dropdown" onClick={this.handleClick}>
-                  <FA size='lg' name="sort-desc" className="navbar-logout" />
-                     <div onClick={this.handleClick} className="navbar-logout-dropdown-content">
-                        <p>Logout</p>
-                     </div>
-               </div>
+               <button onClick={this.handleClick} className="navbar-logout-btn">Logout</button>
+
 
 
          </div>
@@ -128,9 +116,23 @@ const mapDispatchToProps = dispatch => {
       fetchFriendRequests: (id) => dispatch(fetchFriendRequests(id)),
       updateFriendship: friendshipId => dispatch(updateFriendship(friendshipId)),
       deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
-      fetchAllUsers: () => dispatch(fetchAllUsers()),
    }
 }
 
 export default withRouter(connect(mapStateToProps,
    mapDispatchToProps)(NavBar))
+
+
+
+   // <FA size='lg' name="commenting" className="navbar-notif"/>
+   // <FA size='lg' name="globe" className="navbar-notif"/>
+
+
+
+
+   // <div className="navbar-logout-dropdown" onClick={this.handleClick}>
+   //    <FA size='lg' name="sort-desc" className="navbar-logout" />
+   //       <div onClick={this.handleClick} className="navbar-logout-dropdown-content">
+   //          <p>Logout</p>
+   //       </div>
+   // </div>

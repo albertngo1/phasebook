@@ -9,16 +9,12 @@ class Search extends React.Component {
       super(props);
 
       this.state = {
-         input: ""
+         input: "",
+         visible: true
       }
       this.handleInput = this.handleInput.bind(this);
       this.searchResults = this.searchResults.bind(this);
-   }
-
-   componentWillReceiveProps(nextProps) {
-      if (this.props.match.params.userId !== nextProps.match.params.userId){
-        this.setState({input: ""});
-      }
+      this.handleClick = this.handleClick.bind(this);
    }
 
 
@@ -29,14 +25,19 @@ class Search extends React.Component {
       this.props.performSearch(this.state.input);
    }
 
-   searchResults() {
+   handleClick(e) {
+      this.setState({input: ""});
+   }
 
-      if (Object.keys(this.props.users).length) {
+   searchResults() {
+      if (this.state.input === "") {
+         return null;
+      } else if (Object.keys(this.props.users).length) {
          const users = this.props.users
          return Object.keys(this.props.users).map( el => {
             return (
                <Link onClick={this.handleClick} to={`/users/${el}`} key={`search-${el}`}>
-                  <div className="navbar-search-el">
+                  <div  className="navbar-search-el">
 
                      {users[el].first_name} {users[el].last_name}
                   </div>
@@ -44,7 +45,7 @@ class Search extends React.Component {
             )
          })
       } else {
-         <div>No Results.</div>
+         return null;
       }
    }
 

@@ -34,7 +34,7 @@ class CommentIndex extends React.Component {
   }
 
   handleLike(comment) {
-    const like = {like_item_id: comment.id, like_item_type: "Post"}
+    const like = {like_item_id: comment.id, like_item_type: "Comment"}
     this.props.createLike(like);
 
   }
@@ -53,15 +53,13 @@ class CommentIndex extends React.Component {
     const commentLikes = comment.likes.map( el => el.liker_id)
       if (commentLikes.includes(this.props.currentUser.id)) {
         return(
-          <div onClick={() => this.handleUnlike(comment)} className="mp-nf-pi-footer-item">
-            <FA name='thumbs-up' className='unlike' />
-            Unlike
+          <div onClick={() => this.handleUnlike(comment)} className="comment-like">
+            Like
           </div>
         )
       } else {
         return(
-          <div onClick={() => this.handleLike(comment)} className="mp-nf-pi-footer-item">
-            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
+          <div onClick={() => this.handleLike(comment)} className="comment-not-liked">
             Like
           </div>
         )
@@ -89,19 +87,21 @@ class CommentIndex extends React.Component {
                       <span>{comment.body}</span>
                     </div>
                   </div>
-                  <div className="comment-date">
-                    {comment.posted_date}
-                  </div>
-                  { !!comment && this.renderLikeButton(comment)}
-                  {comment.likes.length === 0 ?
-                    <div></div> :
-                      <div className="like-post-wrap">
-                        <div className="like-length-text">
-                          {comment.likes.length}
+                  <div className="comment-date-like-wrap">
+                    { !!comment && this.renderLikeButton(comment)}
+                    {comment.likes.length === 0 ?
+                      <div></div> :
+                        <div className="like-post-wrap">
+                          <div className="like-length-text">
+                            {comment.likes.length}
+                          </div>
+                          <FA name="thumbs-o-up" />
                         </div>
-                        <FA name="thumbs-o-up" />
+                      }
+                      <div className="comment-date">
+                        {comment.posted_date}
                       </div>
-                    }
+                  </div>
                 </div>
               </div>
             </li>

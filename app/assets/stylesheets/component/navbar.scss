@@ -197,3 +197,18 @@
 .navbar-search-hidden {
   display: none;
 }
+
+.navbar-logout-btn {
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  color: #ffffff;
+  margin-left: 15px;
+  background: #405D9A;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.navbar-logout-btn:hover {
+  filter: invert(5%);
+}

@@ -98,3 +98,34 @@
   display: flex;
   cursor: default;
 }
+
+.comment-date-like-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.comment-not-liked {
+  color:rgb(54, 88, 153);
+  cursor:pointer;
+  font-size:12px;
+  outline-color:rgb(54, 88, 153);
+  outline-style:none;
+  outline-width:0px;
+  text-decoration-color:rgb(54, 88, 153);
+}
+
+.comment-like {
+  color:rgb(88, 144, 255);
+  cursor:pointer;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:-0.12px;line-height:16.08px;
+  outline-color:rgb(88, 144, 255);
+    outline-style:none;
+  outline-width:0px;text-decoration-color:rgb(88, 144, 255);
+}
+
+.comment-like:hover .comment-not-liked:hover {
+  text-decoration: underline;
+}
