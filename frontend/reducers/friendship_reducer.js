@@ -1,5 +1,6 @@
 import { RECEIVE_USER_FRIENDS,
-RECEIVE_FRIENDSHIP } from '../actions/friendship_actions';
+RECEIVE_FRIENDSHIP, RECEIVE_FRIEND_REQUESTS } from '../actions/friendship_actions';
+import _ from 'lodash'
 
 const friendshipReducer = (state = {}, action) => {
    Object.freeze(state);
@@ -9,6 +10,8 @@ const friendshipReducer = (state = {}, action) => {
       return Object.assign({}, state, {friends: action.friends});
      case RECEIVE_FRIENDSHIP:
       return Object.assign({}, state, action.friendship)
+     case RECEIVE_FRIEND_REQUESTS:
+      return _.merge({friendRequests: action.friendRequests})
     default:
        return state;
    }

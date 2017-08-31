@@ -1,4 +1,3 @@
-
 @friendships.each do |friend|
   next if friend.id == @user.id
   json.set!(friend.id) do

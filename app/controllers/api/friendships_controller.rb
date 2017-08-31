@@ -8,6 +8,13 @@ class Api::FriendshipsController < ApplicationController
     render 'api/friendships/index'
   end
 
+  def current_user_friend_requests
+    @friend_requests = Friendship
+      .where("user2_id = ?", current_user.id)
+      .where("status = ?", 'pending').includes(:friender)
+    render 'api/friendships/friend_requests'
+  end
+
   def create
     @friendship = Friendship.new(friendship_params)
     if @friendship.save

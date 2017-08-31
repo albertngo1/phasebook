@@ -16,6 +16,12 @@ class NavBar extends React.Component {
       this.renderFriendRequests = this.renderFriendRequests.bind(this);
    }
 
+   componentDidMount() {
+      this.props.fetchFriendRequests();
+   }
+
+
+
 
    handleClick() {
      this.props.logout()
@@ -30,14 +36,15 @@ class NavBar extends React.Component {
    }
 
    renderFriendRequests() {
-      if (this.props.users && this.props.friendRequests) {
+      const users = this.props.friendReqUsers;
+      if ((Object.keys(users).length > 0) && (Object.keys(this.props.friendRequests).length > 0)) {
          const friendReqMap = this.props.friendRequests.map( id => {
             return(
                <div className="navbar-fr-wrap" key={`friendReq-${id}`}>
                   <div className="navbar-fr-name">
-                     <Link to={`/users/${this.props.users[id].id}`}>
+                     <Link to={`/users/${users[id].id}`}>
                         <div>
-                           {this.props.users[id].first_name} {this.props.users[id].last_name}
+                           {users[id].first_name} {users[id].last_name}
                         </div>
                      </Link>
                   </div>
@@ -104,18 +111,17 @@ const mapStateToProps = state => {
    const  currentUser = state.session.currentUser || {};
    return {
       currentUser: currentUser,
-      users: state.entities.user.search,
-      friendRequests: currentUser.received_friend_requests,
-      friendships: state.session.friendships || {},
+      friendRequests: currentUser.received_friend_requests || {},
+      friendReqUsers: state.entities.friendships.friendRequests || {},
    }
 }
 
 const mapDispatchToProps = dispatch => {
    return {
       logout: () => dispatch(logout()),
-      fetchFriendRequests: (id) => dispatch(fetchFriendRequests(id)),
       updateFriendship: friendshipId => dispatch(updateFriendship(friendshipId)),
       deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
+      fetchFriendRequests: () => dispatch(fetchFriendRequests()),
    }
 }
 

@@ -27,3 +27,10 @@ export const fetchUserFriends = userId => {
     method: 'GET',
   });
 };
+
+export const fetchFriendRequests = () => {
+  return $.ajax({
+    url: '/api/friendships/friendrequests',
+    method: 'GET',
+  })
+}
