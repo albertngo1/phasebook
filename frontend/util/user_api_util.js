@@ -17,6 +17,6 @@ export const fetchSearchUsers = (searchString) => {
   return $.ajax({
     method: 'GET',
     url: `/api/users`,
-    data: {search: searchString} 
+    data: {search: searchString}
   })
 }

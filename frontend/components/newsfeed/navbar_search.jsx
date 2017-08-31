@@ -20,8 +20,9 @@ class Search extends React.Component {
 
 
    handleInput(e) {
-      this.setState({input: e.currentTarget.value});
-      this.props.performSearch(this.state.input);
+      this.setState({input: e.currentTarget.value},
+          () => this.props.performSearch(this.state.input));
+
    }
 
    handleClick(e) {

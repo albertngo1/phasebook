@@ -12,6 +12,7 @@ const initialState = {
 
 const uiReducer = (state = initialState, action) => {
   Object.freeze(state);
+  let newState;
   switch(action.type) {
     case TOGGLE_POST_MODAL:
       return Object.assign({}, state, {togglePostModal: !state.togglePostModal});
@@ -20,7 +21,9 @@ const uiReducer = (state = initialState, action) => {
     case TOGGLE_EDIT_INTRO_MODAL:
       return Object.assign({}, state, {toggleEditIntroModal: !state.toggleEditIntroModal})
     case RECEIVE_SEARCH:
-      return _.merge({}, state, {search: action.users})
+      newState = _.merge({}, state);
+      newState.search = action.users;
+      return newState;
     default:
       return state;
   }
