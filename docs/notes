@@ -35,3 +35,5 @@ i can post on peoples walls if they arent my friend
 accept friend request changes to add friend instead of friend -> friend on refresh
 
 delete from "friends" to not friend doesnt change presentation -> add friend on refresh
+
+add likes to comments

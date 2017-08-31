@@ -92,7 +92,9 @@ class User < ActiveRecord::Base
       .pluck(:user1_id)
   end
 
-
+  def self.search(search_string)
+    User.where("LOWER(CONCAT(first_name, last_name)) LIKE LOWER('%#{search_string}%') AND ? != '' ", search_string)
+  end
 
 
 

@@ -10,12 +10,26 @@ class PostModal extends React.Component {
     super(props);
     this.state = {
       body: "",
-      author_id: this.props.currentUser.id,
+      imageFile: null,
+      imageUrl: null,
       receiver_id: this.props.currentUser.id
     };
     this.handleEnterSubmit = this.handleEnterSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.updateFile = this.updateFile.bind(this);
+  }
+
+  updateFile(e) {
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    }
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   handleEnterSubmit(e) {
@@ -63,6 +77,9 @@ class PostModal extends React.Component {
               <FA className="mp-nf-pencil" name='pencil' />
               <span className="mp-nf-create-post">Create a Post</span>
 
+            </div>
+            <div>
+              <input type="file" onChange={this.updateFile} />
             </div>
 
             <div className="mp-nf-post-text-wrap">

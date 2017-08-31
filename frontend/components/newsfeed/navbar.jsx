@@ -4,7 +4,6 @@ import { withRouter, Link } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 import Search from './navbar_search';
 import FA from 'react-fontawesome';
-import { fetchAllUsers } from '../../actions/user_actions';
 import { updateFriendship, deleteFriendship, fetchFriendRequests } from '../../actions/friendship_actions';
 
 class NavBar extends React.Component {
@@ -16,12 +15,6 @@ class NavBar extends React.Component {
       this.handleDenyFriend = this.handleDenyFriend.bind(this);
       this.renderFriendRequests = this.renderFriendRequests.bind(this);
    }
-
-
-
-    componentDidMount() {
-       this.props.fetchAllUsers();
-    }
 
     componentWillReceiveProps(nextProps) {
        if (this.props.match.params.userId !== nextProps.match.params.userId){

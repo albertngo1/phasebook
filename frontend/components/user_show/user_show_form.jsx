@@ -20,8 +20,7 @@ class PostShowForm extends React.Component {
   handleEnterSubmit(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      const post = Object.assign({}, this.state, {receiver_id: this.props.user.id,
-      author_id: this.props.currentUser.id});
+      const post = Object.assign({}, this.state, {receiver_id: this.props.user.id});
       this.props.createPost(post).then(
         () => this.setState( {body: ""})
       )
@@ -30,8 +29,7 @@ class PostShowForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const post = Object.assign({}, this.state, {receiver_id: this.props.user.id,
-          author_id: this.props.currentUser.id});
+    const post = Object.assign({}, this.state, {receiver_id: this.props.user.id});
     this.props.createPost(post).then(
       () => this.setState( {body: ""})
     );

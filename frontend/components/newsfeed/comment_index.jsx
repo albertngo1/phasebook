@@ -4,6 +4,8 @@ import {selectPostComments} from '../../util/selectors';
 import {fetchPostComments} from '../../actions/comment_actions';
 import { Link } from 'react-router-dom';
 import FA from 'react-fontawesome';
+import { createCommentLike, removeCommentLike } from '../../actions/like_actions';
+
 
 class CommentIndex extends React.Component {
 
@@ -31,6 +33,41 @@ class CommentIndex extends React.Component {
     return filteredComments;
   }
 
+  handleLike(comment) {
+    const like = {like_item_id: comment.id, like_item_type: "Post"}
+    this.props.createLike(like);
+
+  }
+
+  handleUnlike(comment) {
+    let likeId;
+    comment.likes.forEach( like => {
+      if (like.liker_id == this.props.currentUser.id) {
+        likeId = like.id;
+      }
+    });
+    this.props.deleteLike(likeId);
+  }
+
+  renderLikeButton(comment) {
+    const commentLikes = comment.likes.map( el => el.liker_id)
+      if (commentLikes.includes(this.props.currentUser.id)) {
+        return(
+          <div onClick={() => this.handleUnlike(comment)} className="mp-nf-pi-footer-item">
+            <FA name='thumbs-up' className='unlike' />
+            Unlike
+          </div>
+        )
+      } else {
+        return(
+          <div onClick={() => this.handleLike(comment)} className="mp-nf-pi-footer-item">
+            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
+            Like
+          </div>
+        )
+      }
+    }
+
   render() {
     const {post, currentUser, comments} = this.props
     const filteredComments = this.filteredComments(comments);
@@ -55,6 +92,16 @@ class CommentIndex extends React.Component {
                   <div className="comment-date">
                     {comment.posted_date}
                   </div>
+                  { !!comment && this.renderLikeButton(comment)}
+                  {comment.likes.length === 0 ?
+                    <div></div> :
+                      <div className="like-post-wrap">
+                        <div className="like-length-text">
+                          {comment.likes.length}
+                        </div>
+                        <FA name="thumbs-o-up" />
+                      </div>
+                    }
                 </div>
               </div>
             </li>
@@ -75,6 +122,8 @@ const mapStateToProps = (state, {post})=> ({
 const mapDispatchToProps = dispatch => ({
   fetchPostComments: postId => dispatch(fetchPostComments(postId)),
   deleteComment: commentId => dispatch(deleteComment(commentId)),
+  createLike: like => dispatch(createCommentLike(like)),
+  deleteLike: likeId => dispatch(removeCommentLike(likeId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentIndex)

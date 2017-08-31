@@ -13,9 +13,10 @@ export const updateUser = user => {
   })
 }
 
-export const fetchAllUsers = () => {
+export const fetchSearchUsers = (searchString) => {
   return $.ajax({
     method: 'GET',
     url: `/api/users`,
+    data: {search: searchString} 
   })
 }

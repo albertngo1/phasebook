@@ -1,7 +1,7 @@
 .main-page-ad {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 20px;
   position: fixed;
   width:400px;
@@ -12,7 +12,6 @@
 
 @media all and (max-width: 1150px) {
   .main-page-ad {
-    // position: relative;
     display: none;
   }
 }
@@ -50,6 +49,11 @@
   text-indent: 30px;
 }
 
+.ad-github-pic {
+  width: 300px;
+  height: 200px;
+}
+
 .ad-space-1-wrap {
   background-color: white;
   width: 300px;
@@ -61,7 +65,42 @@
   justify-content: space-around;
   border: 1px solid #dadbdd;
 }
+.ad-sponsored {
+  color: rgb(144, 148, 156);
+  font-weight: bolder;
+}
 .ad-space-1a label {
   font-size: 12px;
   text-align: center;
+  text-align: center;
+  cursor: pointer;
+}
+.ad-space-1a label:hover {
+  text-decoration: underline;
+}
+.ad-airbase {
+  width: inherit;
+  height: inherit;
+}
+.ad-airbase-img {
+  height: auto;
+}
+
+.ad-space-1b label {
+  font-size: 12px;
+  text-align: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ad-space-1b label:hover {
+  text-decoration: underline;
+}
+
+.ad-space-1a {
+  height: 50%;
+}
+
+.ad-space-1b {
+  height: 50%;
 }

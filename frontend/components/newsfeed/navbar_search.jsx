@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import FA from 'react-fontawesome';
+import { fetchSearchUsers } from '../../actions/user_actions';
 
 class Search extends React.Component {
    constructor(props) {
@@ -21,44 +22,30 @@ class Search extends React.Component {
    }
 
 
+
    handleInput(e) {
+      e.preventDefault();
       this.setState({input: e.currentTarget.value});
+      this.props.performSearch(this.state.input);
    }
 
-   searchResults(users) {
-      let results = []
-      if (this.state.input.length === 0) {
-         return null;
+   searchResults() {
+
+      if (Object.keys(this.props.users).length) {
+         const users = this.props.users
+         return Object.keys(this.props.users).map( el => {
+            return (
+               <Link onClick={this.handleClick} to={`/users/${el}`} key={`search-${el}`}>
+                  <div className="navbar-search-el">
+
+                     {users[el].first_name} {users[el].last_name}
+                  </div>
+               </Link>
+            )
+         })
+      } else {
+         <div>No Results.</div>
       }
-      Object.keys(users).forEach( id => {
-         let firstNameSearch = users[id].first_name.slice(0, this.state.input.length).toLowerCase()
-         if (firstNameSearch === this.state.input.toLowerCase() && !results.includes(users[id])) {
-            results.push(users[id]);
-         }
-         let lastNameSearch = users[id].last_name.slice(0, this.state.input.length).toLowerCase()
-         if (lastNameSearch === this.state.input.toLowerCase() && !results.includes(users[id])) {
-            results.push(users[id]);
-         }
-
-         let fullName = firstNameSearch + " " + lastNameSearch;
-         if (fullName === this.state.input.toLowerCase()) {
-            results.push(users[id]);
-         }
-      });
-
-      if (results.length === 0) {
-         return null;
-      }
-      return results.map( el => {
-         return (
-            <Link onClick={this.handleClick} to={`/users/${el.id}`} key={`search-${el.id}`}>
-            <div className="navbar-search-el">
-
-                  {el.first_name} {el.last_name}
-            </div>
-            </Link>
-         )
-      })
    }
 
 
@@ -75,9 +62,9 @@ class Search extends React.Component {
                onChange={this.handleInput}
                value={this.state.input}/>
             <FA name="search" className="navbar-search-btn" />
-               <div className={this.searchResults(this.props.users) ? "navbar-search-dropdown" : "navbar-search-hidden"}>
+               <div className={this.searchResults() ? "navbar-search-dropdown" : "navbar-search-hidden"}>
                   <p>Recent Searches</p>
-                  {this.searchResults(this.props.users)}
+                  {this.searchResults()}
                </div>
          </div>
       )
@@ -88,8 +75,11 @@ class Search extends React.Component {
 const mapStateToProps = state => {
    return {
       currentUser: state.session.currentUser || {},
-      users: state.entities.user.search || {}
+      users: state.entities.search
    }
 }
+const mapDispatchToProps = dispatch => ({
+   performSearch: searchString => dispatch(fetchSearchUsers(searchString)),
+});
 
-export default withRouter(connect(mapStateToProps, null)(Search))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search))
