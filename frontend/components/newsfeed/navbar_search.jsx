@@ -20,7 +20,6 @@ class Search extends React.Component {
 
 
    handleInput(e) {
-      e.preventDefault();
       this.setState({input: e.currentTarget.value});
       this.props.performSearch(this.state.input);
    }
@@ -76,7 +75,7 @@ class Search extends React.Component {
 const mapStateToProps = state => {
    return {
       currentUser: state.session.currentUser || {},
-      users: state.entities.search
+      users: state.ui.search
    }
 }
 const mapDispatchToProps = dispatch => ({
