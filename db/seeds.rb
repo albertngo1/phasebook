@@ -46,12 +46,19 @@ nate_user = User.create(first_name: "Nate",
 gender: "male", introduction: "I play DOTA. SingSing is the best.", profile_pic: "https://s3.us-east-2.amazonaws.com/phasebook-dev/1267113_2410091968797_1981880891_o.jpg",
 cover_page: "https://s3.us-east-2.amazonaws.com/phasebook-dev/steamworkshop_webupload_previewfile_304424164_preview.jpg")
 
-nate_user = User.create(first_name: "Musa",
+musa_user = User.create(first_name: "Musa",
  last_name: "Raza", email: "musaraza@gmail.com",
   birth_day: 30, birth_month: 9, birth_year: 1989,
    password: "password", education: "University of Michigan", current_city: "New York, NY", hometown: "Pakistan",
 gender: "male", introduction: "Sup dawg", profile_pic: "https://s3.us-east-2.amazonaws.com/phasebook-dev/12573224_10153855515144629_1818449245728761144_n.jpg",
 cover_page: "https://s3.us-east-2.amazonaws.com/phasebook-dev/19275043_10158768068625570_3351356088465485650_n.jpg")
+
+abbas_user = User.create(first_name: "Abbas",
+ last_name: "Soloki", email: "abbassoloki@gmail.com",
+  birth_day: 30, birth_month: 9, birth_year: 1989,
+   password: "password", current_city: "New York, NY", hometown: "New Jersey",
+gender: "male", introduction: "I like frozen yogurt", profile_pic: "https://s3.us-east-2.amazonaws.com/phasebook-dev/Abbas.jpeg",
+cover_page: "https://s3.us-east-2.amazonaws.com/phasebook-dev/o-FROZEN-YOGURT-TOPPINGS-facebook.jpg")
 
 
 
@@ -63,6 +70,7 @@ albert_post2 = Post.create(body: "My second post", author_id: albert_user.id, re
 kenneth_post1 = Post.create(body: "SZECHUAN TERIYAKI SAUCE", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
 kenneth_post2 = Post.create(body: "Just a reminder that OKC had three budding MVPs at one point.", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
 kenneth_post3 = Post.create(body: "ORACLE ARENA IS GONNA BE LITTTT 🏀🏀🏀🔥🔥🔥", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
+kenneth_post4 = Post.create(body: "what are you doing tonight? wanna come over and eat some ramen?", author_id: kenneth_user.id, receiver_id: albert_user.id)
 andy_post1 = Post.create(body: "anyone know where to buy handball gloves besides online??", author_id: andy_user.id, receiver_id: andy_user.id)
 andy_post2 = Post.create(body: "please, a moment of silence for the pen I just lost", author_id: andy_user.id, receiver_id: andy_user.id)
 andy_post2 = Post.create(body: "1,000,000 / 4,000 = 256
@@ -73,10 +81,117 @@ jonathan_post3 = Post.create(body: "Happy birthday Andrea Tsao! It has been so c
 nate_post1 = Post.create(body: ":)", author_id: nate_user.id, receiver_id: nate_user.id)
 nate_post2 = Post.create(body: ":)", author_id: nate_user.id, receiver_id: nate_user.id)
 nate_post3 = Post.create(body: ":)", author_id: nate_user.id, receiver_id: nate_user.id)
+nate_post4 = Post.create(body: "yo you wanna run a game of dota tonight? ill support you", author_id: nate_user.id, receiver_id: kenneth_user.id)
+musa_post1 = Post.create(body: "hello all my name is musa and i hail from pakistan. i like cricket", author_id: musa_user.id, receiver_id: musa_user.id)
+musa_post2 = Post.create(body: "gone with the wind is my favorite movie", author_id: musa_user.id, receiver_id: musa_user.id)
+abbas_post1 = Post.create(body: "i'm sick", author_id: abbas_user.id, receiver_id: abbas_user.id)
+abbas_post2 = Post.create(body: "i like frozen yogurt", author_id: abbas_user.id, receiver_id: abbas_user.id)
+
+kenneth_comment1 = Comment.create(body: "LOL", author_id: kenneth_user.id, post_id: andy_post2.id)
+kenneth_comment2 = Comment.create(body: "haha that sucks man", author_id: kenneth_user.id, post_id: jonathan_post1.id)
+kenneth_comment3 = Comment.create(body: "my first comment LOL XP", author_id: kenneth_user.id, post_id: albert_post1.id)
+
+jonathan_comment1 = Comment.create(body: "go golden state lol, that's my hometown brah", author_id: jonathan_user.id, post_id: kenneth_post3.id)
+jonathan_comment2 = Comment.create(body: "yeahh im down lol lets do this", author_id: jonathan_user.id, post_id: kenneth_post4.id)
+
+andy_comment1 = Comment.create(body: "lol lets play league brah", author_id: andy_user.id, post_id: abbas_post1.id)
+andy_comment2 = Comment.create(body: "happy birthday :]", author_id: andy_user.id, post_id: jonathan_post3.id)
+
+abbas_comment1 = Comment.create(body: "hello my middle eastern brother", author_id: abbas_user.id, post_id: musa_post1.id)
+
+
+Like.create(liker_id: andy_user.id, like_item_id: kenneth_post1.id, like_item_type: "Post")
+Like.create(liker_id: andy_user.id, like_item_id: kenneth_post2.id, like_item_type: "Post")
+Like.create(liker_id: andy_user.id, like_item_id: kenneth_post3.id, like_item_type: "Post")
+Like.create(liker_id: andy_user.id, like_item_id: kenneth_post4.id, like_item_type: "Post")
+Like.create(liker_id: andy_user.id, like_item_id: abbas_comment1.id, like_item_type: "Comment")
+Like.create(liker_id: andy_user.id, like_item_id: andy_comment1.id, like_item_type: "Comment")
+Like.create(liker_id: andy_user.id, like_item_id: jonathan_comment2.id, like_item_type: "Comment")
+
+
+
+
+
 
 
 
 albert_kenneth_friend = Friendship.create(user1_id: albert_user.id, user2_id: kenneth_user.id, status: "active")
+albert_jonathan_friend = Friendship.create(user1_id: albert_user.id, user2_id: jonathan_user.id, status: "active")
+albert_musa_friend = Friendship.create(user1_id: albert_user.id, user2_id: musa_user.id, status: "active")
+albert_abbas_friend = Friendship.create(user1_id: albert_user.id, user2_id: abbas_user.id, status: "active")
+
+kenneth_andy_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: andy_user.id, status: "active")
+kenneth_jonathan_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: jonathan_user.id, status: "active")
+kenneth_musa_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: musa_user.id, status: "active")
+kenneth_nate_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: nate_user.id, status: "active")
+
+andy_jonathan_friend = Friendship.create(user1_id: andy_user.id, user2_id: jonathan_user.id, status: "active")
+andy_nate_friend = Friendship.create(user1_id: andy_user.id, user2_id: nate_user.id, status: "active")
+andy_abbas_friend = Friendship.create(user1_id: andy_user.id, user2_id: abbas_user.id, status: "active")
+
+musa_abbas_friend = Friendship.create(user1_id: musa_user.id, user2_id: abbas_user.id, status: "active")
+
+
 andy_albert_friend = Friendship.create(user1_id: andy_user.id, user2_id: albert_user.id, status: "pending")
 nate_albert_friend = Friendship.create(user1_id: nate_user.id, user2_id: albert_user.id, status: "pending")
-albert_jonathan_friend = Friendship.create(user1_id: albert_user.id, user2_id: jonathan_user.id, status: "pending")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##

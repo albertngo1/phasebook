@@ -114,6 +114,7 @@
   outline-style:none;
   outline-width:0px;
   text-decoration-color:rgb(54, 88, 153);
+  user-select: none;
 }
 
 .comment-like {
@@ -125,6 +126,7 @@
   outline-color:rgb(88, 144, 255);
   outline-width:0px;
   text-decoration-color:rgb(88, 144, 255);
+  user-select: none;
 }
 
 .comment-like:hover .comment-not-liked:hover {

@@ -144,7 +144,7 @@
 }
 
 .mp-nf-post-form-modal-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -229,7 +229,7 @@
 }
 
 .mp-nf-pi-name-wrap {
-  width: 175px;
+  width: 225px;
   display: flex;
   justify-content: space-between;
 }
@@ -334,7 +334,7 @@
   margin-left: 300px;
 }
 .mp-nf-pi-dropdown-wrap2 {
-  margin-left: 205px;
+  margin-left: 300px;
 }
 
 .mp-nf-pi-dropdown-content {

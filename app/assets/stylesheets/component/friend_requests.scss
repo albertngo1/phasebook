@@ -62,6 +62,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #fff;
+  text-shadow: 1px 1px #000000, -1px -1px #000000;
   position: relative;
   top: -25px;
   right: -5px;
@@ -74,8 +75,8 @@
 
 }
 .pp-fl-img {
-  max-width: 101px;
-  max-height: 101px;
+  width: 101px;
+  height: 101px;
   object-fit: cover;
   margin-right: 5px;
 }
