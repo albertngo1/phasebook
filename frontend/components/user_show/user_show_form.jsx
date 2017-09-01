@@ -12,6 +12,7 @@ class PostShowForm extends React.Component {
       body: "",
       imageFile: null,
       imageUrl: null,
+      receiver_id: this.props.match.params.userId
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,8 +36,12 @@ class PostShowForm extends React.Component {
   handleEnterSubmit(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+      let formData = new FormData();
       formData.append("post[body]", this.state.body);
-      formData.append("post[image]", this.state.imageFile);
+      formData.append("post[receiver_id]", this.state.receiver_id);
+      if (this.state.imageFile) {
+        formData.append("post[image]", this.state.imageFile);
+      }
       this.props.createPost(formData).then(
         () => this.setState( {body: "", imageFile: null, imageUrl: null})
       )
@@ -45,8 +50,12 @@ class PostShowForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let formData = new FormData();
     formData.append("post[body]", this.state.body);
-    formData.append("post[image]", this.state.imageFile);
+    formData.append("post[receiver_id]", this.state.receiver_id);
+    if (this.state.imageFile) {
+      formData.append("post[image]", this.state.imageFile);
+    }
     this.props.createPost(formData).then(
       () => this.setState( {body: "", imageFile: null, imageUrl: null})
     );

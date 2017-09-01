@@ -38,7 +38,9 @@ class PostModal extends React.Component {
       let formData = new FormData();
       formData.append("post[body]", this.state.body);
       formData.append("post[receiver_id]", this.state.receiver_id);
-      formData.append("post[image]", this.state.imageFile);
+      if (this.state.imageFile) {
+        formData.append("post[image]", this.state.imageFile);
+      }
       this.props.createPost(formData).then(
         () => this.setState( {body: "", imageFile: null, imageUrl: null})
       ).then(this.props.toggleCloseModal());
@@ -51,7 +53,9 @@ class PostModal extends React.Component {
     let formData = new FormData();
     formData.append("post[body]", this.state.body);
     formData.append("post[receiver_id]", this.state.receiver_id);
-    formData.append("post[image]", this.state.imageFile);
+    if (this.state.imageFile) {
+      formData.append("post[image]", this.state.imageFile);
+    }
     this.props.createPost(formData).then(
       () => this.setState( {body: "", imageFile: null, imageUrl: null})
     ).then(this.props.toggleCloseModal());
