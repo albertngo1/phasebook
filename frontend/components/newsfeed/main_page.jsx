@@ -218,12 +218,12 @@ class MainPage extends React.Component {
                 <div className="ad-sponsored">SPONSORED</div>
                 <a className="ad-airbase" href="https://airbase-sksea.herokuapp.com/#/">
                   <label className="ad-airbase-text">Need places to stay? Visit <b>Airbase</b>!</label>
-                  <img className="ad-airbase-img" src="./assets/airbase.jpg" />
+                  <img className="ad-airbase-img" src="https://s3.us-east-2.amazonaws.com/phasebook-dev/airbase.jpg" />
                 </a>
               </div>
               <div className="ad-space-1b">
                 <a href="https://github.com/albertngo1">
-                  <img className="ad-github-pic" src="./assets/baracktocat.jpg" />
+                  <img className="ad-github-pic" src="https://s3.us-east-2.amazonaws.com/phasebook-dev/baracktocat.jpg" />
                   <label>Like what you see? Visit my github!</label>
                 </a>
               </div>
