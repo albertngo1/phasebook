@@ -109,6 +109,9 @@ Phasebook has a long way to go to. In the future, I plan to work/implement the f
 
 * Messenger => Being able to chat with your friends in real time
 
+* Pictures
+  - Users having a collection of pictures. Clicking on picture, profile picture, or cover page would resize to fit the browser window for deeper viewing.
+
 * Miscellaneous interactivity/detailing that makes an app a social app:
   - Birthdays
   - Trending events
