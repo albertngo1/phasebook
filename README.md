@@ -3,7 +3,7 @@
 ![alt text](/docs/production_readme_misc/phasebook.png)
 
 
-[Link][heroku] **Note:** This should be a link to your production site
+[Link][heroku]
 
 [heroku]: http://www.herokuapp.com
 
@@ -70,15 +70,33 @@ The friendship feature has a self-joins table to keep track of who is friends wi
 
 Curated content is based on friends, as the newsfeed will only display content that belongs to the current user or his/her friends. Also, posting on profile pages where the users are not friends are forbidden.
 
-  - Newsfeed page
-
-  - User show page
-
 ### Likes and Comments
 
 Comments can be made on posts and likes can be done on posts and comments.
 
-![alt text](/docs/production_readme_misc/comments_likes.gif)
+![like](/docs/production_readme_misc/comments_likes.gif)
+
+A polymorphic association was implemented to ensure that a like only points to one post or one comment.
+
+```ruby
+  belongs_to :like_item, :polymorphic => true
+
+  params.require(:like).permit(:like_item_id, :like_item_type)
+```
+
+
+### Other Features
+
+The current user can also do the following to customize their page:
+
+* Upload a profile picture
+* Upload a cover page
+* Edit personal user information including:
+  - Introduction
+  - Hometown
+  - Current City
+  - Relationship
+  - Education
 
 
 ## Future Works
