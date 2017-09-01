@@ -11,11 +11,23 @@ Phasebook is a single-page, full-stack web application built with Ruby on Rails,
 
 ## Features and Implementation  
 
-  - Creating a user and logging in
+  The app contains the following features:
+  * User login/creation
+  * Creating/editing/deleting posts
+  * Commenting
+  * Likes
+  * Friending
+  * Search
+  * Newsfeed
+  * User show page
+
 
 ### User Authentication
 
-  - The app utilizes a backend and frontend authentication protocol 
+  - The app utilizes a custom-made backend and frontend authentication protocol to allow
+    permissive activities on the app.
+
+  
 
   - Creating posts (text and image)
 
