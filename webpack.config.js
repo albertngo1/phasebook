@@ -21,11 +21,6 @@ plugins = plugins.concat(
   process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins
 )
 
-
-
-
-const path = require("path");
-
 module.exports = {
   context: __dirname,
   entry: "./frontend/index.jsx",
