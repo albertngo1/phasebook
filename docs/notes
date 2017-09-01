@@ -1,16 +1,4 @@
 
-routes user update
-
-aws
-
-add ads
-
-static images not showing up
-
-on click comment focuses to comment bar
-
-typing in path manually doesnt render
-
 how come i lose my currentUser so easily?
 sometimes going between pages then logging out sends an
 error in the delete session request
@@ -30,11 +18,11 @@ fix the hover on the help notification
 
 change pages scrolls to bottom of page/ doesnt reset to top of page
 
-i can post on peoples walls if they arent my friend
-
 accept friend request changes to add friend instead of friend -> friend on refresh
 
 delete from "friends" to not friend doesnt change presentation -> add friend on refresh
 
 
 uploading profile picture does not update pictures across all pcitures until refresh
+
+add uploading pictures for posts
