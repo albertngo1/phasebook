@@ -29,6 +29,7 @@
   vertical-align: middle;
   position: relative;
   top: -3px;
+  object-fit: cover;
 }
 .mp-left-nav-name {
   font-size: 11px;
@@ -114,6 +115,7 @@
   height: 40px;
   position: relative;
   top: -14px;
+  object-fit: cover;
   right: 10px;
 }
 
@@ -246,11 +248,13 @@
   font-size: 14px;
   line-height: 16.56px;
   font-weight: bold;
+  width: 110px;
 }
 
 .mp-nf-pi-img {
   height: 40px;
   width: 40px;
+  object-fit: cover;
   position: relative;
   right: 6px;
 }

@@ -10,11 +10,11 @@ class UserEditInfo extends React.Component {
     super(props);
     this.state = {
       id: this.props.currentUser.id,
-      education: this.props.user.education,
-      current_city: this.props.user.current_city,
-      hometown: this.props.user.hometown,
-      relationship: this.props.user.relationship,
-      introduction: this.props.user.introduction
+      education: this.props.user.education || "",
+      current_city: this.props.user.current_city || "",
+      hometown: this.props.user.hometown || "",
+      relationship: this.props.user.relationship || "",
+      introduction: this.props.user.introduction || ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,8 +24,15 @@ class UserEditInfo extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.updateUser(user).then(this.props.toggleEditIntroModal());
+    const formData = new FormData();
+    formData.append("user[id]", this.state.id);
+    formData.append("user[education]", this.state.education);
+    formData.append("user[current_city]", this.state.current_city);
+    formData.append("user[hometown]", this.state.hometown);
+    formData.append("user[relationship]", this.state.relationship);
+    formData.append("user[introduction]", this.state.introduction);
+
+    this.props.updateUser(formData, this.state.id).then(this.props.toggleEditIntroModal());
     document.body.classList.remove('modal-fixed');
   }
 
@@ -61,7 +68,7 @@ class UserEditInfo extends React.Component {
             <div className="pp-edit-input-second-wrap">
               <label>Introduction:</label>
               <textarea onChange={this.update('introduction')}
-                value={this.state.introduction}></textarea>
+                value={this.state.introduction}>{this.state.introduction}</textarea>
             </div>
             <div className="pp-edit-input-second-wrap">
               <label>Education:</label>
@@ -104,7 +111,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleEditIntroModal: () => dispatch(toggleEditIntroModal),
-    updateUser: (user) => dispatch(updateUser(user)),
+    updateUser: (formData, id) => dispatch(updateUser(formData, id)),
   };
 };
 

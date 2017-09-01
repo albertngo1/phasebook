@@ -43,6 +43,7 @@ class Api::UsersController < ApplicationController
   end
 
   def intro_params
-    params.require(:user).permit(:education, :current_city, :hometown, :relationship, :introduction)
+    params.require(:user).permit(:education, :current_city, :hometown, :relationship, :introduction,
+    :profile_pic, :cover_page)
   end
 end

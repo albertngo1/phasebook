@@ -32,7 +32,9 @@ class FriendList extends React.Component {
           <div className="pp-fl-img-wrap">
             <Link to={`/users/${id}`}>
               <figure className="pp-fl-img-fig">
-                <img className="pp-fl-img" src={users[id].profile_pic} />
+                <div className="pp-fl-img-wrap">
+                  <img className="pp-fl-img" src={users[id].profile_pic} />
+                </div>
                 <figcaption className="pp-fl-name">{users[id].first_name} {users[id].last_name}</figcaption>
               </figure>
             </Link>

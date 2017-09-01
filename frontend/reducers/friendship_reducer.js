@@ -9,9 +9,9 @@ const friendshipReducer = (state = {}, action) => {
      case RECEIVE_USER_FRIENDS:
       return Object.assign({}, state, {friends: action.friends});
      case RECEIVE_FRIENDSHIP:
-      return Object.assign({}, state, action.friendship)
+      return Object.assign({}, state, {friendship: action.friendship})
      case RECEIVE_FRIEND_REQUESTS:
-      return _.merge({friendRequests: action.friendRequests})
+      return _.merge({}, state, {friendRequests: action.friendRequests})
     default:
        return state;
    }

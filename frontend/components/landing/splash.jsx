@@ -10,7 +10,7 @@ const Splash = ({ loggedIn, errors, login, signup}) => {
     <div>
       <header className="landing-header">
         <Link to="/" className='landing-logo-link'>
-          <h2 className="landing-logo">alBook</h2>
+          <h2 className="landing-logo">albertbook</h2>
         </Link>
         <SessionForm loggedIn={ loggedIn }
           errors={errors}

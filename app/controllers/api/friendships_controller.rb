@@ -9,10 +9,15 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def current_user_friend_requests
-    @friend_requests = Friendship
-      .where("user2_id = ?", current_user.id)
-      .where("status = ?", 'pending').includes(:friender)
-    render 'api/friendships/friend_requests'
+    if current_user
+      @friend_requests = Friendship
+        .where("user2_id = ?", current_user.id)
+        .where("status = ?", 'pending').includes(:friender)
+
+      render 'api/friendships/friend_requests'
+    else
+      render json: {}
+    end
   end
 
   def create

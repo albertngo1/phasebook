@@ -36,4 +36,5 @@ accept friend request changes to add friend instead of friend -> friend on refre
 
 delete from "friends" to not friend doesnt change presentation -> add friend on refresh
 
-add likes to comments
+
+uploading profile picture does not update pictures across all pcitures until refresh

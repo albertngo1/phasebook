@@ -16,6 +16,8 @@ import { Link } from 'react-router-dom';
 import FriendRequest from './friend_request';
 import FriendList from './friend_list';
 import FA from 'react-fontawesome';
+import ProfilePicUpload from './profile_picture_upload';
+import CoverPageUpload from './cover_page_upload';
 
 class UserShow extends React.Component {
 
@@ -24,6 +26,28 @@ class UserShow extends React.Component {
       this.filterPosts = this.filterPosts.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
       this.sentPost = this.sentPost.bind(this);
+      this.profilePictureUpload = this.profilePictureUpload.bind(this);
+      this.coverPageUpload = this.coverPageUpload.bind(this);
+   }
+
+   profilePictureUpload() {
+      if (this.props.user.id == this.props.currentUser.id) {
+         return(
+            <div>
+               <ProfilePicUpload />
+            </div>
+         )
+      }
+   }
+
+   coverPageUpload() {
+      if (this.props.user.id == this.props.currentUser.id) {
+         return(
+            <div>
+               <CoverPageUpload />
+            </div>
+         )
+      }
    }
 
    filterPosts(posts) {
@@ -153,10 +177,14 @@ class UserShow extends React.Component {
             </header>
             <div className="pp-container">
               <div className="pp-header">
+                 {this.coverPageUpload()}
                  <img className="pp-cover-page" src={user.cover_page} />
                  <div className="pp-header-reposition">
                     <div className="pp-header-cover-page-wrap">
-                       <img className="pp-profile-pic" src={user.profile_pic} />
+                      <div className="pp-profile-pic-wrap">
+                        {this.profilePictureUpload()}
+                        <img className="pp-profile-pic" src={user.profile_pic} />
+                      </div>
 
                           <div className="pp-header-name">
                              <Link to={`/users/${user.id}`}>

@@ -53,8 +53,8 @@
 
 .pp-fl-img-fig {
   position: relative;
-  width: 103px;
-  height: 103px;
+  max-width: 103px;
+  max-height: 103px;
   padding-top: 2px;
 }
 
@@ -67,11 +67,17 @@
   right: -5px;
   z-index: 2;
 }
-.pp-fl-img {
+
+.pp-fl-img-wrap {
   cursor: pointer;
-  width: 101px;
-  height: 101px;
   z-index: 1;
+
+}
+.pp-fl-img {
+  max-width: 101px;
+  max-height: 101px;
+  object-fit: cover;
+  margin-right: 5px;
 }
 
 .pp-fl-img-wrap {

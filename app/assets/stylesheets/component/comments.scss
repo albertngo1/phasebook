@@ -75,6 +75,7 @@
 .comment-img {
   width: 38px;
   height: 38px;
+  object-fit: cover;
   margin-right: 5px;
 }
 .comment-index-img {
@@ -122,8 +123,8 @@
   font-weight:bold;
   letter-spacing:-0.12px;line-height:16.08px;
   outline-color:rgb(88, 144, 255);
-    outline-style:none;
-  outline-width:0px;text-decoration-color:rgb(88, 144, 255);
+  outline-width:0px;
+  text-decoration-color:rgb(88, 144, 255);
 }
 
 .comment-like:hover .comment-not-liked:hover {
