@@ -74,8 +74,9 @@ kenneth_post3 = Post.create(body: "ORACLE ARENA IS GONNA BE LITTTT 🏀🏀🏀�
 kenneth_post4 = Post.create(body: "what are you doing tonight? wanna come over and eat some ramen?", author_id: kenneth_user.id, receiver_id: albert_user.id)
 andy_post1 = Post.create(body: "anyone know where to buy handball gloves besides online??", author_id: andy_user.id, receiver_id: andy_user.id)
 andy_post2 = Post.create(body: "please, a moment of silence for the pen I just lost", author_id: andy_user.id, receiver_id: andy_user.id)
-andy_post2 = Post.create(body: "1,000,000 / 4,000 = 256
+andy_post3 = Post.create(body: "1,000,000 / 4,000 = 256
 i did it on a calculator trust me", author_id: andy_user.id, receiver_id: andy_user.id)
+andy_post4 = Post.create(body: "yo kenneth, check out this picture", author_id: andy_user.id, receiver_id: kenneth_user.id, image: "https://s3.us-east-2.amazonaws.com/phasebook-dev/-font-b-Color-b-font-Random-High-Quality-Stainless-Steel-font-b-Toe-b-font.jpg")
 jonathan_post1 = Post.create(body: "when you out with friends but realize you left the stove on at home", author_id: jonathan_user.id, receiver_id: jonathan_user.id)
 jonathan_post2 = Post.create(body: ":)", author_id: jonathan_user.id, receiver_id: jonathan_user.id)
 jonathan_post3 = Post.create(body: "Happy birthday Andrea Tsao! It has been so crazy the last couple years being away from home and from you, but thank you so much for taking forever in the shower, stealing all my iPhone chargers, and eating all of the ranch 99 snacks before I get to them. But mostly, thank you for being a role model in defining to me what it means to have a passion for the things around us and how to be a good kid to the other two goons in the photo. Judging from this photo, you definitely didn't get your fashion sense from dad (thank god none of us did). Hope you had an awesome day ya hipster", author_id: jonathan_user.id, receiver_id: jonathan_user.id)
