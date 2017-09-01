@@ -4,3 +4,4 @@ json.set! :receiver, post.receiver.full_name
 json.set! :posted_date, post.posted_date
 json.set! :profile_pic, asset_path(post.author.profile_pic.url)
 json.set! :likes, post.likes
+json.set! :image, asset_path(post.image.url)

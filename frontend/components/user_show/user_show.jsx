@@ -250,7 +250,10 @@ class UserShow extends React.Component {
                         </div>
                       </div>
                       <div className="mp-nf-pi-body">{post.body}</div>
-
+                        {!!post.image &&
+                          <div className="mp-nf-pi-body-img">
+                             <img src={post.image} />
+                          </div>}
                     </div>
                     <div >
                       <CommentForm post={post}/>

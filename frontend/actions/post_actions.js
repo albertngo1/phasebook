@@ -25,8 +25,8 @@ export const fetchPosts = () => dispatch => {
     .then( posts => dispatch(receiveAllPosts(posts)))
 };
 
-export const createPost = post => dispatch => {
-  return APIPostUtil.createPost(post)
+export const createPost = formData => dispatch => {
+  return APIPostUtil.createPost(formData)
     .then( post => dispatch(receiveOnePost(post)))
 };
 

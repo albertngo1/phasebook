@@ -67,6 +67,7 @@ cover_page: "https://s3.us-east-2.amazonaws.com/phasebook-dev/o-FROZEN-YOGURT-TO
 
 albert_post1 = Post.create(body: "My first post", author_id: albert_user.id, receiver_id: albert_user.id)
 albert_post2 = Post.create(body: "My second post", author_id: albert_user.id, receiver_id: albert_user.id)
+albert_post2 = Post.create(body: "check out this pic!", author_id: albert_user.id, receiver_id: albert_user.id, image: "https://s3.us-east-2.amazonaws.com/phasebook-dev/3634462128.jpg")
 kenneth_post1 = Post.create(body: "SZECHUAN TERIYAKI SAUCE", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
 kenneth_post2 = Post.create(body: "Just a reminder that OKC had three budding MVPs at one point.", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
 kenneth_post3 = Post.create(body: "ORACLE ARENA IS GONNA BE LITTTT 🏀🏀🏀🔥🔥🔥", author_id: kenneth_user.id, receiver_id: kenneth_user.id)
@@ -86,6 +87,7 @@ musa_post1 = Post.create(body: "hello all my name is musa and i hail from pakist
 musa_post2 = Post.create(body: "gone with the wind is my favorite movie", author_id: musa_user.id, receiver_id: musa_user.id)
 abbas_post1 = Post.create(body: "i'm sick", author_id: abbas_user.id, receiver_id: abbas_user.id)
 abbas_post2 = Post.create(body: "i like frozen yogurt", author_id: abbas_user.id, receiver_id: abbas_user.id)
+abbas_post3 = Post.create(body: "my favorite food:", author_id: abbas_user.id, receiver_id: abbas_user.id, image: "https://s3.us-east-2.amazonaws.com/phasebook-dev/veganfrozenyogurt.jpg")
 
 kenneth_comment1 = Comment.create(body: "LOL", author_id: kenneth_user.id, post_id: andy_post2.id)
 kenneth_comment2 = Comment.create(body: "haha that sucks man", author_id: kenneth_user.id, post_id: jonathan_post1.id)

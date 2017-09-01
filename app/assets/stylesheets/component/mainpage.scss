@@ -90,13 +90,14 @@
   border-bottom: 1px solid #d1d1d1;
   padding-bottom: 4px;
   background-color: #f5f5f5;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .mp-nf-pencil {
-  margin-left: 8px;
-  margin-top: 8px;
-  padding-right: 4px;
+  // margin-left: 8px;
+  // margin-top: 8px;
+  margin-right: 8px;
 }
 
 .mp-nf-create-post {
@@ -304,6 +305,10 @@
   padding-top: 15px;
 }
 
+.mp-nf-pi-body-img {
+  padding: 10px 0;
+}
+
 .mp-nf-pi-footer {
   border-top: 1px solid #dadbdd;
   padding-top: 6px;
@@ -371,7 +376,7 @@
 }
 
 .mp-nf-edit-form-modal-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -438,4 +443,34 @@
 .mp-nf-edit-post-modal-btn:hover {
   background: #2b499e;
   text-decoration: none;
+}
+
+
+
+.mp-nf-pic-upload-wrapper > label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  text-rendering: optimizelegibility;
+  font-weight: bolder;
+}
+
+.mp-nf-pic {
+  margin-right: 5px;
+}
+
+.mp-nf-pic-upload-wrapper {
+  margin-left: 15px;
+  filter: invert(10%);
+}
+
+.mp-nf-pic-upload-wrapper {
+  width: inherit;
+  height: inherit;
+}
+
+.mp-nf-pic-upload-wrapper > input {
+    display: none;
 }

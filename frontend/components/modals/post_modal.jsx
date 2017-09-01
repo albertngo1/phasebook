@@ -35,9 +35,12 @@ class PostModal extends React.Component {
   handleEnterSubmit(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      const post = Object.assign({}, this.state);
-      this.props.createPost(post).then(
-        () => this.setState( {body: ""})
+      let formData = new FormData();
+      formData.append("post[body]", this.state.body);
+      formData.append("post[receiver_id]", this.state.receiver_id);
+      formData.append("post[image]", this.state.imageFile);
+      this.props.createPost(formData).then(
+        () => this.setState( {body: "", imageFile: null, imageUrl: null})
       ).then(this.props.toggleCloseModal());
       document.body.classList.remove('modal-fixed');
     }
@@ -45,9 +48,12 @@ class PostModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const post = Object.assign({}, this.state);
-    this.props.createPost(post).then(
-      () => this.setState( {body: ""})
+    let formData = new FormData();
+    formData.append("post[body]", this.state.body);
+    formData.append("post[receiver_id]", this.state.receiver_id);
+    formData.append("post[image]", this.state.imageFile);
+    this.props.createPost(formData).then(
+      () => this.setState( {body: "", imageFile: null, imageUrl: null})
     ).then(this.props.toggleCloseModal());
     document.body.classList.remove('modal-fixed');
   }
@@ -77,10 +83,24 @@ class PostModal extends React.Component {
               <FA className="mp-nf-pencil" name='pencil' />
               <span className="mp-nf-create-post">Create a Post</span>
 
+                <div className="mp-nf-pic-upload-wrapper">
+                    <label htmlFor="mp-nf-pic-upload">
+                        <FA name="file-photo-o" className="mp-nf-pic"/>
+                        <div>Add Picture</div>
+                    </label>
+
+                    <input id="mp-nf-pic-upload"
+                       type="file" onChange={this.updateFile} />
+                </div>
             </div>
-            <div>
-              <input type="file" onChange={this.updateFile} />
-            </div>
+
+
+
+
+
+
+
+
 
             <div className="mp-nf-post-text-wrap">
               <Link to={`/users/${currentUser.id}`}>
@@ -111,7 +131,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleCloseModal: () => dispatch(togglePostModal),
-    createPost: (post) => dispatch(createPost(post)),
+    createPost: (formData) => dispatch(createPost(formData)),
   };
 };
 

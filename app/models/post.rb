@@ -30,6 +30,9 @@ class Post < ActiveRecord::Base
   foreign_key: :post_id,
   class_name: :Comment
 
+  has_attached_file :image
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   has_many :likes, :as => :like_item
 
   def posted_date
