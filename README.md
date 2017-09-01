@@ -1,12 +1,15 @@
 # Phasebook
 
+![alt text](https://github.com/albertngo1/phasebook/blob/master/docs/production_readme_misc/phasebook.png)
+
+
 [Link][heroku] **Note:** This should be a link to your production site
 
 [heroku]: http://www.herokuapp.com
 
 Phasebook is a single-page, full-stack web application built with Ruby on Rails, React/Redux (featuring Javascript, HTML/CSS) and PostgreSQL.
 
-## Features and Implementation
+## Features and Implementation  
 
 FresherNote is a web application inspired by Evernote built using Ruby on Rails
 and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
