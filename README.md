@@ -1,13 +1,12 @@
-# Facebook
+# Phasebook
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
-
-[Trello link][trello]
+[Link][heroku] **Note:** This should be a link to your production site
 
 [heroku]: http://www.herokuapp.com
-[trello]:https://trello.com/b/mH3WElY9/facebook-clone
 
-## Minimum Viable Product
+Phasebook is a single-page, full-stack web application built with Ruby on Rails, React/Redux (featuring Javascript, HTML/CSS) and PostgreSQL.
+
+## Features and Implementation
 
 FresherNote is a web application inspired by Evernote built using Ruby on Rails
 and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the

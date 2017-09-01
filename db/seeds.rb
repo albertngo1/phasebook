@@ -102,6 +102,9 @@ andy_comment2 = Comment.create(body: "happy birthday :]", author_id: andy_user.i
 
 abbas_comment1 = Comment.create(body: "hello my middle eastern brother", author_id: abbas_user.id, post_id: musa_post1.id)
 
+albert_comment1 = Comment.create(body: "go cavs", author_id: albert_user.id, post_id: kenneth_post3.id)
+
+
 
 Like.create(liker_id: andy_user.id, like_item_id: kenneth_post1.id, like_item_type: "Post")
 Like.create(liker_id: andy_user.id, like_item_id: kenneth_post2.id, like_item_type: "Post")
@@ -110,6 +113,30 @@ Like.create(liker_id: andy_user.id, like_item_id: kenneth_post4.id, like_item_ty
 Like.create(liker_id: andy_user.id, like_item_id: abbas_comment1.id, like_item_type: "Comment")
 Like.create(liker_id: andy_user.id, like_item_id: andy_comment1.id, like_item_type: "Comment")
 Like.create(liker_id: andy_user.id, like_item_id: jonathan_comment2.id, like_item_type: "Comment")
+Like.create(liker_id: andy_user.id, like_item_id: kenneth_comment3.id, like_item_type: "Comment")
+
+Like.create(liker_id: kenneth_user.id, like_item_id: abbas_post1.id, like_item_type: "Post")
+Like.create(liker_id: kenneth_user.id, like_item_id: abbas_post2.id, like_item_type: "Post")
+Like.create(liker_id: kenneth_user.id, like_item_id: abbas_post3.id, like_item_type: "Post")
+Like.create(liker_id: kenneth_user.id, like_item_id: jonathan_post1.id, like_item_type: "Post")
+Like.create(liker_id: kenneth_user.id, like_item_id: andy_post4.id, like_item_type: "Post")
+Like.create(liker_id: kenneth_user.id, like_item_id: abbas_post2.id, like_item_type: "Post")
+Like.create(liker_id: kenneth_user.id, like_item_id: jonathan_comment2.id, like_item_type: "Comment")
+Like.create(liker_id: kenneth_user.id, like_item_id: kenneth_comment3.id, like_item_type: "Comment")
+Like.create(liker_id: kenneth_user.id, like_item_id: abbas_comment1.id, like_item_type: "Comment")
+Like.create(liker_id: kenneth_user.id, like_item_id: albert_comment1.id, like_item_type: "Comment")
+
+Like.create(liker_id: jonathan_user.id, like_item_id: abbas_post1.id, like_item_type: "Post")
+Like.create(liker_id: jonathan_user.id, like_item_id: abbas_post2.id, like_item_type: "Post")
+Like.create(liker_id: jonathan_user.id, like_item_id: abbas_post3.id, like_item_type: "Post")
+Like.create(liker_id: jonathan_user.id, like_item_id: jonathan_post1.id, like_item_type: "Post")
+Like.create(liker_id: jonathan_user.id, like_item_id: andy_post4.id, like_item_type: "Post")
+Like.create(liker_id: jonathan_user.id, like_item_id: abbas_post2.id, like_item_type: "Post")
+Like.create(liker_id: jonathan_user.id, like_item_id: jonathan_comment2.id, like_item_type: "Comment")
+Like.create(liker_id: jonathan_user.id, like_item_id: kenneth_comment3.id, like_item_type: "Comment")
+Like.create(liker_id: jonathan_user.id, like_item_id: abbas_comment1.id, like_item_type: "Comment")
+Like.create(liker_id: jonathan_user.id, like_item_id: albert_comment1.id, like_item_type: "Comment")
+
 
 
 
@@ -127,12 +154,20 @@ kenneth_andy_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: and
 kenneth_jonathan_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: jonathan_user.id, status: "active")
 kenneth_musa_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: musa_user.id, status: "active")
 kenneth_nate_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: nate_user.id, status: "active")
+kenneth_musa_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: musa_user.id, status: "active")
+kenneth_abbas_friend = Friendship.create(user1_id: kenneth_user.id, user2_id: abbas_user.id, status: "active")
 
 andy_jonathan_friend = Friendship.create(user1_id: andy_user.id, user2_id: jonathan_user.id, status: "active")
 andy_nate_friend = Friendship.create(user1_id: andy_user.id, user2_id: nate_user.id, status: "active")
 andy_abbas_friend = Friendship.create(user1_id: andy_user.id, user2_id: abbas_user.id, status: "active")
+andy_musa_friend = Friendship.create(user1_id: andy_user.id, user2_id: musa_user.id, status: "active")
 
 musa_abbas_friend = Friendship.create(user1_id: musa_user.id, user2_id: abbas_user.id, status: "active")
+musa_jonathan_friend = Friendship.create(user1_id: musa_user.id, user2_id: jonathan_user.id, status: "active")
+musa_nate_friend = Friendship.create(user1_id: musa_user.id, user2_id: nate_user.id, status: "active")
+
+nate_abbas_friend = Friendship.create(user1_id: nate_user.id, user2_id: abbas_user.id, status: "active")
+nate_jonathan_friend = Friendship.create(user1_id: nate_user.id, user2_id: jonathan_user.id, status: "active")
 
 
 andy_albert_friend = Friendship.create(user1_id: andy_user.id, user2_id: albert_user.id, status: "pending")
