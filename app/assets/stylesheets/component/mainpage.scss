@@ -231,7 +231,11 @@
 .mp-nf-pi-name-wrap {
   width: 225px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.mp-nf-pi-name-wrap1 {
+  margin: 0 5px;
 }
 
 .mp-nf-pi-name-pic {
@@ -309,6 +313,7 @@
   display: flex;
   font-weight: bold;
   margin-left: 10px;
+  user-select: none;
 }
 
 .mp-nf-pi-footer-icon {

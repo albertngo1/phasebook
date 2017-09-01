@@ -116,12 +116,14 @@ class MainPage extends React.Component {
               <div className="mp-nf-pi-name-header">
                 <div className="mp-nf-pi-name">
                   <div className="mp-nf-pi-name-wrap">
-                    <Link to={`/users/${post.author_id}`}>
-                      <label>
-                        {post.author}
-                      </label>
-                    </Link>
-                    <FA className="caret" name="caret-right"/>
+                      <Link to={`/users/${post.author_id}`}>
+                        <label>
+                          {post.author}
+                        </label>
+                      </Link>
+                    <div className="mp-nf-pi-name-wrap1">
+                      <FA className="caret" name="caret-right"/>
+                    </div>
                     <Link to={`/users/${post.receiver_id}`}>
                       <label>
                         {post.receiver}

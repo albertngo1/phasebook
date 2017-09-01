@@ -134,7 +134,9 @@ class UserShow extends React.Component {
                         {post.author}
                       </label>
                     </Link>
-                    <FA className="caret" name="caret-right"/>
+                    <div className="mp-nf-pi-name-wrap1">
+                      <FA className="caret" name="caret-right"/>
+                    </div>
                     <Link to={`/users/${post.receiver_id}`}>
                       <label>
                         {post.receiver}
