@@ -383,6 +383,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .cover-page-upload-wrapper:hover {
@@ -403,7 +404,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 0;
 
 }
 .cover-page-upload-wrapper:hover {
