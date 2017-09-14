@@ -93,12 +93,7 @@ class NavBar extends React.Component {
                   {this.renderFriendRequests()}
                </div>
             </div>
-               <div className="navbar-logout-dropdown" >
-                  <FA size='lg' name="question-circle" className="navbar-help"/>
-                  <div className="navbar-help-dropdown-content">
-                     <p>How can I help? Contact me for inquiries!</p>
-                  </div>
-               </div>
+
 
                <button onClick={this.handleClick} className="navbar-logout-btn">Logout</button>
 

@@ -133,3 +133,25 @@
 .comment-like:hover .comment-not-liked:hover {
   text-decoration: underline;
 }
+
+.comment-delete-wrap1 {
+  position: relative;
+  width: 0;
+  height: 0
+}
+.comment-delete-wrap2 {
+  position: absolute;
+}
+
+.comment-delete {
+  position: relative;
+  top: 0px;
+  right: -390px;
+  cursor: pointer;
+  opacity: .2;
+  filter: invert(70%);
+}
+
+.comment-delete:hover {
+  opacity: 1;
+}

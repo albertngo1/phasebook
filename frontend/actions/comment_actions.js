@@ -31,5 +31,5 @@ export const createComment = comment => dispatch => {
 
 export const deleteComment = commentId => dispatch => {
   return APICommentUtil.deleteComment(commentId)
-    .then(() => dispatch(removeComment(id)))
+    .then((id) => dispatch(removeComment(id)))
 }

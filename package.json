@@ -16,19 +16,20 @@
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
     "shuffle-array": "^1.0.1",
-    "webpack": "^2.4.1"
+    "webpack": "^2.4.1",
+    "jquery": "^2.2.4"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6",
     "babel-jest": "^15.0.0",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.13.0",
     "enzyme": "^2.5.1",
     "jest": "^15.1.1",
     "jest-cli": "^15.1.1",
-    "jquery": "^2.2.3",
+    "jquery": "^2.2.4",
     "node-loader": "^0.5.0",
-    "react-addons-test-utils": "~0.14.0"
+    "react-addons-test-utils": "~0.14.0",
+    "redux-logger": "^3.0.6"
   },
   "jest": {
     "moduleFileExtensions": [

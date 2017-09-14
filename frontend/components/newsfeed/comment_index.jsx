@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {selectPostComments} from '../../util/selectors';
-import {fetchPostComments} from '../../actions/comment_actions';
+import {fetchPostComments, deleteComment} from '../../actions/comment_actions';
 import { Link } from 'react-router-dom';
 import FA from 'react-fontawesome';
 import { createCommentLike, removeCommentLike } from '../../actions/like_actions';
@@ -13,6 +13,7 @@ class CommentIndex extends React.Component {
     super(props);
 
     this.filteredComments = this.filteredComments.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -78,6 +79,12 @@ class CommentIndex extends React.Component {
                 <Link to={`/users/${comment.author_id}`}>
                 <img className="comment-index-img" src={comment.profile_pic} alt="profile-pic" />
                 </Link>
+                <div className="comment-delete-wrap1">
+                  <div className="comment-delete-wrap2">
+                    {(comment.author_id === currentUser.id) &&
+                      <FA className="comment-delete" onClick={() => this.handleDelete(comment.id)} name="window-close" />}
+                  </div>
+                </div>
                 <div>
                   <div className="comment-sep-abd">
                     <div className="comment-body">

@@ -385,6 +385,10 @@
   align-items: center;
 }
 
+.cover-page-upload-wrapper:hover {
+  background-color: rgb(38, 38, 38);
+}
+
 .cover-page-up {
   cursor: pointer;
   color: rgb(255, 255, 255);
@@ -394,7 +398,12 @@
   line-height:16.08px;
   z-index: 2;
   font-size: 12px;
-  text-align: center;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
 
 }
 .cover-page-upload-wrapper:hover {

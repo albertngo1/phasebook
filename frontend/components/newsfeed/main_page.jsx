@@ -20,6 +20,7 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     this.props.fetchPosts();
   }
 
@@ -84,15 +85,17 @@ class MainPage extends React.Component {
                     {post.author}
                   </Link>
                 </div>
+                {this.viewOptions(post) &&
                 <div className="mp-nf-pi-dropdown-wrap1">
                 <div className="mp-nf-pi-dropdown">
                   <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
-                  <div className="mp-nf-pi-dropdown-content">
-                    <button onClick={() => this.handleToggleEditModal(post)}>Edit</button>
-                    <button onClick={() => this.handleDelete(post)}>Delete</button>
-                  </div>
+                        <div className="mp-nf-pi-dropdown-content">
+                        <button onClick={() => this.handleToggleEditModal(post)}>Edit</button>
+                        <button onClick={() => this.handleDelete(post)}>Delete</button>
+                        </div>
                 </div>
               </div>
+                }
             </div>
               <div className="mp-nf-pi-header-misc">
                 <div className="mp-nf-pi-date">{post.posted_date}</div>

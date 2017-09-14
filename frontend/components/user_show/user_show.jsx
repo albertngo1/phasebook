@@ -69,11 +69,13 @@ class UserShow extends React.Component {
    componentDidMount() {
      this.props.requestSingleUser(this.props.match.params.userId);
      this.props.fetchPosts();
+     window.scrollTo(0, 0)
    }
 
    componentWillReceiveProps(nextProps) {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
          this.props.requestSingleUser(nextProps.match.params.userId);
+         window.scrollTo(0, 0)
       }
    }
 
@@ -98,14 +100,16 @@ class UserShow extends React.Component {
                     {post.author}
                   </Link>
                 </div>
-                <div className="mp-nf-pi-dropdown-wrap1">
-                <div className="mp-nf-pi-dropdown">
-                  <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
-                  <div className="mp-nf-pi-dropdown-content">
-                    <button onClick={() => this.handleDelete(post)}>Delete</button>
+                {this.viewOptions(post) &&
+                   <div className="mp-nf-pi-dropdown-wrap1">
+                      <div className="mp-nf-pi-dropdown">
+                        <FA name='sort-down' className="mp-nf-pi-dropdown-btn"/>
+                        <div className="mp-nf-pi-dropdown-content">
+                           <button onClick={() => this.handleDelete(post)}>Delete</button>
+                        </div>
+                     </div>
                   </div>
-                </div>
-              </div>
+                }
             </div>
               <div className="mp-nf-pi-header-misc">
                 <div className="mp-nf-pi-date">{post.posted_date}</div>

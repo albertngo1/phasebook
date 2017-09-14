@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link, withRouter } from 'react-router-dom';
-import * as shuffle from 'shuffle-array';
 import { connect } from 'react-redux';
 import { fetchUserFriends } from '../../actions/friendship_actions';
 import FA from 'react-fontawesome';
@@ -24,6 +23,7 @@ class FriendList extends React.Component {
   }
 
   renderFriendList(friends) {
+    const shuffle = require('shuffle-array');
     let friendList;
     let users = friends
     friendList = Object.keys(friends).map( id => {
@@ -42,7 +42,7 @@ class FriendList extends React.Component {
         </li>
       )
     })
-    return friendList.slice(0, 9);
+    return shuffle(friendList).slice(0, 9);
   }
 
 
