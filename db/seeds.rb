@@ -97,7 +97,7 @@ nate_post1 = Post.create(body: ":)", author_id: nate_user.id, receiver_id: nate_
 nate_post2 = Post.create(body: ":)", author_id: nate_user.id, receiver_id: nate_user.id)
 nate_post3 = Post.create(body: ":)", author_id: nate_user.id, receiver_id: nate_user.id)
 nate_post4 = Post.create(body: "Got sleep on my mind", author_id: nate_user.id, receiver_id: nate_user.id)
-nate_post5 = Post.create(body: "RIP iVidz", author_id: nate_user.id, receiver_id: nate_user.id, image: "http://s3-us-east-2.amazonaws.com/phasebook-pro/posts/images/000/000/198/original/brick-background.png?1504292709")
+nate_post5 = Post.create(body: "RIP iVidz", author_id: nate_user.id, receiver_id: nate_user.id, image: "https://s3.us-east-2.amazonaws.com/phasebook-dev/brick-background.png")
 
 nate_post6 = Post.create(body: "yo you wanna run a game of dota tonight? ill support you", author_id: nate_user.id, receiver_id: kenneth_user.id)
 
