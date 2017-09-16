@@ -1,7 +1,7 @@
 class Api::ConversationsController < ApplicationController
 
   def index
-    @conversations = current_user.conversations
+    @conversations = current_user.conversations.includes(:messages)
     render '/api/conversations/conversations'
   end
 
@@ -11,7 +11,7 @@ class Api::ConversationsController < ApplicationController
       (creator_id = ? AND recipient_id = ?)", creator_id, recipient_id, recipient_id, creator_id).present?
       @conversation = Conversation.where("(creator_id = ? AND recipient_id = ?) OR
        (creator_id = ? AND recipient_id = ?)", creator_id, recipient_id,
-       recipient_id, creator_id).first
+       recipient_id, creator_id).first.includes(:messages)
        render '/api/conversations/conversation'
     else
       @conversation = Conversation.new(conversation_params)
