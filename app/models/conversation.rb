@@ -16,7 +16,7 @@ class Conversation < ActiveRecord::Base
 
   validate :conversation_exists, on: :create
 
-  has_many :messages, dependent: :destroy
+  has_many :messages, dependent: :destroy,
   primary_key: :id,
   foreign_key: :conversation_id,
   class_name: :Message
