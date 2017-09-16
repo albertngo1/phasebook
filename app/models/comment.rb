@@ -15,7 +15,7 @@ class Comment < ActiveRecord::Base
 
   validates :body, :author_id, :post_id, presence: true
 
-  has_many :likes, :as => :like_item
+  has_many :likes, :as => :like_item, dependent: :destroy
 
   belongs_to :author,
   primary_key: :id,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901044637) do
+ActiveRecord::Schema.define(version: 20170916191145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20170901044637) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "creator_id", null: false
+    t.integer "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id", "recipient_id"], name: "index_conversations_on_creator_id_and_recipient_id"
+    t.index ["creator_id"], name: "index_conversations_on_creator_id"
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -45,6 +55,14 @@ ActiveRecord::Schema.define(version: 20170901044637) do
     t.index ["like_item_type", "like_item_id"], name: "index_likes_on_like_item_type_and_like_item_id"
     t.index ["liker_id", "like_item_type", "like_item_id"], name: "index_likes_on_liker_id_and_like_item_type_and_like_item_id", unique: true
     t.index ["liker_id"], name: "index_likes_on_liker_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "author_id", null: false
+    t.integer "conversation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|

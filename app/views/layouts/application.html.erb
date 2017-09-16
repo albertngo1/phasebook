@@ -2,12 +2,14 @@
 <html>
   <head>
     <title>Phasebook</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="https://s3.us-east-2.amazonaws.com/phasebook-dev/favicon.ico">
+    <script src='https://js.pusher.com/4.1/pusher.min.js'></script>
+
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>

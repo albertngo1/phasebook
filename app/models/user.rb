@@ -66,6 +66,21 @@ class User < ActiveRecord::Base
   foreign_key: :author_id,
   class_name: :Comment
 
+  has_many :messages,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :Message
+
+  has_many :conversations_started,
+  primary_key: :id,
+  foreign_key: :creator_id,
+  class_name: :Conversation
+
+  has_many :conversations_received,
+  primary_key: :id,
+  foreign_key: :recipient_id,
+  class_name: :Conversation
+
   after_initialize :ensure_session_token
 
   def active_friends

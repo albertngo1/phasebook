@@ -14,6 +14,16 @@ Rails.application.routes.draw do
     resources :friendships, only: [:create, :update, :destroy]
     resources :likes, only: [:create, :destroy]
     get 'friendships/friendrequests', :to => 'friendships#current_user_friend_requests'
+
+
+    resources :conversations, only: [:index, :create] do
+      resources :messages, only: [:index, :create, :destroy]
+    end
+
+
+
+
+
   end
 
 end

@@ -94,6 +94,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    httpclient (2.8.3)
     i18n (0.8.6)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -139,6 +140,11 @@ GEM
       pry (>= 0.10.4)
     public_suffix (2.0.5)
     puma (3.10.0)
+    pusher (1.3.1)
+      httpclient (~> 2.7)
+      multi_json (~> 1.0)
+      pusher-signature (~> 0.1.8)
+    pusher-signature (0.1.8)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -240,6 +246,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pry-rails
   puma (~> 3.7)
+  pusher
   rails (~> 5.1.3)
   sass-rails (~> 5.0)
   selenium-webdriver

@@ -1,7 +1,5 @@
 class Api::FriendshipsController < ApplicationController
 
-  # friendship statuses => pending, active
-
   def index
     @friendships = User.find(params[:user_id]).active_friends
     @user = User.find(params[:user_id])
