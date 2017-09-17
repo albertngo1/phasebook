@@ -8,7 +8,7 @@ export const createMessage = message => {
 
 export const deleteMessage = message => {
   return $.ajax({
-    url: `/api/conversations/${message.conversationId}/messages/${message.id}`
+    url: `/api/conversations/${message.conversationId}/messages/${message.id}`,
     method: 'DELETE',
   });
 };
