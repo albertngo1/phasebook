@@ -2,6 +2,7 @@ class Api::ConversationsController < ApplicationController
 
   def index
     @conversations = current_user.conversations_started.includes(:messages) + current_user.conversations_received.includes(:messages)
+    @friends = current_user.active_friends
     render '/api/conversations/conversations'
   end
 
