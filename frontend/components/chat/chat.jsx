@@ -10,7 +10,7 @@ class Chat extends React.Component {
 
     this.handleToggleChat = this.handleToggleChat.bind(this);
     this.makeOpenChats = this.makeOpenChats.bind(this);
-    this.parseMessages = this.parseMessages.bind(this);
+    this.parseMessage = this.parseMessage.bind(this);
   }
 
   handleOpenChat(convo) {
@@ -20,34 +20,39 @@ class Chat extends React.Component {
   }
 
   makeOpenChats() {
-    this.props.openChats.map( chat => {
+    let result = this.props.openChats.map( chat => {
       return(
         <div key={`chat-${chat.id}`}>
           <div>{chat.friend}</div>
-          {this.parseMessages(chat.messages)}
+          {chat.messages.map( message => {
+            return(
+              <div key={`messages-${chat.friend}-${message.id}`}>
+                {this.parseMessage(message)}
+              </div>
+            )
+          })}
           <input type="text" />
         </div>
       )
     })
+    return result;
   }
-  parseMessages(messages, friend_pic) {
+  parseMessage(message) {
     const currentUser = this.props.currentUser
-    messages.map( message => {
       if (message.author_id !== currentUser.id) {
-        <div>
+        return(
           <div>
             {message.body}
           </div>
-        </div>
+        )
       } else {
-        <div>
+        return(
           <div>
             {message.body}
           </div>
-        </div>
+        )
       }
-    })
-  }
+    }
 
   handleToggleChat(e) {
     if (e.currentTarget === e.target) {
@@ -64,7 +69,7 @@ class Chat extends React.Component {
       return(
         <div>
           <div onClick={this.props.toggleChat}>
-            ChatChatChatChatChatChatChatChatChat
+            Chat
           </div>
           {!!conversations && Object.keys(conversations).map(key => {
             let convo = conversations[key];
@@ -76,7 +81,7 @@ class Chat extends React.Component {
             )
           })}
           <div>
-            {openChats.length > 0 && this.makeOpenChats()}
+            {openChats.length > 0 && this.makeOpenChats().map(el => el)}
           </div>
         </div>
       )
@@ -87,7 +92,7 @@ class Chat extends React.Component {
             <span>Chat</span><span>({Object.keys(conversations).length})</span>
           </div>
           <div>
-            {openChats.length > 0 && this.makeOpenChats()}
+            {openChats.length > 0 && this.makeOpenChats().map(el => el)}
           </div>
         </div>
       )

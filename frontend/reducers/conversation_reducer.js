@@ -15,8 +15,9 @@ const conversationReducer = (state = conversationState, action) => {
       return _.merge({}, state, { conversations: action.conversations });
      case RECEIVE_CONVERSATION:
          nextState = _.merge({}, state, {conversations: {[action.conversation[Object.keys(action.conversation)[0]].id]: action.conversation[Object.keys(action.conversation)[0]]}})
+
          if (nextState["openChats"].length > 3) {
-            nextState.shift();
+            nextState["openChats"].shift();
          }
          nextState["openChats"].push(action.conversation[Object.keys(action.conversation)[0]]);
       return nextState;
