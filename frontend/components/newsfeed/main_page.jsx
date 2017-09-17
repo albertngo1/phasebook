@@ -5,6 +5,7 @@ import PostModal from '../modals/post_modal';
 import EditPost from './edit_form';
 import AdPage from './ad_page';
 import CommentForm from './comment_form';
+import Chat from '../chat/chat';
 import {NavLink, Link} from 'react-router-dom';
 import FA from 'react-fontawesome';
 
@@ -23,6 +24,7 @@ class MainPage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     this.props.fetchPosts();
+    this.props.fetchAllConversations();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -222,6 +224,7 @@ class MainPage extends React.Component {
             </ul>
           </div>
           <AdPage />
+          <Chat conversations={this.props.conversations} toggleChat={this.props.toggleChat} />
         </div>
       </div>
     );

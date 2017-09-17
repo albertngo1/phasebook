@@ -97,15 +97,7 @@ class PostModal extends React.Component {
                        type="file" onChange={this.updateFile} />
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
+            
             <div className="mp-nf-post-text-wrap">
               <Link to={`/users/${currentUser.id}`}>
               <img className="mp-nf-post-modal-img" src={currentUser.profile_pic} alt="profile-pic" />
