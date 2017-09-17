@@ -7,11 +7,14 @@ class Api::ConversationsController < ApplicationController
 
 
   def create
+    creator_id = params[:conversation][:creator_id]
+    recipient_id = params[:conversation][:recipient_id]
+
     if Conversation.where("(creator_id = ? AND recipient_id = ?) OR
       (creator_id = ? AND recipient_id = ?)", creator_id, recipient_id, recipient_id, creator_id).present?
       @conversation = Conversation.where("(creator_id = ? AND recipient_id = ?) OR
        (creator_id = ? AND recipient_id = ?)", creator_id, recipient_id,
-       recipient_id, creator_id).first.includes(:messages)
+       recipient_id, creator_id).includes(:messages).first
        render '/api/conversations/conversation'
     else
       @conversation = Conversation.new(conversation_params)

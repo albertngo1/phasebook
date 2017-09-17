@@ -22,7 +22,7 @@ export const receiveConversations = conversations => ({
 })
 
 export const receiveConversation = conversation => ({
-  type: RECEIVE_CONVERSATIONS,
+  type: RECEIVE_CONVERSATION,
   conversation,
 })
 
