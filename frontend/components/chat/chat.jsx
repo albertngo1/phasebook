@@ -25,7 +25,7 @@ class Chat extends React.Component {
       }
       this.props.createMessage(message).then(() => {
         $(`.chat-${chat.friend_id}`).val("");
-      });
+      })
     }
   }
 
@@ -37,21 +37,19 @@ class Chat extends React.Component {
 
   makeOpenChats() {
     let result = this.props.openChats.map( chat => {
+      const friendPic = chat.friend_pic
       return(
-        <div>
-          <div className="chat-id-wrapper" key={`chat-${chat.id}`}>
+        <div className="chat-id-wrap-overall" key={`chat-${chat.id}`}>
+          <div className="chat-id-wrapper">
             <div className="chat-id-name-wrap">
               <div className="chat-id-name">{chat.friend}</div>
               <div className="chat-id-name-x">X</div>
             </div>
             <div className="chat-messages-wrapper">
               {chat.messages.map( message => {
-                return(
-                  <div key={`messages-${chat.friend}-${message.id}`}>
-                    {this.parseMessage(message)}
-                  </div>
-                )
+                return(this.parseMessage(message, friendPic))
               })}
+              <div id="chat-end">asd</div>
             </div>
             <input className={`chat-${chat.friend_id} chat-id-input`}
               onKeyPress={(e) => this.handleMessageInput(e, chat)} type="text"
@@ -62,20 +60,31 @@ class Chat extends React.Component {
         </div>
       )
     })
+    $('.chat-messages-wrapper').animate({scrollTop: $('#chat-end').height()}, 0);
     return result;
   }
-  parseMessage(message) {
+  parseMessage(message, friendPic) {
+    debugger
     const currentUserId = this.props.currentUserId
       if (message.author_id !== currentUserId) {
         return(
-          <div>
-            {message.body}
+          <div key={`chat-msg-${message.id}`}
+            className="chat-received-wrap">
+            <Link to={`/users/${message.author_id}`}>
+              <img className="chat-received-pic"
+                src={friendPic} />
+            </Link>
+            <span className="chat-received-msg">
+              {message.body}
+            </span>
           </div>
         )
       } else {
         return(
-          <div>
-            {message.body}
+          <div className="chat-sent-wrap" key={`chat-msg-${message.id}`}>
+            <span className="chat-sent-msg">
+              {message.body}
+            </span>
           </div>
         )
       }
@@ -121,9 +130,7 @@ class Chat extends React.Component {
               <div className="chat-green-dot"></div><span>Chat ({Object.keys(friends).length})</span>
             </div>
           </div>
-          <div>
-            {openChats.length > 0 && this.makeOpenChats().map(el => el)}
-          </div>
+          {openChats.length > 0 && this.makeOpenChats().map(el => el)}
         </div>
       )
     }
@@ -131,8 +138,9 @@ class Chat extends React.Component {
   }
 }
 const mapStateToProps = state => {
+  const  currentUser = state.session.currentUser || {};
   return {
-    currentUserId: state.session.currentUser.id || {},
+    currentUserId: currentUser.id,
     chat: state.ui.toggleChat,
     openChats: state.entities.conversations.openChats,
   }
