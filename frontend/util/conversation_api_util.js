@@ -1,6 +1,6 @@
 export const createMessage = message => {
   return $.ajax({
-    url: `/api/conversations/${message.conversationId}/messages`,
+    url: `/api/conversations/${message.conversation_id}/messages`,
     method: 'POST',
     data: { message },
   });

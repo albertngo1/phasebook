@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createMessage, deleteMessage,
    createConversation, removeConversation } from '../../actions/conversation_actions';
+import { Link } from 'react-router-dom';
 
 class Chat extends React.Component {
 
@@ -11,6 +12,21 @@ class Chat extends React.Component {
     this.handleToggleChat = this.handleToggleChat.bind(this);
     this.makeOpenChats = this.makeOpenChats.bind(this);
     this.parseMessage = this.parseMessage.bind(this);
+    this.handleMessageInput = this.handleMessageInput.bind(this);
+  }
+
+  handleMessageInput(e, chat) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const body = $(`.chat-${chat.friend_id}`).val();
+      const message = {
+        body: body,
+        conversation_id: chat.id
+      }
+      this.props.createMessage(message).then(() => {
+        $(`.chat-${chat.friend_id}`).val("");
+      });
+    }
   }
 
   handleOpenChat(friend) {
@@ -22,16 +38,27 @@ class Chat extends React.Component {
   makeOpenChats() {
     let result = this.props.openChats.map( chat => {
       return(
-        <div key={`chat-${chat.id}`}>
-          <div>{chat.friend}</div>
-          {chat.messages.map( message => {
-            return(
-              <div key={`messages-${chat.friend}-${message.id}`}>
-                {this.parseMessage(message)}
-              </div>
-            )
-          })}
-          <input type="text" />
+        <div>
+          <div className="chat-id-wrapper" key={`chat-${chat.id}`}>
+            <div className="chat-id-name-wrap">
+              <div className="chat-id-name">{chat.friend}</div>
+              <div className="chat-id-name-x">X</div>
+            </div>
+            <div className="chat-messages-wrapper">
+              {chat.messages.map( message => {
+                return(
+                  <div key={`messages-${chat.friend}-${message.id}`}>
+                    {this.parseMessage(message)}
+                  </div>
+                )
+              })}
+            </div>
+            <input className={`chat-${chat.friend_id} chat-id-input`}
+              onKeyPress={(e) => this.handleMessageInput(e, chat)} type="text"
+              placeholder="Type a message..."
+              />
+          </div>
+          <div></div>
         </div>
       )
     })
@@ -68,29 +95,31 @@ class Chat extends React.Component {
 
     if (this.props.chat) {
       return(
-        <div>
-          <div onClick={this.props.toggleChat}>
-            Chat
+        <div className="chat-entire-wrap1">
+          <div className="chat-entire-btm-wrap1">
+            <div className="chat-btm-right-tgl-on" onClick={this.props.toggleChat}>
+              Chat
+            </div>
+            {!!friends && Object.keys(friends).map(key => {
+              let friend = friends[key];
+              return(
+                <div className="chat-friendlist-wrap" onClick={() => this.handleOpenChat(friend)} key={`conversation-${friend.friend_id}`}>
+                  <img className="chat-friendlist-pic"src={friend.friend_pic}/>
+                  <div className="chat-friendlist-name">{friend.friend}</div>
+                </div>
+              )
+            })}
           </div>
-          {!!friends && Object.keys(friends).map(key => {
-            let friend = friends[key];
-            return(
-              <div onClick={() => this.handleOpenChat(friend)} key={`conversation-${friend.friend_id}`}>
-                <div>{friend.friend}</div>
-                <img src={friend.friend_pic}/>
-              </div>
-            )
-          })}
-          <div>
-            {openChats.length > 0 && this.makeOpenChats().map(el => el)}
-          </div>
+          {openChats.length > 0 && this.makeOpenChats().map(el => el)}
         </div>
       )
     } else {
       return(
-        <div onClick={this.props.toggleChat}>
-          <div>
-            <span>Chat</span><span>({Object.keys(friends).length})</span>
+        <div className="chat-entire-btm-wrap2">
+          <div className="chat-btm-right-tgl-off" onClick={this.props.toggleChat}>
+            <div className="chat-btm-right-tgl-off-txt">
+              <div className="chat-green-dot"></div><span>Chat ({Object.keys(friends).length})</span>
+            </div>
           </div>
           <div>
             {openChats.length > 0 && this.makeOpenChats().map(el => el)}
