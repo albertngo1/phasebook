@@ -42,7 +42,14 @@ const conversationReducer = (state = conversationState, action) => {
           nextState.openChats[i].messages.push(action.message);
         }
       }
-      
+      return nextState;
+    case REMOVE_CONVERSATION:
+      nextState = _.merge({}, state);
+      for (let j=0; j < nextState.openChats.length; j++) {
+        if (nextState.openChats[j].id === action.conversationId) {
+          nextState.openChats.splice(j, 1);
+        }
+      }
       return nextState;
     default:
       return state;

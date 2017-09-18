@@ -130,7 +130,7 @@
   border: 1px solid rgb(226, 226, 226);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  box-shadow: 8px 8px 3px #c4c4c4;
+  box-shadow: 4px 4px 2px #c4c4c4;
 }
 .chat-id-name-wrap {
   cursor:pointer;
@@ -156,6 +156,10 @@
   font-weight: bold;
   display: flex;
   align-items: center;
+  user-select: none;
+}
+.chat-id-name:hover {
+  text-decoration: underline;
 }
 .chat-id-name-x {
   color:rgb(99, 99, 99);
@@ -163,6 +167,9 @@
   display: flex;
   align-items: center;
   margin-right: 8px;
+  user-select: none;
+  z-index: 3;
+  width: 5px;
 }
 .chat-id-name-x:hover {
   color:rgb(0, 0, 0);
@@ -195,6 +202,7 @@
   text-indent: 5px;
   font-size:12px;
   color: rgb(215, 215, 215);
+  user-select: none;
 }
 .chat-received-msg {
   max-width: 150px;
@@ -259,4 +267,35 @@
   height: 28px;
   margin: 0 5px;
   cursor: pointer;
+}
+.chat-id-name-wrap-off-hidden {
+  display: none;
+}
+.chat-id-name-wrap-off {
+  cursor:pointer;
+  display: flex;
+  justify-content: space-between;
+  direction:ltr;
+  flex-direction:row;
+  font-size:12px;
+  line-height:16px;
+  outline-color:rgb(25, 25, 25);
+  padding-left:8px;
+  height: 30px;
+  width: 200px;
+  background-color: #f6f7f9;
+  border: 1 solid rgb(208, 208, 208);
+  position: relative;
+  bottom: 0;
+  margin-right: 10px;
+}
+
+.open-chats-wrap {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 100px;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
