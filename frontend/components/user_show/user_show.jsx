@@ -71,6 +71,7 @@ class UserShow extends React.Component {
    componentDidMount() {
      this.props.requestSingleUser(this.props.match.params.userId);
      this.props.fetchPosts();
+     this.props.fetchAllConversations();
      window.scrollTo(0, 0)
    }
 
@@ -296,6 +297,7 @@ const mapDispatchToProps = dispatch => ({
    deletePost: (id) => dispatch(deletePost(id)),
    toggleEditIntroModal: () => dispatch(toggleEditIntroModal),
    toggleChat: () => dispatch(toggleChat),
+   fetchAllConversations: () => dispatch(fetchAllConversations()),
 })
 
 
