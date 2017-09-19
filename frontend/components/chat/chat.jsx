@@ -9,6 +9,7 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
 
+
     this.handleToggleChat = this.handleToggleChat.bind(this);
     this.makeOpenChats = this.makeOpenChats.bind(this);
     this.parseMessage = this.parseMessage.bind(this);
@@ -19,8 +20,10 @@ class Chat extends React.Component {
     this.blurChat = this.blurChat.bind(this);
   }
   componentDidUpdate() {
-    if (this.bottom) {
-      this.bottom.scrollIntoView();
+    for (let i=0; i < this.props.openChats.length; i++) {
+      if (this[`bottom-${i}`]) {
+        this[`bottom-${i}`].scrollIntoView();
+      }
     }
   }
 
@@ -68,7 +71,7 @@ class Chat extends React.Component {
   }
 
   makeOpenChats() {
-    let result = this.props.openChats.map( chat => {
+    let result = this.props.openChats.map( (chat, idx) => {
       const friendPic = chat.friend_pic
       return(
         <div className="chat-id-wrap-overall"
@@ -91,7 +94,7 @@ class Chat extends React.Component {
               {chat.messages.map( message => {
                 return(this.parseMessage(message, friendPic))
               })}
-              <div ref={el => this.bottom = el}></div>
+              <div ref={el => this[`bottom-${idx}`] = el}></div>
             </div>
             <input className={`chat-${chat.friend_id} chat-id-input`}
               onKeyPress={(e) => this.handleMessageInput(e, chat)} type="text"
