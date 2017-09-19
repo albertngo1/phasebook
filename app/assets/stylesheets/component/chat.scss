@@ -150,20 +150,29 @@
   background-color: #f6f7f9;
   justify-content: space-between;
   border: 1 solid rgb(208, 208, 208);
+  color:rgb(25, 25, 25);
+}
+.chat-id-name-wrap:hover {
+  background-color: #f2f2f2;
 }
 .chat-id-name {
-  color:rgb(25, 25, 25);
   font-weight: bold;
   display: flex;
   align-items: center;
   user-select: none;
   z-index: 3;
 }
+.chat-id-name-focus {
+  background-color: rgb(64, 128, 255);
+  color: white;
+}
+.chat-id-name-focus:hover {
+  background-color: rgb(47, 116, 252);
+}
 .chat-id-name:hover {
   text-decoration: underline;
 }
 .chat-id-name-x {
-  color:rgb(99, 99, 99);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -173,11 +182,7 @@
   width: 5px;
 }
 .chat-id-name-x:hover {
-  color:rgb(0, 0, 0);
-}
-
-.chat-id-name-wrap:hover {
-  background-color: #f2f2f2;
+  filter: invert(20%);
 }
 
 .chat-messages-wrapper {

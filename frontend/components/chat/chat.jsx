@@ -15,6 +15,8 @@ class Chat extends React.Component {
     this.handleMessageInput = this.handleMessageInput.bind(this);
     this.toggleOpenChat = this.toggleOpenChat.bind(this);
     this.exitOpenChat = this.exitOpenChat.bind(this);
+    this.focusChat = this.focusChat.bind(this);
+    this.blurChat = this.blurChat.bind(this);
   }
 
   handleMessageInput(e, chat) {
@@ -45,6 +47,13 @@ class Chat extends React.Component {
     }
   }
 
+  focusChat(chatId) {
+    $(`.focusChat-${chatId}`).addClass('chat-id-name-focus');
+  }
+  blurChat(chatId) {
+    $(`.focusChat-${chatId}`).removeClass('chat-id-name-focus');
+  }
+
   toggleOpenChat(chatId) {
     $(`.toggleChat-${chatId}`).toggle();
   }
@@ -58,10 +67,12 @@ class Chat extends React.Component {
       const friendPic = chat.friend_pic
       return(
         <div className="chat-id-wrap-overall"
-          key={`chat-${chat.id}`}>
+          key={`chat-${chat.id}`}
+          onFocus={() => this.focusChat(chat.id)}
+          onBlur={() => this.blurChat(chat.id)}>
           <div
             className={`toggleChat-${chat.id} chat-id-wrapper`}>
-            <div className="chat-id-name-wrap"
+            <div className={`focusChat-${chat.id} chat-id-name-wrap`}
               onClick={() => this.toggleOpenChat(chat.id)}>
               <div className="chat-id-name">
               <Link to={`/users/${chat.friend_id}`}>
