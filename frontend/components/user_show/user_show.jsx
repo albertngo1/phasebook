@@ -5,7 +5,8 @@ import { requestSingleUser } from '../../actions/user_actions';
 import NavBar from '../newsfeed/navbar';
 import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { selectAllPosts } from '../../util/selectors';
-import { toggleEditIntroModal } from '../../actions/ui_actions';
+import { toggleEditIntroModal, toggleChat } from '../../actions/ui_actions';
+import { fetchAllConversations } from '../../actions/conversation_actions';
 import PostModal from '../modals/post_modal';
 import EditPost from '../newsfeed/edit_form';
 import CommentForm from '../newsfeed/comment_form';
@@ -18,6 +19,7 @@ import FriendList from './friend_list';
 import FA from 'react-fontawesome';
 import ProfilePicUpload from './profile_picture_upload';
 import CoverPageUpload from './cover_page_upload';
+import Chat from '../chat/chat';
 
 class UserShow extends React.Component {
 
@@ -273,6 +275,7 @@ class UserShow extends React.Component {
 
             </div>
             </div>
+              <Chat conversations={this.props.conversations} toggleChat={this.props.toggleChat} />
          </div>
       )
    }
@@ -280,6 +283,7 @@ class UserShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
    return {
+      conversations: state.entities.conversations,
       user: state.entities.user || {},
       posts: selectAllPosts(state) || {},
       currentUser: state.session.currentUser || {},
@@ -291,6 +295,7 @@ const mapDispatchToProps = dispatch => ({
    fetchPosts: () => dispatch(fetchPosts()),
    deletePost: (id) => dispatch(deletePost(id)),
    toggleEditIntroModal: () => dispatch(toggleEditIntroModal),
+   toggleChat: () => dispatch(toggleChat),
 })
 
 

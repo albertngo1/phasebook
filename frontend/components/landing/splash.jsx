@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Splash = ({ loggedIn, errors, login, signup}) => {
 
-
+  window.scrollTo(0, 0)
+   
   return(
     <div>
       <header className="landing-header">

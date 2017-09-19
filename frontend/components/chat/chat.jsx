@@ -32,9 +32,17 @@ class Chat extends React.Component {
   }
 
   handleOpenChat(friend) {
-    const conversation = {creator_id: this.props.currentUserId,
-       recipient_id: friend.friend_id};
-      this.props.createConversation(conversation);
+    let chatExist = false;
+    this.props.openChats.forEach(el => {
+      if (el.friend_id === friend.friend_id) {
+        chatExist = true;
+      }
+    })
+    if (chatExist === false) {
+      const conversation = {creator_id: this.props.currentUserId,
+        recipient_id: friend.friend_id};
+        this.props.createConversation(conversation);
+    }
   }
 
   toggleOpenChat(chatId) {
