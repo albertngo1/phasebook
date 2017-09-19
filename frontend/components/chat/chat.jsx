@@ -18,6 +18,11 @@ class Chat extends React.Component {
     this.focusChat = this.focusChat.bind(this);
     this.blurChat = this.blurChat.bind(this);
   }
+  componentDidUpdate() {
+    if (this.bottom) {
+      this.bottom.scrollIntoView();
+    }
+  }
 
   handleMessageInput(e, chat) {
     if (e.key === 'Enter') {
@@ -86,7 +91,7 @@ class Chat extends React.Component {
               {chat.messages.map( message => {
                 return(this.parseMessage(message, friendPic))
               })}
-              <div id="chat-end">asd</div>
+              <div ref={el => this.bottom = el}></div>
             </div>
             <input className={`chat-${chat.friend_id} chat-id-input`}
               onKeyPress={(e) => this.handleMessageInput(e, chat)} type="text"
