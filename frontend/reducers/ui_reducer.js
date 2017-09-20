@@ -1,5 +1,5 @@
 import { TOGGLE_POST_MODAL, TOGGLE_EDIT_POST_MODAL,
-TOGGLE_EDIT_INTRO_MODAL, TOGGLE_CHAT } from '../actions/ui_actions';
+TOGGLE_EDIT_INTRO_MODAL, TOGGLE_CHAT, TOGGLE_NAVBAR } from '../actions/ui_actions';
 import { RECEIVE_SEARCH } from '../actions/user_actions';
 import _ from 'lodash';
 
@@ -8,7 +8,8 @@ const initialState = {
   toggleEditPostModal: 0,
   toggleEditIntroModal: false,
   toggleChat: false,
-  search: {}
+  search: {},
+  toggleNavBar: 0
 }
 
 const uiReducer = (state = initialState, action) => {
@@ -26,6 +27,10 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_SEARCH:
       newState = _.merge({}, state);
       newState.search = action.users;
+      return newState;
+    case TOGGLE_NAVBAR:
+      newState = _.merge({}, state);
+      newState.toggleNavBar = action.nav;
       return newState;
     default:
       return state;

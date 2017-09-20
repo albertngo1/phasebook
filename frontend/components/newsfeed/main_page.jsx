@@ -167,7 +167,7 @@ class MainPage extends React.Component {
     return (
       <div className="main-page-container">
         <header>
-          <NavBar/>
+          <NavBar conversations={this.props.conversations}/>
         </header>
         <div className="main-page-content">
           <div className="main-page-left-nav">

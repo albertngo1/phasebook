@@ -5,6 +5,7 @@ import { logout } from '../../actions/session_actions';
 import Search from './navbar_search';
 import FA from 'react-fontawesome';
 import { updateFriendship, deleteFriendship, fetchFriendRequests } from '../../actions/friendship_actions';
+import { toggleNavBar } from '../../actions/ui_actions';
 
 class NavBar extends React.Component {
 
@@ -14,6 +15,7 @@ class NavBar extends React.Component {
       this.handleAcceptFriend = this.handleAcceptFriend.bind(this);
       this.handleDenyFriend = this.handleDenyFriend.bind(this);
       this.renderFriendRequests = this.renderFriendRequests.bind(this);
+      this.toggleNavBar = this.toggleNavBar.bind(this);
    }
 
    componentDidMount() {
@@ -26,17 +28,23 @@ class NavBar extends React.Component {
       }
    }
 
+   toggleNavBar(nav) {
+      this.props.toggleNavBar(nav);
+   }
+
 
    handleClick() {
      this.props.logout()
    }
 
    handleAcceptFriend(id) {
-      this.props.updateFriendship(id);
+      this.props.updateFriendship(id)
+        .then(this.props.fetchFriendRequests());
    }
 
    handleDenyFriend(id) {
-      this.props.deleteFriendship(id);
+      this.props.deleteFriendship(id)
+        .then(this.props.fetchFriendRequests());
    }
 
    renderFriendRequests() {
@@ -87,13 +95,19 @@ class NavBar extends React.Component {
             </div>
 
             <div className="navbar-logout-dropdown">
-               <FA size='lg' name="users" className="navbar-fr"/>
+               <FA size='lg'
+                  name="users"
+                  className="navbar-fr"
+                  onClick={() => this.toggleNavBars(1)}/>
                <div className="navbar-fr-dropdown-content">
                   <p className="navbar-fr-text">Friend Requests</p>
                   {this.renderFriendRequests()}
                </div>
 
-                  <FA size='lg' name="commenting" className="navbar-notif"/>
+               <FA size='lg'
+                  name="commenting"
+                  className="navbar-notif"
+                  onClick={() => this.toggleNavBars(2)}/>
             </div>
 
 
@@ -114,6 +128,7 @@ const mapStateToProps = state => {
       currentUser: currentUser,
       friendRequests: currentUser.received_friend_requests || {},
       friendReqUsers: state.entities.friendships.friendRequests || {},
+      navBar: state.ui.toggleNavBar,
    }
 }
 
@@ -123,6 +138,7 @@ const mapDispatchToProps = dispatch => {
       updateFriendship: friendshipId => dispatch(updateFriendship(friendshipId)),
       deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
       fetchFriendRequests: () => dispatch(fetchFriendRequests()),
+      toggleNavBar: (nav) => dispatch(toggleNavBar(nav)),
    }
 }
 
