@@ -88,6 +88,7 @@
   height: 40px;
   width: inherit;
   overflow-y:hidden;
+  user-select: none;
 }
 
 .chat-friendlist-wrap:hover {
@@ -251,6 +252,7 @@
   text-align:start;
   text-shadow:none;
   white-space:pre-wrap;
+  word-wrap: break-word;
   margin: 3px 0;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;

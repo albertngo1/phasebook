@@ -81,6 +81,7 @@
 .navbar-chat-footer-txt {
   color: rgb(54, 88, 153);
   cursor: pointer;
+  user-select: none;
 }
 .navbar-chat-footer-txt:hover {
   text-decoration: underline;
