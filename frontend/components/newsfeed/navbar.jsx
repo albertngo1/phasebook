@@ -6,6 +6,7 @@ import Search from './navbar_search';
 import FA from 'react-fontawesome';
 import {updateFriendship, deleteFriendship, fetchFriendRequests} from '../../actions/friendship_actions';
 import {toggleNavBar} from '../../actions/ui_actions';
+import { createConversation } from '../../actions/conversation_actions';
 
 class NavBar extends React.Component {
 
@@ -56,7 +57,9 @@ class NavBar extends React.Component {
         </div>
         {conversations.map( convo => {
           return(
-            <div className="navbar-chat-friend-wrap"key={`conversation-nav-${convo.id}`}>
+            <div className="navbar-chat-friend-wrap"
+              key={`conversation-nav-${convo.id}`}
+              onClick={() => this.props.createConversation(convo)}>
               <img className="navbar-chat-pic" src={convo.friend_pic} />
               <div className="navbar-chat-name-body-wrap">
                 <div className="navbar-chat-name">
@@ -168,7 +171,8 @@ const mapDispatchToProps = dispatch => {
     updateFriendship: friendshipId => dispatch(updateFriendship(friendshipId)),
     deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
     fetchFriendRequests: () => dispatch(fetchFriendRequests()),
-    toggleNavBar: (nav) => dispatch(toggleNavBar(nav))
+    toggleNavBar: (nav) => dispatch(toggleNavBar(nav)),
+    createConversation: conversation => dispatch(createConversation(conversation)),
   }
 }
 
