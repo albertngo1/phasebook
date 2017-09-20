@@ -20,6 +20,9 @@ Phasebook is a single-page, full-stack web application built with Ruby on Rails,
   * Search
   * Newsfeed
   * User show page
+  * Chat messenger
+  * User information editing
+  * Profile picture/Cover page upload
 
 
 ### User Authentication
@@ -84,13 +87,34 @@ A polymorphic association was implemented to ensure that a like only points to o
   params.require(:like).permit(:like_item_id, :like_item_type)
 ```
 
+### Chat
+
+A user can interact with their friends via live messaging. This involved having a chat bar that lists all friends that the user can talk wth, and upon clicking on a friend, opens a chat that can be toggled into and out of view, or exited.
+The chat persists across the main newsfeed page and the individual show page.
+
+```javascript
+nextState["openChats"].push(action.conversation[Object.keys(action.conversation)[0]]);
+if (nextState["openChats"].length > 3) {
+  nextState["openChats"].shift();
+}
+```
+```javascript
+for (let j=0; j < nextState.openChats.length; j++) {
+  if (nextState.openChats[j].id === action.conversationId) {
+    nextState.openChats.splice(j, 1);
+  }
+}
+```
+
 
 ### Other Features
 
 The current user can also do the following to customize their page:
 
 * Upload a profile picture
+  - User can customize their profile picture by uploading a picture of their choice via `Paperclip`
 * Upload a cover page
+  - User can also show personality by uploading a picture of their choice for their cover page
 * Edit personal user information including:
   - Introduction
   - Hometown

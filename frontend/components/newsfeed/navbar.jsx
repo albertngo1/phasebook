@@ -92,6 +92,8 @@ class NavBar extends React.Component {
                   <p className="navbar-fr-text">Friend Requests</p>
                   {this.renderFriendRequests()}
                </div>
+
+                  <FA size='lg' name="commenting" className="navbar-notif"/>
             </div>
 
 
@@ -129,7 +131,6 @@ export default withRouter(connect(mapStateToProps,
 
 
 
-   // <FA size='lg' name="commenting" className="navbar-notif"/>
    // <FA size='lg' name="globe" className="navbar-notif"/>
 
 

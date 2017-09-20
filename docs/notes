@@ -1,11 +1,4 @@
 
-how come i lose my currentUser so easily?
-sometimes going between pages then logging out sends an
-error in the delete session request
-
-logging out causes issues when on show page
-still cycles through different actions on logout
-
 
 in jbuilder for post, add comments of posts at same level, edit actions and reducers as necessary
 
@@ -14,9 +7,7 @@ fix media query right container main page
 
 add edit to show pages for valid users
 
-fix the hover on the help notification
 
-change pages scrolls to bottom of page/ doesnt reset to top of page
 
 accept friend request changes to add friend instead of friend -> friend on refresh
 
@@ -28,4 +19,4 @@ add edit pictures in posts
 
 add pictures to friend request notifications
 
-chat, auto scroll to bottom. builds left to right instead of right to left add pusher, add notifcation messages/chat
+chat, add pusher, add notifcation messages/chat
