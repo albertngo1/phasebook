@@ -3,9 +3,9 @@
 ![alt text](/docs/production_readme_misc/phasebook.png)
 
 
-[Link][heroku]
+[Link][phasebook]
 
-[heroku]: http://www.herokuapp.com
+[phasebook]: https://phasebook-august.herokuapp.com/
 
 Phasebook is a single-page, full-stack web application built with Ruby on Rails, React/Redux (featuring Javascript, HTML/CSS) and PostgreSQL.
 

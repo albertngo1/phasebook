@@ -70,7 +70,7 @@ class NavBar extends React.Component {
         <div className="navbar-chat-recent">
           Recent ({conversations.length})
         </div>
-        {conversations.map( convo => {
+        {conversations.slice(0,3).map( convo => {
           return(
             <div className="navbar-chat-friend-wrap"
               key={`conversation-nav-${convo.id}`}
