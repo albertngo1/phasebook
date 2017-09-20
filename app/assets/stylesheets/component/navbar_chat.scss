@@ -1,0 +1,88 @@
+.navbar-chat-content {
+  position: relative;
+  background-color: #f9f9f9;
+  width: auto;
+  height: auto;
+  top: 160px;
+  left: -490px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 998;
+  border-radius: 3px;
+}
+
+.navbar-chat-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-chat-recent {
+  width: inherit;
+  border-bottom: 1px solid rgb(221, 223, 226);
+  color: rgb(29, 33, 41);
+  font-size: 12px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  cursor: default;
+}
+
+.navbar-chat-friend-wrap {
+  width: 430px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 20px;
+  padding-top: 8px;
+  font-size: 12px;
+  display: flex;
+  border-bottom: 1px solid rgb(221, 223, 226);
+  cursor: pointer;
+}
+
+.navbar-chat-friend-wrap:hover {
+  background-color: #eaebee;
+}
+
+.navbar-chat-name-body-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.navbar-chat-name {
+  font-weight: bold;
+  text-align: left;
+  line-height:16.08px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+.navbar-chat-body {
+  text-align: left;
+  line-height:16.08px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+.navbar-chat-footer {
+  font-size: 12px;
+  line-height:16.08px;
+  padding-bottom:8px;
+  padding-left:12px;
+  padding-right:12px;
+  padding-top: 8px;
+}
+.navbar-chat-footer-txt {
+  color: rgb(54, 88, 153);
+  cursor: pointer;
+}
+.navbar-chat-footer-txt:hover {
+  text-decoration: underline;
+
+}

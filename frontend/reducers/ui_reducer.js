@@ -30,7 +30,11 @@ const uiReducer = (state = initialState, action) => {
       return newState;
     case TOGGLE_NAVBAR:
       newState = _.merge({}, state);
-      newState.toggleNavBar = action.nav;
+      if (newState.toggleNavBar === action.nav) {
+        newState.toggleNavBar = 0;
+      } else {
+        newState.toggleNavBar = action.nav;
+      }
       return newState;
     default:
       return state;
