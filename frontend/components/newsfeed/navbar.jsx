@@ -18,6 +18,7 @@ class NavBar extends React.Component {
     this.renderFriendRequests = this.renderFriendRequests.bind(this);
     this.toggleNavBar = this.toggleNavBar.bind(this);
     this.renderMessageBox = this.renderMessageBox.bind(this);
+    this.handleOpenChat = this.handleOpenChat.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +45,20 @@ class NavBar extends React.Component {
 
   handleDenyFriend(id) {
     this.props.deleteFriendship(id).then(this.props.fetchFriendRequests());
+  }
+
+  handleOpenChat(friend) {
+    let chatExist = false;
+    this.props.openChats.forEach(el => {
+      if (el.friend_id === friend.friend_id) {
+        chatExist = true;
+      }
+    })
+    if (chatExist === false) {
+      const conversation = {creator_id: this.props.currentUserId,
+        recipient_id: friend.friend_id};
+        this.props.createConversation(conversation);
+    }
   }
 
   renderMessageBox() {
@@ -74,7 +89,7 @@ class NavBar extends React.Component {
           )
         })}
         <div className="navbar-chat-footer">
-          <span className="navbar-chat-footer-txt">
+          <span className="navbar-chat-footer-txt" onClick={this.props.toggleChat}>
             See All in Messenger
           </span>
         </div>
@@ -132,12 +147,12 @@ class NavBar extends React.Component {
         </div>
           <FA size='lg'
             name="users"
-            className="navbar-fr"
+            className={this.props.navBar === 1 ? "navbar-fr-on" : "navbar-fr"}
             onClick={() => this.toggleNavBar(1)}/>
 
         <FA size='lg'
           name="commenting"
-          className="navbar-notif"
+          className={this.props.navBar === 2 ? "navbar-notif-on" : "navbar-notif"}
           onClick={() => this.toggleNavBar(2)}/>
 
           <button onClick={this.handleClick} className="navbar-logout-btn">Logout</button>
@@ -161,7 +176,8 @@ const mapStateToProps = state => {
     currentUser: currentUser,
     friendRequests: currentUser.received_friend_requests || {},
     friendReqUsers: state.entities.friendships.friendRequests || {},
-    navBar: state.ui.toggleNavBar
+    navBar: state.ui.toggleNavBar,
+    openChats: state.entities.conversations.openChats,
   }
 }
 

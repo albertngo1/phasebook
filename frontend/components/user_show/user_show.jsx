@@ -182,7 +182,7 @@ class UserShow extends React.Component {
       return(
          <div className="pp-main-container">
             <header>
-               <NavBar conversations={this.props.conversations} />
+               <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations} />
             </header>
             <div className="pp-container">
               <div className="pp-header">
