@@ -72,7 +72,7 @@ class Chat extends React.Component {
 
   makeOpenChats() {
     let result = this.props.openChats.map( (chat, idx) => {
-      const friendPic = chat.friend_pic
+      const friendPic = chat.profile_pic_small;
       return(
         <div className="chat-id-wrap-overall"
           key={`chat-${chat.id}`}
@@ -117,7 +117,6 @@ class Chat extends React.Component {
         </div>
       )
     })
-    $('.chat-messages-wrapper').animate({scrollTop: $('#chat-end').height()}, 0);
     return result;
   }
   parseMessage(message, friendPic) {
@@ -170,7 +169,7 @@ class Chat extends React.Component {
                 let friend = friends[key];
                 return(
                   <div className="chat-friendlist-wrap" onClick={() => this.handleOpenChat(friend)} key={`conversation-${friend.friend_id}`}>
-                    <img className="chat-friendlist-pic"src={friend.friend_pic}/>
+                    <img className="chat-friendlist-pic"src={friend.profile_pic_small}/>
                     <div className="chat-friendlist-name">{friend.friend}</div>
                   </div>
                 )

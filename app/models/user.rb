@@ -36,10 +36,18 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   attr_reader :password
 
-  has_attached_file :profile_pic, default_url: "fbpic.jpg"
+  has_attached_file :profile_pic, default_url: "fbpic.jpg",
+  :styles => {
+    :small => "50x50#",
+    :medium => "101x101#",
+    :large => "170x170#"
+  }
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :cover_page, default_url: "airbase.jpg"
+  has_attached_file :cover_page, default_url: "airbase.jpg",
+  :styles => {
+    :large => "850x210#"
+  }
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   has_many :posts, dependent: :destroy,

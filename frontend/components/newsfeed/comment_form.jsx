@@ -97,7 +97,7 @@ class CommentForm extends React.Component {
 
 
           <div className="comment-form-wrap">
-            <img className="comment-img" src={this.props.currentUser.profile_pic} alt="profile-pic" />
+            <img className="comment-img" src={this.props.currentUser.profile_pic_small} alt="profile-pic" />
             <form className="comment-form" onKeyPress={this.handleSubmit}>
               <textarea
                 id={`comment-${this.props.post.id}`}

@@ -174,7 +174,7 @@ class MainPage extends React.Component {
             <div className="mp-left-nav-name">
               <Link to={`/users/${currentUser.id}`}>
                 <div className="mp-left-nav-name-wrap">
-                  <img className="mp-left-nav-pp" src={currentUser.profile_pic} alt="profile-pic"/>
+                  <img className="mp-left-nav-pp" src={currentUser.profile_pic_small} alt="profile-pic"/>
 
                   <div className="mp-left-nav-name-title">
                     {`${currentUser.first_name} ${currentUser.last_name}`}

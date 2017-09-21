@@ -15,7 +15,7 @@ json.friends do
     json.set! friend.id do
       json.set! :friend_id, friend.id
       json.set! :friend, friend.full_name
-      json.set! :friend_pic, asset_path(friend.profile_pic.url)
+      json.set! :profile_pic_small, asset_path(friend.profile_pic.url(:small))
     end
   end
 end

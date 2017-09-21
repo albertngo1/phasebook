@@ -75,7 +75,7 @@ class NavBar extends React.Component {
             <div className="navbar-chat-friend-wrap"
               key={`conversation-nav-${convo.id}`}
               onClick={() => this.props.createConversation(convo)}>
-              <img className="navbar-chat-pic" src={convo.friend_pic} />
+              <img className="navbar-chat-pic" src={convo.profile_pic_small} />
               <div className="navbar-chat-name-body-wrap">
                 <div className="navbar-chat-name">
                   {convo.friend}
@@ -131,41 +131,45 @@ class NavBar extends React.Component {
   render() {
     const {currentUser} = this.props
     return (
-      <div className="navbar-container">
-        {!!currentUser && <Search/>}
-        <Link to={`/users/${currentUser.id}`}>
-          <div className="navbar-user-wrap">
-            <img className="navbar-user-pp" src={currentUser.profile_pic} alt="profile-pic"/>
-            <button className="navbar-user-home-hover">
-              <div className="navbar-user">
-                {currentUser.first_name}</div>
-            </button>
+      <div>
+        <div className="navbar-container">
+          {!!currentUser && <Search/>}
+          <Link to={`/users/${currentUser.id}`}>
+            <div className="navbar-user-wrap">
+              <img className="navbar-user-pp" src={currentUser.profile_pic_small} alt="profile-pic"/>
+              <button className="navbar-user-home-hover">
+                <div className="navbar-user">
+                  {currentUser.first_name}</div>
+              </button>
+            </div>
+          </Link>
+          <div className="navbar-user-home-hover:hover">
+            <Link to='/' className="navbar-user navbar-home">Home</Link>
           </div>
-        </Link>
-        <div className="navbar-user-home-hover:hover">
-          <Link to='/' className="navbar-user navbar-home">Home</Link>
-        </div>
           <FA size='lg'
             name="users"
             className={this.props.navBar === 1 ? "navbar-fr-on" : "navbar-fr"}
             onClick={() => this.toggleNavBar(1)}/>
 
-        <FA size='lg'
-          name="commenting"
-          className={this.props.navBar === 2 ? "navbar-notif-on" : "navbar-notif"}
-          onClick={() => this.toggleNavBar(2)}/>
+          <FA size='lg'
+            name="commenting"
+            className={this.props.navBar === 2 ? "navbar-notif-on" : "navbar-notif"}
+            onClick={() => this.toggleNavBar(2)}/>
 
           <button onClick={this.handleClick} className="navbar-logout-btn">Logout</button>
+      </div>
+      <div className="navbar-dropdowns-wrapper">
+        {(this.props.navBar === 1) && (
+          <div className="navbar-fr-content">
+            <p className="navbar-fr-text">Friend Requests</p>
+            {this.renderFriendRequests()}
+          </div>
+        )}
+        {(this.props.navBar === 2) &&
+          this.renderMessageBox()}
+      </div>
+      </div>
 
-          {(this.props.navBar === 1) && (
-            <div className="navbar-fr-content">
-              <p className="navbar-fr-text">Friend Requests</p>
-              {this.renderFriendRequests()}
-            </div>
-          )}
-          {(this.props.navBar === 2) &&
-            this.renderMessageBox()}
-        </div>
     )
   }
 }

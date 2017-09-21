@@ -34,7 +34,10 @@ class Post < ActiveRecord::Base
   foreign_key: :post_id,
   class_name: :Comment
 
-  has_attached_file :image
+  has_attached_file :image,
+  :styles => {
+    :large => "452x452#"
+  }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :likes, :as => :like_item, dependent: :destroy

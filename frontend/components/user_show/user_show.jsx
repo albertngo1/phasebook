@@ -192,7 +192,7 @@ class UserShow extends React.Component {
                     <div className="pp-header-cover-page-wrap">
                       <div className="pp-profile-pic-wrap">
                         {this.profilePictureUpload()}
-                        <img className="pp-profile-pic" src={user.profile_pic} />
+                        <img className="pp-profile-pic" src={user.profile_pic_large} />
                       </div>
 
                           <div className="pp-header-name">
