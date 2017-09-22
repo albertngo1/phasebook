@@ -23,6 +23,7 @@ class NavBar extends React.Component {
 
   componentDidMount() {
     this.props.fetchFriendRequests();
+    this.props.toggleNavBar(0);
   }
 
   componentWillReceiveProps(nextProps) {
