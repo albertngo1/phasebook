@@ -106,6 +106,31 @@ for (let j=0; j < nextState.openChats.length; j++) {
 }
 ```
 
+![like](/docs/production_readme_misc/chat.gif)
+
+### Picture Resizing
+
+Phasebook uses a lot of pictures. And pictures uses up a lot of bandwidth and can make rendering the pages take a lot longer due to having to download large picture sizes and then having to resize them on the frontend. Paperclip was used to crop and resize pictures uploaded by users to different category sizes (small, medium, large) and uploads these different instances to AWS so that the correct size of the picture can be rendered.
+
+```ruby
+#User model
+has_attached_file :profile_pic,
+:styles => {
+  :small => "50x50#",
+  :medium => "101x101#",
+  :large => "170x170#"
+}
+
+#User view
+json.extract!(user, :id, :email, :first_name, :last_name,
+:education, :current_city, :hometown, :relationship, :introduction)
+json.set! :cover_page, asset_path(user.cover_page.url(:large))
+json.set! :profile_pic_small, asset_path(user.profile_pic.url(:small))
+json.set! :profile_pic_medium, asset_path(user.profile_pic.url(:medium))
+json.set! :profile_pic_large, asset_path(user.profile_pic.url(:large))
+
+```
+
 
 ### Other Features
 

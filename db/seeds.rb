@@ -11,6 +11,8 @@ Post.destroy_all
 Friendship.destroy_all
 Comment.destroy_all
 Like.destroy_all
+Conversation.destroy_all
+Message.destroy_all
 
 albert_user = User.create({first_name: "Albert",
 last_name: "Ngo", email: "albertngo1@gmail.com", birth_day: 30,
@@ -278,11 +280,23 @@ andy_albert_friend = Friendship.create(user1_id: andy_user.id, user2_id: albert_
 nate_albert_friend = Friendship.create(user1_id: nate_user.id, user2_id: albert_user.id, status: "pending")
 
 
+albert_kenneth_conversation = Conversation.create(creator_id: albert_user.id, recipient_id: kenneth_user.id)
 
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: albert_user.id, body: "hey")
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: albert_user.id, body: "what are you up to today?")
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "yo")
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "nothing much, about to go to the gym")
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "oh okay, weights?")
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "yeah and a little bit of basketball later")
 
+albert_jonathan_conversation = Conversation.create(creator_id: albert_user.id, recipient_id: jonathan_user.id)
 
-
-
+Message.create(conversation_id: albert_jonathan_conversation.id, author_id: jonathan_user.id, body: "hey wanna eat ramen later today?")
+Message.create(conversation_id: albert_jonathan_conversation.id, author_id: albert_user.id, body: "sure where at")
+Message.create(conversation_id: albert_jonathan_conversation.id, author_id: jonathan_user.id, body: "theres a place close to us i think")
+Message.create(conversation_id: albert_jonathan_conversation.id, author_id: jonathan_user.id, body: "in hell's kitchen")
+Message.create(conversation_id: albert_jonathan_conversation.id, author_id: albert_user.id, body: "alright i'll look at some places")
+Message.create(conversation_id: albert_jonathan_conversation.id, author_id: jonathan_user.id, body: "kk me too")
 
 
 
