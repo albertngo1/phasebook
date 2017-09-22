@@ -286,7 +286,7 @@ Message.create(conversation_id: albert_kenneth_conversation.id, author_id: alber
 Message.create(conversation_id: albert_kenneth_conversation.id, author_id: albert_user.id, body: "what are you up to today?")
 Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "yo")
 Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "nothing much, about to go to the gym")
-Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "oh okay, weights?")
+Message.create(conversation_id: albert_kenneth_conversation.id, author_id: albert_user.id, body: "oh okay, weights?")
 Message.create(conversation_id: albert_kenneth_conversation.id, author_id: kenneth_user.id, body: "yeah and a little bit of basketball later")
 
 albert_jonathan_conversation = Conversation.create(creator_id: albert_user.id, recipient_id: jonathan_user.id)
