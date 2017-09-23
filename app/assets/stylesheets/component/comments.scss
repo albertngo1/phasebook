@@ -130,7 +130,10 @@
   user-select: none;
 }
 
-.comment-like:hover .comment-not-liked:hover {
+.comment-like:hover {
+  text-decoration: underline;
+}
+.comment-not-liked:hover {
   text-decoration: underline;
 }
 

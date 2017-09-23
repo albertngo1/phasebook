@@ -100,7 +100,9 @@ class UserShow extends React.Component {
               <div className="mp-nf-pi-name-header">
                 <div className="mp-nf-pi-name">
                   <Link to={`/users/${post.author_id}`}>
-                    {post.author}
+                    <label className="mp-nf-pi-name-underline">
+                      {post.author}
+                    </label>
                   </Link>
                 </div>
                 {this.viewOptions(post) &&
@@ -137,7 +139,7 @@ class UserShow extends React.Component {
                 <div className="mp-nf-pi-name">
                   <div className="mp-nf-pi-name-wrap">
                     <Link to={`/users/${post.author_id}`}>
-                      <label>
+                      <label className="mp-nf-pi-name-underline">
                         {post.author}
                       </label>
                     </Link>
@@ -145,7 +147,7 @@ class UserShow extends React.Component {
                       <FA className="caret" name="caret-right"/>
                     </div>
                     <Link to={`/users/${post.receiver_id}`}>
-                      <label>
+                      <label className="mp-nf-pi-name-underline">
                         {post.receiver}
                       </label>
                     </Link>
