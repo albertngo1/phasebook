@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let http = require("http");
   setInterval(function() {
-    http.get("http://phasebook-august.herokuapp.com");
+    http.get("https://phasebook-august.herokuapp.com");
   }, 300000);
 
   const root = document.getElementById('root');

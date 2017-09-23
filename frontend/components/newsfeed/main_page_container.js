@@ -11,9 +11,10 @@ import { fetchAllConversations } from '../../actions/conversation_actions';
 
 
 const mapStateToProps = (state) => {
+  const currentUser = state.session.currentUser || {},
   return {
     conversations: state.entities.conversations,
-    currentUser: state.session.currentUser || {},
+    currentUser: currentUser,
     posts: selectAllPosts(state) || {},
   };
 };
