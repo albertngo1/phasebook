@@ -1,3 +1,4 @@
+/* globals Pusher */
 import React from 'react';
 import { connect } from 'react-redux';
 import { createMessage, deleteMessage,
@@ -18,7 +19,10 @@ class Chat extends React.Component {
     this.exitOpenChat = this.exitOpenChat.bind(this);
     this.focusChat = this.focusChat.bind(this);
     this.blurChat = this.blurChat.bind(this);
+    this.channel = [];
   }
+
+
   componentDidUpdate() {
     for (let i=0; i < this.props.openChats.length; i++) {
       if (this[`bottom-${i}`]) {
@@ -71,6 +75,18 @@ class Chat extends React.Component {
   }
 
   makeOpenChats() {
+
+    this.pusher = new Pusher('dc8faa4c4435af1410ca', {
+      encrypted: true
+    });
+    
+    for (let i=0; i < this.props.openChats.length; i++) {
+      this.channel[i] = this.pusher.subscribe('conversation_' + `${this.props.openChats[i].id}`);
+      this.channel[i].bind('message_created', (data) => {
+        this.props.fetchConversations();
+      })
+    }
+
     let result = this.props.openChats.map( (chat, idx) => {
       const friendPic = chat.profile_pic_small;
       return(

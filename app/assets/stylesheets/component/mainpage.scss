@@ -41,6 +41,44 @@
 
   margin: 20px auto 10px;
 }
+.mp-left-nav-explore-wrap {
+  font-size: 11px;
+  letter-spacing: -0.12px;
+  text-rendering: optimizelegibility;
+  width: 150px;
+  height: 15px;
+  padding: 5px;
+
+  margin: 2px auto;
+}
+.mp-left-nav-explore {
+  color: rgb(144, 148, 156);
+  font-size: 13px;
+  font-weight: bold;
+  height: 17px;
+  margin-bottom: -1px;
+  margin-top: -2px;
+  letter-spacing: -0.12px;
+  padding: 4px 0;
+}
+
+.mp-left-nav-misc {
+  font-size: 11px;
+  letter-spacing: -0.12px;
+  text-rendering: optimizelegibility;
+  width: 150px;
+  height: 15px;
+  padding: 5px;
+
+  margin: 2px auto;
+  cursor: pointer;
+}
+
+.mp-left-nav-misc:hover {
+  background-color: #fbfcff;
+  border: 1px solid #dadbdd;
+  padding: 4px;
+}
 
 .mp-left-nav-name:hover {
   background-color: #fbfcff;

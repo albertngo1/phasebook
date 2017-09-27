@@ -6,7 +6,8 @@ import EditPost from './edit_form';
 import AdPage from './ad_page';
 import CommentForm from './comment_form';
 import Chat from '../chat/chat';
-import {NavLink, Link} from 'react-router-dom';
+import LeftNav from './main_page_left_nav';
+import {Link} from 'react-router-dom';
 import FA from 'react-fontawesome';
 
 class MainPage extends React.Component {
@@ -172,27 +173,9 @@ class MainPage extends React.Component {
           <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations}/>
         </header>
         <div className="main-page-content">
-          <div className="main-page-left-nav">
-            <div className="mp-left-nav-name">
-              <Link to={`/users/${currentUser.id}`}>
-                <div className="mp-left-nav-name-wrap">
-                  <img className="mp-left-nav-pp" src={currentUser.profile_pic_small} alt="profile-pic"/>
-
-                  <div className="mp-left-nav-name-title">
-                    {`${currentUser.first_name} ${currentUser.last_name}`}
-                  </div>
-                </div>
-              </Link>
-            </div>
-            <NavLink to="/" className="mp-left-nav-newsfeed" activeStyle={{
-              fontWeight: 'bold',
-              color: 'black'
-            }}>
-              <span className="mp-left-nav-newsfeed-item-1"><FA name="newspaper-o" size='lg'/></span>
-              <span>
-                News Feed</span>
-            </NavLink>
-          </div>
+          {!!currentUser &&
+            <LeftNav currentUser={currentUser} toggleChat={this.props.toggleChat}/>
+          }
 
           <div className="main-page-newsfeed">
             <div>
@@ -226,7 +209,9 @@ class MainPage extends React.Component {
             </ul>
           </div>
           <AdPage />
-          <Chat conversations={this.props.conversations} toggleChat={this.props.toggleChat} />
+          <Chat conversations={this.props.conversations}
+            toggleChat={this.props.toggleChat}
+            fetchConversations={this.props.fetchAllConversations} />
         </div>
       </div>
     );

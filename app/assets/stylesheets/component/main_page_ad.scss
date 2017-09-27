@@ -1,12 +1,12 @@
 .main-page-ad {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 20px;
   position: fixed;
   width:400px;
   right: 5px;
-  height: 600px;
+  height: 400px;
   margin-left: 10px;
 }
 
@@ -57,7 +57,7 @@
 .ad-space-1-wrap {
   background-color: white;
   width: 300px;
-  height: 445px;
+  height: 250px;
   font-size: 12px;
   display: flex;
   flex-direction: column;
@@ -102,5 +102,5 @@
 }
 
 .ad-space-1b {
-  height: 50%;
+  height: auto;
 }
