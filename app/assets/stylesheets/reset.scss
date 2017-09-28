@@ -16,7 +16,11 @@ span, article, footer, time, small {
   background: transparent;
 }
 .app-page {
-  height: 100%;
+  background-color: #e9edf4;
+  background-size: 100% auto;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
 }
 html {
   height: 100%;
