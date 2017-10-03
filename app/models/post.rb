@@ -36,7 +36,8 @@ class Post < ActiveRecord::Base
 
   has_attached_file :image, default_url: "missing-post.png",
   :styles => {
-    :large => "452x452#"
+    :large => "452x452#",
+    :small => "1x1"
   }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
