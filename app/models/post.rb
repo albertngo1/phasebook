@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
   foreign_key: :post_id,
   class_name: :Comment
 
-  has_attached_file :image,
+  has_attached_file :image, default_url: default_url: "missing-post.png"
   :styles => {
     :large => "452x452#"
   }
