@@ -45,7 +45,7 @@ class UserShow extends React.Component {
    coverPageUpload() {
       if (this.props.user.id == this.props.currentUser.id) {
          return(
-            <div>
+            <div className="cover-page-upload-container">
                <CoverPageUpload />
             </div>
          )
@@ -186,97 +186,100 @@ class UserShow extends React.Component {
             <header>
                <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations} />
             </header>
-            <div className="pp-container">
-              <div className="pp-header">
-                 {this.coverPageUpload()}
-                 <img className="pp-cover-page" src={user.cover_page} />
-                 <div className="pp-header-reposition">
-                    <div className="pp-header-cover-page-wrap">
-                      <div className="pp-profile-pic-wrap">
-                        {this.profilePictureUpload()}
-                        <img className="pp-profile-pic" src={user.profile_pic_large} />
-                      </div>
+            <div className="pp-container-wrap">
+               <div className="pp-container">
+                  <div className="pp-header">
+                     {this.coverPageUpload()}
+                     <img className="pp-cover-page" src={user.cover_page} />
+                     <div className="pp-header-reposition">
+                        <div className="pp-header-cover-page-wrap">
+                           <div className="pp-profile-pic-wrap">
+                              {this.profilePictureUpload()}
+                              <img className="pp-profile-pic" src={user.profile_pic_large} />
+                           </div>
 
-                          <div className="pp-header-name">
-                             <Link to={`/users/${user.id}`}>
-                            <span className="pp-header-name-txt">
-                               {user.first_name} {user.last_name}
+                           <div className="pp-header-name">
+                              <Link to={`/users/${user.id}`}>
+                                 <span className="pp-header-name-txt">
+                                    {user.first_name} {user.last_name}
 
-                            </span>
-                            </Link>
-                          </div>
+                                 </span>
+                              </Link>
+                           </div>
 
-                    </div>
-                    <div className="pp-header-items-wrap">
-                       <div className="pp-header-items">
-                          <div className="pp-header-timeline">Timeline</div>
-                          <div className="pp-header-about">About</div>
-                          <div className="pp-header-friends">Friends</div>
-                       </div>
-                     <FriendRequest />
-                    </div>
-                 </div>
-           </div>
-
-           <div className="pp-lower-ctn">
-             <div className="pp-left-ctn-wrapper">
-              <div className="pp-left-container">
-                 <div className="pp-left-intro-ctn-wrap">
-                 <div className="pp-left-intro-ctn">
-                    <div className="pp-left-globe-wrapper">
-                     <FA size='lg' name="globe" className="pp-left-globe"/>
-                    </div>
-                    <div className="pp-left-intro">Intro</div>
-                    <div className="pp-left-intro-edit-wrap">
-                       {this.viewOptions() && <FA name="pencil-square"
-                          className="pp-left-intro-edit"
-                          onClick={this.props.toggleEditIntroModal} />
-                        }
-                    </div>
-                 </div>
-
-                 <UserInfo />
-                 <UserEditInfo />
-                 </div>
-              </div>
-
-              <div className="pp-left-friends">
-                 <FriendList user={user} currentUser={currentUser}/>
-              </div>
-              </div>
-               <div className="pp-page-feed">
-            <div>
-              <PostShowForm user={user}/>
-            </div>
-            <ul className="pp-posts-wrapper">
-              {filteredPosts.reverse().map(post => {
-                return (
-                  <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
-                    <div className="mp-nf-pi-wrapper">
-                      <div className="mp-nf-pi-header">
-                        <div className="mp-nf-pi-name-header">
-                          {this.sentPost(post)}
                         </div>
-                      </div>
-                      <div className="mp-nf-pi-body">{post.body}</div>
-                        {!!post.image &&
-                          <div className="mp-nf-pi-body-img">
-                             <img src={post.image} />
-                          </div>}
-                    </div>
-                    <div >
-                      <CommentForm post={post}/>
-                    </div>
-                    <div>
-                      {<EditPost post={post}/>}
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+                        <div className="pp-header-items-wrap">
+                           <div className="pp-header-items">
+                              <div className="pp-header-timeline">Timeline</div>
+                              <div className="pp-header-about">About</div>
+                              <div className="pp-header-friends">Friends</div>
+                           </div>
+                           <FriendRequest />
+                        </div>
+                     </div>
+                  </div>
 
-            </div>
+                  <div className="pp-lower-ctn">
+                     <div className="pp-left-ctn-wrapper">
+                        <div className="pp-left-container">
+                           <div className="pp-left-intro-ctn-wrap">
+                              <div className="pp-left-intro-ctn">
+                                 <div className="pp-left-globe-wrapper">
+                                    <FA size='lg' name="globe" className="pp-left-globe"/>
+                                 </div>
+                                 <div className="pp-left-intro">Intro</div>
+                                 <div className="pp-left-intro-edit-wrap">
+                                    {this.viewOptions() && <FA name="pencil-square"
+                                       className="pp-left-intro-edit"
+                                       onClick={this.props.toggleEditIntroModal} />
+                                 }
+                              </div>
+                           </div>
+
+                           <UserInfo />
+                           <UserEditInfo />
+                        </div>
+                     </div>
+
+                     <div className="pp-left-friends">
+                        <FriendList user={user} currentUser={currentUser}/>
+                     </div>
+                  </div>
+                  <div className="pp-page-feed">
+                     <div>
+                        <PostShowForm user={user}/>
+                     </div>
+                     <ul className="pp-posts-wrapper">
+                        {filteredPosts.reverse().map(post => {
+                           return (
+                              <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
+                                 <div className="mp-nf-pi-wrapper">
+                                    <div className="mp-nf-pi-header">
+                                       <div className="mp-nf-pi-name-header">
+                                          {this.sentPost(post)}
+                                       </div>
+                                    </div>
+                                    <div className="mp-nf-pi-body">{post.body}</div>
+                                    {!!post.image &&
+                                       <div className="mp-nf-pi-body-img">
+                                          <img src={post.image} />
+                                       </div>}
+                                    </div>
+                                    <div >
+                                       <CommentForm post={post}/>
+                                    </div>
+                                    <div>
+                                       {<EditPost post={post}/>}
+                                    </div>
+                                 </li>
+                              )
+                           })}
+                        </ul>
+                     </div>
+
+                  </div>
+               </div>
+
             </div>
               <Chat conversations={this.props.conversations} toggleChat={this.props.toggleChat} />
          </div>

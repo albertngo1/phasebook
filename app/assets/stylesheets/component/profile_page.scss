@@ -5,11 +5,13 @@
 }
 
 .pp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vh;
   padding-top: 42px;
-  margin-left: 64px;
-  justify-content: flex-start;
   height: inherit;
-  width: 90%;
+  width: inherit;
 }
 
 .pp-header {
@@ -51,6 +53,7 @@
 
 .pp-header-name {
   color: white;
+  display: inline;
   font-size: 24px;
   letter-spacing:-0.12px;
   line-height:30px;
@@ -368,12 +371,16 @@
     display: none;
 }
 
-.cover-page-upload-wrapper {
-  width: 150px;
-  height: 30px;
+.cover-page-upload-container {
   position: absolute;
-  left: 85px;
-  top: 55px;
+}
+
+.cover-page-upload-wrapper {
+  width: 165px;
+  height: 30px;
+  position: relative;
+  left: 15px;
+  top: 15px;
   opacity: 1;
   background-clip:padding-box;
   background-color:rgb(0, 0, 0);

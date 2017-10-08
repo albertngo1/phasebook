@@ -168,51 +168,54 @@ class MainPage extends React.Component {
     const {posts, currentUser, togglePostModal, toggleEditPostModal} = this.props;
     const filteredPosts = this.filterPosts(posts);
     return (
-      <div className="main-page-container">
-        <header>
-          <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations}/>
-        </header>
-        <div className="main-page-content">
-          {!!currentUser &&
-            <LeftNav currentUser={currentUser} toggleChat={this.props.toggleChat}/>
-          }
+      <div className="mp-entire-wrapper">
+        <div className="main-page-container">
+          <header>
+            <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations}/>
+          </header>
+          <div className="main-page-content">
+            {!!currentUser &&
+              <LeftNav currentUser={currentUser} toggleChat={this.props.toggleChat}/>
+            }
 
-          <div className="main-page-newsfeed">
-            <div>
-              <PostModal/>
-              <PostForm/>
-            </div>
-            <ul>
-              {filteredPosts.reverse().map(post => {
-                return (
-                  <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
-                    <div className="mp-nf-pi-wrapper">
-                      <div className="mp-nf-pi-header">
-                        {this.sentPost(post)}
+            <div className="main-page-newsfeed">
+              <div>
+                <PostModal/>
+                <PostForm/>
+              </div>
+              <ul>
+                {filteredPosts.reverse().map(post => {
+                  return (
+                    <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
+                      <div className="mp-nf-pi-wrapper">
+                        <div className="mp-nf-pi-header">
+                          {this.sentPost(post)}
 
-                      </div>
-                      <div className="mp-nf-pi-body">{post.body}</div>
+                        </div>
+                        <div className="mp-nf-pi-body">{post.body}</div>
                         {!!post.image &&
                           <div className="mp-nf-pi-body-img">
                             <img src={post.image} />
                           </div>}
-                    </div>
-                    <div >
-                      <CommentForm post={post}/>
-                    </div>
-                    <div>
-                      {this.viewOptions(post) && <EditPost post={post}/>}
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
+                        </div>
+                        <div >
+                          <CommentForm post={post}/>
+                        </div>
+                        <div>
+                          {this.viewOptions(post) && <EditPost post={post}/>}
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              <AdPage />
+              <Chat conversations={this.props.conversations}
+                toggleChat={this.props.toggleChat}
+                fetchConversations={this.props.fetchAllConversations} />
+            </div>
           </div>
-          <AdPage />
-          <Chat conversations={this.props.conversations}
-            toggleChat={this.props.toggleChat}
-            fetchConversations={this.props.fetchAllConversations} />
-        </div>
+
       </div>
     );
   }

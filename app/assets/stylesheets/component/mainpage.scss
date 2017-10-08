@@ -1,3 +1,7 @@
+.mp-entire-wrapper {
+  display: flex;
+}
+
 .main-page-container {
   height: 100%;
   width: 100%;
@@ -16,7 +20,7 @@
   width: 220px;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  // position: fixed;
 }
 
 .mp-left-nav-name-wrap {
@@ -110,7 +114,7 @@
   flex-direction: column;
   width: 500px;
   height: 100%;
-  padding-left: 220px;
+  // padding-left: 220px;
 }
 
 .mp-nf-post-form {
