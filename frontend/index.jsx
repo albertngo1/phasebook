@@ -13,11 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  let http = require("http");
-  setInterval(function() {
-    http.get("https://phasebook-august.herokuapp.com");
-  }, 300000);
-
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });
