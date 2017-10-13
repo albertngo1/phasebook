@@ -24,9 +24,8 @@ class SessionForm extends React.Component {
   }
 
   demoLogin(e) {
-    this.setState({email: "albertngo1@gmail.com", password: "password"});
-    const user = Object.assign({}, this.state);
-    this.props.login(user);
+    e.preventDefault();
+    this.props.login({email: "albertngo1@gmail.com", password: "password"});
   }
 
   componentWillMount() {
