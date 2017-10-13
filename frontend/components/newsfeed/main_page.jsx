@@ -24,8 +24,7 @@ class MainPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    this.props.fetchPosts();
-    this.props.fetchAllConversations();
+    this.props.fetchPosts().then(this.props.fetchAllConversations());
   }
 
   componentWillReceiveProps(nextProps) {
