@@ -135,6 +135,7 @@ class NavBar extends React.Component {
       <div>
         <div className="navbar-container">
           {!!currentUser && <Search/>}
+          <div className="navbar-right-side-wrap">
           <Link to={`/users/${currentUser.id}`}>
             <div className="navbar-user-wrap">
               <img className="navbar-user-pp" src={currentUser.profile_pic_small} alt="profile-pic"/>
@@ -144,30 +145,40 @@ class NavBar extends React.Component {
               </button>
             </div>
           </Link>
-          <div className="navbar-user-home-hover:hover">
-            <Link to='/' className="navbar-user navbar-home">Home</Link>
-          </div>
-          <FA size='lg'
-            name="users"
-            className={this.props.navBar === 1 ? "navbar-fr-on" : "navbar-fr"}
-            onClick={() => this.toggleNavBar(1)}/>
+            <div className="navbar-user-home-hover:hover">
+              <Link to='/' className="navbar-user navbar-home">Home</Link>
+            </div>
+            <div>
+              <FA size='lg'
+                name="users"
+                className={this.props.navBar === 1 ? "navbar-fr-on" : "navbar-fr"}
+                onClick={() => this.toggleNavBar(1)}/>
+              <div className="navbar-dropdowns-wrapper-relative">
+                <div className="navbar-dropdowns-wrapper-friend">
+                  {(this.props.navBar === 1) && (
+                    <div className="navbar-fr-content">
+                      <p className="navbar-fr-text">Friend Requests</p>
+                      {this.renderFriendRequests()}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div>
+              <FA size='lg'
+                name="commenting"
+                className={this.props.navBar === 2 ? "navbar-notif-on" : "navbar-notif"}
+                onClick={() => this.toggleNavBar(2)}/>
+              <div className="navbar-dropdowns-wrapper-relative">
+                <div className="navbar-dropdowns-wrapper">
+                  {(this.props.navBar === 2) &&
+                    this.renderMessageBox()}
+                </div>
+              </div>
+            </div>
 
-          <FA size='lg'
-            name="commenting"
-            className={this.props.navBar === 2 ? "navbar-notif-on" : "navbar-notif"}
-            onClick={() => this.toggleNavBar(2)}/>
-
-          <button onClick={this.handleClick} className="navbar-logout-btn">Logout</button>
-      </div>
-      <div className="navbar-dropdowns-wrapper">
-        {(this.props.navBar === 1) && (
-          <div className="navbar-fr-content">
-            <p className="navbar-fr-text">Friend Requests</p>
-            {this.renderFriendRequests()}
+            <button onClick={this.handleClick} className="navbar-logout-btn">Logout</button>
           </div>
-        )}
-        {(this.props.navBar === 2) &&
-          this.renderMessageBox()}
       </div>
       </div>
 
@@ -198,12 +209,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
-
-// <FA size='lg' name="globe" className="navbar-notif"/>
-
-// <div className="navbar-logout-dropdown" onClick={this.handleClick}>
-//    <FA size='lg' name="sort-desc" className="navbar-logout" />
-//       <div onClick={this.handleClick} className="navbar-logout-dropdown-content">
-//          <p>Logout</p>
-//       </div>
-// </div>

@@ -7,12 +7,25 @@
   align-items: center;
 }
 
+
 .landing-logo {
   color: #ffffff;
   font-weight: bolder;
   font-size: 35px;
   font-family: "Klavika";
-  margin-right: 100px;
+  margin-right: 8.94454382826476%;
+}
+
+@media all and (max-width: 650px) {
+  .landing-logo {
+    display: none;
+  }
+  .splash-static-cmt-1 {
+    display: none;
+  }
+  .splash-static-cmt-2 {
+    display: none;
+  }
 }
 
 .landing-logo-link {

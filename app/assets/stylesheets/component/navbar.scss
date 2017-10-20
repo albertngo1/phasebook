@@ -3,12 +3,19 @@
   flex-direction: row;
   height: 42px;
   background-color:#405D9A;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   position: fixed;
   z-index: 3;
   width: 100%;
 }
+
+.navbar-right-side-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .navbar-logo {
   filter:invert(100%);
 }
@@ -16,7 +23,7 @@
 .navbar-search-ctn {
   display: flex;
   vertical-align: middle;
-  margin-left: 80px;
+  margin-left: 20px;
   align-items: center;
 }
 
@@ -151,4 +158,45 @@
 }
 .navbar-logout-btn:hover {
   filter: invert(5%);
+}
+
+@media all and (max-width: 1070px) {
+  .navbar-container {
+    justify-content: space-between;
+  }
+
+  .navbar-search-ctn {
+    margin-left: 4%;
+    width: 100%;
+  }
+
+  .navbar-home {
+    margin: 0 5vh;
+  }
+
+  .navbar-search-btn {
+    margin-right: 0;
+  }
+
+  .navbar-searchbar {
+    width: 50%;
+    min-width: 200px;
+  }
+  .navbar-right-side-wrap {
+    margin-right: 3%;
+  }
+}
+
+@media all and (max-width: 590px) {
+  .navbar-container {
+    justify-content: center;
+    width: 100%;
+  }
+  .navbar-search-ctn {
+    display: none;
+  }
+  .navbar-right-side-wrap {
+    width: 100%;
+    justify-content: space-around;
+  }
 }

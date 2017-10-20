@@ -1,7 +1,6 @@
 .navbar-chat-content {
-  position: fixed;
   background-color: #f9f9f9;
-  width: auto;
+  width: 462px;
   height: auto;
   left: 528px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -17,7 +16,7 @@
 }
 
 .navbar-chat-recent {
-  width: inherit;
+  width: auto;
   border-bottom: 1px solid rgb(221, 223, 226);
   color: rgb(29, 33, 41);
   font-size: 12px;
@@ -88,10 +87,34 @@
 
 }
 
+.navbar-dropdowns-wrapper-relative {
+  position: relative;
+}
+
 .navbar-dropdowns-wrapper {
   position: absolute;
-  top: 35px;
-  left: 500px;
+  top: 0;
+  right: 10px;
   z-index: 3;
+}
+.navbar-dropdowns-wrapper-friend{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 3;
+}
 
+@media all and (max-width: 590px) {
+  .navbar-chat-content {
+    width: 280px;
+  }
+  .navbar-chat-friend-wrap {
+    width: 248px;
+  }
+  .navbar-chat-name-body-wrap {
+    width: 210px;
+  }
+  .navbar-dropdowns-wrapper-friend {
+    right: -180px;
+  }
 }

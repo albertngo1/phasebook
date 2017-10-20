@@ -20,7 +20,6 @@ const Splash = ({ loggedIn, errors, login, signup}) => {
 
       <div className="splash-background">
         <div className="splash-static">
-          <div className="splash-static-img"></div>
           <h3 className="splash-static-cmt-1">Welcome to Phasebook!
             We're glad you're here.</h3>
           <h4 className="splash-static-cmt-2">
