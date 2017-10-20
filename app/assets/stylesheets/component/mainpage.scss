@@ -522,12 +522,12 @@
     display: none;
 }
 
-@media all and (max-width: 990px) {
+@media only screen and (max-width: 990px) {
   .main-page-content {
     justify-content: center;
   }
 }
-@media all and (max-width: 730px) {
+@media only screen and (max-width: 730px) {
   .main-page-left-nav {
     display: none;
   }

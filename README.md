@@ -23,6 +23,7 @@ Phasebook is a single-page, full-stack web application built with Ruby on Rails,
   * Chat messenger
   * User information editing
   * Profile picture/Cover page upload
+  * Responsive design
 
 
 ### User Authentication
@@ -130,6 +131,22 @@ json.set! :profile_pic_medium, asset_path(user.profile_pic.url(:medium))
 json.set! :profile_pic_large, asset_path(user.profile_pic.url(:large))
 
 ```
+
+### Responsive Design
+
+CSS is used to prioritize what is displayed on the screen based on viewport resolution.
+
+```CSS
+/* CSS */
+
+@media only screen and (max-width: 590px) {
+  /* ... */
+}
+
+```
+
+![responsive](/docs/production_readme_misc/responsive_example.gif)
+
 
 
 ### Other Features

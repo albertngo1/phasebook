@@ -160,7 +160,7 @@
   filter: invert(5%);
 }
 
-@media all and (max-width: 1070px) {
+@media only screen and (max-width: 1070px) {
   .navbar-container {
     justify-content: space-between;
   }
@@ -187,7 +187,7 @@
   }
 }
 
-@media all and (max-width: 590px) {
+@media only screen and (max-width: 590px) {
   .navbar-container {
     justify-content: center;
     width: 100%;
