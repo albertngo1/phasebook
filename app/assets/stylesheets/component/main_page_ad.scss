@@ -3,17 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: 20px;
-  position: fixed;
   width:400px;
   right: 5px;
   height: 400px;
   margin-left: 10px;
-}
-
-@media all and (max-width: 1150px) {
-  .main-page-ad {
-    display: none;
-  }
 }
 
 
@@ -103,4 +96,10 @@
 
 .ad-space-1b {
   height: auto;
+}
+
+@media all and (max-width: 990px) {
+  .main-page-ad {
+    display: none;
+  }
 }

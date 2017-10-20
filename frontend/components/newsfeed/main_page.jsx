@@ -209,10 +209,10 @@ class MainPage extends React.Component {
                 </ul>
               </div>
               <AdPage />
-              <Chat conversations={this.props.conversations}
-                toggleChat={this.props.toggleChat}
-                fetchConversations={this.props.fetchAllConversations} />
             </div>
+            <Chat conversations={this.props.conversations}
+              toggleChat={this.props.toggleChat}
+              fetchConversations={this.props.fetchAllConversations} />
           </div>
 
       </div>
