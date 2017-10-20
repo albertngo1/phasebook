@@ -173,16 +173,18 @@ class MainPage extends React.Component {
             <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations}/>
           </header>
           <div className="main-page-content">
-            {!!currentUser &&
-              <LeftNav currentUser={currentUser} toggleChat={this.props.toggleChat}/>
-            }
+            <div className="mp-left-nav-wrapper">
+              {!!currentUser &&
+                <LeftNav currentUser={currentUser} toggleChat={this.props.toggleChat}/>
+              }
+            </div>
 
-            <div className="main-page-newsfeed">
+            <div className="main-page-newsfeed main-page-newsfeed-posts">
               <div>
                 <PostModal/>
                 <PostForm/>
               </div>
-              <ul>
+              <ul className="main-page-newsfeed-posts">
                 {filteredPosts.reverse().map(post => {
                   return (
                     <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
@@ -208,7 +210,9 @@ class MainPage extends React.Component {
                   })}
                 </ul>
               </div>
-              <AdPage />
+              <div className="mp-ad-page-wrapper">
+                <AdPage />
+              </div>
             </div>
             <Chat conversations={this.props.conversations}
               toggleChat={this.props.toggleChat}

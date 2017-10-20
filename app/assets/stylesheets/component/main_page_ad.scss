@@ -2,13 +2,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 20px;
-  width:400px;
-  right: 5px;
+  width: inherit;
   height: 400px;
+  position: fixed;
+}
+.mp-ad-page-wrapper {
+  width: 400px;
+  margin-top: 20px;
   margin-left: 10px;
 }
-
 
 .ad-space-3 {
   vertical-align: middle;
@@ -98,8 +100,8 @@
   height: auto;
 }
 
-@media only screen and (max-width: 990px) {
-  .main-page-ad {
+@media only screen and (max-width: 1030px) {
+  .mp-ad-page-wrapper {
     display: none;
   }
 }
