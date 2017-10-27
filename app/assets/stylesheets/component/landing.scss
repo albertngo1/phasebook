@@ -12,20 +12,7 @@
   color: #ffffff;
   font-weight: bolder;
   font-size: 35px;
-  font-family: "Klavika";
-  margin-right: 8.94454382826476%;
-}
-
-@media only screen and (max-width: 650px) {
-  .landing-logo {
-    display: none;
-  }
-  .splash-static-cmt-1 {
-    display: none;
-  }
-  .splash-static-cmt-2 {
-    display: none;
-  }
+  margin-right: 250px;
 }
 
 .landing-logo-link {
@@ -117,4 +104,19 @@
   color: #eb1515;
   font-size: 12px;
   text-indent: 6px;
+}
+
+@media only screen and (max-width: 900px) {
+  .landing-header {
+    justify-content: space-around;
+  }
+  .landing-logo {
+    margin-right: 0;
+  }
+  .splash-static-cmt-1 {
+    display: none;
+  }
+  .splash-static-cmt-2 {
+    display: none;
+  }
 }

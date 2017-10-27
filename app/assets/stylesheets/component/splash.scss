@@ -2,14 +2,12 @@
   margin: 0;
   display: flex;
   flex-direction: row;
-  height: 100%;
   justify-content: space-around;
   background-color: #e9edf4;
   margin-bottom: 150px;
 }
 
 .splash-right-side {
-  height: 200vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -17,8 +15,9 @@
 
 .splash-signup {
   font-size: 40px;
+  font-weight: bolder;
+  margin-top: 15px;
   color: #454545;
-  margin-bottom: 3px;
 }
 
 .splash-comment-form-one {
@@ -117,6 +116,7 @@ select {
 .new-user-disclaimer {
   color: #777;
   font-size: 11px;
+  margin-top: 10px;
   width: 316px;
 }
 
@@ -146,6 +146,13 @@ select {
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
 }
 
+.splash-imgs {
+  height: 45px;
+  width: 45px;
+  display: inline;
+  margin-right: 20px;
+}
+
 .splash-static {
   display: flex;
   flex-direction: column;
@@ -153,27 +160,50 @@ select {
   text-align: center;
   letter-spacing: normal;
   text-rendering: optimizelegibility;
+  justify-content: space-between;
+  align-items: flex-start;
   color: #333;
   font-size: 21px;
   line-height: 27px;
-  height: 300px;
-  width: 500px;
-}
-
-.splash-static-img {
-  width: 100%;
-  height: 100%;
-  background-size: 500px 500px;
-  background-repeat: no-repeat;
-  margin-left: 0px;
+  width: 565px;
+  height: 367px;
 }
 
 .splash-static-cmt-1 {
-  font-weight: bold;
+  font-weight: bold !important;
+  letter-spacing: normal;
+  text-rendering: optimizelegibility;
+  height: 138px;
+  width: 420.72px;
+  line-height: 36px;
+  font-size: 28px;
+  padding: 42px 0 24px;
 }
 
 .splash-static-cmt-2 {
   font-weight: normal;
+  display: flex;
+  align-items: center;
+  width: inherit;
+  justify-content:flex-start;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.splash-static-cmt-2-bold {
+  font-size: 17px;
+  color: #333;
+  font-weight: bold !important;
+  letter-spacing: normal;
+  text-rendering: optimizeLegibility;
+  line-height: 22px;
+}
+.splash-static-cmt-2-reg {
+  font-size: 15px;
+  color: #666;
+  margin-left: 10px;
+  line-height: 20px;
 }
 
 .signup-style {
