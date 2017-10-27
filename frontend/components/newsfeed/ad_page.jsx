@@ -8,10 +8,14 @@ const AdPage = () => {
       <div className="ad-space-1-wrap">
         <div className="ad-space-1b">
           <div className="ad-sponsored">SPONSORED</div>
-          <a href="https://github.com/albertngo1">
             <img className="ad-github-pic" src="https://s3.us-east-2.amazonaws.com/phasebook-dev/baracktocat.jpg" />
-            <label>Like what you see? Visit my github!</label>
-          </a>
+            <label>
+              <a href="https://github.com/albertngo1">
+              <span>
+              Like what you see? Visit my github!
+              </span>
+            </a>
+              </label>
         </div>
       </div>
       <div className="ad-space-2-wrap">
@@ -21,7 +25,7 @@ const AdPage = () => {
       </div>
       <div className="ad-space-3-wrap">
         <div className="ad-space-3">
-          React · Redux · Ruby · Rails · Javascript · AWS · CSS · HTML
+          React · Redux · Ruby · Rails · Javascript · AWS   CSS · HTML · jQuery
         </div>
       </div>
     </div>

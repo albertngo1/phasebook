@@ -11,14 +11,13 @@ class PostForm extends React.Component {
 
         return(
           <form className="mp-nf-post-form">
-            <div className="mp-nf-create-post-wrap"
-              onClick={togglePostModal}>
-              <FA className="mp-nf-pencil" name='pencil' />
-              <span className="mp-nf-create-post">Create a Post</span>
+            <div className="mp-nf-create-post-wrap">
+              <FA className="mp-nf-pencil" name='pencil' onClick={togglePostModal}/>
+              <span className="mp-nf-create-post" onClick={togglePostModal}>Create a Post</span>
             </div>
             <div className="mp-nf-post-text-wrap">
-              <Link to={`/users/${currentUser.id}`}>
-              <img className="mp-nf-post-text-img" src={currentUser.profile_pic_small} alt="profile-pic" />
+              <Link className="mp-nf-post-text-img" to={`/users/${currentUser.id}`}>
+              <img src={currentUser.profile_pic_small} alt="profile-pic" />
               </Link>
               <textarea onClick={togglePostModal}
                 className='mp-nf-post-text'

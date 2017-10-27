@@ -139,32 +139,30 @@
   background-color: #f5f5f5;
   display: flex;
   align-items: center;
+  padding: 5px;
 }
 
 .mp-nf-pencil {
-  // margin-left: 8px;
-  // margin-top: 8px;
   margin-right: 8px;
+  cursor: pointer;
 }
-
 .mp-nf-create-post {
   font-size: 13px;
   text-rendering: optimizelegibility;
   font-weight: bolder;
+
+  cursor: pointer;
 }
 
 .mp-nf-post-text-wrap {
   margin: auto;
-  height: 73px;
   display: flex;
 }
 .mp-nf-post-text-img {
   width: 40px;
   height: 40px;
-  position: relative;
-  top: -14px;
   object-fit: cover;
-  right: 10px;
+  margin-right: 36px;
 }
 
 .mp-nf-post-text {

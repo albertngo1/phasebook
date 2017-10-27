@@ -15,6 +15,10 @@
 .ad-space-3 {
   vertical-align: middle;
   text-align: center;
+  width: 280px;
+  user-select: none;
+  cursor: default;
+  line-height: 20px;
 }
 
 .ad-space-3-wrap {
@@ -23,6 +27,7 @@
   height: 40px;
   font-size: 12px;
   display: flex;
+  justify-content: center;
   padding: 5px;
   align-items: center;
   border: 1px solid #dadbdd;
@@ -42,11 +47,17 @@
 .ad-space-2 {
   text-align: center;
   text-indent: 30px;
+  user-select: none;
+  cursor: default;
 }
 
 .ad-github-pic {
-  width: 300px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  width: 200px;
   height: 200px;
+  object-fit:scale-down;
 }
 
 .ad-space-1-wrap {
@@ -63,16 +74,9 @@
 .ad-sponsored {
   color: rgb(144, 148, 156);
   font-weight: bolder;
+  margin-bottom: 5px;
 }
-.ad-space-1a label {
-  font-size: 12px;
-  text-align: center;
-  text-align: center;
-  cursor: pointer;
-}
-.ad-space-1a label:hover {
-  text-decoration: underline;
-}
+
 .ad-airbase {
   width: inherit;
   height: inherit;
@@ -82,18 +86,19 @@
 }
 
 .ad-space-1b label {
+  margin-top: 10px;
   font-size: 12px;
   text-align: center;
-  text-align: center;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
-.ad-space-1b label:hover {
+.ad-space-1b span:hover {
   text-decoration: underline;
 }
 
-.ad-space-1a {
-  height: 50%;
+.ad-space-1b span {
+  cursor: pointer;
 }
 
 .ad-space-1b {
