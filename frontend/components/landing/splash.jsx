@@ -23,17 +23,17 @@ const Splash = ({ loggedIn, errors, login, signup}) => {
           <div className="splash-static-cmt-1">Connect with friends and the
 world around you on Phasebook.</div>
           <div className="splash-static-cmt-2">
-            <img className="splash-imgs" src={"./assets/pic1.png"}></img>
+            <img className="splash-imgs" src="https://s3.us-east-2.amazonaws.com/phasebook-dev/pic1.png"></img>
             <span className="splash-static-cmt-2-bold">See photos and updates</span>
             <span className="splash-static-cmt-2-reg">from friends in News Feed.</span>
           </div>
           <div className="splash-static-cmt-2">
-            <img className="splash-imgs" src={"./assets/pic2.png"}></img>
+            <img className="splash-imgs" src="https://s3.us-east-2.amazonaws.com/phasebook-dev/pic2.png"></img>
             <span className="splash-static-cmt-2-bold">Share what's new</span>
             <span className="splash-static-cmt-2-reg">in your life on your Timeline.</span>
           </div>
           <div className="splash-static-cmt-2">
-            <img className="splash-imgs" src={"./assets/pic3.png"}></img>
+            <img className="splash-imgs" src="https://s3.us-east-2.amazonaws.com/phasebook-dev/pic3.png"></img>
             <span className="splash-static-cmt-2-bold">Find more</span>
             <span className="splash-static-cmt-2-reg">of what you're looking for with Facebook Search.</span>
           </div>
