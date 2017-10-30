@@ -68,6 +68,10 @@ class NavBar extends React.Component {
     });
     return(
       <div className="navbar-chat-content">
+        <div className="arrow-up-wrap">
+          <div className="arrow-up">
+          </div>
+        </div>
         <div className="navbar-chat-recent">
           Recent ({conversations.length})
         </div>
@@ -158,6 +162,10 @@ class NavBar extends React.Component {
                   {(this.props.navBar === 1) && (
                     <div className="navbar-fr-content">
                       <p className="navbar-fr-text">Friend Requests</p>
+                        <div className="arrow-up-wrap">
+                          <div className="arrow-up-fr">
+                          </div>
+                        </div>
                       {this.renderFriendRequests()}
                     </div>
                   )}

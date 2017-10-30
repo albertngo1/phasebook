@@ -12,14 +12,14 @@
   display: flex;
   flex-direction: row;
   padding-top: 42px;
-  justify-content: space-around;
+  justify-content: center;
   height: inherit;
 }
 
 .mp-left-nav-wrapper {
   min-width: 160px;
-  margin-left: 1%;
-  margin-right: 2%;
+  margin-left: 20px;
+  margin-right: 1%;
 }
 
 .main-page-left-nav {
