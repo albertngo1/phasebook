@@ -59,7 +59,7 @@ class CommentForm extends React.Component {
       if (postLikes.includes(this.props.currentUser.id)) {
         return(
           <div onClick={() => this.handleUnlike(this.props.post)} className="mp-nf-pi-footer-item">
-            <FA name='thumbs-up' className='unlike' />
+            <FA name='thumbs-up' className='mp-nf-pi-footer-icon' />
             Unlike
           </div>
         )
