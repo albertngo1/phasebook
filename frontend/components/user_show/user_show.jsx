@@ -210,7 +210,9 @@ class UserShow extends React.Component {
                         </div>
                         <div className="pp-header-items-wrap">
                            <div className="pp-header-items">
-                              <div className="pp-header-timeline">Timeline</div>
+                              <Link to={`/users/${user.id}`}>
+                                 <div className="pp-header-timeline">Timeline</div>
+                              </Link>
                               <div className="pp-header-about">About</div>
                               <div className="pp-header-friends">Friends</div>
                            </div>

@@ -10,7 +10,7 @@ import $ from 'jquery';
 const App = () => (
   <div className="app-page">
     <Switch>
-      <ProtectedRoute exact path="/users/:userId" component={UserShow} />
+      <ProtectedRoute path="/users/:userId" component={UserShow} />
       <AuthRoute exact={true} path="/" component={SplashContainer} componentLoggedIn={MainPageContainer} />
     </Switch>
 
