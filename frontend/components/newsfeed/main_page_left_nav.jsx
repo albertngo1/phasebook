@@ -50,6 +50,32 @@ const LeftNav = (props) => {
         <span className="mp-left-nav-newsfeed-item-1"><FA name="angellist" size='lg'/></span><span>AngelList</span>
       </div>
       </a>
+
+      <div className="mp-left-nav-explore-wrap">
+        <span className="mp-left-nav-explore">Other Projects</span>
+      </div>
+      <a href="https://albertngo1.github.io/domodomo/">
+      <div className="mp-left-nav-misc">
+        <span className="mp-left-nav-newsfeed-item-1"><FA name="file-code-o" size='lg'/></span><span>Domodomo</span>
+      </div>
+      </a>
+      <a href="https://albertngo1.github.io/CIRCLES/">
+      <div className="mp-left-nav-misc">
+        <span className="mp-left-nav-newsfeed-item-1"><FA name="circle-o" size='lg'/></span><span>Circles</span>
+      </div>
+      </a>
+      <a href="https://albertngo1.github.io/plinko/">
+      <div className="mp-left-nav-misc">
+        <span className="mp-left-nav-newsfeed-item-1"><FA name="dollar" size='lg'/></span><span>Plinko</span>
+      </div>
+      </a>
+      <a href="https://albertngo1.github.io/bastion/">
+      <div className="mp-left-nav-misc">
+        <span className="mp-left-nav-newsfeed-item-1"><FA name="arrows" size='lg'/></span><span>Bastion</span>
+      </div>
+      </a>
+
+
     </div>
   )
 }
