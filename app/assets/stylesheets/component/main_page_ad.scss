@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: inherit;
-  height: 400px;
+  height: 500px;
   position: fixed;
 }
 .mp-ad-page-wrapper {
@@ -25,6 +25,30 @@
   background-color: white;
   width: 300px;
   height: 40px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  align-items: center;
+  border: 1px solid #dadbdd;
+}
+
+.ad-space-4 {
+  vertical-align: middle;
+  text-align: center;
+  width: 280px;
+  user-select: none;
+  cursor: default;
+  line-height: 20px;
+}
+.ad-space-4 > a:hover {
+  text-decoration: underline;
+}
+
+.ad-space-4-wrap {
+  background-color: white;
+  width: 300px;
+  height: 15px;
   font-size: 12px;
   display: flex;
   justify-content: center;

@@ -28,6 +28,13 @@ const AdPage = () => {
           React · Redux · Ruby · Rails · Javascript · AWS   CSS · HTML · jQuery
         </div>
       </div>
+      <div className="ad-space-4-wrap">
+        <div className="ad-space-4">
+          <a href="https://ngoalbert.com">
+          by Albert Ngo
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

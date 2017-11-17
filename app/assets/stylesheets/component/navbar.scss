@@ -108,15 +108,20 @@
   filter: invert(100%);
 }
 
+.navbar-search-dropdown-wrapper {
+  position: relative
+}
+
 .navbar-search-dropdown {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 400px;
+  left: -432px;
+  top: 10px;
   margin-left: 31px;
   margin-top: 4px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 998;
-  top: 35px;
   font-size: 13px;
   border-radius: 3px;
   cursor: pointer;
@@ -198,6 +203,10 @@
 @media only screen and (max-width: 1070px) {
   .navbar-container {
     justify-content: space-between;
+  }
+
+  .navbar-search-dropdown {
+    display: none;
   }
 
   .navbar-search-ctn {

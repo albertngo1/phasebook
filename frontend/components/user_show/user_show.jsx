@@ -77,8 +77,7 @@ class UserShow extends React.Component {
 
    componentWillReceiveProps(nextProps) {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
-         this.props.requestSingleUser(nextProps.match.params.userId);
-         window.scrollTo(0, 0)
+         this.props.requestSingleUser(nextProps.match.params.userId).then(window.scrollTo(0, 0));
       }
    }
 

@@ -62,11 +62,13 @@ class Search extends React.Component {
                placeholder={`Search`}
                onChange={this.handleInput}
                value={this.state.input}/>
+               <div className="navbar-search-dropdown-wrapper">
+                  <div className={this.searchResults() ? "navbar-search-dropdown" : "navbar-search-hidden"}>
+                     <p>Recent Searches</p>
+                        {this.searchResults()}
+                     </div>
+                  </div>
             <FA name="search" className="navbar-search-btn" />
-               <div className={this.searchResults() ? "navbar-search-dropdown" : "navbar-search-hidden"}>
-                  <p>Recent Searches</p>
-                  {this.searchResults()}
-               </div>
          </div>
       )
    }
