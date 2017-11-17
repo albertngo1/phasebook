@@ -7,6 +7,7 @@ import { updateFriendship, deleteFriendship } from '../../actions/friendship_act
 import { selectAllPosts } from '../../util/selectors';
 import { withRouter } from 'react-router-dom';
 import { fetchAllConversations } from '../../actions/conversation_actions';
+import {toggleNavBar} from '../../actions/ui_actions';
 
 
 
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => {
   return {
     conversations: state.entities.conversations,
     currentUser: currentUser,
+    navBar: state.ui.toggleNavBar,
     posts: selectAllPosts(state) || {},
   };
 };
@@ -25,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     togglePostModal: () => dispatch(togglePostModal),
     toggleEditPostModal: (postId) => dispatch(toggleEditPostModal(postId)),
     deletePost: (id) => dispatch(deletePost(id)),
+    toggleNavBar: (nav) => dispatch(toggleNavBar(nav)),
     fetchAllConversations: () => dispatch(fetchAllConversations()),
     toggleChat: () => dispatch(toggleChat),
   };

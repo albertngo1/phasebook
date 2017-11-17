@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { requestSingleUser } from '../../actions/user_actions';
-import NavBar from '../newsfeed/navbar';
+import NavBar from '../navbar/navbar';
 import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { selectAllPosts } from '../../util/selectors';
 import { toggleEditIntroModal, toggleChat } from '../../actions/ui_actions';
@@ -183,9 +183,7 @@ class UserShow extends React.Component {
 
       return(
          <div className="pp-main-container">
-            <header>
-               <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations} />
-            </header>
+             <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations} />
             <div className="pp-container-wrap">
                <div className="pp-container">
                   <div className="pp-header">

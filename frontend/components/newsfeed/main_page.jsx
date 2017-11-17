@@ -1,6 +1,6 @@
 import React from 'react';
 import PostForm from './post_form';
-import NavBar from './navbar';
+import NavBar from '../navbar/navbar';
 import PostModal from '../modals/post_modal';
 import EditPost from './edit_form';
 import AdPage from './ad_page';
@@ -20,6 +20,7 @@ class MainPage extends React.Component {
     this.viewOptions = this.viewOptions.bind(this);
     this.filterPosts = this.filterPosts.bind(this);
     this.sentPost = this.sentPost.bind(this);
+    this.closeNavBar = this.closeNavBar.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,12 @@ class MainPage extends React.Component {
   handleToggleEditModal(post) {
     if (post.author_id === this.props.currentUser.id) {
       this.props.toggleEditPostModal(post.id);
+    }
+  }
+
+  closeNavBar() {
+    if (this.props.navBar !== 0) {
+      this.props.toggleNavBar(0);
     }
   }
 
@@ -169,9 +176,7 @@ class MainPage extends React.Component {
     return (
       <div className="mp-entire-wrapper">
         <div className="main-page-container">
-          <header>
-            <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations}/>
-          </header>
+          <NavBar toggleChat={this.props.toggleChat} conversations={this.props.conversations}/>
           <div className="main-page-content">
             <div className="mp-left-nav-wrapper">
               {!!currentUser &&
