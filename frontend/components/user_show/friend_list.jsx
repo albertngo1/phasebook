@@ -50,6 +50,7 @@ class FriendList extends React.Component {
   render() {
     const { friends } = this.props
     return(
+      <div className="pp-left-friends">
       <div className="pp-fl-ctn">
         <div className="pp-fl-header">
           <div className="pp-fl-friend-icon-wrapper">
@@ -69,6 +70,7 @@ class FriendList extends React.Component {
           {this.renderFriendList(friends)}
         </ul>
 
+      </div>
       </div>
     )
   }

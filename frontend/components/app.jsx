@@ -4,7 +4,6 @@ import MainPageContainer from './newsfeed/main_page_container';
 import UserShow from './user_show/user_show';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import $ from 'jquery';
 
 
 const App = () => (
