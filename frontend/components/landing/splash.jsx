@@ -2,6 +2,10 @@ import React from 'react';
 import NewUserForm from './new_user_form';
 import SessionForm from './session_form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signup, login } from "../../actions/session_actions";
+
+
 
 const Splash = ({ loggedIn, errors, login, signup}) => {
 
@@ -47,4 +51,18 @@ world around you on Phasebook.</div>
   );
 }
 
-export default Splash;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: Boolean(state.session.currentUser),
+    errors: state.session.errors,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signup: user => dispatch(signup(user)),
+    login: user => dispatch(login(user)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Splash)

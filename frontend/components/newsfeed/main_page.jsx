@@ -7,8 +7,16 @@ import AdPage from './ad_page';
 import CommentForm from './comment_form';
 import Chat from '../chat/chat';
 import LeftNav from './main_page_left_nav';
-import {Link} from 'react-router-dom';
+import {Link, withRouter } from 'react-router-dom';
 import FA from 'react-fontawesome';
+import { connect } from 'react-redux';
+import { fetchPosts, deletePost } from '../../actions/post_actions';
+import { togglePostModal, toggleEditPostModal, toggleChat } from '../../actions/ui_actions';
+import { updateFriendship, deleteFriendship } from '../../actions/friendship_actions';
+import { selectAllPosts } from '../../util/selectors';
+import { fetchAllConversations } from '../../actions/conversation_actions';
+import {toggleNavBar} from '../../actions/ui_actions';
+
 
 class MainPage extends React.Component {
 
@@ -25,7 +33,8 @@ class MainPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
-    this.props.fetchPosts().then(this.props.fetchAllConversations());
+    this.props.fetchPosts()
+      .then(this.props.fetchAllConversations());
   }
 
   componentWillReceiveProps(nextProps) {
@@ -229,4 +238,26 @@ class MainPage extends React.Component {
   }
 }
 
-export default MainPage;
+const mapStateToProps = (state) => {
+  const currentUser = state.session.currentUser || {}
+  return {
+    conversations: state.entities.conversations,
+    currentUser: currentUser,
+    navBar: state.ui.toggleNavBar,
+    posts: selectAllPosts(state) || {},
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPosts: () => dispatch(fetchPosts()),
+    togglePostModal: () => dispatch(togglePostModal),
+    toggleEditPostModal: (postId) => dispatch(toggleEditPostModal(postId)),
+    deletePost: (id) => dispatch(deletePost(id)),
+    toggleNavBar: (nav) => dispatch(toggleNavBar(nav)),
+    fetchAllConversations: () => dispatch(fetchAllConversations()),
+    toggleChat: () => dispatch(toggleChat),
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainPage));
