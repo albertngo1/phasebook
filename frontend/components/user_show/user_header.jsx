@@ -4,9 +4,6 @@ import ProfilePicUpload from './profile_picture_upload';
 import CoverPageUpload from './cover_page_upload';
 import { Link } from 'react-router-dom';
 
-
-
-
 class UserHeader extends React.Component {
 
   constructor(props) {
@@ -20,9 +17,7 @@ class UserHeader extends React.Component {
   profilePictureUpload() {
       if (this.props.user.id == this.props.currentUser.id) {
          return(
-            <div>
-               <ProfilePicUpload />
-            </div>
+            <ProfilePicUpload />
          )
       }
    }

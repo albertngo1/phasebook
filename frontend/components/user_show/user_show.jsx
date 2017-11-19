@@ -169,9 +169,7 @@ class UserShow extends React.Component {
 
                      </div>
                   <div className="pp-page-feed">
-                     <div>
-                        <PostShowForm user={user}/>
-                     </div>
+                     <PostShowForm user={user}/>
                      <ul className="pp-posts-wrapper">
                         {filteredPosts.reverse().map(post => {
                            return (
