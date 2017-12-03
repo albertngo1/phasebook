@@ -101,6 +101,15 @@ class User < ActiveRecord::Base
     User.where(id: active_friends)
   end
 
+  def find_active_friends
+    active_friends = Friendship
+      .where("user1_id = ? OR user2_id = ?", self.id, self.id)
+      .where("status = ?", 'active')
+      .pluck(:user1_id, :user2_id)
+      .flatten
+      .uniq
+  end
+
   def sent_friend_requests
     requested_friends = Friendship
       .where("user1_id = ?", self.id)

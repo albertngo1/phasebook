@@ -1,4 +1,10 @@
-export const fetchPosts = () => {
+export const fetchPosts = (userId) => {
+  if (userId) {
+    return $.ajax({
+      url: `/api/users/${userId}/posts`,
+      method: 'GET',
+    })
+  }
   return $.ajax({
     url: '/api/posts',
     method: 'GET',

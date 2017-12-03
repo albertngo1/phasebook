@@ -26,7 +26,6 @@ class MainPage extends React.Component {
     this.handleToggleEditModal = this.handleToggleEditModal.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.viewOptions = this.viewOptions.bind(this);
-    this.filterPosts = this.filterPosts.bind(this);
     this.sentPost = this.sentPost.bind(this);
     this.closeNavBar = this.closeNavBar.bind(this);
   }
@@ -58,28 +57,6 @@ class MainPage extends React.Component {
   closeNavBar() {
     if (this.props.navBar !== 0) {
       this.props.toggleNavBar(0);
-    }
-  }
-
-  filterPosts(posts) {
-    if (this.props.currentUser && this.props.currentUser.active_friends) {
-      let filteredPosts = [];
-      const friends = this.props.currentUser.active_friends || []
-      posts.forEach(post => {
-        if (post.receiver_id === this.props.currentUser.id) {
-          filteredPosts.push(post);
-        }
-
-        for (let i = 0; i < friends.length; i++) {
-          if (post.author_id === friends[i].id && !filteredPosts.includes(post)) {
-            filteredPosts.push(post);
-          }
-        }
-
-      });
-      return filteredPosts;
-    } else {
-      return [];
     }
   }
 
@@ -181,7 +158,6 @@ class MainPage extends React.Component {
   render() {
     document.body.classList.remove('modal-fixed');
     const {posts, currentUser, togglePostModal, toggleEditPostModal} = this.props;
-    const filteredPosts = this.filterPosts(posts);
     return (
       <div className="mp-entire-wrapper">
         <div className="main-page-container">
@@ -199,7 +175,7 @@ class MainPage extends React.Component {
                 <PostForm/>
               </div>
               <ul className="main-page-newsfeed-posts">
-                {filteredPosts.reverse().map(post => {
+                {posts.reverse().map(post => {
                   return (
                     <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                       <div className="mp-nf-pi-wrapper">

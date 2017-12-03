@@ -1,7 +1,23 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.all.includes(:author).includes(:receiver).includes(:likes).order("created_at DESC")
+    if params.has_key?(:user_id)
+      @posts = Post.where("receiver_id = ?", params[:user_id])
+                    .includes(:author, :receiver, :likes, :comments)
+                    .includes(:receiver)
+                    .includes(:likes)
+                    .includes(:comments)
+                    .order("created_at DESC")
+
+    else
+      friends = current_user.find_active_friends
+      @posts = Post.where(:receiver_id => friends)
+                .includes(:author)
+                .includes(:receiver)
+                .includes(:likes)
+                .includes(:comments)
+                .order("created_at DESC")
+    end
   end
 
 

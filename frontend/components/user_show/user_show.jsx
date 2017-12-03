@@ -22,19 +22,8 @@ class UserShow extends React.Component {
 
    constructor(props) {
       super(props);
-      this.filterPosts = this.filterPosts.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
       this.sentPost = this.sentPost.bind(this);
-   }
-
-   filterPosts(posts) {
-      let filteredPosts = [];
-      posts.forEach( post => {
-        if (post.receiver_id === this.props.user.id) {
-          filteredPosts.push(post);
-        }
-      })
-      return filteredPosts;
    }
 
    handleDelete(post) {
@@ -44,15 +33,17 @@ class UserShow extends React.Component {
    }
 
    componentDidMount() {
-     this.props.requestSingleUser(this.props.match.params.userId);
-     this.props.fetchPosts();
-     this.props.fetchAllConversations();
-     window.scrollTo(0, 0)
+     this.props.requestSingleUser(this.props.match.params.userId)
+      .then(this.props.fetchAllConversations())
+      .then(this.props.fetchPosts(this.props.match.params.userId))
+      .then(window.scrollTo(0, 0));
    }
 
    componentWillReceiveProps(nextProps) {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
-         this.props.requestSingleUser(nextProps.match.params.userId).then(window.scrollTo(0, 0));
+         this.props.requestSingleUser(nextProps.match.params.userId)
+         .then(this.props.fetchPosts(nextProps.match.params.userId))
+         .then(window.scrollTo(0, 0));
       }
    }
 
@@ -153,7 +144,6 @@ class UserShow extends React.Component {
 
    render() {
       const {user, posts, currentUser} = this.props
-      const filteredPosts = this.filterPosts(posts);
 
       return(
          <div className="pp-main-container">
@@ -171,7 +161,7 @@ class UserShow extends React.Component {
                   <div className="pp-page-feed">
                      <PostShowForm user={user}/>
                      <ul className="pp-posts-wrapper">
-                        {filteredPosts.reverse().map(post => {
+                        {this.props.posts.reverse().map(post => {
                            return (
                               <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                                  <div className="mp-nf-pi-wrapper">
@@ -219,7 +209,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
    requestSingleUser: (userId) => dispatch(requestSingleUser(userId)),
-   fetchPosts: () => dispatch(fetchPosts()),
+   fetchPosts: (userId) => dispatch(fetchPosts(userId)),
    deletePost: (id) => dispatch(deletePost(id)),
    toggleChat: () => dispatch(toggleChat),
    fetchAllConversations: () => dispatch(fetchAllConversations()),
