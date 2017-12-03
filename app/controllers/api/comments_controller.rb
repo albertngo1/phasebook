@@ -1,11 +1,5 @@
 class Api::CommentsController < ApplicationController
 
-
-  def index
-    @comments = Post.find(params[:post_id]).comments.includes(:author).includes(:likes)
-    render :index
-  end
-
   def create
     @comment = Comment.new(comment_params)
     @comment[:author_id] = current_user.id
@@ -22,7 +16,7 @@ class Api::CommentsController < ApplicationController
 
     if current_user.id == @comment.author_id
       @comment.destroy
-      render json: @comment.id
+      render json: @comment
     else
       render json: ["You are not authorized to destroy this comment"], status: 401
     end

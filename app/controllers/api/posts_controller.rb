@@ -3,10 +3,10 @@ class Api::PostsController < ApplicationController
   def index
     if params.has_key?(:user_id)
       @posts = Post.where("receiver_id = ?", params[:user_id])
-                    .includes(:author, :receiver, :likes, :comments)
+                    .includes(:author)
                     .includes(:receiver)
                     .includes(:likes)
-                    .includes(:comments)
+                    .includes(:comments => [:author, :likes])
                     .order("created_at DESC")
 
     else
@@ -15,7 +15,7 @@ class Api::PostsController < ApplicationController
                 .includes(:author)
                 .includes(:receiver)
                 .includes(:likes)
-                .includes(:comments)
+                .includes(:comments => [:author, :likes])
                 .order("created_at DESC")
     end
   end

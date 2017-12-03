@@ -33,17 +33,17 @@ class UserShow extends React.Component {
    }
 
    componentDidMount() {
+     window.scrollTo(0, 0)
      this.props.requestSingleUser(this.props.match.params.userId)
       .then(this.props.fetchAllConversations())
       .then(this.props.fetchPosts(this.props.match.params.userId));
-      window.scrollTo(0, 0)
    }
 
    componentWillReceiveProps(nextProps) {
       if (this.props.match.params.userId !== nextProps.match.params.userId){
+         window.scrollTo(0, 0)
          this.props.requestSingleUser(nextProps.match.params.userId)
          .then(this.props.fetchPosts(nextProps.match.params.userId));
-        window.scrollTo(0, 0)
       }
    }
 

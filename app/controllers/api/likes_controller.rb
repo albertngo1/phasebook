@@ -12,9 +12,9 @@ class Api::LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.find(params[:id])
-    like.destroy
-    render json: like
+    @like = Like.find(params[:id])
+    @like.destroy
+    render '/api/likes/create'
   end
 
   private
