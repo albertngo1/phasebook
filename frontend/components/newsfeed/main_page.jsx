@@ -31,9 +31,9 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0)
     this.props.fetchPosts()
-      .then(this.props.fetchAllConversations());
+      .then(this.props.fetchAllConversations())
+      .then(window.scrollTo(0, 0));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -175,7 +175,7 @@ class MainPage extends React.Component {
                 <PostForm/>
               </div>
               <ul className="main-page-newsfeed-posts">
-                {posts.reverse().map(post => {
+                {posts.map(post => {
                   return (
                     <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                       <div className="mp-nf-pi-wrapper">
@@ -220,7 +220,7 @@ const mapStateToProps = (state) => {
     conversations: state.entities.conversations,
     currentUser: currentUser,
     navBar: state.ui.toggleNavBar,
-    posts: selectAllPosts(state) || {},
+    posts: selectAllPosts(state).reverse() || {},
   };
 };
 
