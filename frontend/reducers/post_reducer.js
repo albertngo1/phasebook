@@ -29,6 +29,7 @@ const postReducer = (state = {}, action) => {
       });
       return nextState;
     case RECEIVE_ONE_COMMENT:
+      debugger
       nextState = _.merge({}, state);
       nextState[action.comment.post_id].comments[action.comment.id] = action.comment;
       return nextState;
