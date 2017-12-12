@@ -161,7 +161,7 @@ class UserShow extends React.Component {
                   <div className="pp-page-feed">
                      <PostShowForm user={user}/>
                      <ul className="pp-posts-wrapper">
-                        {this.props.posts.reverse().map(post => {
+                        {this.props.posts.map(post => {
                            return (
                               <li className="mp-newsfeed-post-item" key={`post-${post.id}`}>
                                  <div className="mp-nf-pi-wrapper">
@@ -202,7 +202,7 @@ const mapStateToProps = (state, ownProps) => {
    return {
       conversations: state.entities.conversations,
       user: state.entities.user || {},
-      posts: selectAllPosts(state) || {},
+      posts: selectAllPosts(state).reverse() || {},
       currentUser: state.session.currentUser || {},
    }
 };
