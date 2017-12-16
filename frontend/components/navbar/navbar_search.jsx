@@ -9,8 +9,7 @@ class Search extends React.Component {
       super(props);
 
       this.state = {
-         input: "",
-         visible: true
+         input: ""
       }
       this.handleInput = this.handleInput.bind(this);
       this.searchResults = this.searchResults.bind(this);
