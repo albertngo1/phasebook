@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.login(user);
-    this.setState({password: ""});
+    this.state.password = "";
   }
 
   demoLogin(e) {
