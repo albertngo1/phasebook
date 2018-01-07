@@ -32,7 +32,7 @@ gem 'normalize-rails'
 gem 'activesupport'
 gem 'paperclip', "~> 5.0.0.beta1"
 gem 'figaro'
-gem 'aws-sdk', '>= 2.0'
+gem 'aws-sdk', '2.10.47'
 gem 'pusher'
 gem 'kaminari'
 
