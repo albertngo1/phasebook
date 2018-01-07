@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   :styles => {
     :large => "850x210#"
   }
-  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :cover_page, content_type: /\Aimage\/.*\Z/
 
   has_many :posts, dependent: :destroy,
   primary_key: :id,
