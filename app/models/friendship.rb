@@ -15,15 +15,8 @@ class Friendship < ActiveRecord::Base
   validates_uniqueness_of :user1_id, :scope => [:user2_id]
   validate :friendship_exists, on: :create
 
-  belongs_to :friender,
-  primary_key: :id,
-  foreign_key: :user1_id,
-  class_name: :User
-
-  belongs_to :friendee,
-  primary_key: :id,
-  foreign_key: :user2_id,
-  class_name: :User
+  belongs_to :friender, foreign_key: :user1_id, class_name: :User
+  belongs_to :friendee, foreign_key: :user2_id, class_name: :User
 
   private
 

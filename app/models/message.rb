@@ -11,18 +11,8 @@
 #
 
 class Message < ActiveRecord::Base
-
   validates :body, :author, :conversation, presence: true
 
-  belongs_to :author,
-  primary_key: :id,
-  foreign_key: :author_id,
-  class_name: :User
-
-  belongs_to :conversation,
-  primary_key: :id,
-  foreign_key: :conversation_id,
-  class_name: :Conversation
-
-
+  belongs_to :author, inverse_of: :messages, class_name: :User
+  belongs_to :conversation
 end

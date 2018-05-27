@@ -37,47 +37,26 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_attached_file :profile_pic, default_url: "fbpic.jpg",
-  :styles => {
-    :small => "50x50#",
-    :medium => "101x101#",
-    :large => "170x170#"
+  styles: {
+    small: "50x50#",
+    medium: "101x101#",
+    large:"170x170#"
   }
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :cover_page, default_url: "airbase.jpg",
-  :styles => {
-    :large => "850x210#"
+  styles: {
+    large:"850x210#"
   }
   validates_attachment_content_type :cover_page, content_type: /\Aimage\/.*\Z/
 
-  has_many :posts, dependent: :destroy,
-  primary_key: :id,
-  foreign_key: :author_id,
-  class_name: :Post
-
-  has_many :received_posts, dependent: :destroy,
-  primary_key: :id,
-  foreign_key: :receiver_id,
-  class_name: :Post
-
-  has_many :friendships,
-  primary_key: :id,
-  foreign_key: :user1_id,
-  class_name: :Friendship
-
-  has_many :friends,
-  through: :friendships,
-  source: :friendee
-
-  has_many :comments,
-  primary_key: :id,
-  foreign_key: :author_id,
-  class_name: :Comment
-
-  has_many :messages,
-  primary_key: :id,
-  foreign_key: :author_id,
-  class_name: :Message
+  has_many :posts, inverse_of: :author, dependent: :destroy
+  has_many :received_posts, inverse_of: :receiver, dependent: :destroy
+  has_many :comments, inverse_of: :author
+  has_many :messages, inverse_of: :author
+  has_many :friendships, inverse_of: :friender
+  has_many :friends, through: :friendships, source: :friendee
+  has_many :likes, inverse_of: :liker
 
   has_many :conversations_started,
   primary_key: :id,
@@ -93,8 +72,8 @@ class User < ActiveRecord::Base
 
   def active_friends
     active_friends = Friendship
-      .where("user1_id = ? OR user2_id = ?", self.id, self.id)
-      .where("status = ?", 'active')
+      .where("user1_id = ? OR user2_id = ?", id, id)
+      .where(status: 'active')
       .pluck(:user1_id, :user2_id)
       .flatten
       .uniq
@@ -102,25 +81,23 @@ class User < ActiveRecord::Base
   end
 
   def find_active_friends
-    active_friends = Friendship
-      .where("user1_id = ? OR user2_id = ?", self.id, self.id)
-      .where("status = ?", 'active')
+    Friendship
+      .where("user1_id = ? OR user2_id = ?", id, id)
+      .where(status: 'active')
       .pluck(:user1_id, :user2_id)
       .flatten
       .uniq
   end
 
   def sent_friend_requests
-    requested_friends = Friendship
-      .where("user1_id = ?", self.id)
-      .where("status = ?", 'pending')
+    Friendship
+      .where(user2_id: id, status: 'pending')
       .pluck(:user2_id)
   end
 
   def received_friend_requests
-    received_friends = Friendship
-      .where("user2_id = ?", self.id)
-      .where("status = ?", 'pending')
+    Friendship
+      .where(user2_id: id, status: 'pending')
       .pluck(:user1_id)
   end
 
@@ -128,17 +105,13 @@ class User < ActiveRecord::Base
     User.where("LOWER(CONCAT(first_name, last_name)) LIKE LOWER('%#{search_string}%') AND ? != '' ", search_string)
   end
 
-
-
   def full_name
-    "#{self.first_name} #{self.last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
-    if user && user.is_password?(password)
-      return user
-    end
+    user = find_by(email: email)
+    return user if user && user.is_password?(password)
     nil
   end
 
@@ -160,9 +133,4 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
-
-
-
-
-
 end

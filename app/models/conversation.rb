@@ -12,14 +12,10 @@
 class Conversation < ActiveRecord::Base
 
   validates :creator, :recipient, presence: true
-  validates_uniqueness_of :creator_id, :scope => [:recipient_id]
-
+  validates_uniqueness_of :creator_id, scope: [:recipient_id]
   validate :conversation_exists, on: :create
 
-  has_many :messages, dependent: :destroy,
-  primary_key: :id,
-  foreign_key: :conversation_id,
-  class_name: :Message
+  has_many :messages, dependent: :destroy
 
   belongs_to :creator,
   primary_key: :id,
@@ -41,7 +37,4 @@ class Conversation < ActiveRecord::Base
       errors.add(:conversation, 'Already added or has been added')
     end
   end
-
-
-
 end

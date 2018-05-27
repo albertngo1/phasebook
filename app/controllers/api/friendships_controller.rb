@@ -12,7 +12,7 @@ class Api::FriendshipsController < ApplicationController
         .where("user2_id = ?", current_user.id)
         .where("status = ?", 'pending').includes(:friender)
 
-      render 'api/friendships/friend_requests'
+      render :friend_requests
     else
       render json: {}
     end
@@ -21,10 +21,8 @@ class Api::FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
     if @friendship.save
-
       render json: @friendship
     else
-
       render json: @friendship.errors.full_messages, status: 422
     end
   end
@@ -50,6 +48,4 @@ class Api::FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:user1_id, :user2_id, :status)
   end
-
-
 end

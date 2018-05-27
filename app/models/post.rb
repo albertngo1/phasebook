@@ -19,33 +19,19 @@ class Post < ActiveRecord::Base
 
   validates :body, :author, :receiver, presence: true
 
-  belongs_to :author,
-  primary_key: :id,
-  foreign_key: :author_id,
-  class_name: :User
-
-  belongs_to :receiver,
-  primary_key: :id,
-  foreign_key: :receiver_id,
-  class_name: :User
-
-  has_many :comments, dependent: :destroy,
-  primary_key: :id,
-  foreign_key: :post_id,
-  class_name: :Comment
+  belongs_to :author, inverse_of: :posts, class_name: :User
+  belongs_to :receiver, inverse_of: :received_posts, class_name: :User
+  has_many :comments, inverse_of: :post, dependent: :destroy
+  has_many :likes, as: :like_item, dependent: :destroy
 
   has_attached_file :image, default_url: "missing-post.png",
-  :styles => {
-    :large => "452x452#",
-    :small => "1x1"
+  styles: {
+    large: "452x452#",
+    small: "1x1"
   }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  has_many :likes, :as => :like_item, dependent: :destroy
-
   def posted_date
-    time_ago_in_words(self.created_at)
+    time_ago_in_words(created_at)
   end
-
-
 end

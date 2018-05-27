@@ -15,21 +15,11 @@ class Comment < ActiveRecord::Base
 
   validates :body, :author_id, :post_id, presence: true
 
-  has_many :likes, :as => :like_item, dependent: :destroy
-
-  belongs_to :author,
-  primary_key: :id,
-  foreign_key: :author_id,
-  class_name: :User
-
-  belongs_to :post,
-  primary_key: :id,
-  foreign_key: :post_id,
-  class_name: :Post
+  has_many :likes, as: :like_item, dependent: :destroy
+  belongs_to :author, inverse_of: :comments, class_name: :User
+  belongs_to :post, inverse_of: :comments
 
   def posted_date
     time_ago_in_words(self.created_at)
   end
-
-
 end

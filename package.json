@@ -40,7 +40,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "start": "webpack -w"
   },
   "engines": {
     "node": "6.10.1",
