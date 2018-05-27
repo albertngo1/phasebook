@@ -25,7 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'normalize-rails'
 gem 'activesupport'
-gem 'paperclip', "~> 5.0.0.beta1"
+gem 'paperclip', "~> 5.2.0"
 gem 'figaro'
 gem 'aws-sdk', '2.10.47'
 gem 'pusher'
