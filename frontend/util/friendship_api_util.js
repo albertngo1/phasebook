@@ -31,5 +31,5 @@ export const fetchFriendRequests = () => {
   return $.ajax({
     url: '/api/friendships/friend_requests',
     method: 'GET',
-  })
-}
+  });
+};

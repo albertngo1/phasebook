@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      render 'api/users/show'
+      render :user
     else
       render json: @user.errors, status: 422
     end
@@ -16,17 +16,16 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render '/api/users/show'
+    render :user
   end
 
   def update
-
     @user = User.find(params[:id])
     if @user.id != current_user.id
       render json: ["Cannot edit other people's information"], status: 401
     else
       if @user.update(intro_params)
-        render 'api/users/show'
+        render :user
       else
         render json: @user.errors.full_messages, status: 422
       end
