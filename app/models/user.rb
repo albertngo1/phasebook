@@ -71,22 +71,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   def active_friends
-    active_friends = Friendship
-      .where("user1_id = ? OR user2_id = ?", id, id)
-      .where(status: 'active')
-      .pluck(:user1_id, :user2_id)
-      .flatten
-      .uniq
-    User.where(id: active_friends)
-  end
-
-  def find_active_friends
-    Friendship
-      .where("user1_id = ? OR user2_id = ?", id, id)
-      .where(status: 'active')
-      .pluck(:user1_id, :user2_id)
-      .flatten
-      .uniq
+    User.where(id: Friendship.find_active_friends(id))
   end
 
   def sent_friend_requests
@@ -102,7 +87,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search_string)
-    User.where("LOWER(CONCAT(first_name, last_name)) LIKE LOWER('%#{search_string}%') AND ? != '' ", search_string)
+    where("LOWER(CONCAT(first_name, last_name)) LIKE LOWER('%#{search_string}%') AND ? != '' ", search_string)
   end
 
   def full_name

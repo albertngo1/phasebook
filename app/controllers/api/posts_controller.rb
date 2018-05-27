@@ -10,7 +10,7 @@ class Api::PostsController < ApplicationController
                     .order("created_at DESC")
 
     else
-      friends = current_user.find_active_friends
+      friends = current_user.active_friends
       @posts = Post.where(:receiver_id => friends)
                 .includes(:author)
                 .includes(:receiver)

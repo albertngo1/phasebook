@@ -20,6 +20,6 @@ class Comment < ActiveRecord::Base
   belongs_to :post, inverse_of: :comments
 
   def posted_date
-    time_ago_in_words(self.created_at)
+    time_ago_in_words(created_at)
   end
 end

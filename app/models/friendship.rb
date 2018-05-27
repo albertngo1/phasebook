@@ -12,11 +12,19 @@
 
 class Friendship < ActiveRecord::Base
   validates :user1_id, :user2_id, :status, presence: true
-  validates_uniqueness_of :user1_id, :scope => [:user2_id]
+  validates_uniqueness_of :user1_id, scope: [:user2_id]
   validate :friendship_exists, on: :create
 
   belongs_to :friender, foreign_key: :user1_id, class_name: :User
   belongs_to :friendee, foreign_key: :user2_id, class_name: :User
+
+  def self.find_active_friends(user_id)
+    where(arel_table[:user1_id].eq(user_id).or(arel_table[:user2_id].eq(user_id)))
+      .where(status: 'active')
+      .pluck(:user1_id, :user2_id)
+      .flatten
+      .uniq
+  end
 
   private
 
