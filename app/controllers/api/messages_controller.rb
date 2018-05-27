@@ -1,11 +1,9 @@
 class Api::MessagesController < ApplicationController
-
   def create
     @message = Message.new(message_params)
-    @message[:author_id] = current_user.id
+    @message.author_id = current_user.id
 
     if @message.save
-
       Pusher.trigger('conversation_' + @message.conversation_id.to_s, 'create_message', {
         id: @message.id,
         body: @message.body,
@@ -22,8 +20,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def destroy
-    message = Message.find(params[:id])
-    message.destroy
+    message = Message.find(params[:id]).destroy
     render json: message.id
   end
 
@@ -32,6 +29,4 @@ class Api::MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:body, :conversation_id)
   end
-
-
 end

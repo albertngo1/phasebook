@@ -1,16 +1,15 @@
 class Api::FriendshipsController < ApplicationController
-
   def index
     @friendships = User.find(params[:user_id]).active_friends
     @user = User.find(params[:user_id])
-    render 'api/friendships/index'
+    render :index
   end
 
-  def current_user_friend_requests
+  def friend_requests
     if current_user
       @friend_requests = Friendship
-        .where("user2_id = ?", current_user.id)
-        .where("status = ?", 'pending').includes(:friender)
+        .where(user2_id: current_user.id)
+        .where(status: 'pending').includes(:friender)
 
       render :friend_requests
     else
@@ -28,8 +27,9 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(user1_id: params[:id], user2_id: current_user.id) || Friendship.find_by(user1_id: current_user.id, user2_id: params[:id])
-    @friendship[:status] = "active"
+    @friendship = Friendship.find_by(user1_id: params[:id], user2_id: current_user.id) ||
+                    Friendship.find_by(user1_id: current_user.id, user2_id: params[:id])
+    @friendship[:status] = 'active'
     if @friendship.save
       render json: @friendship
     else

@@ -1,45 +1,32 @@
 class Api::PostsController < ApplicationController
-
   def index
-    if params.has_key?(:user_id)
-      @posts = Post.where("receiver_id = ?", params[:user_id])
-                    .includes(:author)
-                    .includes(:receiver)
-                    .includes(:likes)
-                    .includes(:comments => [:author, :likes])
-                    .order("created_at DESC")
-
+    scope = Post.includes(:author, :receiver, :likes, comments: [:author, :likes])
+              .order(created_at: :desc)
+    if params[:user_id]
+      @posts = scope.where(receiver_id: params[:user_id])
     else
       friends = current_user.active_friends
-      @posts = Post.where(:receiver_id => friends)
-                .includes(:author)
-                .includes(:receiver)
-                .includes(:likes)
-                .includes(:comments => [:author, :likes])
-                .order("created_at DESC")
+      @posts = scope.where(receiver_id: current_user.active_friends)
     end
   end
 
-
   def create
     @post = Post.new(post_params)
-    @post[:author_id] = current_user.id
+    @post.author_id = current_user.id
     if @post.save
-      render 'api/posts/show'
+      render :post
     else
       render json: @post.errors.full_messages, status: 422
     end
   end
 
-
   def update
-
     @post = Post.find(params[:id])
     if @post.author_id != current_user.id
       render json: ["Cannot edit other people's posts"], status: 401
     else
       if @post.update(post_params)
-        render 'api/posts/show'
+        render :post
       else
         render json: @post.errors.full_messages, status: 422
       end
@@ -56,12 +43,9 @@ class Api::PostsController < ApplicationController
     end
   end
 
-
   private
 
   def post_params
     params.require(:post).permit(:body, :receiver_id, :image)
   end
-
-
 end

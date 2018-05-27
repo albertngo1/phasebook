@@ -11,7 +11,6 @@
 #
 
 class Like < ActiveRecord::Base
-
   validates :liker, :like_item, presence: true
   validates_uniqueness_of :liker_id, scope: [:like_item_type, :like_item_id]
 
