@@ -1,5 +1,4 @@
 class Api::PostsController < ApplicationController
-
   def index
     if params.has_key?(:user_id)
       @posts = Post.where("receiver_id = ?", params[:user_id])
@@ -8,7 +7,6 @@ class Api::PostsController < ApplicationController
                     .includes(:likes)
                     .includes(:comments => [:author, :likes])
                     .order("created_at DESC")
-
     else
       friends = current_user.active_friends
       @posts = Post.where(:receiver_id => friends)
@@ -20,7 +18,6 @@ class Api::PostsController < ApplicationController
     end
   end
 
-
   def create
     @post = Post.new(post_params)
     @post[:author_id] = current_user.id
@@ -31,9 +28,7 @@ class Api::PostsController < ApplicationController
     end
   end
 
-
   def update
-
     @post = Post.find(params[:id])
     if @post.author_id != current_user.id
       render json: ["Cannot edit other people's posts"], status: 401
@@ -56,12 +51,9 @@ class Api::PostsController < ApplicationController
     end
   end
 
-
   private
 
   def post_params
     params.require(:post).permit(:body, :receiver_id, :image)
   end
-
-
 end

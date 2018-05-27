@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-
   def index
     @users = User.search(params[:search])
   end
@@ -33,7 +32,6 @@ class Api::UsersController < ApplicationController
       end
     end
   end
-
 
   private
 

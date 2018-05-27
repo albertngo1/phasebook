@@ -25,6 +25,5 @@ class ApplicationController < ActionController::Base
     unless logged_in?
 
     end
-
   end
 end

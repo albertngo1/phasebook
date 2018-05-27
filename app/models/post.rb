@@ -13,7 +13,6 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #
-
 class Post < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 

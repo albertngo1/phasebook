@@ -1,11 +1,9 @@
 class Api::ConversationsController < ApplicationController
-
   def index
     @conversations = current_user.conversations_started.includes(:messages).includes(:recipient).includes(:creator) + current_user.conversations_received.includes(:messages).includes(:recipient).includes(:creator)
     @friends = current_user.active_friends
     render '/api/conversations/conversations'
   end
-
 
   def create
     creator_id = params[:conversation][:creator_id]
@@ -28,12 +26,9 @@ class Api::ConversationsController < ApplicationController
     end
   end
 
-
   private
 
   def conversation_params
     params.require(:conversation).permit(:creator_id, :recipient_id)
   end
-
-
 end

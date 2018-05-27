@@ -1,5 +1,4 @@
 class Api::LikesController < ApplicationController
-
   def create
     @like = Like.new(like_params)
     @like[:liker_id] = current_user.id
@@ -22,6 +21,4 @@ class Api::LikesController < ApplicationController
   def like_params
     params.require(:like).permit(:like_item_id, :like_item_type)
   end
-
-
 end

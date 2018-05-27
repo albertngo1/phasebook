@@ -10,7 +10,6 @@
 #
 
 class Conversation < ActiveRecord::Base
-
   validates :creator, :recipient, presence: true
   validates_uniqueness_of :creator_id, scope: [:recipient_id]
   validate :conversation_exists, on: :create

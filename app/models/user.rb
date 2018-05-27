@@ -28,7 +28,6 @@
 #  cover_page_file_size     :integer
 #  cover_page_updated_at    :datetime
 #
-
 class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, :gender,
   :birth_day, :birth_month, :birth_year, :password_digest, :session_token, presence: true

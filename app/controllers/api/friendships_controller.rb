@@ -6,7 +6,7 @@ class Api::FriendshipsController < ApplicationController
     render 'api/friendships/index'
   end
 
-  def current_user_friend_requests
+  def friend_requests
     if current_user
       @friend_requests = Friendship
         .where("user2_id = ?", current_user.id)

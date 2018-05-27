@@ -1,5 +1,4 @@
 class Api::MessagesController < ApplicationController
-
   def create
     @message = Message.new(message_params)
     @message[:author_id] = current_user.id
@@ -32,6 +31,4 @@ class Api::MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:body, :conversation_id)
   end
-
-
 end

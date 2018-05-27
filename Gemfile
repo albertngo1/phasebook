@@ -30,6 +30,7 @@ gem 'figaro'
 gem 'aws-sdk', '2.10.47'
 gem 'pusher'
 gem 'kaminari'
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
