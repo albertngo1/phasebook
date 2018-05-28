@@ -63,14 +63,12 @@ class User < ActiveRecord::Base
   end
 
   def sent_friend_requests
-    Friendship
-      .where(user2_id: id, status: 'pending')
+    Friendship.received_friend_request_users(id)
       .pluck(:user2_id)
   end
 
   def received_friend_requests
-    Friendship
-      .where(user2_id: id, status: 'pending')
+    Friendship.received_friend_request_users(id)
       .pluck(:user1_id)
   end
 

@@ -18,6 +18,8 @@ class Friendship < ActiveRecord::Base
   belongs_to :friender, foreign_key: :user1_id, class_name: :User
   belongs_to :friendee, foreign_key: :user2_id, class_name: :User
 
+  scope :received_friend_request_users, -> (id) { where(user2_id: id, status: 'pending') }
+
   def self.find_active_friends(user_id)
     where(arel_table[:user1_id].eq(user_id).or(arel_table[:user2_id].eq(user_id)))
       .where(status: 'active')
