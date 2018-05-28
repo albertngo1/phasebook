@@ -1,5 +1,3 @@
-
-
 json.conversations do
   @conversations.each do |conversation|
     json.set! conversation.id do
@@ -15,7 +13,7 @@ json.friends do
     json.set! friend.id do
       json.set! :friend_id, friend.id
       json.set! :friend, friend.full_name
-      json.set! :profile_pic_small, asset_path(friend.profile_pic.url(:small))
+      json.set! :profile_pic_small, url_for(friend.profile_picture.variant(resize: "50x50"))
     end
   end
 end

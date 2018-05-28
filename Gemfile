@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.3'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -25,12 +25,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'normalize-rails'
 gem 'activesupport'
-gem 'paperclip', "~> 5.2.0"
 gem 'figaro'
-gem 'aws-sdk', '2.10.47'
+gem "aws-sdk-s3", require: false
 gem 'pusher'
 gem 'kaminari'
 gem 'mini_magick'
+gem 'rubocop'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,7 +45,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'rubocop'
 end
 
 group :development do

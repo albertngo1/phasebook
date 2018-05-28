@@ -2,10 +2,9 @@ class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:email],
                                      params[:user][:password])
-
     if @user
       login(@user)
-      render :show
+      render '/api/users/user'
     else
       render json: ["Invalid credentials, please try again"], status: 422
     end

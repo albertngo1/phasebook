@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916191145) do
+ActiveRecord::Schema.define(version: 2018_05_28_050629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "body", null: false
@@ -71,10 +92,6 @@ ActiveRecord::Schema.define(version: 20170916191145) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "receiver_id", default: 1, null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["receiver_id"], name: "index_posts_on_receiver_id"
   end
@@ -96,14 +113,6 @@ ActiveRecord::Schema.define(version: 20170916191145) do
     t.integer "birth_day", null: false
     t.integer "birth_month", null: false
     t.integer "birth_year", null: false
-    t.string "profile_pic_file_name"
-    t.string "profile_pic_content_type"
-    t.integer "profile_pic_file_size"
-    t.datetime "profile_pic_updated_at"
-    t.string "cover_page_file_name"
-    t.string "cover_page_content_type"
-    t.integer "cover_page_file_size"
-    t.datetime "cover_page_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
