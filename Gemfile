@@ -25,9 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'normalize-rails'
 gem 'activesupport'
-gem 'paperclip', "~> 5.2.0"
 gem 'figaro'
-gem 'aws-sdk'
 gem "aws-sdk-s3", require: false
 gem 'pusher'
 gem 'kaminari'

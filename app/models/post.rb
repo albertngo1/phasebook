@@ -24,12 +24,6 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :like_item, dependent: :destroy
 
   has_one_attached :picture
-  has_attached_file :image, default_url: "missing-post.png",
-  styles: {
-    large: "452x452#",
-    small: "1x1"
-  }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def posted_date
     time_ago_in_words(created_at)

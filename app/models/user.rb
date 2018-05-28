@@ -38,20 +38,6 @@ class User < ActiveRecord::Base
   has_one_attached :profile_picture
   has_one_attached :cover_picture
 
-  has_attached_file :profile_pic, default_url: "fbpic.jpg",
-  styles: {
-    small: "50x50#",
-    medium: "101x101#",
-    large:"170x170#"
-  }
-  validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
-
-  has_attached_file :cover_page, default_url: "airbase.jpg",
-  styles: {
-    large:"850x210#"
-  }
-  validates_attachment_content_type :cover_page, content_type: /\Aimage\/.*\Z/
-
   has_many :posts, inverse_of: :author, dependent: :destroy
   has_many :received_posts, inverse_of: :receiver, dependent: :destroy
   has_many :comments, inverse_of: :author
