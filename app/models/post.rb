@@ -23,6 +23,7 @@ class Post < ActiveRecord::Base
   has_many :comments, inverse_of: :post, dependent: :destroy
   has_many :likes, as: :like_item, dependent: :destroy
 
+  has_one_attached :picture
   has_attached_file :image, default_url: "missing-post.png",
   styles: {
     large: "452x452#",

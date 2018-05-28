@@ -1,0 +1,13 @@
+amazon_dev:
+  service: S3
+  access_key_id: "AKIAIKIIKD4XHKMFH3YA"
+  secret_access_key: "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"
+  region: "us-east-2"
+  bucket: "phasebook-dev"
+
+amazon_dev:
+  service: S3
+  access_key_id: "AKIAIKIIKD4XHKMFH3YA"
+  secret_access_key: "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"
+  region: "us-east-2"
+  bucket: "phasebook-pro"

@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   attr_reader :password
 
+  has_one_attached :profile_picture
+  has_one_attached :cover_picture
+
   has_attached_file :profile_pic, default_url: "fbpic.jpg",
   styles: {
     small: "50x50#",
