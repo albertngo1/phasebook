@@ -2,7 +2,7 @@ class Api::PostsController < ApplicationController
   def index
     scope = Post.includes(:author, :receiver, :likes, comments: [:author, :likes])
               .order(created_at: :desc)
-    if params[:user_id]
+    if params[:user_id].present?
       @posts = scope.where(receiver_id: params[:user_id])
     else
       friends = current_user.active_friends

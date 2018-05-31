@@ -1,13 +1,13 @@
 amazon_dev:
   service: S3
-  access_key_id: "AKIAIKIIKD4XHKMFH3YA"
-  secret_access_key: "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"
+  access_key_id: <%= ENV['s3_access_key_id'] %>
+  secret_access_key: <%= ENV['s3_secret_access_key'] %>
   region: "us-east-2"
   bucket: "phasebook-dev"
 
 amazon_pro:
   service: S3
-  access_key_id: "AKIAIKIIKD4XHKMFH3YA"
-  secret_access_key: "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"
+  access_key_id: <%= ENV['s3_access_key_id'] %>
+  secret_access_key: <%= ENV['s3_secret_access_key'] %>
   region: "us-east-2"
   bucket: "phasebook-pro"
