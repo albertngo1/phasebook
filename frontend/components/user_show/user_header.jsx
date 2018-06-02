@@ -15,26 +15,26 @@ class UserHeader extends React.Component {
   }
 
   profilePictureUpload() {
-      if (this.props.user.id == this.props.currentUser.id) {
+      if (this.props.user.id === this.props.currentUser.id) {
          return(
             <ProfilePicUpload />
-         )
+         );
       }
    }
 
    coverPageUpload() {
-      if (this.props.user.id == this.props.currentUser.id) {
+      if (this.props.user.id === this.props.currentUser.id) {
          return(
             <div className="cover-page-upload-container">
                <CoverPageUpload />
             </div>
-         )
+         );
       }
    }
 
 
   render() {
-    const {user, currentUser} = this.props
+    const {user, currentUser} = this.props;
     return(
       <div className="pp-header">
                {this.coverPageUpload()}
@@ -70,7 +70,7 @@ class UserHeader extends React.Component {
                   </div>
                </div>
             </div>
-    )
+    );
   }
 
 }

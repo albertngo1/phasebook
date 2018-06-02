@@ -17,17 +17,19 @@ class FriendRequest extends React.Component {
    }
 
    handleFriendAdd(id) {
-      const friendship = {user1_id: this.props.currentUser.id, user2_id: id, status: "pending"}
+			const friendship = { user1_id: this.props.currentUser.id,
+													 user2_id: id,
+													 status: "pending" };
       this.props.addFriend(friendship);
    }
 
    handleFriendAccept(id) {
-      this.props.acceptFriend(id)
+      this.props.acceptFriend(id);
 
    }
 
    handleFriendDelete(id) {
-      this.props.removeFriend(id)
+      this.props.removeFriend(id);
    }
 
    handleCancelAddFriend(id) {
@@ -35,71 +37,70 @@ class FriendRequest extends React.Component {
    }
 
    isFriend() {
-      const { currentUser } = this.props
-      const active_friends = currentUser.active_friends || [];
+      const { currentUser } = this.props;
+      const activeFriends = currentUser.active_friends || [];
       let friendStatus;
-      active_friends.forEach( el => {
-        if (el.id == this.props.match.params.userId) {
+      activeFriends.forEach( el => {
+        if (el.id === this.props.match.params.userId) {
           friendStatus = true;
         }
-      })
-      if (friendStatus) {
-        return true;
-      } else {
-        return false;
-      }
+			});
+			return friendStatus ? true : false;
    }
 
    friendRequest() {
-      const currentUser = this.props.currentUser
-      const user = this.props.user
-      const received_friend_requests = currentUser.received_friend_requests || []
-      const sent_friend_requests = currentUser.sent_friend_requests || []
-      if (currentUser.id == user.id) {
+      const currentUser = this.props.currentUser;
+      const user = this.props.user;
+      const receivedFriendRequests = currentUser.received_friend_requests || [];
+      const sentFriendRequests = currentUser.sent_friend_requests || [];
+      if (currentUser.id === user.id) {
          return (
-            <button className="pp-friend-request-button" onClick={this.props.toggleEditIntroModal}>
-               Edit Profile
+						<button className="pp-friend-request-button"
+										onClick={this.props.toggleEditIntroModal}>
+              Edit Profile
             </button>
          );
       } else {
-         if (received_friend_requests.includes(user.id)) {
+         if (receivedFriendRequests.includes(user.id)) {
             return(
-               <button className="pp-friend-request-button" onClick={() => this.handleFriendAccept(user.id)}>Accept Friend Request</button>
-            )
-         } else if (sent_friend_requests.includes(user.id)) {
+							 <button className="pp-friend-request-button"
+							 				 onClick={() => this.handleFriendAccept(user.id)}>
+							 	Accept Friend Request
+							</button>
+            );
+         } else if (sentFriendRequests.includes(user.id)) {
             return(
-               <button className="pp-friend-request-button" onClick={() => this.handleCancelAddFriend(user.id)}>Sent Friend Request</button>
-            )
+							<button className="pp-friend-request-button"
+											onClick={() => this.handleCancelAddFriend(user.id)}>
+							 	Sent Friend Request
+							</button>
+            );
          } else if (this.isFriend()) {
             return(
-               <button className="pp-friend-request-button" onClick={() => this.handleFriendDelete(user.id)}>Friends</button>
-            )
+							<button className="pp-friend-request-button"
+											onClick={() => this.handleFriendDelete(user.id)}>
+							 	Friends
+							</button>
+            );
          } else {
             return(
-               <button className="pp-friend-request-button" onClick={() => this.handleFriendAdd(user.id)}>Add Friend</button>
-            )
+							<button className="pp-friend-request-button"
+											onClick={() => this.handleFriendAdd(user.id)}>
+							 	Add Friend
+							</button>
+            );
          }
       }
    }
 
    render() {
-
       return(
          <div>
             {this.friendRequest()}
          </div>
-      )
+      );
    }
-
 }
-
-
-
-
-
-
-
-
 
 const mapStateToProps = (state) => {
    const  currentUser = state.session.currentUser || {};
@@ -116,7 +117,7 @@ const mapDispatchToProps = dispatch => ({
    cancelAddFriend: friendId => dispatch(cancelRemoveFriendship(friendId)),
    acceptFriend: friendId => dispatch(updateFriendship(friendId)),
    toggleEditIntroModal: () => dispatch(toggleEditIntroModal),
-})
+});
 
 export default withRouter(connect(mapStateToProps,
-   mapDispatchToProps)(FriendRequest));
+  																mapDispatchToProps)(FriendRequest));

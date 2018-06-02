@@ -25,7 +25,7 @@ class FriendList extends React.Component {
   renderFriendList(friends) {
     const shuffle = require('shuffle-array');
     let friendList;
-    let users = friends
+    let users = friends;
     friendList = Object.keys(friends).map( id => {
       return(
         <li key={`friend-${id}`}>
@@ -40,39 +40,38 @@ class FriendList extends React.Component {
             </Link>
           </div>
         </li>
-      )
-    })
+      );
+    });
     return shuffle(friendList).slice(0, 9);
   }
 
 
 
   render() {
-    const { friends } = this.props
+    const { friends } = this.props;
     return(
       <div className="pp-left-friends">
-      <div className="pp-fl-ctn">
-        <div className="pp-fl-header">
-          <div className="pp-fl-friend-icon-wrapper">
-           <FA size='lg' name="user-circle" className="pp-fl-friend-icon"/>
+        <div className="pp-fl-ctn">
+          <div className="pp-fl-header">
+            <div className="pp-fl-friend-icon-wrapper">
+              <FA size='lg' name="user-circle" className="pp-fl-friend-icon"/>
+            </div>
+            <span className="pp-fl-friends-lbl">
+              Friends
+            </span>
+            <span className="pp-fl-friends-dot">
+              ·
+            </span>
+            <span className="pp-fl-friends-ct">
+              {Object.keys(friends).length}
+            </span>
           </div>
-          <span className="pp-fl-friends-lbl">
-            Friends
-          </span>
-          <span className="pp-fl-friends-dot">
-            ·
-          </span>
-          <span className="pp-fl-friends-ct">
-            {Object.keys(friends).length}
-          </span>
+          <ul className="pp-fl-imgs-ctn">
+            {this.renderFriendList(friends)}
+          </ul>
         </div>
-        <ul className="pp-fl-imgs-ctn">
-          {this.renderFriendList(friends)}
-        </ul>
-
       </div>
-      </div>
-    )
+    );
   }
 
 }
@@ -86,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
   receiveUserFriends: userId => dispatch(fetchUserFriends(userId)),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendList))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendList));
