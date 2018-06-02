@@ -13,7 +13,7 @@ json.friends do
     json.set! friend.id do
       json.set! :friend_id, friend.id
       json.set! :friend, friend.full_name
-      json.set! :profile_pic_small, url_for(friend.profile_picture.variant(resize: "50x50"))
+      json.set! :profile_pic_small, friend.profile_picture.variant(resize: "50x50").service_url
     end
   end
 end

@@ -59,4 +59,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Rails.application.config.active_storage.service = :amazon_dev
+  Rails.application.config.active_storage.variant_processor
 end
